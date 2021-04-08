@@ -12,9 +12,10 @@ namespace Schrauben
         {          
             Schraubendefinition eins = new Schraubendefinition();
             //Material wird definiert
-            eins.Material = "Stahl";
+            Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium und Titan zur Verfügung.");
+            eins.Material = Console.ReadLine(); //Material selber eingebbar.
 
-            //Asugabe
+            //Ausgabe
             Console.WriteLine(eins.getDichte(eins.Material));
             Console.ReadKey();
 
