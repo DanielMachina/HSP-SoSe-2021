@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schrauben", "Schrauben\Schrauben.csproj", "{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B50392E4-0F01-41FC-975B-A5545EAD0816}
+	EndGlobalSection
+EndGlobal
