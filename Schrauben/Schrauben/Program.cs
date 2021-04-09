@@ -14,9 +14,12 @@ namespace Schrauben
             //Material wird definiert
             Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium und Titan zur Verfügung.");
             eins.Material = Console.ReadLine(); //Material selber eingebbar.
+            Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
+            eins.Gewinde = Console.ReadLine(); //Gewinde eingeben, da ja noch keine Auswahlfenster zur Verfügung stehen
 
             //Ausgabe
             Console.WriteLine(eins.getDichte(eins.Material));
+            Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
             Console.ReadKey();
 
 
@@ -60,6 +63,114 @@ namespace Schrauben
             return spezDichte;
 
         }
+
+
+        //Wilde Experimente, indem ich den Code vom Material kopiere und dann versuche in z.B. Gewinde aussuchen per selber codieren zuu ändern.
+
+
+
+        public string Gewinde //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+
+        public double getDurchmesser(string durchmesser) // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
+        {
+            double spezDurchmesser = 0;
+            switch (Gewinde)
+            {
+                case "M1": //Jeder case kann eine Größe annehmen
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 1; // Hier bekommt  das Gewinde seinen Durchmesser
+                    break;
+                case "M1,2":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 1.2;
+                    break;
+                case "M1,6":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 1.6;
+                    break;
+                case "M2":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 2;
+                    break;
+                case "M2,5":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 2.5;
+                    break;
+                case "M3":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 3;
+                    break;
+                case "4":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 4;
+                    break;
+                case "M5":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 5;
+                    break;
+                case "M6":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 6;
+                    break;
+                case "M8":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 8;
+                    break;
+                case "M10":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 10;
+                    break;
+                case "M12":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 12;
+                    break;
+                case "16":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 16;
+                    break;
+                case "M20":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 20;
+                    break;
+                case "M24":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 24;
+                    break;
+                case "M30":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 30;
+                    break;
+                case "M36":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 36;
+                    break;
+                case "M42":
+                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                    spezDurchmesser = 42;
+                    break;
+                
+
+                //Hier können mehr Gewinde rein, falls nötig
+
+                default: // Falls ein nicht aufgelistetes Gewinde benutzt wird wird default ausgegeben
+                    Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Material + "Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Regelgewinde handelt.");
+                    break;
+
+            }
+
+            Console.Write("Der Gewinde-Nenndurchmesser beträgt ");
+            return spezDurchmesser;
+
+        }
+
+
+
+
+
+
+
+
 
     }
 
