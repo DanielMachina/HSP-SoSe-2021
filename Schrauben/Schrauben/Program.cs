@@ -14,11 +14,14 @@ namespace Schrauben
             //Material wird definiert
             Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium und Titan zur Verfügung.");
             eins.Material = Console.ReadLine(); //Material selber eingebbar.
-            Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
-            eins.Gewinde = Console.ReadLine(); //Gewinde eingeben, da ja noch keine Auswahlfenster zur Verfügung stehen
+            
 
             //Ausgabe
             Console.WriteLine(eins.getDichte(eins.Material));
+
+
+            Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
+            eins.Gewinde = Console.ReadLine(); //Gewinde eingeben, da ja noch keine Auswahlfenster zur Verfügung stehen
             Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
             Console.ReadKey();
 
@@ -154,7 +157,7 @@ namespace Schrauben
                 //Hier können mehr Gewinde rein, falls nötig
 
                 default: // Falls ein nicht aufgelistetes Gewinde benutzt wird wird default ausgegeben
-                    Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Material + "Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Regelgewinde handelt.");
+                    Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Gewinde + " Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Regelgewinde handelt.");
                     break;
 
             }
