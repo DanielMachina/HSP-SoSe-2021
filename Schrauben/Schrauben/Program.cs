@@ -14,6 +14,7 @@ namespace Schrauben
             Schraubendefinition eins = new Schraubendefinition();
             //Eingabe Material
             Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
+            eins.Material = Convert.ToString(Console.ReadLine());
             //Ausgabe Material
             Console.WriteLine($"Die Dichte ist {eins.getDichte(eins.Material)}");
 
@@ -22,7 +23,6 @@ namespace Schrauben
             eins.Gewinde = Convert.ToString(Console.ReadLine());
             //Ausgabe Durchmesser und Steigung
             eins.Ausgabe(eins);
-
 
             Console.ReadKey();
 
@@ -49,7 +49,6 @@ namespace Schrauben
         public double getDichte(string material) // Methode um Dichte des jeweiligen Materials zu bekommen
         {
             double spezDichte=0;
-            Material = Console.ReadLine();
                 switch (Material)
                 {
                     case "Stahl": 
@@ -70,8 +69,6 @@ namespace Schrauben
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
                         Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
-                    getDichte(material);
-
                         break;
                 }
 
