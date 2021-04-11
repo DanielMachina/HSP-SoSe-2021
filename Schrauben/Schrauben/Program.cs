@@ -14,26 +14,19 @@ namespace Schrauben
             Schraubendefinition eins = new Schraubendefinition();
             //Eingabe Material
             Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
-            eins.Material = Console.ReadLine();
             //Ausgabe Material
             Console.WriteLine($"Die Dichte ist {eins.getDichte(eins.Material)}");
 
             //Eingabe Durchmesser
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
-            eins.Gewinde = Console.ReadLine();
+            eins.Gewinde = Convert.ToString(Console.ReadLine());
             //Ausgabe Durchmesser und Steigung
             eins.Ausgabe(eins);
 
 
             Console.ReadKey();
 
-
         }
-
-
-
-
-
     }
 
     public class Schraubendefinition //hier wird die Schraube definiert
@@ -53,13 +46,10 @@ namespace Schrauben
             Console.WriteLine($"Der Flankendurchmesser ist {zahlen._flanken}");
         }
 
-
-
-
         public double getDichte(string material) // Methode um Dichte des jeweiligen Materials zu bekommen
         {
-            double spezDichte = 0;
-
+            double spezDichte=0;
+            Material = Console.ReadLine();
                 switch (Material)
                 {
                     case "Stahl": 
@@ -80,6 +70,7 @@ namespace Schrauben
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
                         Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
+                    getDichte(material);
 
                         break;
                 }
@@ -95,7 +86,7 @@ namespace Schrauben
             double spezFlankendurchmesser;
             double spezKerndurchmesser;
             double spezKernlochdurchmesser;
-            double spezSteigung = 0;
+            double spezSteigung = 0 ;
 
             switch (Gewinde)
             {
