@@ -8,28 +8,29 @@ namespace Schrauben
 {
     class Program
     {
+
         public static void Main()
         {          
             Schraubendefinition eins = new Schraubendefinition();
-            //Material wird definiert
+            //Eingabe Material
             Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
-            
-            eins.Material = Console.ReadLine(); //Material selber eingebbar.
-            //Ausgabe
-            Console.WriteLine(eins.getDichte(eins.Material));
+            eins.Material = Console.ReadLine();
+            //Ausgabe Material
+            Console.WriteLine($"Die Dichte ist {eins.getDichte(eins.Material)}");
 
-
+            //Eingabe Durchmesser
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
-            eins.Gewinde = Console.ReadLine(); //Gewinde eingeben, da ja noch keine Auswahlfenster zur Verfügung stehen
-            Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
-            Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
-            Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
-            Console.WriteLine(eins.getDurchmesser(eins.Gewinde));
+            eins.Gewinde = Console.ReadLine();
+            //Ausgabe Durchmesser und Steigung
+            eins.Ausgabe(eins);
+
+
             Console.ReadKey();
-            //hier ist ein Problem. Es werden die Werte nicht übermittelt, ich glaube ich habe irgndwo etwas sehr wichtiges übersehen, damit es geht. Lediglich der Nenndurchmesser wird oben ausgegegeben, 
-            //nicht z.B Flankendurchmesser oder Steigung. Bitte NUR M1 testen, bei den anderen sind noch nicht die Steigungen eingeführt.
+
 
         }
+
+
 
 
 
@@ -39,6 +40,21 @@ namespace Schrauben
     {
         public string Material //Eigenschaft Material. Wird in main definiert
         { get; set; }
+        public string Gewinde //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+
+        public void Ausgabe(Schraubendefinition eins)
+        {
+            var zahlen = eins.getDurchmesser(eins.Gewinde);
+            Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
+            Console.WriteLine($"Die Steigung ist {zahlen._steigung}");
+            Console.WriteLine($"Der Kernlochdurchmesser ist {zahlen._kernloch}");
+            Console.WriteLine($"Der Kerndurchmesser ist {zahlen._kern}");
+            Console.WriteLine($"Der Flankendurchmesser ist {zahlen._flanken}");
+        }
+
+
+
 
         public double getDichte(string material) // Methode um Dichte des jeweiligen Materials zu bekommen
         {
@@ -46,27 +62,21 @@ namespace Schrauben
 
                 switch (Material)
                 {
-                    case "Stahl": //Jeder case kann ein Material annehmen
-                        Console.WriteLine("Das Material ist " + Material);
+                    case "Stahl": 
                         spezDichte = 7.85; // Hier bekommt  das Material seine Dichte
                         break;
                     case "Aluminium":
-                        Console.WriteLine("Das Material ist " + Material);
                         spezDichte = 2.7;
                         break;
                     case "Titan":
-                        Console.WriteLine("Das Material ist " + Material);
                         spezDichte = 4.507;
                         break;
                     case "Messing":
-                        Console.WriteLine("Das Material ist " + Material);
                         spezDichte = 8.73;
                         break;
                     case "Kupfer":
-                        Console.WriteLine("Das Material ist " + Material);
                         spezDichte = 8.96;
                         break;
-                //Hier können mehr Materialien rein, denke aber es reicht
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
                         Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
@@ -74,104 +84,95 @@ namespace Schrauben
                         break;
                 }
 
-                Console.Write("Die Dichte ist ");
                 return spezDichte;
         }
 
-        
-        //Wilde Experimente, indem ich den Code vom Material kopiere und dann versuche in z.B. Gewinde aussuchen per selber codieren zuu ändern.
 
 
-
-        public string Gewinde //Eigenschaft Gewinde. Wird in main definiert
-        { get; set; }
-
-        public double getDurchmesser(string durchmesser) // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
+        public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser(string durchmesser) // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
         {
             double spezDurchmesser = 0;
-            double spezFlankendurchmesser = 0;
-            double spezKerndurchmesser = 0;
-            double spezKernlochdurchmesser = 0;
+            double spezFlankendurchmesser;
+            double spezKerndurchmesser;
+            double spezKernlochdurchmesser;
             double spezSteigung = 0;
 
             switch (Gewinde)
             {
-                case "M1": //Jeder case kann eine Größe annehmen
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
+                case "M1": 
                     spezDurchmesser = 1; // Hier bekommt  das Gewinde seinen Durchmesser
-                    spezSteigung = 0.4;                    
+                    spezSteigung = 0.25;                    
                     break;
                 case "M1,2":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 1.2;
+                    spezSteigung = 0.25;
                     break;
                 case "M1,6":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 1.6;
+                    spezSteigung = 0.35;
                     break;
                 case "M2":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 2;
+                    spezSteigung = 0.4;
                     break;
                 case "M2,5":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 2.5;
+                    spezSteigung = 0.45;
                     break;
                 case "M3":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 3;
+                    spezSteigung = 0.5;
                     break;
                 case "4":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 4;
+                    spezSteigung = 0.7;
                     break;
                 case "M5":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 5;
+                    spezSteigung = 0.8;
                     break;
                 case "M6":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 6;
+                    spezSteigung = 1;
                     break;
                 case "M8":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 8;
+                    spezSteigung = 1.25;
                     break;
                 case "M10":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 10;
+                    spezSteigung = 1.5;
                     break;
                 case "M12":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 12;
+                    spezSteigung = 1.75;
                     break;
                 case "M16":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 16;
+                    spezSteigung = 2;
                     break;
                 case "M20":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 20;
+                    spezSteigung = 2.5;
                     break;
                 case "M24":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 24;
+                    spezSteigung = 3;
                     break;
                 case "M30":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 30;
+                    spezSteigung = 3.5;
                     break;
                 case "M36":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 36;
+                    spezSteigung = 4;
                     break;
                 case "M42":
-                    Console.WriteLine("Die Regelgewinde-Bezeichnung ist " + Gewinde);
                     spezDurchmesser = 42;
+                    spezSteigung = 4.5;
                     break;
                 
 
-                //Hier können mehr Gewinde rein, falls nötig
 
                 default: // Falls ein nicht aufgelistetes Gewinde benutzt wird wird default ausgegeben
                     Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Gewinde + " Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Regelgewinde handelt.");
@@ -183,18 +184,8 @@ namespace Schrauben
             spezKerndurchmesser = (spezDurchmesser - 1.2269 * spezSteigung);
             spezKernlochdurchmesser = (spezDurchmesser - spezSteigung);
 
-            Console.Write("Der Gewinde-Nenndurchmesser beträgt " );
-            return spezDurchmesser;
-            Console.Write("Die Gewindesteigung beträgt ");
-            return spezSteigung;
-            Console.Write("Der Flankendurchmesser beträgt ");
-            return spezFlankendurchmesser;
-            Console.Write("Der Kern-Außendurchmesser beträgt ");
-            return spezKerndurchmesser;
-            Console.Write("Ein Kernlochdurchmesser von folgenden mm benötigt: ");
-            return spezKernlochdurchmesser;
-            
-            //hier ist ein Problem. Es werden die Werte nicht übermittelt, ich glaube ich habe irgndwo etwas sehr wichtiges übersehen, damit es geht. Lediglich der Nenndurchmesser wird oben ausgegegeben.
+
+            return (_durchmesser:spezDurchmesser, _steigung:spezSteigung,_kernloch:spezKernlochdurchmesser, _kern:spezKerndurchmesser, _flanken:spezFlankendurchmesser ); 
 
         }
 
