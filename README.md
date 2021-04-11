@@ -28,3 +28,6 @@ Es werden nicht Steigung Flankendurchmesser oder so ausgegeben. Habe wohl etwas 
 Daniel 11.04 
 Ich hab Marvins Problem beseitig, und den Code etwas umgeformt. Ich hab ausßerdem noch ein paar Kommentare weggenommen, weil es so langsam unübersichtlich wurde.
 Ich hab noch experimentell eine Methode "Ausgabe" geschrieben, welche die Main Methode etwas entlasten soll, weiß aber nicht ob wir da beibehalten sollten.
+
+Marvin 11.04 Abends
+Schraubenart eingefügt mit Daniel per Discord. Metrisch läuft, anderes kommt morgen
