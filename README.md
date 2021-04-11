@@ -20,3 +20,7 @@ z.B. Flankendurchmesser, Kerndurchmesser usw.
 
 Marvin 10.04
 Lediglich Zeilen der Ausgabefunktion getauscht.
+
+Marvin 11.04
+Materialien Messing und Kupfer hinzugefügt. Steigung, Flankendurchmesser, Kerndurchmesser und so ergänzt. Ausgabe hat aber einen Defekt. 
+Es werden nicht Steigung Flankendurchmesser oder so ausgegeben. Habe wohl etwas wichtiges übersehen, weiß nur nicht was
