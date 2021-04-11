@@ -18,11 +18,17 @@ namespace Schrauben
             //Ausgabe Material
             Console.WriteLine($"Die Dichte ist {eins.getDichte(eins.Material)}");
 
+
+            //Eingabe Schraubenart
+            Console.WriteLine("Bitte geben Sie Ihren gewünschten Schraubenart an. Es gibt Metrisch, Metrisch Fein, Zoll, Trapez, Rohr - gewinde und Holzschrauben zur Auswahl.");
+            eins.Art = Convert.ToString(Console.ReadLine());
+            
+
             //Eingabe Durchmesser
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
             eins.Gewinde = Convert.ToString(Console.ReadLine());
             //Ausgabe Durchmesser und Steigung
-            eins.Ausgabe(eins);
+            eins.Ausgabe_Gewinde(eins);
 
             Console.ReadKey();
 
@@ -33,12 +39,25 @@ namespace Schrauben
     {
         public string Material //Eigenschaft Material. Wird in main definiert
         { get; set; }
+        public string Art //Eigenschaft Sorte. Wird in main definiert
+        { get; set; }
         public string Gewinde //Eigenschaft Gewinde. Wird in main definiert
         { get; set; }
+        public string Gewinde_Fein //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+        public string Gewinde_Zoll //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+        public string Gewinde_Rohr //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+        public string Gewinde_Trapez //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
+        public string Gewinde_Holz //Eigenschaft Gewinde. Wird in main definiert
+        { get; set; }
 
-        public void Ausgabe(Schraubendefinition eins)
+
+        public void Ausgabe_Gewinde(Schraubendefinition eins)
         {
-            var zahlen = eins.getDurchmesser(eins.Gewinde);
+            var zahlen = eins.getDurchmesser();
             Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
             Console.WriteLine($"Die Steigung ist {zahlen._steigung}");
             Console.WriteLine($"Der Kernlochdurchmesser ist {zahlen._kernloch}");
@@ -75,9 +94,39 @@ namespace Schrauben
                 return spezDichte;
         }
 
+        public static void Schraubenart(string Art) // Methode um Art/Variante der Schraube zu klären
+        {
+            Schraubendefinition eins = new Schraubendefinition();
+            //string Gewinde = "test";
+            switch (Art)
+            {
+                case "Zoll":
+                 //   Gewinde_Zoll;
+                    break;
+                case "Metrisch":
+                    eins.getDurchmesser();
+                    break;
+                case "Metrisch Fein":
+                  //  Gewinde_Fein;
+                    break;
+                case "Rohr":
+                 //   Gewinde_Rohr;
+                    break;
+                case "Holz":
+                  //  Gewinde_Holz;
+                    break;
+                case "Trapez":
+                 //   Gewinde_Trapez
+                    break;
 
+                default: // Falls eine nicht aufgelistete Art benutzt wird wird default ausgegeben
+                    Console.WriteLine("Schraubenart leider nicht vorhanden, prüfe deine Rechtschreibung: " + Art);
+                    break;
+            }
+            
+        }
 
-        public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser(string durchmesser) // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
+        public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
         {
             double spezDurchmesser = 0;
             double spezFlankendurchmesser;
