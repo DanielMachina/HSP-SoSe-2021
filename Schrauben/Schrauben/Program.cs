@@ -22,11 +22,15 @@ namespace Schrauben
             //Eingabe Schraubenart
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Schraubenart an. Es gibt Metrisch, Metrisch Fein, Zoll, Trapez, Rohr - gewinde und Holzschrauben zur Auswahl.");
             eins.Art = Convert.ToString(Console.ReadLine());
-            
+
+            //Eingabe Schraubenkopf
+            Console.WriteLine("Bitte gewünschte Schraubenkopf eingeben. Es stehen Sechskant, Zylindrisch und Senkkopf zur Verfügung.");
+            eins.Kopf = Convert.ToString(Console.ReadLine());
 
             //Eingabe Durchmesser
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
             eins.Gewinde = Convert.ToString(Console.ReadLine());
+           
             //Ausgabe Durchmesser und Steigung
             eins.Ausgabe_Gewinde(eins);
 
@@ -53,7 +57,8 @@ namespace Schrauben
         { get; set; }
         public string Gewinde_Holz //Eigenschaft Gewinde. Wird in main definiert
         { get; set; }
-
+        public string Kopf //Eigenschaft Kopf. Wird in main definiert
+        { get; set; }
 
         public void Ausgabe_Gewinde(Schraubendefinition eins)
         {
@@ -126,6 +131,27 @@ namespace Schrauben
             
         }
 
+        public static void Schraubenkopf(string Kopf) //Methode um Schraubenkopf zu wählen.
+        {
+            Schraubendefinition eins = new Schraubendefinition();
+
+            switch (Kopf)
+            {
+                case "Sechskant":
+                    break;
+
+                case "Zylindrisch":
+                    break;
+
+                case "Senkkopf":
+                    break;
+
+                default:
+                    Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung" + Kopf);
+                    break;
+            }
+
+        }
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
         {
             double spezDurchmesser = 0;

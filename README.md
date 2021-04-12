@@ -31,3 +31,6 @@ Ich hab noch experimentell eine Methode "Ausgabe" geschrieben, welche die Main M
 
 Marvin 11.04 Abends
 Schraubenart eingefügt mit Daniel per Discord. Metrisch läuft, anderes kommt morgen
+
+Edis 12.04.
+Sschraubenkopf eingeführt 
