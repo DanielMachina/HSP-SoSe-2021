@@ -22,17 +22,18 @@ namespace Schrauben
             //Eingabe Schraubenart
             Console.WriteLine("Bitte geben Sie Ihren gewünschten Schraubenart an. Es gibt Metrisch, Metrisch Fein, Zoll, Trapez, Rohr - gewinde und Holzschrauben zur Auswahl.");
             eins.Art = Convert.ToString(Console.ReadLine());
+            //Ausgabe Durchmesser und Steigung
+            //eins.Ausgabe_Gewinde(eins);
 
             //Eingabe Schraubenkopf
             Console.WriteLine("Bitte gewünschte Schraubenkopf eingeben. Es stehen Sechskant, Zylindrisch und Senkkopf zur Verfügung.");
             eins.Kopf = Convert.ToString(Console.ReadLine());
 
             //Eingabe Durchmesser
-            Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
-            eins.Gewinde = Convert.ToString(Console.ReadLine());
-           
+            //Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
+            //eins.Gewinde = Convert.ToString(Console.ReadLine());           
             //Ausgabe Durchmesser und Steigung
-            eins.Ausgabe_Gewinde(eins);
+            //eins.Ausgabe_Gewinde(eins);
 
             Console.ReadKey();
 
@@ -102,17 +103,19 @@ namespace Schrauben
         public static void Schraubenart(string Art) // Methode um Art/Variante der Schraube zu klären
         {
             Schraubendefinition eins = new Schraubendefinition();
-            //string Gewinde = "test";
+            
             switch (Art)
             {
-                case "Zoll":
-                 //   Gewinde_Zoll;
-                    break;
                 case "Metrisch":
-                    eins.getDurchmesser();
+                    Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
+                    eins.Gewinde = Convert.ToString(Console.ReadLine());
                     break;
                 case "Metrisch Fein":
-                  //  Gewinde_Fein;
+                    Console.WriteLine("Bitte geben Sie eine genormtes Feingewinde ein. Z.B.: M8x0,25 ");
+                    eins.Gewinde_Fein = Convert.ToString(Console.ReadLine());                    
+                    break;
+                case "Zoll":
+                    //   Gewinde_Zoll;
                     break;
                 case "Rohr":
                  //   Gewinde_Rohr;
@@ -128,7 +131,7 @@ namespace Schrauben
                     Console.WriteLine("Schraubenart leider nicht vorhanden, prüfe deine Rechtschreibung: " + Art);
                     break;
             }
-            
+            eins.Ausgabe_Gewinde(eins);
         }
 
         public static void Schraubenkopf(string Kopf) //Methode um Schraubenkopf zu wählen.
@@ -147,12 +150,12 @@ namespace Schrauben
                     break;
 
                 default:
-                    Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung" + Kopf);
+                    Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung " + Kopf);
                     break;
             }
 
         }
-        public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um den Durchmesser der jeweiligen M-Größe zu bekommen
+        public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um den Durchmesser der jeweiligen Gewindegröße zu bekommen
         {
             double spezDurchmesser = 0;
             double spezFlankendurchmesser;
@@ -186,7 +189,7 @@ namespace Schrauben
                     spezDurchmesser = 3;
                     spezSteigung = 0.5;
                     break;
-                case "4":
+                case "M4":
                     spezDurchmesser = 4;
                     spezSteigung = 0.7;
                     break;
@@ -239,6 +242,140 @@ namespace Schrauben
 
                 default: // Falls ein nicht aufgelistetes Gewinde benutzt wird wird default ausgegeben
                     Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Gewinde + " Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Regelgewinde handelt.");
+                    break;
+
+            }
+            switch (Gewinde_Fein)
+            {
+                case "M2x0,25":
+                    spezDurchmesser = 2;
+                    spezSteigung = 0.25;
+                    break;              
+                case "M3x0,25":
+                    spezDurchmesser = 3;
+                    spezSteigung = 0.25;
+                    break;
+                case "M4x0,2":
+                    spezDurchmesser = 4;
+                    spezSteigung = 0.2;
+                    break;
+                case "M4x0,35":
+                    spezDurchmesser = 4;
+                    spezSteigung = 0.35;
+                    break;
+                case "M5x0,25":
+                    spezDurchmesser = 5;
+                    spezSteigung = 0.25;
+                    break;
+                case "M5x0,5":
+                    spezDurchmesser = 5;
+                    spezSteigung = 0.5;
+                    break;
+                case "M6x0,25":
+                    spezDurchmesser = 6;
+                    spezSteigung = 0.25;
+                    break;
+                case "M6x0,5":
+                    spezDurchmesser = 6;
+                    spezSteigung = 0.5;
+                    break;
+                case "M6x0,75":
+                    spezDurchmesser = 6;
+                    spezSteigung = 0.75;
+                    break;
+                case "M8x0,25":
+                    spezDurchmesser = 8;
+                    spezSteigung = 0.25;
+                    break;
+                case "M8x0,5":
+                    spezDurchmesser = 8;
+                    spezSteigung = 0.5;
+                    break;
+                case "M8x1":
+                    spezDurchmesser = 8;
+                    spezSteigung = 1;
+                    break;
+                case "M10x0,25":
+                    spezDurchmesser = 10;
+                    spezSteigung = 0.25;
+                    break;
+                case "M10x0,5":
+                    spezDurchmesser = 10;
+                    spezSteigung = 0.5;
+                    break;
+                case "M10x1":
+                    spezDurchmesser = 10;
+                    spezSteigung = 1;
+                    break;
+                case "M12x0,35":
+                    spezDurchmesser = 12;
+                    spezSteigung = 0.35;
+                    break;
+                case "M12x0,5":
+                    spezDurchmesser = 12;
+                    spezSteigung = 0.5;
+                    break;
+                case "M12x1":
+                    spezDurchmesser = 12;
+                    spezSteigung = 1;
+                    break;
+                case "M16x0,5":
+                    spezDurchmesser = 16;
+                    spezSteigung = 0.5;
+                    break;
+                case "M16x1":
+                    spezDurchmesser = 16;
+                    spezSteigung = 1;
+                    break;
+                case "M16x1,5":
+                    spezDurchmesser = 16;
+                    spezSteigung = 1.5;
+                    break;
+                case "M20x1":
+                    spezDurchmesser = 20;
+                    spezSteigung = 1;
+                    break;
+                case "M20x1,5":
+                    spezDurchmesser = 20;
+                    spezSteigung = 1.5;
+                    break;
+                case "M24x1,5":
+                    spezDurchmesser = 24;
+                    spezSteigung = 1.5;
+                    break;
+                case "M24x2":
+                    spezDurchmesser = 24;
+                    spezSteigung = 2;
+                    break;
+                case "M30x1,5":
+                    spezDurchmesser = 30;
+                    spezSteigung = 1.5;
+                    break;
+                case "M30x2":
+                    spezDurchmesser = 30;
+                    spezSteigung = 2;
+                    break;
+                case "M36x1,5":
+                    spezDurchmesser = 36;
+                    spezSteigung = 1.5;
+                    break;
+                case "M36x2":
+                    spezDurchmesser = 36;
+                    spezSteigung = 2;
+                    break;
+                case "M42x1,5":
+                    spezDurchmesser = 42;
+                    spezSteigung = 1.5;
+                    break;
+                case "M42x2":
+                    spezDurchmesser = 42;
+                    spezSteigung = 2;
+                    break;
+
+
+
+                default: // Falls ein nicht aufgelistetes Gewinde benutzt wird wird default ausgegeben
+                    Console.WriteLine("Gewinde leider nicht vorhanden, prüfen Sie Ihre Rechtschreibung: " + Gewinde_Fein + " Ist die Rechtschreibung korrekt, prüfen Sie, ob es sich bei Ihrem Wunsch um ein metrisches Feingewinde handelt.");
                     break;
 
             }
