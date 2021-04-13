@@ -32,9 +32,13 @@ Ich hab noch experimentell eine Methode "Ausgabe" geschrieben, welche die Main M
 Marvin 11.04 Abends
 Schraubenart eingefügt mit Daniel per Discord. Metrisch läuft, anderes kommt morgen
 
-Edis 12.04.
+Edis 12.04
 Sschraubenkopf eingeführt 
 
 Daniel 13.4
 Rekursion für Materialabfrage eingebaut.
 Struktur geändert, Methode eingfügt ( MaterialAbfrage() ) 
+
+Edis 13.04
+
+Schlüsselweite bzw. Größe der Innensechskant hinzugefügt. Variable Durchmesser eingetragen.

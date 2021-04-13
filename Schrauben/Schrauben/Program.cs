@@ -29,7 +29,9 @@ namespace Schrauben
             //Eingabe Schraubenkopf
             Console.WriteLine("Bitte gewünschte Schraubenkopf eingeben. Es stehen Sechskant, Zylindrisch und Senkkopf zur Verfügung.");
             eins.Kopf = Convert.ToString(Console.ReadLine());
-
+            Console.WriteLine("Unesite Durchmesser");
+            eins.Durchmesser = Console.ReadLine();
+            eins.Schraubenkopf();
             //Eingabe Durchmesser
             //Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
             //eins.Gewinde = Convert.ToString(Console.ReadLine());           
@@ -50,6 +52,11 @@ namespace Schrauben
         { get; set; }
         public string Art
         { get; set; }
+        public string Durchmesser
+        { get; set; }
+        public string Schlusselweite
+        { get; set; }
+        
         public string Gewinde 
         { get; set; }
         public string Gewinde_Fein 
@@ -170,19 +177,53 @@ namespace Schrauben
             eins.Ausgabe_Gewinde(eins);
         }
 
-        public static void Schraubenkopf(string Kopf) //Methode um Schraubenkopf zu wählen.
+        public  void Schraubenkopf() //Methode um Schraubenkopf zu wählen.
         {
             Schraubendefinition eins = new Schraubendefinition();
 
-            switch (Kopf)
+            switch (this.Kopf)
             {
                 case "Sechskant":
-                    break;
+                    {
+           
+                        if(this.Durchmesser=="8")
+                        {
+                            Console.WriteLine("Schlüsselweite SW=13mm");
+                        }
+                        if (this.Durchmesser=="10")
+                        {
+                            Console.WriteLine("tSchlüsselweite SW=17mm");
+                        }
+                        break;
+                    }
+                   
 
                 case "Zylindrisch":
-                    break;
+                    {
+                     
+                        if (this.Durchmesser == "8")
+                        {
+                            Console.WriteLine("Innensechskant s=6mm");
+                        }
+                        if (this.Durchmesser == "10")
+                        {
+                            Console.WriteLine("Innensechskant s=8mm");
+                        }
+                        break;
+                    }
 
                 case "Senkkopf":
+                    {
+                        if (this.Durchmesser == "8")
+                        {
+                            Console.WriteLine("Innensechskant s=6mm");
+                        }
+                        if (this.Durchmesser == "10")
+                        {
+                            Console.WriteLine("Innensechskant s=8mm");
+                        }
+
+                    }
                     break;
 
                 default:
