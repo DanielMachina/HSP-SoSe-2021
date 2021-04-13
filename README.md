@@ -34,3 +34,7 @@ Schraubenart eingefügt mit Daniel per Discord. Metrisch läuft, anderes kommt m
 
 Edis 12.04.
 Sschraubenkopf eingeführt 
+
+Daniel 13.4
+Rekursion für Materialabfrage eingebaut.
+Struktur geändert, Methode eingfügt ( MaterialAbfrage() ) 

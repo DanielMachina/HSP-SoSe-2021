@@ -13,10 +13,11 @@ namespace Schrauben
         {          
             Schraubendefinition eins = new Schraubendefinition();
             //Eingabe Material
-            Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
-            eins.Material = Convert.ToString(Console.ReadLine());
-            //Ausgabe Material
-            Console.WriteLine($"Die Dichte ist {eins.getDichte(eins.Material)}");
+            do
+            {
+                eins.MaterialAbfrage();
+            }
+            while (eins.beenden != true);
 
 
             //Eingabe Schraubenart
@@ -40,26 +41,58 @@ namespace Schrauben
         }
     }
 
-    public class Schraubendefinition //hier wird die Schraube definiert
+    public class Schraubendefinition
     {
-        public string Material //Eigenschaft Material. Wird in main definiert
+        Program zwei = new Program();
+
+        public bool beenden;
+        public string Material 
         { get; set; }
-        public string Art //Eigenschaft Sorte. Wird in main definiert
+        public string Art
         { get; set; }
-        public string Gewinde //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde 
         { get; set; }
-        public string Gewinde_Fein //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde_Fein 
         { get; set; }
-        public string Gewinde_Zoll //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde_Zoll 
         { get; set; }
-        public string Gewinde_Rohr //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde_Rohr 
         { get; set; }
-        public string Gewinde_Trapez //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde_Trapez
         { get; set; }
-        public string Gewinde_Holz //Eigenschaft Gewinde. Wird in main definiert
+        public string Gewinde_Holz
         { get; set; }
-        public string Kopf //Eigenschaft Kopf. Wird in main definiert
+        public string Kopf 
         { get; set; }
+
+
+        public bool MaterialAbfrage()
+        {
+            string abfrage = "Nochmal versuchen? (ja/nein)";
+            Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
+            Material = Convert.ToString(Console.ReadLine());
+            //Ausgabe Material
+            if (getDichte(Material) == 0)
+            {
+                Console.WriteLine(abfrage);
+                string antwort = Console.ReadLine().Trim().ToLower();
+                if (antwort != "ja")
+                {
+
+                    beenden = true;
+                }
+                
+
+            }
+            else
+            {
+                beenden = true;
+            }
+
+            return beenden;
+        }
+
+
 
         public void Ausgabe_Gewinde(Schraubendefinition eins)
         {
@@ -93,11 +126,12 @@ namespace Schrauben
                         break;
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
-                        Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
-                    getDichte(Material);
+                    Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
+
                         break;
                 }
-
+           
+            
                 return spezDichte;
         }
 
