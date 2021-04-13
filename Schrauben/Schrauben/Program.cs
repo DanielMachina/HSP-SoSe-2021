@@ -94,6 +94,7 @@ namespace Schrauben
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
                         Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
+                    getDichte(Material);
                         break;
                 }
 
