@@ -80,9 +80,10 @@ namespace Schrauben
                 {
 
                     beenden = true;
+                    Environment.Exit(0);
                 }
                 
-
+                
             }
             else
             {
