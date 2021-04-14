@@ -10,7 +10,8 @@ namespace Schrauben
     {
 
         public static void Main()
-        {          
+        {
+            Class1.Datensammlung();
             Schraubendefinition eins = new Schraubendefinition();
             //Eingabe Material
             do
