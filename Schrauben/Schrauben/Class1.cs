@@ -7,38 +7,48 @@ using System.Collections;
 
 namespace Schrauben
 {
-    class Class1
+    public class Class1
     {
-        public static void Datensammlung()
+        
+        public double Datensammlung()
         {
-            object[,,] Schraube = new object[10, 4, 4];
-            Schraube[0, 0, 0] = "Metrisch";
-            Schraube[0, 0, 1] = "Zöllisch";
-            Schraube[0, 0, 2] = "Holz";
-            Schraube[0, 0, 3] = "Metrisch Fein";
-            Schraube[0, 1, 0] = "M8";
-            Schraube[0, 2, 0] = "M10";
-            Schraube[0, 3, 0] = "M12";
-            Schraube[0, 1, 1] = "1Zoll";
-            Schraube[0, 2, 1] = "2Zoll";
-            Schraube[0, 3, 1] = "3Zoll";
-            Schraube[1, 1, 0] = "Metrischer M8 Kern1";
-            Schraube[2, 1, 0] = "Metrischer M8 Kern2";
-            Schraube[1, 2, 0] = "Metrischer M10 Kern1";
-            Schraube[2, 2, 0] = "Metrischer M10 Kern2";
-            Schraube[1, 2, 1] = "Zölliger 2Zoll Kern1";
-            Schraube[2, 2, 1] = "Zölliger 2Zoll Kern2";
+            double[] Steigung = new double[43];
+            Steigung[1] = 0.25;
+            Steigung[2] = 0.4;
+            Steigung[3] = 0.5;
+            Steigung[4] = 0.7;
+            Steigung[5] = 0.8;
+            Steigung[6] = 1;
+            Steigung[8] = 1.25;
+            Steigung[10] = 1.5;
+            Steigung[12] = 1.75;
+            Steigung[16] = 2;
+            Steigung[20] = 2.5;
+            Steigung[24] = 3;
+            Steigung[30] = 3.5;
+            Steigung[36] = 4;
+            Steigung[42] = 4.5;
 
-
-
-            Console.WriteLine(Schraube[0, 0, 0]);
-            Console.WriteLine(Schraube[0, 1, 0]);
-            Console.WriteLine(Schraube[1,1,0]);
-            
-
-            Console.ReadKey();
-
+            return Steigung[Durchmesser];
         }
 
+        public int getDurchmesser()
+        {
+            Durchmesser = Convert.ToInt32(Console.ReadLine());
+            return Durchmesser;
+        }
+
+        public int Durchmesser
+        { get; set; }
+
+        public double getKerndurch(double x,int y)
+        {
+            
+            double antwort = y -x ;
+            return antwort;
+        }
     }
+
 }
+
+

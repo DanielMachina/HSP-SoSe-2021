@@ -11,7 +11,14 @@ namespace Schrauben
 
         public static void Main()
         {
-            Class1.Datensammlung();
+            Class1 uno = new Class1();
+            Console.WriteLine("Nenndurch aussuchen / Das ist der Einstieg per Array");
+
+            int temp = uno.getDurchmesser();
+            Console.WriteLine(uno.getKerndurch(uno.Datensammlung(),temp));
+            Console.WriteLine("Alles berechnet/ Nochmal klicken für normalen Programmablauf");
+            Console.ReadKey();
+
             Schraubendefinition eins = new Schraubendefinition();
             //Eingabe Material
             do

@@ -47,3 +47,5 @@ Daniel 14.4
 
 Ich habe ein Array eingefügt und werde das bei Zeit vervollständigen. Ich will nicht mehr switch Case benutzen, weil das nicht so schön ist. Am besten ist es einfach 
 Arrays zu erstellen aus denen wir dann Werte entnehmen können, und damit weiter rechnen können.
+Das Array könnt ihr noch ignorieren. Das wird erst wichtig wenn ich soweit bin.
+Am besten wäre es, wenn ihr das versteht damit ihr da auch mit arbeiten könnt. Je schneller wir das Array fertig haben, umso besser :) 
