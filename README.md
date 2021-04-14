@@ -42,3 +42,8 @@ Struktur geändert, Methode eingfügt ( MaterialAbfrage() )
 Edis 13.04
 
 Schlüsselweite bzw. Größe der Innensechskant hinzugefügt. Variable Durchmesser eingetragen.
+
+Daniel 14.4
+
+Ich habe ein Array eingefügt und werde das bei Zeit vervollständigen. Ich will nicht mehr switch Case benutzen, weil das nicht so schön ist. Am besten ist es einfach 
+Arrays zu erstellen aus denen wir dann Werte entnehmen können, und damit weiter rechnen können.
