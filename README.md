@@ -67,3 +67,5 @@ Alle Gewinde mit Bemaßung erfolgreich eingeführt. Aber lokal, also habe ich al
 glaube ich.
 Daniels Rat mit Array gekonnt umgangen und nicht befolgt. Guten Tag!!!
 
+Daniel 15.04 
+Marvin ist ein Hund
