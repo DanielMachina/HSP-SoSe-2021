@@ -62,7 +62,7 @@ namespace Schrauben
         { get; set; }
         public string Durchmesser
         { get; set; }
-        public string Schlusselweite
+        public double Schlusselweite
         { get; set; }
         
         public string Gewinde 
@@ -185,47 +185,48 @@ namespace Schrauben
             eins.Ausgabe_Gewinde(eins);
         }
 
-        public  void Schraubenkopf() //Methode um Schraubenkopf zu wählen.
+        public double Schraubenkopf() //Methode um Schraubenkopf zu wählen.
         {
             Schraubendefinition eins = new Schraubendefinition();
 
-            switch (this.Kopf)
+            switch (Kopf)
             {
                 case "Sechskant":
                     {
-                        if (this.Durchmesser == "2,5")
+                        if (Durchmesser == "2,5")
                         {
                             Console.WriteLine("Schlüsselweite SW=5mm");
                         }
-                        if (this.Durchmesser == "3")
+                        if (Durchmesser == "3")
                         {
                             Console.WriteLine("Schlüsselweite SW=5,5mm");
                         }
-                        if (this.Durchmesser == "4")
+                        if (Durchmesser == "4")
                         {
                             Console.WriteLine("Schlüsselweite SW=7mm");
                         }
-                        if (this.Durchmesser == "5")
+                        if (Durchmesser == "5")
                         {
                             Console.WriteLine("Schlüsselweite SW=8mm");
+                            return Schlusselweite = 8;
                         }
-                        if (this.Durchmesser == "6")
+                        if (Durchmesser == "6")
                         {
                             Console.WriteLine("Schlüsselweite SW=10mm");
                         }
-                        if (this.Durchmesser=="8")
+                        if (Durchmesser=="8")
                         {
                             Console.WriteLine("Schlüsselweite SW=13mm");
                         }
-                        if (this.Durchmesser=="10")
+                        if (Durchmesser=="10")
                         {
                             Console.WriteLine("tSchlüsselweite SW=17mm");
                         }
-                        if (this.Durchmesser == "12")
+                        if (Durchmesser == "12")
                         {
                             Console.WriteLine("Schlüsselweite SW=19mm");
                         }
-                        if (this.Durchmesser == "16")
+                        if (Durchmesser == "16")
                         {
                             Console.WriteLine("Schlüsselweite SW=24mm");
                         }
@@ -235,35 +236,35 @@ namespace Schrauben
 
                 case "Zylindrisch":
                     {
-                        if (this.Durchmesser == "3")
+                        if (Durchmesser == "3")
                         {
                             Console.WriteLine("Innensechskant s=2,5mm");
                         }
-                        if (this.Durchmesser == "4")
+                        if (Durchmesser == "4")
                         {
                             Console.WriteLine("Innensechskant s=3mm");
                         }
-                        if (this.Durchmesser == "5")
+                        if (Durchmesser == "5")
                         {
                             Console.WriteLine("Innensechskant s=4mm");
                         }
-                        if (this.Durchmesser == "6")
+                        if (Durchmesser == "6")
                         {
                             Console.WriteLine("Innensechskant s=5mm");
                         }
-                        if (this.Durchmesser == "8")
+                        if (Durchmesser == "8")
                         {
                             Console.WriteLine("Innensechskant s=6mm");
                         }
-                        if (this.Durchmesser == "10")
+                        if (Durchmesser == "10")
                         {
                             Console.WriteLine("Innensechskant s=8mm");
                         }
-                        if (this.Durchmesser == "12")
+                        if (Durchmesser == "12")
                         {
                             Console.WriteLine("Innensechskant s=10mm");
                         }
-                        if (this.Durchmesser == "16")
+                        if (Durchmesser == "16")
                         {
                             Console.WriteLine("Innensechskant s=14mm");
                         }
@@ -272,35 +273,35 @@ namespace Schrauben
 
                 case "Senkkopf":
                     {
-                        if (this.Durchmesser == "2")
+                        if (Durchmesser == "2")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                         }
-                        if (this.Durchmesser == "2,5")
+                        if (Durchmesser == "2,5")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                         }
-                        if (this.Durchmesser == "3")
+                        if (Durchmesser == "3")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                         }
-                        if (this.Durchmesser == "4")
+                        if (Durchmesser == "4")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                         }
-                        if (this.Durchmesser == "5")
+                        if (Durchmesser == "5")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                         }
-                        if (this.Durchmesser == "6")
+                        if (Durchmesser == "6")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 3");
                         }
-                        if (this.Durchmesser == "8")
+                        if (Durchmesser == "8")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                         }
-                        if (this.Durchmesser == "10")
+                        if (Durchmesser == "10")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                         }
@@ -312,7 +313,7 @@ namespace Schrauben
                     Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung " + Kopf);
                     break;
             }
-
+            return Schlusselweite;
         }
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um den Durchmesser der jeweiligen Gewindegröße zu bekommen
         {
