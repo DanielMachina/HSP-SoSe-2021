@@ -1,5 +1,17 @@
 # HSP-SoSe-2021
 
+TO-DO Liste
+
+- Material als Klasse
+- Kopfhöhe {get; set;}
+- Gewinde
+- getVolumen
+- getMasse
+- laenge {get; set;} + abfrage
+- getPreis
+
+
+
 
 Hallo Leute,
 
@@ -49,3 +61,6 @@ Ich habe ein Array eingefügt und werde das bei Zeit vervollständigen. Ich will
 Arrays zu erstellen aus denen wir dann Werte entnehmen können, und damit weiter rechnen können.
 Das Array könnt ihr noch ignorieren. Das wird erst wichtig wenn ich soweit bin.
 Am besten wäre es, wenn ihr das versteht damit ihr da auch mit arbeiten könnt. Je schneller wir das Array fertig haben, umso besser :) 
+
+
+
