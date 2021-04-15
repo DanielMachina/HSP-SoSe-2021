@@ -4,7 +4,6 @@ TO-DO Liste
 
 - Material als Klasse
 - Kopfhöhe {get; set;}
-- Gewinde
 - getVolumen
 - getMasse
 - laenge {get; set;} + abfrage
@@ -63,4 +62,8 @@ Das Array könnt ihr noch ignorieren. Das wird erst wichtig wenn ich soweit bin.
 Am besten wäre es, wenn ihr das versteht damit ihr da auch mit arbeiten könnt. Je schneller wir das Array fertig haben, umso besser :) 
 
 
+Marvin 15.04
+Alle Gewinde mit Bemaßung erfolgreich eingeführt. Aber lokal, also habe ich alles gelöscht und mein lokales hochgeladen. Eures habe ich nicht geändert.....
+glaube ich.
+Daniels Rat mit Array gekonnt umgangen und nicht befolgt. Guten Tag!!!
 
