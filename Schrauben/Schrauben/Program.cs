@@ -190,14 +190,17 @@ namespace Schrauben
                         if (Durchmesser == "2,5")
                         {
                             Console.WriteLine("Schlüsselweite SW=5mm");
+                            return Schlusselweite = 5;
                         }
                         if (Durchmesser == "3")
                         {
                             Console.WriteLine("Schlüsselweite SW=5,5mm");
+                            return Schlusselweite = 5.5;
                         }
                         if (Durchmesser == "4")
                         {
                             Console.WriteLine("Schlüsselweite SW=7mm");
+                            return Schlusselweite = 7;
                         }
                         if (Durchmesser == "5")
                         {
@@ -207,22 +210,27 @@ namespace Schrauben
                         if (Durchmesser == "6")
                         {
                             Console.WriteLine("Schlüsselweite SW=10mm");
+                            return Schlusselweite = 10;
                         }
                         if (Durchmesser=="8")
                         {
                             Console.WriteLine("Schlüsselweite SW=13mm");
+                            return Schlusselweite = 13;
                         }
                         if (Durchmesser=="10")
                         {
-                            Console.WriteLine("tSchlüsselweite SW=17mm");
+                            Console.WriteLine("Schlüsselweite SW=17mm");
+                            return Schlusselweite = 17;
                         }
                         if (Durchmesser == "12")
                         {
                             Console.WriteLine("Schlüsselweite SW=19mm");
+                            return Schlusselweite = 19;
                         }
                         if (Durchmesser == "16")
                         {
                             Console.WriteLine("Schlüsselweite SW=24mm");
+                            return Schlusselweite = 24;
                         }
                         break;
                     }
@@ -233,34 +241,42 @@ namespace Schrauben
                         if (Durchmesser == "3")
                         {
                             Console.WriteLine("Innensechskant s=2,5mm");
+                            return Schlusselweite = 2.5;
                         }
                         if (Durchmesser == "4")
                         {
                             Console.WriteLine("Innensechskant s=3mm");
+                            return Schlusselweite = 3;
                         }
                         if (Durchmesser == "5")
                         {
                             Console.WriteLine("Innensechskant s=4mm");
+                            return Schlusselweite = 4;
                         }
                         if (Durchmesser == "6")
                         {
                             Console.WriteLine("Innensechskant s=5mm");
+                            return Schlusselweite = 5;
                         }
                         if (Durchmesser == "8")
                         {
                             Console.WriteLine("Innensechskant s=6mm");
+                            return Schlusselweite = 6;
                         }
                         if (Durchmesser == "10")
                         {
                             Console.WriteLine("Innensechskant s=8mm");
+                            return Schlusselweite = 8;
                         }
                         if (Durchmesser == "12")
                         {
                             Console.WriteLine("Innensechskant s=10mm");
+                            return Schlusselweite = 10;
                         }
                         if (Durchmesser == "16")
                         {
                             Console.WriteLine("Innensechskant s=14mm");
+                            return Schlusselweite = 14;
                         }
                         break;
                     }
@@ -270,34 +286,42 @@ namespace Schrauben
                         if (Durchmesser == "2")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
+                            return Schlusselweite = 1;
                         }
                         if (Durchmesser == "2,5")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
+                            return Schlusselweite = 1;
                         }
                         if (Durchmesser == "3")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
+                            return Schlusselweite = 1;
                         }
                         if (Durchmesser == "4")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
+                            return Schlusselweite = 2;
                         }
                         if (Durchmesser == "5")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
+                            return Schlusselweite = 2;
                         }
                         if (Durchmesser == "6")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 3");
+                            return Schlusselweite = 3;
                         }
                         if (Durchmesser == "8")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
+                            return Schlusselweite = 4;
                         }
                         if (Durchmesser == "10")
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
+                            return Schlusselweite = 4;
                         }
 
                     }
