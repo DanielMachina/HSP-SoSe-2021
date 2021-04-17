@@ -37,6 +37,8 @@ namespace Schrauben
             eins.Durchmesser = Convert.ToDouble(Console.ReadLine());
             eins.Schraubenkopf();
 
+            eins.Volumen = eins.Laenge * Math.Pow(eins.Durchmesser, 2) * (Math.PI / 4);
+            Console.WriteLine(eins.Volumen);
             Console.ReadKey();
 
         }
@@ -105,7 +107,7 @@ namespace Schrauben
             }
             set
             {
-                volumen = Laenge * Math.Pow(Durchmesser  , 2) * (Math.PI / 4);
+                volumen = value;
             }
         }
 
