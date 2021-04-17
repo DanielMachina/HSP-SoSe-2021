@@ -11,28 +11,30 @@ namespace Schrauben
 
         public static void Main()
         {
-
-
             Schraubendefinition eins = new Schraubendefinition();
+            Tools tool = new Tools();
             //Eingabe Material
             do
             {
-                eins.MaterialAbfrage();
-            }
-            while (eins.beenden != true);
+                tool.Abfrage("Material" , "Stahl, Aluminium, Messing, Kupfer und Titan");
+                eins.getMaterial();
+            } while (eins.beenden != true);
 
-
+            
             //Eingabe Schraubenart
-            Console.WriteLine("Bitte geben Sie Ihren gewünschten Schraubenart an. Es gibt Metrisch, Metrisch Fein, Zoll, Trapez -gewinde zur Auswahl.");
+            tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll, Trapez - gewinde");
             eins.Art = Convert.ToString(Console.ReadLine());
-            //Ausgabe Durchmesser und Steigung
-            eins.Ausgabe_Gewinde(eins);
+            tool.Ausgabe_Gewinde(eins);
+
+            tool.Abfrage("Länge in mm", "");
+            eins.Laenge = Convert.ToDouble(Console.ReadLine());
 
             //Eingabe Schraubenkopf
-            Console.WriteLine("Bitte gewünschte Schraubenkopf eingeben. Es stehen Sechskant, Zylindrisch und Senkkopf zur Verfügung.");
+            tool.Abfrage("Schraubenkopf", "Sechskant, Zylindrisch und Senkkopf");
             eins.Kopf = Convert.ToString(Console.ReadLine());
-            Console.WriteLine("Geben Sie den Durchmesser an");
-            eins.Durchmesser = Console.ReadLine();
+
+            tool.Abfrage("Durchmesser","");
+            eins.Durchmesser = Convert.ToDouble(Console.ReadLine());
             eins.Schraubenkopf();
 
             Console.ReadKey();
@@ -40,15 +42,46 @@ namespace Schrauben
         }
     }
 
+    public class Tools
+    {
+        public void Abfrage(string element, string auswahl)
+        {
+            if (auswahl != "")
+            {
+                Console.WriteLine($"Bitte {element} angeben");
+                Console.WriteLine($"Es stehen {auswahl} zur verfügung");
+            }
+            else
+            {
+                Console.WriteLine($"Bitte {element} angeben");
+            }
+        }
+
+        public void Ausgabe_Gewinde(Schraubendefinition eins)
+        {
+            var zahlen = eins.getDurchmesser();
+            Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
+            Console.WriteLine($"Die Steigung ist {zahlen._steigung}");
+            Console.WriteLine($"Der Kernlochdurchmesser ist {zahlen._kernloch}");
+            Console.WriteLine($"Der Kerndurchmesser ist {zahlen._kern}");
+            Console.WriteLine($"Der Flankendurchmesser ist {zahlen._flanken}");
+        }
+    }
+
     public class Schraubendefinition
     {
+        Tools tool = new Tools();
+        Program prg = new Program();
 
         public bool beenden;
+
+        public double Laenge
+        { get; set; }
         public string Material
         { get; set; }
         public string Art
         { get; set; }
-        public string Durchmesser
+        public double Durchmesser
         { get; set; }
         public double Schlusselweite
         { get; set; }
@@ -63,47 +96,49 @@ namespace Schrauben
         public string Kopf
         { get; set; }
 
-
-        public bool MaterialAbfrage()
+        private double volumen;
+        public double Volumen // ohne Schraubenkopf
         {
-            string abfrage = "Nochmal versuchen? (ja/nein)";
-            Console.WriteLine("Bitte gewünschtes Material eingeben. Es stehen Stahl, Aluminium, Messing, Kupfer und Titan zur Verfügung.");
+            get
+            {
+                return volumen;
+            }
+            set
+            {
+                volumen = Laenge * Math.Pow(Durchmesser  , 2) * (Math.PI / 4);
+            }
+        }
+
+
+        
+
+
+        public bool getMaterial()
+        {
+            string wiederholung = "Nochmal versuchen? (ja/nein)";
             Material = Convert.ToString(Console.ReadLine());
-            //Ausgabe Material
+
             if (getDichte(Material) == 0)
             {
-                Console.WriteLine(abfrage);
+                Console.WriteLine(wiederholung);
                 string antwort = Console.ReadLine().Trim().ToLower();
                 if (antwort != "ja")
                 {
-
-                    beenden = true;
                     Environment.Exit(0);
                 }
-
-
+     
+     
             }
             else
             {
                 beenden = true;
             }
-
+     
             return beenden;
         }
 
 
-
-        public void Ausgabe_Gewinde(Schraubendefinition eins)
-        {
-            var zahlen = eins.getDurchmesser();
-            Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
-            Console.WriteLine($"Die Steigung ist {zahlen._steigung}");
-            Console.WriteLine($"Der Kernlochdurchmesser ist {zahlen._kernloch}");
-            Console.WriteLine($"Der Kerndurchmesser ist {zahlen._kern}");
-            Console.WriteLine($"Der Flankendurchmesser ist {zahlen._flanken}");
-        }
-
-        public double getDichte(string material) // Methode um Dichte des jeweiligen Materials zu bekommen
+        public double getDichte(string Material) // Methode um Dichte des jeweiligen Materials zu bekommen
         {
             double spezDichte = 0;
             switch (Material)
@@ -134,6 +169,7 @@ namespace Schrauben
             return spezDichte;
         }
 
+
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um Art/Variante der Schraube zu klären
         {
             Schraubendefinition eins = new Schraubendefinition();
@@ -148,7 +184,7 @@ namespace Schrauben
             {
                 case "Metrisch":
                     {
-                        Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von M1 bis M42 Schrauben zur Auswahl.");
+                        tool.Abfrage("Gewindedurchmesser","M1 bis M42");
                         Gewinde = Convert.ToString(Console.ReadLine());
 
                         if (Gewinde == "M1")
@@ -243,7 +279,7 @@ namespace Schrauben
                         }
                         else
                         {
-                            Console.WriteLine("Ihre Eingabe schein leider kein metrisches Regelgewinde zu sein.... " + Gewinde);
+                            Console.WriteLine("Ihre Eingabe scheint leider kein metrisches Regelgewinde zu sein.... " + Gewinde);
                         }
 
                         spezFlankendurchmesser = (spezDurchmesser - 0.6495 * spezSteigung);
@@ -592,47 +628,47 @@ namespace Schrauben
             {
                 case "Sechskant":
                     {
-                        if (Durchmesser == "2,5")
+                        if (Durchmesser == 2.5)
                         {
                             Console.WriteLine("Schlüsselweite SW=5mm");
                             Schlusselweite = 5;
                         }
-                        if (Durchmesser == "3")
+                        if (Durchmesser == 3)
                         {
                             Console.WriteLine("Schlüsselweite SW=5,5mm");
                             Schlusselweite = 5.5;
                         }
-                        if (Durchmesser == "4")
+                        if (Durchmesser == 4)
                         {
                             Console.WriteLine("Schlüsselweite SW=7mm");
                             Schlusselweite = 7;
                         }
-                        if (Durchmesser == "5")
+                        if (Durchmesser == 5)
                         {
                             Console.WriteLine("Schlüsselweite SW=8mm");
                             Schlusselweite = 8;
                         }
-                        if (Durchmesser == "6")
+                        if (Durchmesser == 6)
                         {
                             Console.WriteLine("Schlüsselweite SW=10mm");
                             Schlusselweite = 10;
                         }
-                        if (Durchmesser == "8")
+                        if (Durchmesser == 8)
                         {
                             Console.WriteLine("Schlüsselweite SW=13mm");
                             Schlusselweite = 13;
                         }
-                        if (Durchmesser == "10")
+                        if (Durchmesser == 10)
                         {
                             Console.WriteLine("Schlüsselweite SW=17mm");
                             Schlusselweite = 17;
                         }
-                        if (Durchmesser == "12")
+                        if (Durchmesser == 12)
                         {
                             Console.WriteLine("Schlüsselweite SW=19mm");
                             Schlusselweite = 19;
                         }
-                        if (Durchmesser == "16")
+                        if (Durchmesser == 16)
                         {
                             Console.WriteLine("Schlüsselweite SW=24mm");
                             Schlusselweite = 24;
@@ -643,42 +679,42 @@ namespace Schrauben
 
                 case "Zylindrisch":
                     {
-                        if (Durchmesser == "3")
+                        if (Durchmesser == 3)
                         {
                             Console.WriteLine("Innensechskant s=2,5mm");
                             Schlusselweite = 2.5;
                         }
-                        if (Durchmesser == "4")
+                        if (Durchmesser == 4)
                         {
                             Console.WriteLine("Innensechskant s=3mm");
                             Schlusselweite = 3;
                         }
-                        if (Durchmesser == "5")
+                        if (Durchmesser == 5)
                         {
                             Console.WriteLine("Innensechskant s=4mm");
                             Schlusselweite = 4;
                         }
-                        if (Durchmesser == "6")
+                        if (Durchmesser == 6)
                         {
                             Console.WriteLine("Innensechskant s=5mm");
                             Schlusselweite = 5;
                         }
-                        if (Durchmesser == "8")
+                        if (Durchmesser == 8)
                         {
                             Console.WriteLine("Innensechskant s=6mm");
                             Schlusselweite = 6;
                         }
-                        if (Durchmesser == "10")
+                        if (Durchmesser == 10)
                         {
                             Console.WriteLine("Innensechskant s=8mm");
                             Schlusselweite = 8;
                         }
-                        if (Durchmesser == "12")
+                        if (Durchmesser == 12)
                         {
                             Console.WriteLine("Innensechskant s=10mm");
                             Schlusselweite = 10;
                         }
-                        if (Durchmesser == "16")
+                        if (Durchmesser == 16)
                         {
                             Console.WriteLine("Innensechskant s=14mm");
                             Schlusselweite = 14;
@@ -688,42 +724,42 @@ namespace Schrauben
 
                 case "Senkkopf":
                     {
-                        if (Durchmesser == "2")
+                        if (Durchmesser == 2)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlusselweite = 1;
                         }
-                        if (Durchmesser == "2,5")
+                        if (Durchmesser == 2.5)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlusselweite = 1;
                         }
-                        if (Durchmesser == "3")
+                        if (Durchmesser == 3)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlusselweite = 1;
                         }
-                        if (Durchmesser == "4")
+                        if (Durchmesser == 4)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlusselweite = 2;
                         }
-                        if (Durchmesser == "5")
+                        if (Durchmesser == 5)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlusselweite = 2;
                         }
-                        if (Durchmesser == "6")
+                        if (Durchmesser == 6)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 3");
                             Schlusselweite = 3;
                         }
-                        if (Durchmesser == "8")
+                        if (Durchmesser == 8)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlusselweite = 4;
                         }
-                        if (Durchmesser == "10")
+                        if (Durchmesser == 10)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlusselweite = 4;

@@ -2,11 +2,10 @@
 
 TO-DO Liste
 
-- Material als Klasse
-- Kopfhöhe {get; set;}
+- Material als Klasse ( vielleicht im nächsten Testat)
+- Kopfhöhe {get; set;} Kopfhöhe ist DIN, tabellenwerte zu der jeweiligen Schlüsselweite benutzen
 - getVolumen
 - getMasse
-- laenge {get; set;} + abfrage
 - getPreis
 
 
@@ -67,5 +66,8 @@ Alle Gewinde mit Bemaßung erfolgreich eingeführt. Aber lokal, also habe ich al
 glaube ich.
 Daniels Rat mit Array gekonnt umgangen und nicht befolgt. Guten Tag!!!
 
-Daniel 15.04 
-Marvin ist ein Hund
+Daniel 17.04
+Ich hab die Ein-/ausgaben etwas umstrukturiert. Es gibt jetzt die Methode Abfrage(element,auswahl) ihr könnt es folgendermaßen benutzen:
+tool.Abfrage(element,auswahl) für element müsst ihr dann das gefragte element angeben z.b  "Schraubenart" und für auswahl müsst ihr angeben 
+welche auswahl der benutzer hat z.b "M1-M42". Wenn es keine auswahl gibt, einfach ---> "" <---  für auswahl eingeben.
+Ich hab sonst noch volumen eingefügt, welches noch nicht auf die variablen zugreifen kann und sonst ein paar unnötige sachen gestrichen- :)
