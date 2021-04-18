@@ -59,7 +59,7 @@ Ich habe ein Array eingefügt und werde das bei Zeit vervollständigen. Ich will
 Arrays zu erstellen aus denen wir dann Werte entnehmen können, und damit weiter rechnen können.
 Das Array könnt ihr noch ignorieren. Das wird erst wichtig wenn ich soweit bin.
 Am besten wäre es, wenn ihr das versteht damit ihr da auch mit arbeiten könnt. Je schneller wir das Array fertig haben, umso besser :) 
-
+(Edit 18.04 : Die Idee mit dem Array wurde wieder verworfen)
 
 Marvin 15.04
 Alle Gewinde mit Bemaßung erfolgreich eingeführt. Aber lokal, also habe ich alles gelöscht und mein lokales hochgeladen. Eures habe ich nicht geändert.....
@@ -71,3 +71,7 @@ Ich hab die Ein-/ausgaben etwas umstrukturiert. Es gibt jetzt die Methode Abfrag
 tool.Abfrage(element,auswahl) für element müsst ihr dann das gefragte element angeben z.b  "Schraubenart" und für auswahl müsst ihr angeben 
 welche auswahl der benutzer hat z.b "M1-M42". Wenn es keine auswahl gibt, einfach ---> "" <---  für auswahl eingeben.
 Ich hab sonst noch volumen eingefügt, welches noch nicht auf die variablen zugreifen kann und sonst ein paar unnötige sachen gestrichen- :)
+
+Daniel 18.04
+Das Problem mit dem Volumen ist behoben + das Problem mit dem 2.ten Durchmesser.
+Masse eingfügt und die Berechnungen stimmen alle
