@@ -8,7 +8,6 @@ namespace Schrauben
 {
     class Program
     {
-
         public static void Main()
         {
             Schraubendefinition eins = new Schraubendefinition();
@@ -26,7 +25,8 @@ namespace Schrauben
             eins.Art = Convert.ToString(Console.ReadLine());
             tool.Ausgabe_Gewinde(eins);
 
-            tool.Abfrage("Länge in mm", "");
+            //Eingabe Laenge
+            tool.Abfrage("Länge in mm","") ;
             eins.Laenge = Convert.ToDouble(Console.ReadLine());
 
             //Eingabe Schraubenkopf
@@ -34,19 +34,20 @@ namespace Schrauben
             eins.Kopf = Convert.ToString(Console.ReadLine());
             eins.Schraubenkopf();
 
+            //Berechnung Volumen
             eins.Volumen = eins.Laenge * Math.Pow(eins.Durchmesser, 2) * (Math.PI / 4);
 
-            eins.Masse = eins.getDichte(eins.Material) * eins.Volumen;
+            //Berechnung Masse, Ausgabe Masse
+            eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; // Menge
             Console.WriteLine($"Die Masse ist {eins.Masse} Gramm");
 
             Console.ReadKey();
-
         }
     }
 
-    public class Tools
+    public class Tools // zur vereinfacherung
     {
-        public void Abfrage(string element, string auswahl)
+        public void Abfrage(string element, string auswahl) // Abfrage von Element und Auswahl 
         {
             if (auswahl != "")
             {
@@ -76,6 +77,7 @@ namespace Schrauben
 
         public bool beenden;
 
+        // Eigenschaften
         public double Laenge
         { get; set; }
         public string Material
@@ -90,15 +92,12 @@ namespace Schrauben
         { get; set; }
         public string Gewinde_Zoll
         { get; set; }
-        //public string Gewinde_Fein
-        //{ get; set; }
         public string Gewinde_Trapez
         { get; set; }
         public string Kopf
         { get; set; }
         public double Volumen // ohne Schraubenkopf
         { get; set; }
-
         public double Masse
         { get; set; }
 
@@ -166,7 +165,7 @@ namespace Schrauben
 
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um Art/Variante der Schraube zu klären
         {
-            Schraubendefinition eins = new Schraubendefinition();
+
             double spezFlankendurchmesser = 0;
             double spezKerndurchmesser = 0;
             double spezKernlochdurchmesser = 0;
@@ -530,7 +529,7 @@ namespace Schrauben
                     }
                 case "Trapez":
                     {
-                        Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von Tr10x2 bis Tr36x6 -Schrauben zur Auswahl. ");
+                        tool.Abfrage("Gewindedurchmesser", "Tr10x2 bis Tr36x6");
                         Gewinde_Trapez = Convert.ToString(Console.ReadLine());
 
                         if (Gewinde_Trapez == "Tr10x2")
@@ -619,49 +618,49 @@ namespace Schrauben
 
             switch (Kopf)
             {
-                case "Sechskant":
+                case "Sechskant": //sechskant zoll, sechskant metrisch
                     {
                         if (Durchmesser == 2.5)
                         {
                             Console.WriteLine("Schlüsselweite SW=5mm");
                             Schlüsselweite = 5;
                         }
-                        if (Durchmesser == 3)
+                        else if (Durchmesser == 3)
                         {
                             Console.WriteLine("Schlüsselweite SW=5,5mm");
                             Schlüsselweite = 5.5;
                         }
-                        if (Durchmesser == 4)
+                        else if (Durchmesser == 4)
                         {
                             Console.WriteLine("Schlüsselweite SW=7mm");
                             Schlüsselweite = 7;
                         }
-                        if (Durchmesser == 5)
+                        else if (Durchmesser == 5)
                         {
                             Console.WriteLine("Schlüsselweite SW=8mm");
                             Schlüsselweite = 8;
                         }
-                        if (Durchmesser == 6)
+                        else if (Durchmesser == 6)
                         {
                             Console.WriteLine("Schlüsselweite SW=10mm");
                             Schlüsselweite = 10;
                         }
-                        if (Durchmesser == 8)
+                        else if (Durchmesser == 8)
                         {
                             Console.WriteLine("Schlüsselweite SW=13mm");
                             Schlüsselweite = 13;
                         }
-                        if (Durchmesser == 10)
+                        else if (Durchmesser == 10)
                         {
                             Console.WriteLine("Schlüsselweite SW=17mm");
                             Schlüsselweite = 17;
                         }
-                        if (Durchmesser == 12)
+                        else if (Durchmesser == 12)
                         {
                             Console.WriteLine("Schlüsselweite SW=19mm");
                             Schlüsselweite = 19;
                         }
-                        if (Durchmesser == 16)
+                        else if (Durchmesser == 16)
                         {
                             Console.WriteLine("Schlüsselweite SW=24mm");
                             Schlüsselweite = 24;
@@ -676,7 +675,7 @@ namespace Schrauben
                         {
                             Console.WriteLine("Innensechskant s=2,5mm");
                             Schlüsselweite = 2.5;
-                        }
+                        }  
                         if (Durchmesser == 4)
                         {
                             Console.WriteLine("Innensechskant s=3mm");
@@ -767,15 +766,6 @@ namespace Schrauben
             }
             return Schlüsselweite;
         }
-
-
-
-
-
-
-
-
-
 
     }
 

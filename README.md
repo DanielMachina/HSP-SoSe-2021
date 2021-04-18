@@ -75,3 +75,4 @@ Ich hab sonst noch volumen eingefügt, welches noch nicht auf die variablen zugr
 Daniel 18.04
 Das Problem mit dem Volumen ist behoben + das Problem mit dem 2.ten Durchmesser.
 Masse eingfügt und die Berechnungen stimmen alle
+Vorlesung gemacht :)
