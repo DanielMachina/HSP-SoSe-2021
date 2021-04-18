@@ -41,6 +41,12 @@ namespace Schrauben
             eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; // Menge
             Console.WriteLine($"Die Masse ist {eins.Masse} Gramm");
 
+            //Mengeneingabe und Gesamtgewicht
+            tool.Abfrage("Menge", "");
+            eins.Menge = Convert.ToInt32(Console.ReadLine());
+            eins.Gesamtmasse = eins.Masse * eins.Menge; //Gesamtgewicht aus Einzelmasse und Menge
+            Console.WriteLine($"Die Gesamtmasse ist {eins.Gesamtmasse} Gramm");
+
             Console.ReadKey();
         }
     }
@@ -100,10 +106,14 @@ namespace Schrauben
         { get; set; }
         public double Masse
         { get; set; }
+        public double Menge
+        { get; set; }
+        public double Gesamtmasse
+        { get; set; }
 
 
 
-        
+
 
 
         public bool getMaterial()

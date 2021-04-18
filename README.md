@@ -76,3 +76,6 @@ Daniel 18.04
 Das Problem mit dem Volumen ist behoben + das Problem mit dem 2.ten Durchmesser.
 Masse eingfügt und die Berechnungen stimmen alle
 Vorlesung gemacht :)
+
+Marvin 18.04
+Mengeneingabe und Gesamtmasse erstellt
