@@ -19,11 +19,26 @@ namespace Schrauben
                 eins.getMaterial();
             } while (eins.beenden != true);
 
-            
+
             //Eingabe Schraubenart
-            tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll, Trapez - gewinde");
-            eins.Art = Convert.ToString(Console.ReadLine());
-            tool.Ausgabe_Gewinde(eins);
+            do
+            {
+                tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll, Trapez - gewinde");
+                eins.Art = Convert.ToString(Console.ReadLine());
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                tool.Ausgabe_Gewinde(eins);
+                if (eins.Durchmesser == 0)
+                {
+
+                    Console.WriteLine(eins.wiederholung);
+                    string antwort2 = Console.ReadLine().Trim().ToLower();
+                    if (antwort2 == "nein")
+                    { Environment.Exit(0); }
+
+                }
+                else { break; }
+
+            } while (true);
 
             //Eingabe Laenge
             tool.Abfrage("Länge in mm","") ;
@@ -82,7 +97,7 @@ namespace Schrauben
         Tools tool = new Tools();
 
         public bool beenden;
-
+        public string wiederholung = "Nochmal versuchen? (ja/nein)";
         // Eigenschaften
         public double Laenge
         { get; set; }
@@ -118,7 +133,7 @@ namespace Schrauben
 
         public bool getMaterial()
         {
-            string wiederholung = "Nochmal versuchen? (ja/nein)";
+            
             Material = Convert.ToString(Console.ReadLine());
 
             if (getDichte(Material) == 0)
@@ -171,6 +186,8 @@ namespace Schrauben
 
             return spezDichte;
         }
+
+
 
 
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um Art/Variante der Schraube zu klären

@@ -79,3 +79,6 @@ Vorlesung gemacht :)
 
 Marvin 18.04
 Mengeneingabe und Gesamtmasse erstellt
+
+Daniel 19.04
+Durchmesser wird abgefragt bis richtig angegeben
