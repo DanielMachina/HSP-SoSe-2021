@@ -82,3 +82,6 @@ Mengeneingabe und Gesamtmasse erstellt
 
 Daniel 19.04
 Durchmesser wird abgefragt bis richtig angegeben
+
+Daniel 20.04
+Alle Wiederholungen sind fertig. Ein bisschen die Sechskantgrößen und die Metrischen größen sind angepasst.

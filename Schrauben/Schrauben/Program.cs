@@ -45,9 +45,23 @@ namespace Schrauben
             eins.Laenge = Convert.ToDouble(Console.ReadLine());
 
             //Eingabe Schraubenkopf
-            tool.Abfrage("Schraubenkopf", "Sechskant, Zylindrisch und Senkkopf");
-            eins.Kopf = Convert.ToString(Console.ReadLine());
-            eins.Schraubenkopf();
+            do
+            {
+                tool.Abfrage("Schraubenkopf", "Sechskant, Zylindrisch und Senkkopf");
+
+                eins.Schraubenkopf();
+                if(eins.Schlüsselweite == 0)
+                {
+                    Console.WriteLine(eins.wiederholung);
+                    string antwort3 = Console.ReadLine().Trim().ToLower();
+                    if (antwort3 == "nein")
+                    {
+                        Environment.Exit(0);
+                    }
+
+                }
+                else { break; }
+            } while (true);
 
             //Berechnung Volumen
             eins.Volumen = eins.Laenge * Math.Pow(eins.Durchmesser, 2) * (Math.PI / 4);
@@ -85,10 +99,6 @@ namespace Schrauben
         {
             var zahlen = eins.getDurchmesser();
             Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
-            Console.WriteLine($"Die Steigung ist {zahlen._steigung}");
-            Console.WriteLine($"Der Kernlochdurchmesser ist {zahlen._kernloch}");
-            Console.WriteLine($"Der Kerndurchmesser ist {zahlen._kern}");
-            Console.WriteLine($"Der Flankendurchmesser ist {zahlen._flanken}");
         }
     }
 
@@ -203,20 +213,11 @@ namespace Schrauben
             {
                 case "Metrisch":
                     {
-                        tool.Abfrage("Gewindedurchmesser","M1 bis M42");
+                        tool.Abfrage("Gewindedurchmesser","M1,6 bis M42");
                         Gewinde = Convert.ToString(Console.ReadLine());
 
-                        if (Gewinde == "M1")
-                        {
-                            Durchmesser = 1; // Hier bekommt  das Gewinde seinen Durchmesser
-                            spezSteigung = 0.25;
-                        }
-                        else if (Gewinde == "M1,2")
-                        {
-                            Durchmesser  = 1.2;
-                            spezSteigung = 0.25;
-                        }
-                        else if (Gewinde == "M1,6")
+                        
+                        if (Gewinde == "M1,6")
                         {
                             Durchmesser = 1.6;
                             spezSteigung = 0.35;
@@ -641,13 +642,29 @@ namespace Schrauben
 
         public double Schraubenkopf() //Methode um Schraubenkopf zu wählen.
         {
-
-
+            Schlüsselweite = 0;
+            Kopf = Convert.ToString(Console.ReadLine());
             switch (Kopf)
             {
                 case "Sechskant": //sechskant zoll, sechskant metrisch
                     {
-                        if (Durchmesser == 2.5)
+                        if (Durchmesser < 1.6)
+                        {
+                            Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 2,0");
+                            Schlüsselweite = 0;
+                        }
+                        else if (Durchmesser==1.6)
+                        {
+                            Console.WriteLine("Schlüsselweite SW=3,2mm");
+                            Schlüsselweite = 3.2;
+                        }
+                        else if (Durchmesser == 2.0)
+                        {
+                            Console.WriteLine("Schlüsselweite SW=4");
+                            Schlüsselweite = 4;
+                        }
+
+                        else if (Durchmesser == 2.5)
                         {
                             Console.WriteLine("Schlüsselweite SW=5mm");
                             Schlüsselweite = 5;
@@ -795,5 +812,5 @@ namespace Schrauben
         }
 
     }
-
+   
 }
