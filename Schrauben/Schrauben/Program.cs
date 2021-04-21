@@ -490,7 +490,7 @@ namespace Schrauben
                     }
                 case "Zoll":
                     {
-                        Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von 1/4 bis 2 Zoll-Schrauben zur Auswahl." + '\n' + "Bsp. Schreibweise: 1 1/2");
+                        Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von 1/4 bis 1 1/2 Zoll-Schrauben zur Auswahl." + '\n' + "Bsp. Schreibweise: 1 1/2");
                         Gewinde_Zoll = Convert.ToString(Console.ReadLine());
 
                         if (Gewinde_Zoll == "1/4")
@@ -549,14 +549,7 @@ namespace Schrauben
                             spezKerndurchmesser = 32.68;
                             spezKernlochdurchmesser = 33.5;
                         }
-                        else if (Gewinde_Zoll == "2")
-                        {
-                            Durchmesser = 50.8;
-                            spezSteigung = 5.64;
-                            spezFlankendurchmesser = 47.19;
-                            spezKerndurchmesser = 43.57;
-                            spezKernlochdurchmesser = 44.5;
-                        }
+                        
                         else
                         {
                             Console.WriteLine("Ihre Eingabe scheint leider kein vorhandenes Zollgewinde zu sein.... " + Gewinde_Zoll);
@@ -626,10 +619,22 @@ namespace Schrauben
                             Schlüsselweite = 10;
                             Kopfhöhe = 4;
                         }
+                        else if (Durchmesser == 6.35)
+                        {
+                            Schlüsselweite = 11.1;
+                            Console.WriteLine("SW = 7/16 Zoll oder in mm:");
+                            Kopfhöhe = 4;
+                        }
                         else if (Durchmesser == 8)
                         {
                             Schlüsselweite = 13;
                             Kopfhöhe = 5.3;
+                        }
+                        else if (Durchmesser == 9.525)
+                        {
+                            Schlüsselweite = 14.3;
+                            Console.WriteLine("SW = 9/16 Zoll oder in mm:");
+                            Kopfhöhe = 6;
                         }
                         else if (Durchmesser == 10)
                         {
@@ -641,10 +646,22 @@ namespace Schrauben
                             Schlüsselweite = 19;
                             Kopfhöhe = 7.5;
                         }
+                        else if (Durchmesser == 12.7)
+                        {
+                            Schlüsselweite = 19.05;
+                            Console.WriteLine("SW = 3/4 Zoll oder in mm:");
+                            Kopfhöhe = 7.9;
+                        }
                         else if (Durchmesser == 16)
                         {
                             Schlüsselweite = 24;
                             Kopfhöhe = 10;
+                        }
+                        else if (Durchmesser == 19.05)
+                        {
+                            Schlüsselweite = 28.6;
+                            Console.WriteLine("SW = 1 1/8 Zoll oder in mm:");
+                            Kopfhöhe = 11.9;
                         }
                         else if (Durchmesser == 20)
                         {
@@ -657,21 +674,39 @@ namespace Schrauben
                             Schlüsselweite = 36;
                             Kopfhöhe = 15;
                         }
+                        else if (Durchmesser == 25.4)
+                        {
+                            Schlüsselweite = 38.1;
+                            Console.WriteLine("SW = 1 1/2 Zoll oder in mm:");
+                            Kopfhöhe = 15.5;
+                        }
                         else if (Durchmesser == 30)
                         {
                             Schlüsselweite = 46;
                             Kopfhöhe = 18.7;
                         }
+                        else if (Durchmesser == 31.75)
+                        {
+                            Schlüsselweite = 47.6;
+                            Console.WriteLine("SW = 1 7/8 Zoll oder in mm:");
+                            Kopfhöhe = 19.8;
+                        }
                         else if (Durchmesser == 36)
                         {
                             Schlüsselweite = 55;
                             Kopfhöhe = 22.5;
-                        }        
+                        }
+                        else if (Durchmesser == 38.1)
+                        {
+                            Schlüsselweite = 57.2;
+                            Console.WriteLine("SW = 2 1/4 Zoll oder in mm:");
+                            Kopfhöhe = 23.8;
+                        }
                         else if (Durchmesser == 42)
                         {
                             Schlüsselweite = 65;
                             Kopfhöhe = 26;
-                        }            
+                        }
                         else if (Durchmesser > 42)
                         {
                             Console.WriteLine("Gewinde leider zu groß ");
@@ -690,75 +725,113 @@ namespace Schrauben
                         else if (Durchmesser == 1.6)
                         {
                             Schlüsselweite = 1.5;
-                            Kopfhöhe = 1.4;
+                            Kopfhöhe = 1.6;
+
                         }
                         else if (Durchmesser == 2.0)
                         {
                             Schlüsselweite = 1.5;
-                            Kopfhöhe = 1.4;
+                            Kopfhöhe = 2;
                         }
                         else if (Durchmesser == 2.5)
                         {
                             Schlüsselweite = 2;
-                            Kopfhöhe = 1.7;
+                            Kopfhöhe = 2.5;
                         }
                         if (Durchmesser == 3)
                         {
                             Schlüsselweite = 2.5;
+                            Kopfhöhe = 3;
                         }  
                         else if (Durchmesser == 4)
                         {
                             Schlüsselweite = 3;
+                            Kopfhöhe = 4;
                         }
                         else if (Durchmesser == 5)
-
                         {
                             Schlüsselweite = 4;
+                            Kopfhöhe = 5;
                         }
                         else if (Durchmesser == 6)
                         {
                             Schlüsselweite = 5;
+                            Kopfhöhe = 6;
+                        }
+                        else if (Durchmesser == 6.35)
+                        {
+                            Schlüsselweite = 4.76;
+                            Console.WriteLine("SW = 3/4 Zoll oder in mm:");
+                            Kopfhöhe = 6.4;
                         }
                         else if (Durchmesser == 8)
                         {
                             Schlüsselweite = 6;
+                            Kopfhöhe = 8;
+                        }
+                        else if (Durchmesser == 9.525)
+                        {
+                            Schlüsselweite = 7.95;
+                            Console.WriteLine("SW = 5/16 Zoll oder in mm:");
+                            Kopfhöhe = 7.9;
                         }
                         else if (Durchmesser == 10)
                         {
                             Schlüsselweite = 8;
+                            Kopfhöhe = 10;
                         }
                         else if (Durchmesser == 12)
                         {
                             Schlüsselweite = 10;
+                            Kopfhöhe = 12;
+                        }
+                        else if (Durchmesser == 12.7)
+                        {
+                            Schlüsselweite = 9.5;
+                            Console.WriteLine("SW = 3/8 Zoll oder in mm:");
+                            Kopfhöhe = 12.7;
                         }
                         else if (Durchmesser == 16)
                         {
                             Schlüsselweite = 14;
+                            Kopfhöhe = 16;
+                        }
+                        else if (Durchmesser == 19.05)
+                        {
+                            Schlüsselweite = 14.29;
+                            Console.WriteLine("SW = 9/16 Zoll oder in mm:");
+                            Kopfhöhe = 19;
                         }
                         else if (Durchmesser == 20)
                         {
                             Schlüsselweite = 17;
-                            Kopfhöhe = 12.5;
+                            Kopfhöhe = 20;
                         }
                         else if (Durchmesser == 24)
                         {
                             Schlüsselweite = 19;
-                            Kopfhöhe = 15;
+                            Kopfhöhe = 24;
+                        }
+                        else if (Durchmesser == 25.4)
+                        {
+                            Schlüsselweite = 15.9;
+                            Console.WriteLine("SW = 5/8 Zoll oder in mm:");
+                            Kopfhöhe = 25.4;
                         }
                         else if (Durchmesser == 30)
                         {
                             Schlüsselweite = 22;
-                            Kopfhöhe = 18.7;
+                            Kopfhöhe = 30;
                         }
                         else if (Durchmesser == 36)
                         {
                             Schlüsselweite = 27;
-                            Kopfhöhe = 22.5;
+                            Kopfhöhe = 36;
                         }
                         else if (Durchmesser == 42)
                         {
                             Schlüsselweite = 32;
-                            Kopfhöhe = 26;
+                            Kopfhöhe = 42;
                         }
                         else if (Durchmesser > 42)
                         {
@@ -779,15 +852,15 @@ namespace Schrauben
                             Schlüsselweite = 1.5;
                             Kopfhöhe = 1.4;
                         }
-                        if (Durchmesser == 2)
+                        else if (Durchmesser == 2)
                         {
-                            Schlüsselweite = 1.5;
-                            Kopfhöhe = 2;
+                            Schlüsselweite = 1.3;
+                            Kopfhöhe = 0.75;
                         }
                         else if (Durchmesser == 2.5)
                         {
-                            Schlüsselweite = 2;
-                            Kopfhöhe = 2.5;
+                            Schlüsselweite = 1.5;
+                            Kopfhöhe = 0.8;
                         }
                         else if (Durchmesser == 3)
                         {
@@ -807,37 +880,61 @@ namespace Schrauben
                         else if (Durchmesser == 6)
                         {
                             Schlüsselweite = 4;
+                            Kopfhöhe = 3.7;
+                        }
+                        else if (Durchmesser == 6.35)
+                        {
+                            Schlüsselweite = 3.97;
+                            Console.WriteLine("SW = 5/32 Zoll oder in mm:");
+                            Kopfhöhe = 4.1;
                         }
                         else if (Durchmesser == 8)
                         {
                             Schlüsselweite = 5;
+                            Kopfhöhe = 5;
+                        }
+                        else if (Durchmesser == 9.525)
+                        {
+                            Schlüsselweite = 5.56;
+                            Console.WriteLine("SW = 7/32 Zoll oder in mm:");
+                            Kopfhöhe = 5.9;
                         }
                         else if (Durchmesser == 10)
                         {
                             Schlüsselweite = 6;
+                            Kopfhöhe = 6.2;
                         }
                         else if (Durchmesser == 12)
                         {
                             Schlüsselweite = 8;
+                            Kopfhöhe = 7.4;
+                        }
+                        else if (Durchmesser == 12.7)
+                        {
+                            Schlüsselweite = 7.95;
+                            Console.WriteLine("SW = 5/16 Zoll oder in mm:");
+                            Kopfhöhe = 6.4;
                         }
                         else if (Durchmesser == 16)
                         {
                             Schlüsselweite = 10;
+                            Kopfhöhe = 8.8;
                         }
                         else if (Durchmesser == 20)
                         {
                             Schlüsselweite = 12;
                             Kopfhöhe = 12.5;
+                            Kopfhöhe = 10.2;
                         }
                         else if (Durchmesser == 24)
                         {
-                            Schlüsselweite = 19;
-                            Kopfhöhe = 15;
+                            Schlüsselweite = 14;
+                            Kopfhöhe = 14;
                         }
                         else if (Durchmesser == 30)
                         {
-                            Schlüsselweite = 22;
-                            Kopfhöhe = 18.7;
+                            Schlüsselweite = 19;
+                            Kopfhöhe = 17.5;
                         }
                         else if (Durchmesser == 36)
                         {
@@ -860,7 +957,7 @@ namespace Schrauben
                     Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung " + Kopf);
                     break;
             }
-            Console.WriteLine($"SW ={Schlüsselweite} ");
+            Console.WriteLine($"SW = {Schlüsselweite} ");
             return (_schlüsselweite: Schlüsselweite, _kopfhöhe: Kopfhöhe);
         }
 
