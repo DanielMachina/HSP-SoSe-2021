@@ -11,7 +11,7 @@ namespace Schrauben
 
         public static void Main()
         {
-            string antwort;   
+            string antwort;
             Schraubendefinition eins = new Schraubendefinition();
             Tools tool = new Tools();
             //Eingabe Material
@@ -25,9 +25,12 @@ namespace Schrauben
             //Eingabe Schraubenart
             do
             {
-                tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll, Trapez - gewinde");
-                eins.Art = Convert.ToString(Console.ReadLine());
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll - gewinde");
+                Console.ForegroundColor = ConsoleColor.Green;
+                eins.Art = Console.ReadLine();
+                Console.ResetColor();
+                Console.WriteLine("");  
+
                 tool.Ausgabe_Gewinde(eins);
                 if (eins.Durchmesser == 0)
                 {
@@ -41,6 +44,8 @@ namespace Schrauben
                 else { break; }
 
             } while (true);
+
+               
 
             //Eingabe Laenge
             tool.Abfrage("Länge in mm","") ;
@@ -64,19 +69,19 @@ namespace Schrauben
                 }
                 else { break; }
             } while (true);
-
             //Berechnung Volumen
+
             eins.Volumen = eins.Laenge * Math.Pow(eins.Durchmesser, 2) * (Math.PI / 4);
 
             //Berechnung Masse, Ausgabe Masse
-            eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; // Menge
+            eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; 
             Console.WriteLine($"Die Masse ist {eins.Masse} Gramm");
 
             //Mengeneingabe und Gesamtgewicht
             tool.Abfrage("Menge", "");
             eins.Menge = Convert.ToInt32(Console.ReadLine());
             eins.Gesamtmasse = eins.Masse * eins.Menge; //Gesamtgewicht aus Einzelmasse und Menge
-            Console.WriteLine($"Die Gesamtmasse ist {eins.Gesamtmasse} Gramm");
+            Console.WriteLine($"Die Gesamtmasse ist {eins.Gesamtmasse/1000} Kilogramm");
 
             Console.ReadKey();
         }
@@ -100,7 +105,12 @@ namespace Schrauben
         public void Ausgabe_Gewinde(Schraubendefinition eins)
         {
             var zahlen = eins.getDurchmesser();
-            Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser}");
+            if (eins.Durchmesser != 0 && eins.Art == "Zoll")
+            {
+                Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser} mm");
+
+            }
+            
         }
     }
 
@@ -125,8 +135,6 @@ namespace Schrauben
         { get; set; }
         public string Gewinde_Zoll
         { get; set; }
-        public string Gewinde_Trapez
-        { get; set; }
         public string Kopf
         { get; set; }
         public double Volumen // ohne Schraubenkopf
@@ -145,9 +153,11 @@ namespace Schrauben
 
         public bool getMaterial()
         {
-            
+            Console.ForegroundColor = ConsoleColor.Green;
             Material = Convert.ToString(Console.ReadLine());
+            Console.ResetColor();
 
+            Console.WriteLine("");
             if (getDichte(Material) == 0)
             {
                 Console.WriteLine(wiederholung);
@@ -207,7 +217,6 @@ namespace Schrauben
             double spezKerndurchmesser = 0;
             double spezKernlochdurchmesser = 0;
             double spezSteigung = 0;
-            double spezSpiel = 0;
 
             switch (Art)
             {
@@ -555,84 +564,11 @@ namespace Schrauben
 
                         break;
                     }
-                case "Trapez":
-                    {
-                        tool.Abfrage("Gewindedurchmesser", "Tr10x2 bis Tr36x6");
-                        Gewinde_Trapez = Convert.ToString(Console.ReadLine());
-
-                        if (Gewinde_Trapez == "Tr10x2")
-                        {
-                            Durchmesser = 10;
-                            spezSteigung = 2;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr12x3")
-                        {
-                            Durchmesser = 12;
-                            spezSteigung = 3;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr16x4")
-                        {
-                            Durchmesser = 16;
-                            spezSteigung = 4;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr20x4")
-                        {
-                            Durchmesser = 20;
-                            spezSteigung = 4;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr24x5")
-                        {
-                            Durchmesser = 24;
-                            spezSteigung = 5;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr28x5")
-                        {
-                            Durchmesser = 28;
-                            spezSteigung = 5;
-                            spezSpiel = 0.25;
-                        }
-                        else if (Gewinde_Zoll == "Tr32x6")
-                        {
-                            Durchmesser = 32;
-                            spezSteigung = 6;
-                            spezSpiel = 0.5;
-                        }
-                        else if (Gewinde_Zoll == "Tr36x6")
-                        {
-                            Durchmesser = 36;
-                            spezSteigung = 6;
-                            spezSpiel = 0.5;
-                        }
-                        else if (Gewinde_Zoll == "Tr40x7")
-                        {
-                            Durchmesser = 40;
-                            spezSteigung = 7;
-                            spezSpiel = 0.5;
-                        }
-                        else if (Gewinde_Zoll == "Tr44x7")
-                        {
-                            Durchmesser = 44;
-                            spezSteigung = 7;
-                            spezSpiel = 0.5;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Ihre Eingabe scheint leider kein metrisches Trapezgewinde zu sein.... " + Gewinde_Trapez);
-                        }
-
-                        spezFlankendurchmesser = (Durchmesser - 0.5 * spezSteigung);
-                        spezKerndurchmesser = (Durchmesser - (2 * spezSpiel + spezSteigung));
-
-                        break;
-                    }
+              
 
 
                 default:
+                    Console.WriteLine("Leider bieten wir diese Schraubenart nicht an, versuchen Sie es doch bitte mit einer der obenaufgeführten Schraubenarten");
                     break;
 
             }
@@ -651,7 +587,7 @@ namespace Schrauben
                     {
                         if (Durchmesser < 1.6)
                         {
-                            Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 2,0");
+                            Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
                             Schlüsselweite = 0;
                         }
                         else if (Durchmesser==1.6)
@@ -736,7 +672,10 @@ namespace Schrauben
                             Schlüsselweite = 65;
                             Kopfhöhe = 26;
                         }            
-
+                        else if (Durchmesser > 42)
+                        {
+                            Console.WriteLine("Gewinde leider zu groß ");
+                        }
                         break;
                     }
 
@@ -745,42 +684,35 @@ namespace Schrauben
                     {
                         if (Durchmesser == 3)
                         {
-                            Console.WriteLine("Innensechskant s=2,5mm");
                             Schlüsselweite = 2.5;
                         }  
                         else if (Durchmesser == 4)
                         {
-                            Console.WriteLine("Innensechskant s=3mm");
                             Schlüsselweite = 3;
                         }
                         else if (Durchmesser == 5)
+
                         {
-                            Console.WriteLine("Innensechskant s=4mm");
                             Schlüsselweite = 4;
                         }
                         else if (Durchmesser == 6)
                         {
-                            Console.WriteLine("Innensechskant s=5mm");
                             Schlüsselweite = 5;
                         }
                         else if (Durchmesser == 8)
                         {
-                            Console.WriteLine("Innensechskant s=6mm");
                             Schlüsselweite = 6;
                         }
                         else if (Durchmesser == 10)
                         {
-                            Console.WriteLine("Innensechskant s=8mm");
                             Schlüsselweite = 8;
                         }
                         else if (Durchmesser == 12)
                         {
-                            Console.WriteLine("Innensechskant s=10mm");
                             Schlüsselweite = 10;
                         }
                         else if (Durchmesser == 16)
                         {
-                            Console.WriteLine("Innensechskant s=14mm");
                             Schlüsselweite = 14;
                         }
                         break;
@@ -790,42 +722,34 @@ namespace Schrauben
                     {
                         if (Durchmesser == 2)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 1");
-                            Schlüsselweite = 1;
+                            Schlüsselweite = 2.5;
                         }
                         else if (Durchmesser == 2.5)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlüsselweite = 1;
                         }
                         else if (Durchmesser == 3)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlüsselweite = 1;
                         }
                         else if (Durchmesser == 4)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlüsselweite = 2;
                         }
                         else if (Durchmesser == 5)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlüsselweite = 2;
                         }
                         else if (Durchmesser == 6)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 3");
                             Schlüsselweite = 3;
                         }
                         else if (Durchmesser == 8)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlüsselweite = 4;
                         }
                         else if (Durchmesser == 10)
                         {
-                            Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlüsselweite = 4;
                         }
                         
