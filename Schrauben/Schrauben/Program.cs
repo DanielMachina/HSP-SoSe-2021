@@ -320,7 +320,7 @@ namespace Schrauben
                 case "Metrisch Fein":
                     {
                         tool.Abfrage("Gewindedurchmesser", "M2x0,25 bis M42x2");
-                        Gewinde = Convert.ToString(Console.ReadLine());
+                        Gewinde = Console.ReadLine();
 
                         if (Gewinde == "M2x0,25")
                         {
@@ -580,7 +580,7 @@ namespace Schrauben
         {
             Schlüsselweite = 0;
             Kopfhöhe = 0;
-            Kopf = Convert.ToString(Console.ReadLine());
+            Kopf = Console.ReadLine();
             switch (Kopf)
             {
                 case "Sechskant": //sechskant zoll, sechskant metrisch
