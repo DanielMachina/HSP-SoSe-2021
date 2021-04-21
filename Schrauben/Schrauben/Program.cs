@@ -8,8 +8,10 @@ namespace Schrauben
 {
     class Program
     {
+
         public static void Main()
         {
+            string antwort;   
             Schraubendefinition eins = new Schraubendefinition();
             Tools tool = new Tools();
             //Eingabe Material
@@ -31,8 +33,8 @@ namespace Schrauben
                 {
 
                     Console.WriteLine(eins.wiederholung);
-                    string antwort2 = Console.ReadLine().Trim().ToLower();
-                    if (antwort2 == "nein")
+                    antwort = Console.ReadLine().Trim().ToLower();
+                    if (antwort == "nein")
                     { Environment.Exit(0); }
 
                 }
@@ -53,8 +55,8 @@ namespace Schrauben
                 if(eins.Schlüsselweite == 0)
                 {
                     Console.WriteLine(eins.wiederholung);
-                    string antwort3 = Console.ReadLine().Trim().ToLower();
-                    if (antwort3 == "nein")
+                    antwort = Console.ReadLine().Trim().ToLower();
+                    if (antwort == "nein")
                     {
                         Environment.Exit(0);
                     }
@@ -135,8 +137,8 @@ namespace Schrauben
         { get; set; }
         public double Gesamtmasse
         { get; set; }
-
-
+        public double Kopfhöhe
+        { get; set; }
 
 
 
@@ -196,8 +198,6 @@ namespace Schrauben
 
             return spezDichte;
         }
-
-
 
 
         public (double _durchmesser, double _steigung, double _kernloch, double _kern, double _flanken) getDurchmesser() // Methode um Art/Variante der Schraube zu klären
@@ -640,9 +640,10 @@ namespace Schrauben
             return (_durchmesser: Durchmesser, _steigung: spezSteigung, _kernloch: spezKernlochdurchmesser, _kern: spezKerndurchmesser, _flanken: spezFlankendurchmesser);
         }
 
-        public double Schraubenkopf() //Methode um Schraubenkopf zu wählen.
+        public (double _schlüsselweite, double _kopfhöhe) Schraubenkopf() //Methode um Schraubenkopf zu wählen.
         {
             Schlüsselweite = 0;
+            Kopfhöhe = 0;
             Kopf = Convert.ToString(Console.ReadLine());
             switch (Kopf)
             {
@@ -655,60 +656,87 @@ namespace Schrauben
                         }
                         else if (Durchmesser==1.6)
                         {
-                            Console.WriteLine("Schlüsselweite SW=3,2mm");
                             Schlüsselweite = 3.2;
+                            Kopfhöhe = 1.1;
                         }
                         else if (Durchmesser == 2.0)
                         {
-                            Console.WriteLine("Schlüsselweite SW=4");
                             Schlüsselweite = 4;
+                            Kopfhöhe = 1.4;
                         }
 
                         else if (Durchmesser == 2.5)
                         {
-                            Console.WriteLine("Schlüsselweite SW=5mm");
                             Schlüsselweite = 5;
+                            Kopfhöhe = 1.7;
                         }
                         else if (Durchmesser == 3)
                         {
-                            Console.WriteLine("Schlüsselweite SW=5,5mm");
                             Schlüsselweite = 5.5;
+                            Kopfhöhe = 2;
                         }
                         else if (Durchmesser == 4)
                         {
-                            Console.WriteLine("Schlüsselweite SW=7mm");
                             Schlüsselweite = 7;
+                            Kopfhöhe = 2.8;
                         }
                         else if (Durchmesser == 5)
                         {
-                            Console.WriteLine("Schlüsselweite SW=8mm");
                             Schlüsselweite = 8;
+                            Kopfhöhe = 3.5;
                         }
                         else if (Durchmesser == 6)
                         {
-                            Console.WriteLine("Schlüsselweite SW=10mm");
                             Schlüsselweite = 10;
+                            Kopfhöhe = 4;
                         }
                         else if (Durchmesser == 8)
                         {
-                            Console.WriteLine("Schlüsselweite SW=13mm");
                             Schlüsselweite = 13;
+                            Kopfhöhe = 5.3;
                         }
                         else if (Durchmesser == 10)
                         {
-                            Console.WriteLine("Schlüsselweite SW=17mm");
                             Schlüsselweite = 17;
+                            Kopfhöhe = 6.4;
                         }
                         else if (Durchmesser == 12)
                         {
-                            Console.WriteLine("Schlüsselweite SW=19mm");
                             Schlüsselweite = 19;
+                            Kopfhöhe = 7.5;
                         }
                         else if (Durchmesser == 16)
                         {
-                            Console.WriteLine("Schlüsselweite SW=24mm");
                             Schlüsselweite = 24;
+                            Kopfhöhe = 10;
                         }
+                        else if (Durchmesser == 20)
+                        {
+                            Schlüsselweite = 30;
+                            Kopfhöhe = 12.5;
+                        }
+                        
+                        else if (Durchmesser == 24)
+                        {
+                            Schlüsselweite = 36;
+                            Kopfhöhe = 15;
+                        }
+                        else if (Durchmesser == 30)
+                        {
+                            Schlüsselweite = 46;
+                            Kopfhöhe = 18.7;
+                        }
+                        else if (Durchmesser == 36)
+                        {
+                            Schlüsselweite = 55;
+                            Kopfhöhe = 22.5;
+                        }        
+                        else if (Durchmesser == 42)
+                        {
+                            Schlüsselweite = 65;
+                            Kopfhöhe = 26;
+                        }            
+
                         break;
                     }
 
@@ -720,37 +748,37 @@ namespace Schrauben
                             Console.WriteLine("Innensechskant s=2,5mm");
                             Schlüsselweite = 2.5;
                         }  
-                        if (Durchmesser == 4)
+                        else if (Durchmesser == 4)
                         {
                             Console.WriteLine("Innensechskant s=3mm");
                             Schlüsselweite = 3;
                         }
-                        if (Durchmesser == 5)
+                        else if (Durchmesser == 5)
                         {
                             Console.WriteLine("Innensechskant s=4mm");
                             Schlüsselweite = 4;
                         }
-                        if (Durchmesser == 6)
+                        else if (Durchmesser == 6)
                         {
                             Console.WriteLine("Innensechskant s=5mm");
                             Schlüsselweite = 5;
                         }
-                        if (Durchmesser == 8)
+                        else if (Durchmesser == 8)
                         {
                             Console.WriteLine("Innensechskant s=6mm");
                             Schlüsselweite = 6;
                         }
-                        if (Durchmesser == 10)
+                        else if (Durchmesser == 10)
                         {
                             Console.WriteLine("Innensechskant s=8mm");
                             Schlüsselweite = 8;
                         }
-                        if (Durchmesser == 12)
+                        else if (Durchmesser == 12)
                         {
                             Console.WriteLine("Innensechskant s=10mm");
                             Schlüsselweite = 10;
                         }
-                        if (Durchmesser == 16)
+                        else if (Durchmesser == 16)
                         {
                             Console.WriteLine("Innensechskant s=14mm");
                             Schlüsselweite = 14;
@@ -765,42 +793,42 @@ namespace Schrauben
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlüsselweite = 1;
                         }
-                        if (Durchmesser == 2.5)
+                        else if (Durchmesser == 2.5)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlüsselweite = 1;
                         }
-                        if (Durchmesser == 3)
+                        else if (Durchmesser == 3)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 1");
                             Schlüsselweite = 1;
                         }
-                        if (Durchmesser == 4)
+                        else if (Durchmesser == 4)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlüsselweite = 2;
                         }
-                        if (Durchmesser == 5)
+                        else if (Durchmesser == 5)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 2");
                             Schlüsselweite = 2;
                         }
-                        if (Durchmesser == 6)
+                        else if (Durchmesser == 6)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 3");
                             Schlüsselweite = 3;
                         }
-                        if (Durchmesser == 8)
+                        else if (Durchmesser == 8)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlüsselweite = 4;
                         }
-                        if (Durchmesser == 10)
+                        else if (Durchmesser == 10)
                         {
                             Console.WriteLine("Kreuzschlitz Gröse 4");
                             Schlüsselweite = 4;
                         }
-
+                        
                     }
                     break;
 
@@ -808,7 +836,8 @@ namespace Schrauben
                     Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung " + Kopf);
                     break;
             }
-            return Schlüsselweite;
+            Console.WriteLine($"SW ={Schlüsselweite} ");
+            return (_schlüsselweite: Schlüsselweite, _kopfhöhe: Kopfhöhe);
         }
 
     }

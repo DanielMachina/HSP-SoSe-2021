@@ -5,9 +5,11 @@ TO-DO Liste
 - Material als Klasse ( vielleicht im nächsten Testat)
 - Kopfhöhe {get; set;} Kopfhöhe ist DIN, tabellenwerte zu der jeweiligen Schlüsselweite benutzen
 - getVolumen
-- getMasse
 - getPreis
 
+Problem:
+- @Edis, dein Code für Durchmesser ist nicht vollständig
+- Volumen ist schwerer als gedacht. Jeder Kopf hat ein anderes Volumen.
 
 
 
@@ -85,3 +87,6 @@ Durchmesser wird abgefragt bis richtig angegeben
 
 Daniel 20.04
 Alle Wiederholungen sind fertig. Ein bisschen die Sechskantgrößen und die Metrischen größen sind angepasst.
+
+Daniel 21.04
+Ein paar kleine Änderungen gemacht
