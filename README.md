@@ -90,3 +90,6 @@ Alle Wiederholungen sind fertig. Ein bisschen die Sechskantgrößen und die Metr
 
 Daniel 21.04
 Ein paar kleine Änderungen gemacht
+
+Marvin 21.04
+Schraubenkopf Zoll ergänzt und teilweise Kopfhöhe hinzugefügt.
