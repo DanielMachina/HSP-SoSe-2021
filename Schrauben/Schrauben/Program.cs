@@ -682,6 +682,26 @@ namespace Schrauben
 
                 case "Zylindrisch":
                     {
+                        if (Durchmesser < 1.6)
+                        {
+                            Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 2");
+                            Schlüsselweite = 0;
+                        }
+                        else if (Durchmesser == 1.6)
+                        {
+                            Schlüsselweite = 1;
+                            Kopfhöhe = 1.4;
+                        }
+                        else if (Durchmesser == 2.0)
+                        {
+                            Schlüsselweite = 1.5;
+                            Kopfhöhe = 1.4;
+                        }
+                        else if (Durchmesser == 2.5)
+                        {
+                            Schlüsselweite = 2;
+                            Kopfhöhe = 1.7;
+                        }
                         if (Durchmesser == 3)
                         {
                             Schlüsselweite = 2.5;
@@ -715,11 +735,50 @@ namespace Schrauben
                         {
                             Schlüsselweite = 14;
                         }
+                        else if (Durchmesser == 20)
+                        {
+                            Schlüsselweite = 17;
+                            Kopfhöhe = 12.5;
+                        }
+                        else if (Durchmesser == 24)
+                        {
+                            Schlüsselweite = 19;
+                            Kopfhöhe = 15;
+                        }
+                        else if (Durchmesser == 30)
+                        {
+                            Schlüsselweite = 22;
+                            Kopfhöhe = 18.7;
+                        }
+                        else if (Durchmesser == 36)
+                        {
+                            Schlüsselweite = 27;
+                            Kopfhöhe = 22.5;
+                        }
+                        else if (Durchmesser == 42)
+                        {
+                            Schlüsselweite = 32;
+                            Kopfhöhe = 26;
+                        }
+                        else if (Durchmesser > 42)
+                        {
+                            Console.WriteLine("Gewinde leider zu groß ");
+                        }
                         break;
                     }
 
                 case "Senkkopf":
                     {
+                        if (Durchmesser < 1.6)
+                        {
+                            Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
+                            Schlüsselweite = 0;
+                        }
+                        else if (Durchmesser == 1.6)
+                        {
+                            Schlüsselweite = 1;
+                            Kopfhöhe = 1.4;
+                        }
                         if (Durchmesser == 2)
                         {
                             Schlüsselweite = 2.5;
@@ -752,7 +811,43 @@ namespace Schrauben
                         {
                             Schlüsselweite = 4;
                         }
-                        
+                        else if (Durchmesser == 12)
+                        {
+                            Schlüsselweite = 10;
+                        }
+                        else if (Durchmesser == 16)
+                        {
+                            Schlüsselweite = 14;
+                        }
+                        else if (Durchmesser == 20)
+                        {
+                            Schlüsselweite = 17;
+                            Kopfhöhe = 12.5;
+                        }
+                        else if (Durchmesser == 24)
+                        {
+                            Schlüsselweite = 19;
+                            Kopfhöhe = 15;
+                        }
+                        else if (Durchmesser == 30)
+                        {
+                            Schlüsselweite = 22;
+                            Kopfhöhe = 18.7;
+                        }
+                        else if (Durchmesser == 36)
+                        {
+                            Schlüsselweite = 27;
+                            Kopfhöhe = 22.5;
+                        }
+                        else if (Durchmesser == 42)
+                        {
+                            Schlüsselweite = 32;
+                            Kopfhöhe = 26;
+                        }
+                        else if (Durchmesser > 42)
+                        {
+                            Console.WriteLine("Gewinde leider zu groß ");
+                        }
                     }
                     break;
 
