@@ -689,7 +689,7 @@ namespace Schrauben
                         }
                         else if (Durchmesser == 1.6)
                         {
-                            Schlüsselweite = 1;
+                            Schlüsselweite = 1.5;
                             Kopfhöhe = 1.4;
                         }
                         else if (Durchmesser == 2.0)
@@ -776,52 +776,57 @@ namespace Schrauben
                         }
                         else if (Durchmesser == 1.6)
                         {
-                            Schlüsselweite = 1;
+                            Schlüsselweite = 1.5;
                             Kopfhöhe = 1.4;
                         }
                         if (Durchmesser == 2)
                         {
-                            Schlüsselweite = 2.5;
+                            Schlüsselweite = 1.5;
+                            Kopfhöhe = 2;
                         }
                         else if (Durchmesser == 2.5)
                         {
-                            Schlüsselweite = 1;
+                            Schlüsselweite = 2;
+                            Kopfhöhe = 2.5;
                         }
                         else if (Durchmesser == 3)
                         {
-                            Schlüsselweite = 1;
+                            Schlüsselweite = 2;
+                            Kopfhöhe = 1.9;
                         }
                         else if (Durchmesser == 4)
                         {
-                            Schlüsselweite = 2;
+                            Schlüsselweite = 2.5;
+                            Kopfhöhe = 2.5;
                         }
                         else if (Durchmesser == 5)
                         {
-                            Schlüsselweite = 2;
+                            Schlüsselweite = 3;
+                            Kopfhöhe = 3.1;
                         }
                         else if (Durchmesser == 6)
                         {
-                            Schlüsselweite = 3;
+                            Schlüsselweite = 4;
                         }
                         else if (Durchmesser == 8)
                         {
-                            Schlüsselweite = 4;
+                            Schlüsselweite = 5;
                         }
                         else if (Durchmesser == 10)
                         {
-                            Schlüsselweite = 4;
+                            Schlüsselweite = 6;
                         }
                         else if (Durchmesser == 12)
                         {
-                            Schlüsselweite = 10;
+                            Schlüsselweite = 8;
                         }
                         else if (Durchmesser == 16)
                         {
-                            Schlüsselweite = 14;
+                            Schlüsselweite = 10;
                         }
                         else if (Durchmesser == 20)
                         {
-                            Schlüsselweite = 17;
+                            Schlüsselweite = 12;
                             Kopfhöhe = 12.5;
                         }
                         else if (Durchmesser == 24)
