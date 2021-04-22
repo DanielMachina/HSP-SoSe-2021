@@ -36,7 +36,9 @@ namespace Schrauben
                 {
 
                     Console.WriteLine(eins.wiederholung);
+                    Console.ForegroundColor = ConsoleColor.Green;
                     antwort = Console.ReadLine().Trim().ToLower();
+                    Console.ResetColor();
                     if (antwort == "nein")
                     { Environment.Exit(0); }
 
@@ -49,7 +51,10 @@ namespace Schrauben
 
             //Eingabe Laenge
             tool.Abfrage("Länge in mm","") ;
+            Console.ForegroundColor = ConsoleColor.Green;
             eins.Laenge = Convert.ToDouble(Console.ReadLine());
+            Console.ResetColor();
+            Console.WriteLine("");
 
             //Eingabe Schraubenkopf
             do
@@ -60,7 +65,9 @@ namespace Schrauben
                 if(eins.Schlüsselweite == 0)
                 {
                     Console.WriteLine(eins.wiederholung);
+                    Console.ForegroundColor = ConsoleColor.Green;
                     antwort = Console.ReadLine().Trim().ToLower();
+                    Console.ResetColor();
                     if (antwort == "nein")
                     {
                         Environment.Exit(0);
@@ -76,10 +83,14 @@ namespace Schrauben
             //Berechnung Masse, Ausgabe Masse
             eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; 
             Console.WriteLine($"Die Masse ist {eins.Masse} Gramm");
+            Console.WriteLine("");
 
             //Mengeneingabe und Gesamtgewicht
             tool.Abfrage("Menge", "");
+            Console.ForegroundColor = ConsoleColor.Green;
             eins.Menge = Convert.ToInt32(Console.ReadLine());
+            Console.ResetColor();
+            Console.WriteLine("");
             eins.Gesamtmasse = eins.Masse * eins.Menge; //Gesamtgewicht aus Einzelmasse und Menge
             Console.WriteLine($"Die Gesamtmasse ist {eins.Gesamtmasse/1000} Kilogramm");
 
@@ -108,9 +119,10 @@ namespace Schrauben
             if (eins.Durchmesser != 0 && eins.Art == "Zoll")
             {
                 Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser} mm");
-
+                Console.WriteLine("");
             }
-            
+
+            else { Console.WriteLine(""); }
         }
     }
 
@@ -154,14 +166,16 @@ namespace Schrauben
         public bool getMaterial()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Material = Convert.ToString(Console.ReadLine());
+            Material = Console.ReadLine();
             Console.ResetColor();
 
             Console.WriteLine("");
             if (getDichte(Material) == 0)
             {
                 Console.WriteLine(wiederholung);
+                Console.ForegroundColor = ConsoleColor.Green;
                 string antwort = Console.ReadLine().Trim().ToLower();
+                Console.ResetColor();
                 if (antwort != "ja")
                 {
                     Environment.Exit(0);
@@ -200,8 +214,9 @@ namespace Schrauben
                     break;
 
                 default: // Falls ein nicht aufgelistetes Material benutzt wird wird default ausgegeben
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Material leider nicht vorhanden, prüfe deine Rechtschreibung: " + Material);
-
+                    Console.ResetColor();
                     break;
             }
 
@@ -222,9 +237,11 @@ namespace Schrauben
             {
                 case "Metrisch":
                     {
+                        
                         tool.Abfrage("Gewindedurchmesser","M1,6 bis M42");
-                        Gewinde = Convert.ToString(Console.ReadLine());
-
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Gewinde = Console.ReadLine();
+                        Console.ResetColor();
                         
                         if (Gewinde == "M1,6")
                         {
@@ -308,7 +325,9 @@ namespace Schrauben
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Ihre Eingabe scheint leider kein metrisches Regelgewinde zu sein.... " + Gewinde);
+                            Console.ResetColor();
                         }
 
                         spezFlankendurchmesser = (Durchmesser - 0.6495 * spezSteigung);
@@ -320,7 +339,9 @@ namespace Schrauben
                 case "Metrisch Fein":
                     {
                         tool.Abfrage("Gewindedurchmesser", "M2x0,25 bis M42x2");
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Gewinde = Console.ReadLine();
+                        Console.ResetColor();
 
                         if (Gewinde == "M2x0,25")
                         {
@@ -479,7 +500,9 @@ namespace Schrauben
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Ihre Eingabe schein leider kein metrisches Feingewinde zu sein.... " + Gewinde);
+                            Console.ResetColor();
                         }
 
                         spezFlankendurchmesser = (Durchmesser - 0.6495 * spezSteigung);
@@ -491,7 +514,9 @@ namespace Schrauben
                 case "Zoll":
                     {
                         Console.WriteLine("Bitte geben Sie Ihren gewünschten Gewindedurchmesser an. Es gibt von 1/4 bis 1 1/2 Zoll-Schrauben zur Auswahl." + '\n' + "Bsp. Schreibweise: 1 1/2");
-                        Gewinde_Zoll = Convert.ToString(Console.ReadLine());
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Gewinde_Zoll = Console.ReadLine();
+                        Console.ResetColor();
 
                         if (Gewinde_Zoll == "1/4")
                         {
@@ -552,7 +577,9 @@ namespace Schrauben
                         
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Ihre Eingabe scheint leider kein vorhandenes Zollgewinde zu sein.... " + Gewinde_Zoll);
+                            Console.ResetColor();
                         }
 
                         break;
@@ -561,7 +588,9 @@ namespace Schrauben
 
 
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Leider bieten wir diese Schraubenart nicht an, versuchen Sie es doch bitte mit einer der obenaufgeführten Schraubenarten");
+                    Console.ResetColor();
                     break;
 
             }
@@ -573,14 +602,18 @@ namespace Schrauben
         {
             Schlüsselweite = 0;
             Kopfhöhe = 0;
+            Console.ForegroundColor = ConsoleColor.Green;
             Kopf = Console.ReadLine();
+            Console.ResetColor();
             switch (Kopf)
             {
                 case "Sechskant": //sechskant zoll, sechskant metrisch
                     {
-                        if (Durchmesser < 1.6)
+                        if (Durchmesser < 1.6) // Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
+                            Console.ResetColor();
                             Schlüsselweite = 0;
                         }
                         else if (Durchmesser==1.6)
@@ -707,9 +740,11 @@ namespace Schrauben
                             Schlüsselweite = 65;
                             Kopfhöhe = 26;
                         }
-                        else if (Durchmesser > 42)
+                        else if (Durchmesser > 42) // Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");
+                            Console.ResetColor();
                         }
                         break;
                     }
@@ -717,9 +752,11 @@ namespace Schrauben
 
                 case "Zylindrisch":
                     {
-                        if (Durchmesser < 1.6)
+                        if (Durchmesser < 1.6) // Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 2");
+                            Console.ResetColor();
                             Schlüsselweite = 0;
                         }
                         else if (Durchmesser == 1.6)
@@ -833,18 +870,22 @@ namespace Schrauben
                             Schlüsselweite = 32;
                             Kopfhöhe = 42;
                         }
-                        else if (Durchmesser > 42)
+                        else if (Durchmesser > 42) // Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");
+                            Console.ResetColor();
                         }
                         break;
                     }
 
                 case "Senkkopf":
                     {
-                        if (Durchmesser < 1.6)
+                        if (Durchmesser < 1.6) //Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
+                            Console.ResetColor();
                             Schlüsselweite = 0;
                         }
                         else if (Durchmesser == 1.6)
@@ -946,15 +987,19 @@ namespace Schrauben
                             Schlüsselweite = 32;
                             Kopfhöhe = 26;
                         }
-                        else if (Durchmesser > 42)
+                        else if (Durchmesser > 42) // Darf nie erreicht werden
                         {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");
+                            Console.ResetColor();
                         }
                     }
                     break;
 
                 default:
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Schraubenkopf leider nicht vorhanden, prüfe Rechtschreibung " + Kopf);
+                    Console.ResetColor();
                     break;
             }
             Console.WriteLine($"SW = {Schlüsselweite} ");

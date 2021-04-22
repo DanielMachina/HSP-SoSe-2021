@@ -93,3 +93,6 @@ Ein paar kleine Änderungen gemacht
 
 Marvin 21.04
 Schraubenkopf Zoll ergänzt und teilweise Kopfhöhe hinzugefügt.
+
+Daniel 22.04
+Ein bisschen formatiert und Farben eingefügt
