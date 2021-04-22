@@ -39,7 +39,7 @@ namespace Schrauben
                     Console.ForegroundColor = ConsoleColor.Green;
                     antwort = Console.ReadLine().Trim().ToLower();
                     Console.ResetColor();
-                    if (antwort == "nein")
+                    if (antwort != "ja")
                     { Environment.Exit(0); }
 
                 }
@@ -47,13 +47,43 @@ namespace Schrauben
 
             } while (true);
 
-               
+
+
 
             //Eingabe Laenge
-            tool.Abfrage("Länge in mm","") ;
-            Console.ForegroundColor = ConsoleColor.Green;
-            eins.Laenge = Convert.ToDouble(Console.ReadLine());
-            Console.ResetColor();
+
+            do
+            {
+
+                tool.Abfrage("Länge in mm", "10-1000mm");
+                Console.ForegroundColor = ConsoleColor.Green;
+                eins.Laenge = Convert.ToDouble(Console.ReadLine());
+                Console.ResetColor();
+                if (eins.Laenge < 10 || eins.Laenge > 1000)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Schraube leider außerhalb des möglichen Maßes");
+                    Console.ResetColor();
+                    Console.WriteLine(eins.wiederholung);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    antwort = Console.ReadLine().Trim().ToLower();
+                    Console.ResetColor();
+                    if (antwort != "ja")
+                    {
+                        Environment.Exit(0);
+                    }
+
+                }
+                else
+                { break; }
+
+
+            }
+            while (true);
+
+            {
+
+            }
             Console.WriteLine("");
 
             //Eingabe Schraubenkopf
@@ -609,7 +639,7 @@ namespace Schrauben
             {
                 case "Sechskant": //sechskant zoll, sechskant metrisch
                     {
-                        if (Durchmesser < 1.6) // Darf nie erreicht werden
+                        if (Durchmesser < 1.6) // Darf/kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
@@ -740,7 +770,7 @@ namespace Schrauben
                             Schlüsselweite = 65;
                             Kopfhöhe = 26;
                         }
-                        else if (Durchmesser > 42) // Darf nie erreicht werden
+                        else if (Durchmesser > 42) // Darf/Kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");
@@ -752,7 +782,7 @@ namespace Schrauben
 
                 case "Zylindrisch":
                     {
-                        if (Durchmesser < 1.6) // Darf nie erreicht werden
+                        if (Durchmesser < 1.6) // Darf/kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 2");
@@ -870,7 +900,7 @@ namespace Schrauben
                             Schlüsselweite = 32;
                             Kopfhöhe = 42;
                         }
-                        else if (Durchmesser > 42) // Darf nie erreicht werden
+                        else if (Durchmesser > 42) // Darf/kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");
@@ -881,7 +911,7 @@ namespace Schrauben
 
                 case "Senkkopf":
                     {
-                        if (Durchmesser < 1.6) //Darf nie erreicht werden
+                        if (Durchmesser < 1.6) //Darf/kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Der gewählte Durchmesser ist leider zu klein, der kleinstmögliche Durchmesser ist 1,6");
@@ -987,7 +1017,7 @@ namespace Schrauben
                             Schlüsselweite = 32;
                             Kopfhöhe = 26;
                         }
-                        else if (Durchmesser > 42) // Darf nie erreicht werden
+                        else if (Durchmesser > 42) // Darf/kann nie erreicht werden
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("Gewinde leider zu groß ");

@@ -1,22 +1,38 @@
 # HSP-SoSe-2021
 
-TO-DO Liste
+	TO-DO Liste
 
 - Material als Klasse ( vielleicht im nächsten Testat)
 - Kopfhöhe {get; set;} Kopfhöhe ist DIN, tabellenwerte zu der jeweiligen Schlüsselweite benutzen
 - getVolumen
 - getPreis
 
-Problem:
-- @Edis, dein Code für Durchmesser ist nicht vollständig
+	Problem:
+
 - Volumen ist schwerer als gedacht. Jeder Kopf hat ein anderes Volumen.
 
+	Fragen an Kunde:
+-Welches Spektrum der Schrauben,Materialien usw. (DIN?)
+-Evtl. Festigkeitsberechnung
+-Festigkeitsklassen ausgeben?
+-Weitere Berechnungen?
+-Vorstellung für GUI? (Interaktiv, Graphisch , Simpel, Bunt, weitumgreifend) 
+
+
+	Verbesserungen für nächsten Sprint:
+- Trim().ToLower(). --> Benutzerfreundlichkeit
+- Material als Klasse
+- Volumen fertigstellen
+- Preis
+- Exception (für Convert)
 
 
 Hallo Leute,
 
 schreibt einfach hier mal kurz rein was ihr geändert habt und wie man evtl. weiter machen könnte. (Mit Datum)
 Bitte den Code immer mit Kommentaren versehen! :)
+
+Note: Erste Woche wurde von jedem genutzt, um sich individuell mit C# vertraut zu machen
 
 Daniel 08.04 
 Ich habe eine Klasse "Schraubendefinition" erstellt.
