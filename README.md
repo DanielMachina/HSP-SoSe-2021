@@ -1,6 +1,7 @@
 # HSP-SoSe-2021
 
 	TO-DO Liste
+	https://hsp-teamh.atlassian.net/jira/software/projects/SCHRAUBE/boards/1
 
 - Material als Klasse ( vielleicht im nächsten Testat)
 - Kopfhöhe {get; set;} Kopfhöhe ist DIN, tabellenwerte zu der jeweiligen Schlüsselweite benutzen
