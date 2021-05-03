@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Schrauben
 {
-    class Program
+    public class Program
     {
+        internal Program ()
+        {
+            GUI SchraubenGUI = new GUI();
+            Window fenster = new Window();
 
+            fenster.Title = "SchraubenGmbH";
+            fenster.ResizeMode = ResizeMode.CanMinimize;
+            fenster.Content = SchraubenGUI;
+
+
+            fenster.ShowDialog();
+            Console.ReadKey();
+        }
+
+        [STAThread]
         public static void Main()
         {
+            new Program();
             string antwort;
             Schraubendefinition eins = new Schraubendefinition();
             Tools tool = new Tools();
@@ -130,6 +146,13 @@ namespace Schrauben
 
     public class Tools // zur vereinfacherung
     {
+        public string Begrüßung { get; set; }
+        public Tools()
+        {
+            Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
+        }
+
+
         public void Abfrage(string element, string auswahl) // Abfrage von Element und Auswahl 
         {
             if (auswahl != "")
@@ -154,6 +177,8 @@ namespace Schrauben
 
             else { Console.WriteLine(""); }
         }
+
+
     }
 
     public class Schraubendefinition
