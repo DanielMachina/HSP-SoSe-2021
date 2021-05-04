@@ -64,7 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Images\Schraubenzeichnung.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SchraubenBild.png" />
   </ItemGroup>

@@ -7,8 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="450"
              d:DesignWidth="800"
+             
              >
-    <Grid Background="BlanchedAlmond" >
+    <Grid Background="LightBlue"  >
 <!--#region Background-->
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -23,20 +24,20 @@
 <!--#endregion--> 
 <!--#region  Header-->
         <Grid Grid.ColumnSpan="2"
-              Background="Wheat">
-            <Label Content="Hallo"
+              Background="#D67777FF"   >
+            <Label Content="{Binding Begrüßung}"
                    Foreground="Black"
                    HorizontalContentAlignment="Center"
                    FontSize="28"
-                   FontFamily ="/Schrauben;component/Fonts/#Girassol"
+                   FontFamily ="Baskerville Old Face"
                    FontWeight="Medium"
                    Margin=" 20"/>
 
         </Grid>
-<!--#endregion--> 
-        
+<!--#endregion-->
+
         <Grid
-              Grid.Row="1" Background="White">
+              Grid.Row="1" Background="LightBlue">
 
             <Image x:Name="Schraube" 
                    Source="Images/SchraubenBild.png"/>

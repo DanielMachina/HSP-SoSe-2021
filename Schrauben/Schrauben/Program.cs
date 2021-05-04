@@ -18,7 +18,7 @@ namespace Schrauben
             fenster.Title = "SchraubenGmbH";
             fenster.ResizeMode = ResizeMode.CanMinimize;
             fenster.Content = SchraubenGUI;
-            fenster.FontFamily = new FontFamily ("Girassol");
+            fenster.FontFamily = new FontFamily ("Baskerville Old Face");
 
             fenster.ShowDialog();
             Console.ReadKey();
@@ -147,11 +147,14 @@ namespace Schrauben
 
     public class Tools // zur vereinfacherung
     {
+        public List<string> Gewindesammlung { get; set; }
         public string Begrüßung { get; set; }
         public Tools()
         {
             Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
+
         }
+
 
 
         public void Abfrage(string element, string auswahl) // Abfrage von Element und Auswahl 
