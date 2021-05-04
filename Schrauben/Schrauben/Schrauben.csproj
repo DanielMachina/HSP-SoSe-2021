@@ -56,7 +56,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Fonts\ALGER.TTF" />
-    <None Include="Fonts\TestFont.ttf" />
+    <None Include="Fonts\Girassol-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="GUI.xaml">

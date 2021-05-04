@@ -24,11 +24,11 @@
 <!--#region  Header-->
         <Grid Grid.ColumnSpan="2"
               Background="Wheat">
-            <Label Content="{Binding Begrüßung}"
+            <Label Content="Hallo"
                    Foreground="Black"
                    HorizontalContentAlignment="Center"
                    FontSize="28"
-                   FontFamily="Fonts/#TestFont.ttf"
+                   FontFamily ="/Schrauben;component/Fonts/#Girassol"
                    FontWeight="Medium"
                    Margin=" 20"/>
 

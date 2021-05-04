@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Schrauben
 {
@@ -17,7 +18,7 @@ namespace Schrauben
             fenster.Title = "SchraubenGmbH";
             fenster.ResizeMode = ResizeMode.CanMinimize;
             fenster.Content = SchraubenGUI;
-
+            fenster.FontFamily = new FontFamily ("Girassol");
 
             fenster.ShowDialog();
             Console.ReadKey();
