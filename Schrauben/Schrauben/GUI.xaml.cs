@@ -22,14 +22,15 @@ namespace Schrauben
     {
         public GUI()
         {
-
             DataContext = new Tools();
             InitializeComponent();
         }
 
+        public WindowState WindowState { get; private set; }
+
         private void _minimize_Click(object sender, RoutedEventArgs e)
         {
-
+            Environment.Exit(0);
         }
     }
 }

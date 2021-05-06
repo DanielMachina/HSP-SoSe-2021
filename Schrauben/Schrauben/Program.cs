@@ -16,12 +16,11 @@ namespace Schrauben
             Window fenster = new Window();
 
             fenster.Title = "SchraubenGmbH";
-            fenster.ResizeMode = ResizeMode.CanMinimize;
+            fenster.ResizeMode = ResizeMode.CanResize;
             fenster.Content = SchraubenGUI;
             fenster.WindowStyle = WindowStyle.None;
             fenster.AllowsTransparency = true;
             fenster.Background = Brushes.Transparent;
-            fenster.WindowState = WindowState.Minimized;
 
 
             fenster.ShowDialog();
@@ -157,9 +156,13 @@ namespace Schrauben
 
         public List<string> ArtenSammlung { get; set; }
 
-
-
+        public List<string> Schraubenfestigkeit { get; set; }
         public string Begrüßung { get; set; }
+
+        public List<string> Kopfform { get; set; }
+
+
+
         public Tools()
         {
             Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
@@ -176,7 +179,7 @@ namespace Schrauben
 
             MaterialSammlung = new List<string>();
             {
-                MaterialSammlung.Add("Material");
+                
                 MaterialSammlung.Add("Stahl");
                 MaterialSammlung.Add("Aluminium");
                 MaterialSammlung.Add("Titan");
@@ -187,10 +190,29 @@ namespace Schrauben
 
             ArtenSammlung = new List<string>();
             {
-                ArtenSammlung.Add("Gewindeart");
                 ArtenSammlung.Add("Metrisch");
                 ArtenSammlung.Add("Metrisch Fein");
                 ArtenSammlung.Add("Zoll");
+            }
+
+            Kopfform = new List<string>();
+            {
+                Kopfform.Add("Sechskant");
+                Kopfform.Add("Zylinderkopf");
+                Kopfform.Add("Senkkopf");
+            }
+
+            Schraubenfestigkeit = new List<string>();
+            {
+                Schraubenfestigkeit.Add("3.6");
+                Schraubenfestigkeit.Add("4.6");
+                Schraubenfestigkeit.Add("4.8");
+                Schraubenfestigkeit.Add("5.8");
+                Schraubenfestigkeit.Add("6.8");
+                Schraubenfestigkeit.Add("8.8");
+                Schraubenfestigkeit.Add("9.8");
+                Schraubenfestigkeit.Add("10.9");
+                Schraubenfestigkeit.Add("12.9");
             }
 
 
