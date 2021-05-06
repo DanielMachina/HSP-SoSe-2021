@@ -18,7 +18,11 @@ namespace Schrauben
             fenster.Title = "SchraubenGmbH";
             fenster.ResizeMode = ResizeMode.CanMinimize;
             fenster.Content = SchraubenGUI;
-            fenster.FontFamily = new FontFamily ("Baskerville Old Face");
+            fenster.WindowStyle = WindowStyle.None;
+            fenster.AllowsTransparency = true;
+            fenster.Background = Brushes.Transparent;
+            fenster.WindowState = WindowState.Minimized;
+
 
             fenster.ShowDialog();
             Console.ReadKey();
@@ -147,11 +151,48 @@ namespace Schrauben
 
     public class Tools // zur vereinfacherung
     {
-        public List<string> Gewindesammlung { get; set; }
+        public List<string> GewindeSammlung { get; set; }
+
+        public List<string> MaterialSammlung { get; set; }
+
+        public List<string> ArtenSammlung { get; set; }
+
+
+
         public string Begrüßung { get; set; }
         public Tools()
         {
             Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
+            
+            GewindeSammlung = new List<string>();
+            {
+                GewindeSammlung.Add("M5");
+                GewindeSammlung.Add("M6");
+                GewindeSammlung.Add("M8");
+                GewindeSammlung.Add("M10");
+                GewindeSammlung.Add("M12");
+                GewindeSammlung.Add("M16");
+            }
+
+            MaterialSammlung = new List<string>();
+            {
+                MaterialSammlung.Add("Material");
+                MaterialSammlung.Add("Stahl");
+                MaterialSammlung.Add("Aluminium");
+                MaterialSammlung.Add("Titan");
+                MaterialSammlung.Add("Messing");
+                MaterialSammlung.Add("Bronze");
+                MaterialSammlung.Add("Kupfer");
+            }
+
+            ArtenSammlung = new List<string>();
+            {
+                ArtenSammlung.Add("Gewindeart");
+                ArtenSammlung.Add("Metrisch");
+                ArtenSammlung.Add("Metrisch Fein");
+                ArtenSammlung.Add("Zoll");
+            }
+
 
         }
 

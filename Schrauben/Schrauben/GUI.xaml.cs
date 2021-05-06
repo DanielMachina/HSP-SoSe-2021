@@ -22,9 +22,14 @@ namespace Schrauben
     {
         public GUI()
         {
+
             DataContext = new Tools();
             InitializeComponent();
         }
 
+        private void _minimize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
