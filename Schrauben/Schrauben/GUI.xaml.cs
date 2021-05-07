@@ -30,6 +30,11 @@ namespace Schrauben
 
         private void _minimize_Click(object sender, RoutedEventArgs e)
         {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void _exit_Click(object sender, RoutedEventArgs e)
+        {
             Environment.Exit(0);
         }
     }

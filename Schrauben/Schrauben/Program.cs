@@ -10,17 +10,19 @@ namespace Schrauben
 {
     public class Program
     {
-        internal Program ()
+        public Program ()
         {
             GUI SchraubenGUI = new GUI();
             Window fenster = new Window();
 
             fenster.Title = "SchraubenGmbH";
-            fenster.ResizeMode = ResizeMode.CanResize;
+            fenster.ResizeMode = ResizeMode.CanMinimize;
             fenster.Content = SchraubenGUI;
             fenster.WindowStyle = WindowStyle.None;
             fenster.AllowsTransparency = true;
             fenster.Background = Brushes.Transparent;
+            fenster.Width = 900;
+            fenster.Height = 500;
 
 
             fenster.ShowDialog();
