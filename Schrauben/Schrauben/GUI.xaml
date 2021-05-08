@@ -61,7 +61,7 @@
 
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="#FF4C70"/>
+                            <Setter Property="Background" Value="Red"/>
                             <Setter Property="Cursor" Value="Hand"/>
 
                             <Style.Triggers>
@@ -97,7 +97,7 @@
                     
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="#FF4C70"/>
+                            <Setter Property="Background" Value="Red"/>
                             <Setter Property="Cursor" Value="Hand"/>
                             
                             <Style.Triggers>
