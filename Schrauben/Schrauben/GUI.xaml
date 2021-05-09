@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Schrauben"
-             xmlns:Generic="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:System="clr-namespace:System;assembly=mscorlib" x:Name="DesignerMainWindow" x:Class="Schrauben.GUI"
+             xmlns:Generic="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib" 
+             x:Name="DesignerMainWindow"
+             x:Class="Schrauben.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="500"
              d:DesignWidth="900"
@@ -123,7 +126,41 @@
                     </Button.Template>
                     
                 </Button>
-                
+
+                <Button x:Name="Zurück"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Content="Zurück"
+                        Click="Zurück_Click"   >
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Green" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="55"
+                                Height="20"
+                                Margin="2.5"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
             </Grid>
             
             

@@ -37,5 +37,12 @@ namespace Schrauben
         {
             Environment.Exit(0);
         }
+
+        private void Zurück_Click(object sender, RoutedEventArgs e)
+        {
+            KonfigGUI home = new KonfigGUI();
+            this.Content = home;
+
+        }
     }
 }

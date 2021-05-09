@@ -12,20 +12,30 @@ namespace Schrauben
     {
         public Program ()
         {
+            
+            KonfigGUI HomeGUI = new KonfigGUI();
             GUI SchraubenGUI = new GUI();
-            Window fenster = new Window();
 
-            fenster.Title = "SchraubenGmbH";
-            fenster.ResizeMode = ResizeMode.CanMinimize;
-            fenster.Content = SchraubenGUI;
-            fenster.WindowStyle = WindowStyle.None;
-            fenster.AllowsTransparency = true;
-            fenster.Background = Brushes.Transparent;
-            fenster.Width = 900;
-            fenster.Height = 500;
+            Window Konfig = new Window();
+            Window Homepage = new Window();
 
+            Homepage.Title = "SchraubenGmbH/Homepage";
+            Homepage.ResizeMode = ResizeMode.CanMinimize;
+            Homepage.Content = HomeGUI;
+            Homepage.Width = 900;
+            Homepage.Height = 500;
 
-            fenster.ShowDialog();
+            Konfig.Title = "Schraubenkonfigurator";
+            Konfig.ResizeMode = ResizeMode.CanMinimize;
+            Konfig.Content = SchraubenGUI;
+            Konfig.WindowStyle = WindowStyle.None;
+            Konfig.AllowsTransparency = true;
+            Konfig.Background = Brushes.Transparent;
+            Konfig.Width = 900;
+            Konfig.Height = 500;
+
+            Homepage.ShowDialog();
+            //Konfig.ShowDialog();
             Console.ReadKey();
         }
 
