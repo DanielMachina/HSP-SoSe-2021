@@ -20,9 +20,11 @@ namespace Schrauben
     /// </summary>
     public partial class GUI : UserControl
     {
+      
+
         public GUI()
         {
-            DataContext = new Tools();
+            DataContext = new GUItools();
             InitializeComponent();
         }
 
@@ -43,6 +45,10 @@ namespace Schrauben
             KonfigGUI home = new KonfigGUI();
             this.Content = home;
 
+        }
+
+        private void cb_sel(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }

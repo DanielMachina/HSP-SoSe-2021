@@ -8,6 +8,10 @@ namespace Schrauben
 {
     class GUItools
     {
+
+        public List<string> MetrischSammlung { get; set; }
+        public List<string> FeinMetrischSammlung { get; set; }
+        public List<string> ZollSammlung { get; set; }
         public List<string> GewindeSammlung { get; set; }
 
         public List<string> MaterialSammlung { get; set; }
@@ -17,10 +21,16 @@ namespace Schrauben
         public List<string> Schraubenfestigkeit { get; set; }
         public string Begrüßung { get; set; }
 
+
+
         public List<string> Kopfform { get; set; }
+
+
+
         public GUItools()
         {
             Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
+
 
             GewindeSammlung = new List<string>();
             {
