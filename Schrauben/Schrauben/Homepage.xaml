@@ -27,38 +27,42 @@
                 <Grid Background="BlanchedAlmond">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="22*"/>
-                        <ColumnDefinition Width="371*"/>
-                        <ColumnDefinition Width="461*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="49*"/>
-                        <RowDefinition Height="49*"/>
-                        <RowDefinition Height="47*"/>
-                        <RowDefinition Height="51*"/>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <Label Content="Hallo, wir sind Team-H "
                            FontSize="24"
                            HorizontalAlignment="Center" 
-                           Grid.ColumnSpan="2"
+                           Grid.ColumnSpan="3"
                            VerticalAlignment="Center" 
-                           Grid.Column="1" 
-                           Margin="270,28,292,25" Height="45" Width="270" />
+                           Grid.Column="0" 
+                           Height="45" 
+                           Width="270" />
 
                     <Image x:Name="Schraubenild"
                            Source="Images/SchraubenBild.png"
                            HorizontalAlignment="Center" 
                            Grid.Row="1"
                            Grid.RowSpan="2" 
-                           Grid.Column="1" 
-                           Margin="40,0,63,0" Width="268"/>
+                           Grid.Column="0" 
+                           Width="268"/>
 
                     <Label Content="Willkommen in unsere Welt der Verbindungs- &#xD;&#xA;und Befestigungstechnik in höchster Qualität!"
                            Grid.Row="1"
-                           Grid.Column="2"
-                           FontSize="24" FontStyle="Italic" FontFamily="Calibri"
+                           Grid.Column="1"
+                           Grid.ColumnSpan="2"
+                           FontSize="24" 
+                           FontStyle="Italic" 
+                           FontFamily="Calibri"
                            />
 
                     <Button  Grid.Column="2"
