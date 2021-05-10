@@ -11,7 +11,7 @@
 
     <Grid Background="LightSlateGray"  >
 
-        <Label Content="Hallo Welt"
+        <Label Content="Schraubentechnik GmbH&amp;Co KG"
                Foreground="Black"
                FontSize="30"
                HorizontalAlignment="Center" 
@@ -28,22 +28,24 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="22*"/>
-                        <ColumnDefinition Width="405*"/>
-                        <ColumnDefinition Width="427*"/>
+                        <ColumnDefinition Width="371*"/>
+                        <ColumnDefinition Width="461*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="49*"/>
+                        <RowDefinition Height="49*"/>
+                        <RowDefinition Height="47*"/>
+                        <RowDefinition Height="51*"/>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Hallo Homepage"
+                    <Label Content="Hallo, wir sind Team-H "
                            FontSize="24"
                            HorizontalAlignment="Center" 
                            Grid.ColumnSpan="2"
-                           VerticalAlignment="Center" Grid.Column="1" Margin="310.128,28,332,27" />
+                           VerticalAlignment="Center" 
+                           Grid.Column="1" 
+                           Margin="270,28,292,25" Height="45" Width="270" />
 
                     <Image x:Name="Schraubenild"
                            Source="Images/SchraubenBild.png"
@@ -51,12 +53,12 @@
                            Grid.Row="1"
                            Grid.RowSpan="2" 
                            Grid.Column="1" 
-                           Margin="54.128,0,76,0"/>
+                           Margin="40,0,63,0" Width="268"/>
 
-                    <Label Content="Wir verkaufen alles was Sie brauchen!"
+                    <Label Content="Willkommen in unsere Welt der Verbindungs- &#xD;&#xA;und Befestigungstechnik in höchster Qualität!"
                            Grid.Row="1"
                            Grid.Column="2"
-                           FontSize="22"
+                           FontSize="24" FontStyle="Italic" FontFamily="Calibri"
                            />
 
                     <Button  Grid.Column="2"
@@ -106,8 +108,9 @@
 
                 <Grid Background="BlanchedAlmond">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="142*"/>
+                        <ColumnDefinition Width="285*"/>
+                        <ColumnDefinition Width="427*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -228,7 +231,7 @@
                            Grid.RowSpan="4"
                            Grid.ColumnSpan="2"
                            
-                        Content="Kontakt:&#xA;&#xA;&#xA;Daniel Skrypnikov: &#x9;daniel.skrypnikov@student.jade-hs.de&#xA;Marlon Rock:&#x9;&#x9;marlon.rock@student.jade-hs.de&#xA;Marvin Müller:&#x9;&#x9;marvin.mueller@student.jade-hs.de&#xA;Edis Duvnjak: &#x9;&#x9;edis.duvnjak@student.jade-hs.de&#xA;&#xA;&#xA;Öffnungszeiten:&#xA;&#xA;Montag bis Donnerstag:&#x9;8.00 - 12.00 und 13.00 - 17.00 Uhr&#xA;Freitag:&#x9;8.00 - 12.00 und 13.00 - 15.00 Uhr&#xA;Samstag:&#x9;geschlossen&#xA;&#xA;Für alle Fragen Stehen wir Ihnen gerne zur Verfügung!&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"  Margin="224.026,72,0,-2" VerticalAlignment="Top" Height="322" Width="364" />
+                        Content="Kontakt:&#xA;&#xA;&#xA;Daniel Skrypnikov: &#x9;daniel.skrypnikov@student.jade-hs.de&#xA;Marlon Rock:&#x9;&#x9;marlon.rock@student.jade-hs.de&#xA;Marvin Müller:&#x9;&#x9;marvin.mueller@student.jade-hs.de&#xA;Edis Duvnjak: &#x9;&#x9;edis.duvnjak@student.jade-hs.de&#xA;&#xA;&#xA;Öffnungszeiten:&#xA;&#xA;Montag bis Donnerstag:&#x9;8.00 - 12.00 und 13.00 - 17.00 Uhr&#xA;Freitag:&#x9;8.00 - 12.00 und 13.00 - 15.00 Uhr&#xA;Samstag:&#x9;geschlossen&#xA;&#xA;Für alle Fragen Stehen wir Ihnen gerne zur Verfügung!&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"  Margin="104,10,0,-2" VerticalAlignment="Top" Height="384" Width="484" FontSize="16" FontStyle="Italic" />
 
                 </Grid>
             </TabItem>
