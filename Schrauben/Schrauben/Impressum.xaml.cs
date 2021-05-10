@@ -16,35 +16,20 @@ using System.Windows.Shapes;
 namespace Schrauben
 {
     /// <summary>
-    /// Interaktionslogik für Homepage.xaml
+    /// Interaktionslogik für Impressum.xaml
     /// </summary>
-    public partial class KonfigGUI : UserControl
+    public partial class ImpGUI : UserControl
     {
-        public KonfigGUI()
+        public ImpGUI()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GUI home = new GUI();
-            this.Content = home;
+            GUI haus = new GUI();
+            this.Content = haus;
             
         }
-
-        private void Button_Impressum(object sender, RoutedEventArgs e)
-        {
-            ImpGUI impressum = new ImpGUI();
-            this.Content = impressum;
-
-        }
-
-        private void Button_Kontakt(object sender, RoutedEventArgs e)
-        {
-            GUI kontakt = new GUI();
-            this.Content = kontakt;
-
-        }
-
     }
 }

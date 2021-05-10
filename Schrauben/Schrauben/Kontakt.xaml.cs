@@ -13,38 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Schrauben
+namespace Homepage1
 {
     /// <summary>
-    /// Interaktionslogik für Homepage.xaml
+    /// Interaktionslogik für Kontakt.xaml
     /// </summary>
-    public partial class KonfigGUI : UserControl
+    public partial class Kontakt : Page
     {
-        public KonfigGUI()
+        public Kontakt()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GUI home = new GUI();
-            this.Content = home;
-            
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            Application.Current.Windows[0].Close();
         }
-
-        private void Button_Impressum(object sender, RoutedEventArgs e)
-        {
-            ImpGUI impressum = new ImpGUI();
-            this.Content = impressum;
-
-        }
-
-        private void Button_Kontakt(object sender, RoutedEventArgs e)
-        {
-            GUI kontakt = new GUI();
-            this.Content = kontakt;
-
-        }
-
     }
 }
