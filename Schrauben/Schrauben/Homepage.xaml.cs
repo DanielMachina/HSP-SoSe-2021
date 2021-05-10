@@ -25,7 +25,7 @@ namespace Schrauben
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Konfig(object sender, RoutedEventArgs e)
         {
             GUI home = new GUI();
             this.Content = home;
