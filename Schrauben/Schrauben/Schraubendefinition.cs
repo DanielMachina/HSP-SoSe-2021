@@ -3,279 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
 
 namespace Schrauben
 {
-    public class Program
-    {
-        public Program ()
-        {
-
-            KonfigGUI HomeGUI = new KonfigGUI();
-            GUI SchraubenGUI = new GUI();
-            ImpGUI Impressum = new ImpGUI();
-            KontaktGUI Kontakt = new KontaktGUI();
-
-            Window Homepage = new Window();
-            Window Konfig = new Window();
-            Window Imp = new Window();
-
-
-            Homepage.Title = "SchraubenGmbH/Homepage";
-            Homepage.ResizeMode = ResizeMode.CanMinimize;
-            Homepage.Content = HomeGUI;
-            Homepage.Width = 900;
-            Homepage.Height = 500;
-            Homepage.WindowStyle = WindowStyle.None;
-            Homepage.AllowsTransparency = true;
-            Homepage.Background = Brushes.Transparent;
-
-            
-            Imp.ResizeMode = ResizeMode.CanMinimize;
-            Imp.Content = Impressum;
-            Imp.Width = 900;
-            Imp.Height = 500;
-            Imp.WindowStyle = WindowStyle.None;
-            Imp.AllowsTransparency = true;
-            Imp.Background = Brushes.Transparent;
-
-            Konfig.Title = "Schraubenkonfigurator";
-            Konfig.ResizeMode = ResizeMode.CanMinimize;
-            Konfig.Content = SchraubenGUI;
-            Konfig.WindowStyle = WindowStyle.None;
-            Konfig.AllowsTransparency = true;
-            Konfig.Background = Brushes.Transparent;
-            Konfig.Width = 900;
-            Konfig.Height = 500;
-
-            Homepage.ShowDialog();
-            //Konfig.ShowDialog();
-            Console.ReadKey();
-        }
-
-        [STAThread]
-        public static void Main()
-        {
-            new Program();
-            string antwort;
-            Schraubendefinition eins = new Schraubendefinition();
-            Tools tool = new Tools();
-            //Eingabe Material
-            do
-            {
-                tool.Abfrage("Material" , "Stahl, Aluminium, Messing, Kupfer und Titan");
-                eins.getMaterial();
-            } while (eins.beenden != true);
-
-
-            //Eingabe Schraubenart
-            do
-            {
-                tool.Abfrage("Schraubenart", "Metrisch, Metrisch Fein, Zoll - gewinde");
-                Console.ForegroundColor = ConsoleColor.Green;
-                eins.Art = Console.ReadLine();
-                Console.ResetColor();
-                Console.WriteLine("");  
-
-                tool.Ausgabe_Gewinde(eins);
-                if (eins.Durchmesser == 0)
-                {
-
-                    Console.WriteLine(eins.wiederholung);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    antwort = Console.ReadLine().Trim().ToLower();
-                    Console.ResetColor();
-                    if (antwort != "ja")
-                    { Environment.Exit(0); }
-
-                }
-                else { break; }
-
-            } while (true);
-
-
-
-
-            //Eingabe Laenge
-
-            do
-            {
-
-                tool.Abfrage("Länge in mm", "10-1000mm");
-                Console.ForegroundColor = ConsoleColor.Green;
-                eins.Laenge = Convert.ToDouble(Console.ReadLine());
-                Console.ResetColor();
-                if (eins.Laenge < 10 || eins.Laenge > 1000)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Schraube leider außerhalb des möglichen Maßes");
-                    Console.ResetColor();
-                    Console.WriteLine(eins.wiederholung);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    antwort = Console.ReadLine().Trim().ToLower();
-                    Console.ResetColor();
-                    if (antwort != "ja")
-                    {
-                        Environment.Exit(0);
-                    }
-
-                }
-                else
-                { break; }
-
-
-            }
-            while (true);
-
-            {
-
-            }
-            Console.WriteLine("");
-
-            //Eingabe Schraubenkopf
-            do
-            {
-                tool.Abfrage("Schraubenkopf", "Sechskant, Zylindrisch und Senkkopf");
-
-                eins.Schraubenkopf();
-                if(eins.Schlüsselweite == 0)
-                {
-                    Console.WriteLine(eins.wiederholung);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    antwort = Console.ReadLine().Trim().ToLower();
-                    Console.ResetColor();
-                    if (antwort == "nein")
-                    {
-                        Environment.Exit(0);
-                    }
-
-                }
-                else { break; }
-            } while (true);
-            //Berechnung Volumen
-
-            eins.Volumen = eins.Laenge * Math.Pow(eins.Durchmesser, 2) * (Math.PI / 4);
-
-            //Berechnung Masse, Ausgabe Masse
-            eins.Masse = eins.getDichte(eins.Material) * eins.Volumen / 1000; 
-            Console.WriteLine($"Die Masse ist {eins.Masse} Gramm");
-            Console.WriteLine("");
-
-            //Mengeneingabe und Gesamtgewicht
-            tool.Abfrage("Menge", "");
-            Console.ForegroundColor = ConsoleColor.Green;
-            eins.Menge = Convert.ToInt32(Console.ReadLine());
-            Console.ResetColor();
-            Console.WriteLine("");
-            eins.Gesamtmasse = eins.Masse * eins.Menge; //Gesamtgewicht aus Einzelmasse und Menge
-            Console.WriteLine($"Die Gesamtmasse ist {eins.Gesamtmasse/1000} Kilogramm");
-
-            Console.ReadKey();
-        }
-    }
-
-    public class Tools // zur vereinfacherung
-    {
-        public List<string> GewindeSammlung { get; set; }
-
-        public List<string> MaterialSammlung { get; set; }
-
-        public List<string> ArtenSammlung { get; set; }
-
-        public List<string> Schraubenfestigkeit { get; set; }
-        public string Begrüßung { get; set; }
-
-        public List<string> Kopfform { get; set; }
-
-
-
-        public Tools()
-        {
-            Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
-            
-            GewindeSammlung = new List<string>();
-            {
-                GewindeSammlung.Add("M5");
-                GewindeSammlung.Add("M6");
-                GewindeSammlung.Add("M8");
-                GewindeSammlung.Add("M10");
-                GewindeSammlung.Add("M12");
-                GewindeSammlung.Add("M16");
-            }
-
-            MaterialSammlung = new List<string>();
-            {
-                
-                MaterialSammlung.Add("Stahl");
-                MaterialSammlung.Add("Aluminium");
-                MaterialSammlung.Add("Titan");
-                MaterialSammlung.Add("Messing");
-                MaterialSammlung.Add("Bronze");
-                MaterialSammlung.Add("Kupfer");
-            }
-
-            ArtenSammlung = new List<string>();
-            {
-                ArtenSammlung.Add("Metrisch");
-                ArtenSammlung.Add("Metrisch Fein");
-                ArtenSammlung.Add("Zoll");
-            }
-
-            Kopfform = new List<string>();
-            {
-                Kopfform.Add("Sechskant");
-                Kopfform.Add("Zylinderkopf");
-                Kopfform.Add("Senkkopf");
-            }
-
-            Schraubenfestigkeit = new List<string>();
-            {
-                Schraubenfestigkeit.Add("3.6");
-                Schraubenfestigkeit.Add("4.6");
-                Schraubenfestigkeit.Add("4.8");
-                Schraubenfestigkeit.Add("5.8");
-                Schraubenfestigkeit.Add("6.8");
-                Schraubenfestigkeit.Add("8.8");
-                Schraubenfestigkeit.Add("9.8");
-                Schraubenfestigkeit.Add("10.9");
-                Schraubenfestigkeit.Add("12.9");
-            }
-
-
-        }
-
-
-
-        public void Abfrage(string element, string auswahl) // Abfrage von Element und Auswahl 
-        {
-            if (auswahl != "")
-            {
-                Console.WriteLine($"Bitte {element} angeben");
-                Console.WriteLine($"Es stehen {auswahl} zur verfügung");
-            }
-            else
-            {
-                Console.WriteLine($"Bitte {element} angeben");
-            }
-        }
-
-        public void Ausgabe_Gewinde(Schraubendefinition eins)
-        {
-            var zahlen = eins.getDurchmesser();
-            if (eins.Durchmesser != 0 && eins.Art == "Zoll")
-            {
-                Console.WriteLine($"Der Durchmesser ist {zahlen._durchmesser} mm");
-                Console.WriteLine("");
-            }
-
-            else { Console.WriteLine(""); }
-        }
-
-
-    }
-
     public class Schraubendefinition
     {
         Tools tool = new Tools();
@@ -330,14 +60,14 @@ namespace Schrauben
                 {
                     Environment.Exit(0);
                 }
-     
-     
+
+
             }
             else
             {
                 beenden = true;
             }
-     
+
             return beenden;
         }
 
@@ -387,12 +117,12 @@ namespace Schrauben
             {
                 case "Metrisch":
                     {
-                        
-                        tool.Abfrage("Gewindedurchmesser","M1,6 bis M42");
+
+                        tool.Abfrage("Gewindedurchmesser", "M1,6 bis M42");
                         Console.ForegroundColor = ConsoleColor.Green;
                         Gewinde = Console.ReadLine();
                         Console.ResetColor();
-                        
+
                         if (Gewinde == "M1,6")
                         {
                             Durchmesser = 1.6;
@@ -724,7 +454,7 @@ namespace Schrauben
                             spezKerndurchmesser = 32.68;
                             spezKernlochdurchmesser = 33.5;
                         }
-                        
+
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
@@ -734,7 +464,7 @@ namespace Schrauben
 
                         break;
                     }
-              
+
 
 
                 default:
@@ -766,7 +496,7 @@ namespace Schrauben
                             Console.ResetColor();
                             Schlüsselweite = 0;
                         }
-                        else if (Durchmesser==1.6)
+                        else if (Durchmesser == 1.6)
                         {
                             Schlüsselweite = 3.2;
                             Kopfhöhe = 1.1;
@@ -851,7 +581,7 @@ namespace Schrauben
                             Schlüsselweite = 30;
                             Kopfhöhe = 12.5;
                         }
-                        
+
                         else if (Durchmesser == 24)
                         {
                             Schlüsselweite = 36;
@@ -929,7 +659,7 @@ namespace Schrauben
                         {
                             Schlüsselweite = 2.5;
                             Kopfhöhe = 3;
-                        }  
+                        }
                         else if (Durchmesser == 4)
                         {
                             Schlüsselweite = 3;
@@ -1157,5 +887,4 @@ namespace Schrauben
         }
 
     }
-   
 }
