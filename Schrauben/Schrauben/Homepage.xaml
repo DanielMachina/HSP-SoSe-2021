@@ -5,45 +5,235 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Schrauben"
              mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="800">
+             d:DesignHeight="500" 
+             d:DesignWidth="900">
 
 
-    <StackPanel 
-        Orientation="Horizontal" 
-        OpacityMask="#FFFBF3F3" Background="BlanchedAlmond">
-        <Button 
-            Content="Schraubenkonfigurator" 
-            Margin="50,250,20,100" 
-            Width="198" 
-            RenderTransformOrigin="0.654,0.512" 
-            FontSize="16"
-            Click="Button_Konfig">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
-        <Button 
-            Content="Kontakt" 
-            Width="205" 
-            Margin="20,250,20,100" 
-            FontSize="16" 
-            Click="Button_Kontakt">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
-        <Button 
-            Content="Impressum" 
-            Width="200" 
-            Margin="20,250,20,100"  
-            FontSize="16" 
-            Click="Button_Impressum">
-            <Button.Effect>
-                <DropShadowEffect/>
-            </Button.Effect>
-        </Button>
+    <Grid Background="LightSlateGray"  >
+
+        <Label Content="Hallo Welt"
+               Foreground="Black"
+               FontSize="30"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top" 
+               FontWeight="Medium"
+               Margin="20"/>
+
+        <TabControl Margin="20,60,20,20">
+
+            <TabItem Header="Home"
+                     Height="20">
+
+                <Grid Background="BlanchedAlmond">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="22*"/>
+                        <ColumnDefinition Width="405*"/>
+                        <ColumnDefinition Width="427*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Hallo Homepage"
+                           FontSize="24"
+                           HorizontalAlignment="Center" 
+                           Grid.ColumnSpan="2"
+                           VerticalAlignment="Center" Grid.Column="1" Margin="310.128,28,332,27" />
+
+                    <Image x:Name="Schraubenild"
+                           Source="Images/SchraubenBild.png"
+                           HorizontalAlignment="Center" 
+                           Grid.Row="1"
+                           Grid.RowSpan="2" 
+                           Grid.Column="1" 
+                           Margin="54.128,0,76,0"/>
+
+                    <Label Content="Wir verkaufen alles was Sie brauchen!"
+                           Grid.Row="1"
+                           Grid.Column="2"
+                           FontSize="22"
+                           />
+
+                    <Button  Grid.Column="2"
+                             Grid.Row="3"
+                             FontSize="24"
+                             FontWeight="DemiBold" 
+                             Content="Konfig"
+                             Click="Button_Konfig">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" Value="CornflowerBlue" />
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button" >
+                                <Border 
+                                          Height="60"
+                                          Width="150"
+                                          Margin="2.5"
+                                          CornerRadius="30"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                </Grid>
+
+            </TabItem>
 
 
-    </StackPanel>
+            <TabItem Header="Impressum"
+                 Height="20">
+
+                <Grid Background="BlanchedAlmond">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button  Grid.Column="2"
+                             Grid.Row="3"
+                             FontSize="24"
+                             FontWeight="DemiBold" 
+                             Content="Konfig"
+                             Click="Button_Konfig">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" Value="CornflowerBlue" />
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button" >
+                                <Border 
+                                          Height="60"
+                                          Width="150"
+                                          Margin="2.5"
+                                          CornerRadius="30"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+
+
+
+                    <Label Grid.Column="0"
+                           Grid.ColumnSpan="3"
+                           Grid.RowSpan="4"
+                           HorizontalAlignment="Left" 
+                        Content="Impressum&#xA;&#xA;Schraubentechnik GmbH &amp; Co.KG &#xA; Musterweg 1&#xA;26386 Wilhelmshaven&#xA;&#xA;Vertreten Durch: &#xA;Kai Mecke&#xA;Lennart Willms&#xA;Wilko Lühring&#xD;&#xA;Jan Ripken&#xA;&#xA;Registereintrag:&#xA;Eintragung im Handelsregister.&#xA;Registergericht: Amtsgericht Oldenburg&#xA;Registernummer: 123456"  Margin="112,40,0,-14" VerticalAlignment="Top" Height="366" Width="418" ScrollViewer.HorizontalScrollBarVisibility="Hidden" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Hidden" Cursor="Arrow" FontWeight="SemiBold" FontStyle="Oblique" FontStretch="ExtraCondensed" HorizontalContentAlignment="Center" Foreground="Black" />
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Kontakt"
+                 Height="20">
+
+                <Grid Background="BlanchedAlmond">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button  Grid.Column="2"
+                             Grid.Row="3"
+                             FontSize="24"
+                             FontWeight="DemiBold" 
+                             Content="Konfig"
+                             Click="Button_Konfig">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" Value="CornflowerBlue" />
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Blue"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button" >
+                                <Border 
+                                          Height="60"
+                                          Width="150"
+                                          Margin="2.5"
+                                          CornerRadius="30"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                    <Label HorizontalAlignment="Left" 
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Grid.RowSpan="4"
+                           Grid.ColumnSpan="2"
+                           
+                        Content="Kontakt:&#xA;&#xA;&#xA;Daniel Skrypnikov: &#x9;daniel.skrypnikov@student.jade-hs.de&#xA;Marlon Rock:&#x9;&#x9;marlon.rock@student.jade-hs.de&#xA;Marvin Müller:&#x9;&#x9;marvin.mueller@student.jade-hs.de&#xA;Edis Duvnjak: &#x9;&#x9;edis.duvnjak@student.jade-hs.de&#xA;&#xA;&#xA;Öffnungszeiten:&#xA;&#xA;Montag bis Donnerstag:&#x9;8.00 - 12.00 und 13.00 - 17.00 Uhr&#xA;Freitag:&#x9;8.00 - 12.00 und 13.00 - 15.00 Uhr&#xA;Samstag:&#x9;geschlossen&#xA;&#xA;Für alle Fragen Stehen wir Ihnen gerne zur Verfügung!&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;"  Margin="224.026,72,0,-2" VerticalAlignment="Top" Height="322" Width="364" />
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+
 </UserControl>
