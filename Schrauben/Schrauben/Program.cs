@@ -16,14 +16,17 @@ namespace Schrauben
             KonfigGUI HomeGUI = new KonfigGUI();
             GUI SchraubenGUI = new GUI();
 
-            Window Konfig = new Window();
             Window Homepage = new Window();
+            Window Konfig = new Window();
 
             Homepage.Title = "SchraubenGmbH/Homepage";
             Homepage.ResizeMode = ResizeMode.CanMinimize;
             Homepage.Content = HomeGUI;
             Homepage.Width = 900;
             Homepage.Height = 500;
+            Homepage.WindowStyle = WindowStyle.None;
+            Homepage.AllowsTransparency = true;
+            Homepage.Background = Brushes.Transparent;
 
             Konfig.Title = "Schraubenkonfigurator";
             Konfig.ResizeMode = ResizeMode.CanMinimize;
