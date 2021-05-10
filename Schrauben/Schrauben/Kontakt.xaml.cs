@@ -13,23 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Homepage1
+namespace Schrauben
 {
     /// <summary>
     /// Interaktionslogik für Kontakt.xaml
     /// </summary>
-    public partial class Kontakt : Page
+    public partial class KontaktGUI : UserControl
     {
-        public Kontakt()
+        public KontaktGUI()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Kon(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            Application.Current.Windows[0].Close();
+            KonfigGUI home = new KonfigGUI();
+            this.Content = home;
         }
     }
 }

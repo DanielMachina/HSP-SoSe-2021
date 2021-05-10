@@ -41,8 +41,8 @@ namespace Schrauben
 
         private void Button_Kontakt(object sender, RoutedEventArgs e)
         {
-            GUI kontakt = new GUI();
-            this.Content = kontakt;
+            KontaktGUI kon = new KontaktGUI();
+            this.Content = kon;
 
         }
 

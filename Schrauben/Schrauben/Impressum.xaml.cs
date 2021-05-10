@@ -27,7 +27,7 @@ namespace Schrauben
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GUI haus = new GUI();
+            KonfigGUI haus = new KonfigGUI();
             this.Content = haus;
             
         }

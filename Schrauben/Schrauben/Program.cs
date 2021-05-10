@@ -12,10 +12,11 @@ namespace Schrauben
     {
         public Program ()
         {
-            
+
             KonfigGUI HomeGUI = new KonfigGUI();
             GUI SchraubenGUI = new GUI();
             ImpGUI Impressum = new ImpGUI();
+            KontaktGUI Kontakt = new KontaktGUI();
 
             Window Homepage = new Window();
             Window Konfig = new Window();
