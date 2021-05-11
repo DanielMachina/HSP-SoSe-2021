@@ -52,14 +52,14 @@ namespace Schrauben
 
             Homepage.ShowDialog();
             //Konfig.ShowDialog();
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         [STAThread]
         public static void Main()
         {
-            new ExcelControl();
             new MainSchraube();
+            new ExcelControl();
             string antwort;
             Schraubendefinition eins = new Schraubendefinition();
             Tools tool = new Tools();

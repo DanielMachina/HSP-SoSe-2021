@@ -7,12 +7,15 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Schrauben
 {
+    
     public class ExcelControl
     {
-       public ExcelControl()
+       
+        public ExcelControl()
         {
-
+            GUI xaml =new GUI();
             // Objekt erzeugen
+            
             Console.WriteLine("Erzeuge Excel COM Objekt");
             Excel.Application excelApp = new Excel.Application();
             excelApp.Visible = true;
@@ -28,10 +31,11 @@ namespace Schrauben
             Excel._Worksheet mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
 
             // Schreiben in die Datei
-            string Material = "Bronze"; //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
+            //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
+            string Gewinde = "M5";
             string Laenge = "100";
             string Kopf = "Sechskant";
-            string Gewinde = "M12";
+            string Material = "Stahl";
             string Menge = "33";
             string Festigkeit = "10.9";
 
@@ -43,6 +47,7 @@ namespace Schrauben
             mySheet.Cells[14, "B"] = Menge;
             mySheet.Cells[16, "B"] = Festigkeit;
 
+            Console.WriteLine(xaml.durchmesser);
             // Lesen der Datei
             Console.WriteLine("Lese aus der Datei");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;

@@ -15,6 +15,7 @@ namespace Schrauben
         // Eigenschaften
         public double Laenge
         { get; set; }
+
         public string Material
         { get; set; }
         public string Art

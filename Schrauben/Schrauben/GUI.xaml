@@ -198,6 +198,10 @@
             <!--#endregion-->
 
             <!--#region  Mittelgrid-->
+            <StackPanel  Grid.Row="2"
+                  Grid.Column="2"
+                  VerticalAlignment="Center" >
+                
             <Grid Grid.Row="2"
                   Grid.Column="2"
                   VerticalAlignment="Center" >
@@ -213,6 +217,9 @@
                 <!--#endregion-->
                 <!--#region  Eingabe-->
 
+
+                    
+                
                 <StackPanel >
 
                     <StackPanel Orientation="Horizontal" >
@@ -255,12 +262,13 @@
 
 
                             
-                        <ComboBox Height="25"
+                        <ComboBox x:Name="cb_durch" 
+                                  Height="25"
                                   ItemsSource="{Binding GewindeSammlung}"
-                                  SelectedIndex="0"
                                   Margin="2"
                                   MaxDropDownHeight="80"
-                                  SelectionChanged="cb_sel" 
+                                  SelectionChanged="cb_durch_SelectionChanged" 
+                                  
                                   />
 
 
@@ -344,30 +352,75 @@
 
 
                     <StackPanel Orientation="Horizontal">
-                        
+
                         <Label Content="Drehsinn"
                            FontSize="14"
                            HorizontalContentAlignment="Right"
                            Margin="5"/>
 
                         <StackPanel>
-                            
+
                             <RadioButton GroupName="Drehsinn"
                                  Content=" Links"
                                  Margin="40,5,0,0"/>
                             <RadioButton GroupName="Drehsinn"
                                  Content="Rechts"
                                          Margin="40,0"/>
-                            
+
                         </StackPanel>
 
                     </StackPanel>
 
+                    
                 </StackPanel>
+
                 <!--#endregion-->
 
 
             </Grid>
+
+                <Button Content="Berechnen" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        x:Name="btn_berechnen"
+                        Click="btn_berechnen_Click" >
+           
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="DarkGray" />
+                                <Setter Property="Cursor" Value="Hand"/>
+
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Gray" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button" >
+                                <Border 
+                                Height="20"
+                                    Width="200"
+                                Margin="2.5"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    
+                    
+
+
+                    </Button>
+                
+            </StackPanel>
+
             <!--#endregion-->
 
             <!--#region Ausgabe-->

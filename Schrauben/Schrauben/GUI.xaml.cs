@@ -20,15 +20,21 @@ namespace Schrauben
     /// </summary>
     public partial class GUI : UserControl
     {
-      
+
+        
 
         public GUI()
         {
             DataContext = new GUItools();
             InitializeComponent();
+            
         }
 
-        public WindowState WindowState { get; private set; }
+
+
+    
+
+    public WindowState WindowState { get; private set; }
 
         private void _minimize_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +53,23 @@ namespace Schrauben
 
         }
 
-        private void cb_sel(object sender, SelectionChangedEventArgs e)
+        public string durchmesser = "Hallo Welt";
+
+        private void btn_berechnen_Click(object sender, RoutedEventArgs e)
+
+        {
+            durchmesser = cb_durch.Text;
+            Console.WriteLine(durchmesser);
+            new ExcelControl();
+        }
+
+        private void cb_durch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
         }
+
+
     }
+
+
 }
