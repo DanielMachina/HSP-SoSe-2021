@@ -64,12 +64,12 @@
 
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Background" Value="LightBlue"/>
                             <Setter Property="Cursor" Value="Hand"/>
 
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Green" />
+                                    <Setter Property="Background" Value="#FF7FC5FF" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -94,18 +94,18 @@
                 <Button x:Name="_minimize"
                         Grid.Column="6"
                         Grid.Row="0"
-                        Content="minimize"
+                        Content="Minimize"
                         Click="_minimize_Click" 
                         HorizontalAlignment="Right" >
 
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Background" Value="LightBlue"/>
                             <Setter Property="Cursor" Value="Hand"/>
 
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Green"/>
+                                    <Setter Property="Background" Value="#FF7FC5FF"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -130,17 +130,17 @@
                 <Button x:Name="Zurück"
                         Grid.Column="0"
                         Grid.Row="0"
-                        Content="Zurück"
+                        Content="Back"
                         Click="Zurück_Click"   >
 
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="Background" Value="LightBlue"/>
                             <Setter Property="Cursor" Value="Hand"/>
 
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="Green" />
+                                    <Setter Property="Background" Value="#FF7FC5FF" />
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -200,7 +200,10 @@
             <!--#region  Mittelgrid-->
             <StackPanel  Grid.Row="1"
                   Grid.Column="1"
-                  VerticalAlignment="Center" Height="222" Margin="0,56,0,172" Grid.RowSpan="3" >
+                  VerticalAlignment="Center" 
+                  Margin="0,53,0,75" 
+                  Grid.RowSpan="3" 
+                  Height="322" >
 
                 <Grid Grid.Row="2"
                   Grid.Column="2"
@@ -226,13 +229,13 @@
 
                             <Label Content="Material:"
                                FontSize="14"
-                               Margin="5" 
+                               Margin="0,5,5,5" 
                                HorizontalAlignment="Left" />
 
                             <ComboBox Height="25"
                                   ItemsSource="{Binding MaterialSammlung}"
                                   SelectedIndex="0"
-                                  Margin="31,0"
+                                  Margin="36,0,31,0"
                                   HorizontalAlignment="Right" 
                                   />
 
@@ -258,16 +261,17 @@
 
                             <Label Content="Durchmesser:"
                            FontSize="14"
-                           Margin="5"/>
+                           Margin="0,5,5,5"/>
 
 
 
                             <ComboBox x:Name="cb_durch" 
                                   Height="25"
                                   ItemsSource="{Binding GewindeSammlung}"
-                                  Margin="2"
+                                  Margin="7,2,2,2"
                                   MaxDropDownHeight="80"
-                                  SelectionChanged="cb_durch_SelectionChanged" 
+                                  SelectionChanged="cb_durch_SelectionChanged"
+                                  SelectedIndex="0"
                                   
                                   />
 
@@ -296,7 +300,7 @@
                         <StackPanel Orientation="Horizontal" >
 
                             <Label Content="Schraubenlänge:"
-                           Margin="5"
+                           Margin="0,5,5,5"
                            HorizontalContentAlignment="Right"
                            FontSize="14"/>
 
@@ -305,7 +309,7 @@
                              Height="25"
                              Grid.Column="0"
                              Grid.Row="1"
-                             Margin="5"
+                             Margin="10,5,5,5"
                              HorizontalContentAlignment="Center" 
                              VerticalContentAlignment="Center"
                              HorizontalAlignment="Left" />
@@ -324,7 +328,7 @@
                                  Height="25"
                                  Grid.Column="1"
                                  Grid.Row="1"
-                                 Margin="23,0"
+                                 Margin="26,0,23,0"
                                  HorizontalContentAlignment="Center" 
                                  VerticalContentAlignment="Center"
                                  HorizontalAlignment="Left"/>
@@ -335,7 +339,7 @@
                         <StackPanel Orientation="Horizontal" >
 
                             <Label Content="Kopfform:"
-                           Margin="5"
+                           Margin="0,5,5,5"
                            HorizontalContentAlignment="Right"
                            FontSize ="14"/>
 
@@ -344,7 +348,7 @@
                           Grid.Column="2"
                           Grid.Row="2"
                           ItemsSource="{Binding Kopfform}"
-                          Margin="43,0"
+                          Margin="51,0,43,0"
                                   SelectedIndex="0"/>
 
 
@@ -353,19 +357,19 @@
 
                         <StackPanel Orientation="Horizontal">
 
-                            <Label Content="Drehsinn"
+                            <Label Content="Drehsinn:"
                            FontSize="14"
                            HorizontalContentAlignment="Right"
-                           Margin="5"/>
+                           Margin="0,3,5,5"/>
 
                             <StackPanel>
 
                                 <RadioButton GroupName="Drehsinn"
                                  Content=" Links"
-                                 Margin="40,5,0,0"/>
+                                 Margin="55,3,0,0"/>
                                 <RadioButton GroupName="Drehsinn"
                                  Content="Rechts"
-                                         Margin="40,0"/>
+                                         Margin="55,0,40,0"/>
 
                             </StackPanel>
 
@@ -384,7 +388,7 @@
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
                         x:Name="btn_berechnen"
-                        Click="btn_berechnen_Click" >
+                        Click="btn_berechnen_Click" Margin="0,60,0,10" >
 
 
                     <Button.Style>
@@ -403,8 +407,8 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button" >
                             <Border 
-                                Height="20"
-                                    Width="200"
+                                Height="25"
+                                    Width="250"
                                 Margin="2.5"
                                 CornerRadius="12"
                                 Background="{TemplateBinding Background}">
@@ -423,7 +427,7 @@
                         FontSize="12"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
-                        x:Name="btn_drucken">
+                        x:Name="btn_drucken" Margin="0,0,0,10">
 
 
 
@@ -443,8 +447,8 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button" >
                             <Border 
-                                Height="20"
-                                    Width="200"
+                                Height="25"
+                                    Width="250"
                                 Margin="2.5"
                                 CornerRadius="12"
                                 Background="{TemplateBinding Background}">
@@ -484,8 +488,8 @@
                     <Button.Template>
                         <ControlTemplate TargetType="Button" >
                             <Border 
-                                Height="20"
-                                    Width="200"
+                                Height="25"
+                                    Width="250"
                                 Margin="2.5"
                                 CornerRadius="12"
                                 Background="{TemplateBinding Background}">
