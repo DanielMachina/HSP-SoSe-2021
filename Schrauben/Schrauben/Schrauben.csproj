@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Schraubenzeichnung.png" />
+    <Content Include="Images\Sechskantkopf.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SchraubenBild.png" />
