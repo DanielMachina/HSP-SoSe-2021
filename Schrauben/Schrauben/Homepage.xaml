@@ -56,8 +56,12 @@
                            Grid.Column="0" 
                            Width="268"/>
 
-                    <Label Content="Willkommen in unsere Welt der Verbindungs- &#xD;&#xA;und Befestigungstechnik in höchster Qualität!"
+                    <Label Content="Willkommen in der Welt der Verbindungs-
+                           &#xD;&#xA;und Befestigungstechnik in höchster Qualität!
+                           &#xD;&#xA;Wir haben ein paar Schrauben locker!"
+                           
                            Grid.Row="1"
+                           Grid.RowSpan="2"
                            Grid.Column="1"
                            Grid.ColumnSpan="2"
                            FontSize="24" 
