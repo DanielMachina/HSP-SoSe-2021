@@ -382,6 +382,7 @@
                 <Button Content="Berechnen" 
                         FontSize="12"
                         FontWeight="Bold"
+                        HorizontalAlignment="Center"
                         x:Name="btn_berechnen"
                         Click="btn_berechnen_Click" >
 
@@ -421,6 +422,7 @@
                 <Button Content="Drucken" 
                         FontSize="12"
                         FontWeight="Bold"
+                        HorizontalAlignment="Center"
                         x:Name="btn_drucken">
 
 
@@ -460,6 +462,7 @@
                 <Button Content="An CAD übertragen" 
                         FontSize="12"
                         FontWeight="Bold"
+                        HorizontalAlignment="Center"
                         x:Name="btn_cad">
 
 
@@ -515,60 +518,175 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <StackPanel>
+                <StackPanel 
+                    HorizontalAlignment="Left">
 
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Ausgabe 1"
+                        <Label Content="Durchmesser:"
                                Margin="10,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
-
-                        <TextBox Text="Ausgabe 1"
+                        <TextBox Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
-                                 FontSize="14"/>
+                                 FontSize="14" 
+                                 Margin="54,0"
+                                 
+                                 />
 
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="Ausgabe 2"
+                        <Label Content="Steigung:"
                                Margin="10,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="Ausgabe 2"
+                        <TextBox Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
-                                 FontSize="14"/>
+                                 FontSize="14"
+                                 Margin="79,0"/>
 
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="Ausgabe 3"
+                        <Label Content="Flankendurchmesser:"
                                Margin="10,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="Ausgabe 3"
+                        <TextBox Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
-                                 FontSize="14"/>
+                                 FontSize="14"
+                                 Margin="8,0"/>
 
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" >
-                        <Label Content="Ausgabe 4"
+                        <Label Content="Kerndurchmesser:"
                                Margin="10,0"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="Ausgabe 4"
+                        <TextBox Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
+                                 FontSize="14"
+                                 Margin="27,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Kernlochdurchmesser:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Right"
+                                 FontSize="14"
+                                 Margin="0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Gesamtmasse:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Right"
+                                 FontSize="14"
+                                 Margin="48,0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel 
+                    Margin="0,0,0,0" 
+                    HorizontalAlignment="Right">
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Schlüsselweite:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 FontSize="14"
+                                 Margin="66,0,0,0"
+                                 />
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Streckgrenze:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 FontSize="14"
+                                 Margin="75,0,0,0"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Zugfestigkeit:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 FontSize="14"
+                                 Margin="73,0,0,0"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Preis in Euro:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 FontSize="14"
+                                 Margin="77,0,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Flächenträgheitsmoment:"
+                               Margin="10,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"/>
+
+                        <TextBox Text="XY"
+                                 Foreground="Black"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Right"
                                  FontSize="14"/>
 
                     </StackPanel>
