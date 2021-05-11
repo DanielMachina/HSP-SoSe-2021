@@ -48,7 +48,7 @@ namespace Schrauben
             mySheet.Cells[14, "B"] = Menge;
             mySheet.Cells[16, "B"] = Festigkeit;
 
-            Console.WriteLine(Durch);
+            Console.WriteLine("Durch");
             // Lesen der Datei
             Console.WriteLine("Lese aus der Datei");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
