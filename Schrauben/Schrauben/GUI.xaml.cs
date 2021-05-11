@@ -27,7 +27,6 @@ namespace Schrauben
         {
             DataContext = new GUItools();
             InitializeComponent();
-            
         }
 
 
@@ -52,8 +51,7 @@ namespace Schrauben
             this.Content = home;
 
         }
-
-        public string durchmesser = "Hallo Welt";
+        public string durchmesser;
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
@@ -61,6 +59,8 @@ namespace Schrauben
             durchmesser = cb_durch.Text;
             Console.WriteLine(durchmesser);
             new ExcelControl();
+            
+            
         }
 
         private void cb_durch_SelectionChanged(object sender, SelectionChangedEventArgs e)

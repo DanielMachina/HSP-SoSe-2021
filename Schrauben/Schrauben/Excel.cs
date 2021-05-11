@@ -10,10 +10,11 @@ namespace Schrauben
     
     public class ExcelControl
     {
-       
+
+
         public ExcelControl()
         {
-            GUI xaml =new GUI();
+            
             // Objekt erzeugen
             
             Console.WriteLine("Erzeuge Excel COM Objekt");
@@ -47,7 +48,7 @@ namespace Schrauben
             mySheet.Cells[14, "B"] = Menge;
             mySheet.Cells[16, "B"] = Festigkeit;
 
-            Console.WriteLine(xaml.durchmesser);
+            Console.WriteLine(Durch);
             // Lesen der Datei
             Console.WriteLine("Lese aus der Datei");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
