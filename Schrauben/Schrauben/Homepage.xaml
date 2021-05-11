@@ -27,9 +27,10 @@
                 <Grid Background="BlanchedAlmond">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="6*" />
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="19*" />
+                        <ColumnDefinition Width="19*" />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -41,20 +42,19 @@
 
                     <Label Content="Hallo, wir sind Team-H "
                            FontSize="24"
-                           HorizontalAlignment="Center" 
-                           Grid.ColumnSpan="3"
+                           HorizontalAlignment="Center"
                            VerticalAlignment="Center" 
-                           Grid.Column="0" 
-                           Height="45" 
-                           Width="270" />
+                           Grid.Column="2" 
+                           Height="46" 
+                           Width="270" Margin="7,26,8,26" />
 
                     <Image x:Name="Schraubenild"
-                           Source="Images/Logo.jpeg"
+                           Source="Images/Schraubenlogo.png"
                            HorizontalAlignment="Center" 
                            Grid.Row="1"
                            Grid.RowSpan="2" 
                            Grid.Column="0" 
-                           Width="268"/>
+                           Width="268" Grid.ColumnSpan="2" Margin="8,0,9,0"/>
 
                     <Label Content="Willkommen in der Welt der Verbindungs-
                            &#xD;&#xA;und Befestigungstechnik in höchster Qualität!
@@ -62,19 +62,19 @@
                            
                            Grid.Row="1"
                            Grid.RowSpan="2"
-                           Grid.Column="1"
+                           Grid.Column="2"
                            Grid.ColumnSpan="2"
                            FontSize="24" 
                            FontStyle="Italic" 
-                           FontFamily="Calibri"
+                           FontFamily="Calibri" Margin="0,0,-0.5,0"
                            />
 
-                    <Button  Grid.Column="2"
+                    <Button  Grid.Column="3"
                              Grid.Row="3"
                              FontSize="24"
                              FontWeight="DemiBold" 
                              Content="Konfig"
-                             Click="Button_Konfig">
+                             Click="Button_Konfig" Margin="0,0,0.5,0">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Cursor" Value="Hand"/>
@@ -116,9 +116,9 @@
 
                 <Grid Background="BlanchedAlmond">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="142*"/>
-                        <ColumnDefinition Width="285*"/>
-                        <ColumnDefinition Width="427*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
@@ -184,6 +184,7 @@
 
                 <Grid Background="BlanchedAlmond">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>

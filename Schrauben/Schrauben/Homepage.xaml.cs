@@ -32,19 +32,5 @@ namespace Schrauben
             
         }
 
-        private void Button_Impressum(object sender, RoutedEventArgs e)
-        {
-            ImpGUI impressum = new ImpGUI();
-            this.Content = impressum;
-
-        }
-
-        private void Button_Kontakt(object sender, RoutedEventArgs e)
-        {
-            KontaktGUI kon = new KontaktGUI();
-            this.Content = kon;
-
-        }
-
     }
 }

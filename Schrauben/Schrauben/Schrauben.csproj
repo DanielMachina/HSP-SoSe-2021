@@ -53,12 +53,6 @@
     <Compile Include="GUItools.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Materialos.cs" />
-    <Compile Include="Impressum.xaml.cs">
-      <DependentUpon>Impressum.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Kontakt.xaml.cs">
-      <DependentUpon>Kontakt.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainSchraube.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI.xaml.cs">
@@ -85,18 +79,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Impressum.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Kontakt.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\Logo.jpeg" />
+    <Resource Include="Images\Logo.jpeg" />
+    <Resource Include="Images\Schraubenlogo.png" />
     <Content Include="Images\Schraubenzeichnung.png" />
+    <Content Include="Schraubenlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SchraubenBild.png" />

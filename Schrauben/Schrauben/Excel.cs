@@ -33,12 +33,18 @@ namespace Schrauben
 
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
-            string Gewinde = "M5";
-            string Laenge = "100";
-            string Kopf = "Sechskant";
-            string Material = "Stahl";
-            string Menge = "33";
-            string Festigkeit = "10.9";
+            Console.WriteLine("Gewinde:");
+            string Gewinde = Console.ReadLine();
+            Console.WriteLine("Länge");
+            string Laenge = Console.ReadLine();
+            Console.WriteLine("Kopf");
+            string Kopf = Console.ReadLine();
+            Console.WriteLine("Material");
+            string Material = Console.ReadLine();
+            Console.WriteLine("Menge");
+            string Menge = Console.ReadLine();
+            Console.WriteLine("Festigkeit");
+            string Festigkeit = Console.ReadLine();
 
             Console.WriteLine("Schreibe in die Datei");
             mySheet.Cells[8, "B"] = Material;
