@@ -49,7 +49,7 @@
                            Width="270" />
 
                     <Image x:Name="Schraubenild"
-                           Source="Images/Sechskantkopf.jpg"
+                           Source="Images/Logo.jpeg"
                            HorizontalAlignment="Center" 
                            Grid.Row="1"
                            Grid.RowSpan="2" 

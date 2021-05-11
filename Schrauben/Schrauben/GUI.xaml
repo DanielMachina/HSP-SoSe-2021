@@ -192,7 +192,7 @@
                 <Image x:Name="Schraube" 
                        Source="Images/SchraubenBild.png"
                        Height="140"
-                       Width="360"/>
+                       Width="360" Margin="46,-12,44,62"/>
 
             </Grid>
             <!--#endregion-->
