@@ -28,6 +28,7 @@ namespace Schrauben
             Homepage.WindowStyle = WindowStyle.None;
             Homepage.AllowsTransparency = true;
             Homepage.Background = Brushes.Transparent;
+            Homepage.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
 
             Konfig.Title = "Schraubenkonfigurator";
@@ -38,6 +39,7 @@ namespace Schrauben
             Konfig.Background = Brushes.Transparent;
             Konfig.Width = 900;
             Konfig.Height = 500;
+            Konfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             Homepage.ShowDialog();
             //Konfig.ShowDialog();

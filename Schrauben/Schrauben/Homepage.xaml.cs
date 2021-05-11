@@ -32,5 +32,24 @@ namespace Schrauben
             
         }
 
+        public WindowState WindowState { get; private set; }
+        private void _minimize_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = Window.GetWindow(this);
+            window.WindowState = WindowState.Minimized;
+        }
+
+        private void _exit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void Zurück_Click(object sender, RoutedEventArgs e)
+        {
+            KonfigGUI home = new KonfigGUI();
+            this.Content = home;
+
+        }
+
     }
 }

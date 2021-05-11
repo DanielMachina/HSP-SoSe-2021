@@ -9,8 +9,8 @@ namespace Schrauben
     class GUItools
     {
         
-        public List<string> MetrischSammlung { get; set; }
-        public List<string> FeinMetrischSammlung { get; set; }
+        public List<string> MetrischSammlung { get; set; } //für sprint 3
+        public List<string> FeinMetrischSammlung { get; set; } // für sprint 3
         public List<string> ZollSammlung { get; set; }
         public List<string> GewindeSammlung { get; set; }
 
@@ -19,7 +19,6 @@ namespace Schrauben
         public List<string> ArtenSammlung { get; set; }
 
         public List<string> Schraubenfestigkeit { get; set; }
-        public string Begrüßung { get; set; }
 
 
 
@@ -29,7 +28,6 @@ namespace Schrauben
 
         public GUItools()
         {
-            Begrüßung = "Hallo, das ist unser Schraubenkonfigurator";
 
 
             GewindeSammlung = new List<string>();
@@ -50,17 +48,18 @@ namespace Schrauben
                 GewindeSammlung.Add("M30");
                 GewindeSammlung.Add("M36");
                 GewindeSammlung.Add("M42");
+                GewindeSammlung.Add("");
             }
 
             MaterialSammlung = new List<string>();
             {
-
                 MaterialSammlung.Add("Stahl");
                 MaterialSammlung.Add("Aluminium");
                 MaterialSammlung.Add("Titan");
                 MaterialSammlung.Add("Messing");
                 MaterialSammlung.Add("Bronze");
                 MaterialSammlung.Add("Kupfer");
+                MaterialSammlung.Add("");
             }
 
             ArtenSammlung = new List<string>();
@@ -68,6 +67,7 @@ namespace Schrauben
                 ArtenSammlung.Add("Metrisch");
                 ArtenSammlung.Add("Metrisch Fein");
                 ArtenSammlung.Add("Zoll");
+                ArtenSammlung.Add("");
             }
 
             Kopfform = new List<string>();
@@ -75,6 +75,7 @@ namespace Schrauben
                 Kopfform.Add("Sechskant");
                 Kopfform.Add("Zylinderkopf");
                 Kopfform.Add("Senkkopf");
+                Kopfform.Add("");
             }
 
             Schraubenfestigkeit = new List<string>();
@@ -88,6 +89,7 @@ namespace Schrauben
                 Schraubenfestigkeit.Add("9.8");
                 Schraubenfestigkeit.Add("10.9");
                 Schraubenfestigkeit.Add("12.9");
+                Schraubenfestigkeit.Add("");
             }
         }
 

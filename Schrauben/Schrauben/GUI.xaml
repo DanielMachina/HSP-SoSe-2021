@@ -40,7 +40,6 @@
             <!--#region  Griddefoben-->
             <Grid Grid.Row="0"
                   Height="40"
-                  VerticalAlignment="Top" 
                   Grid.ColumnSpan ="2">
 
                 <Grid.ColumnDefinitions>
@@ -55,6 +54,20 @@
 
                 </Grid.ColumnDefinitions>
                 <!--#endregion-->
+
+                <Grid Grid.Row="0"
+                      Grid.Column="0">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="Images/Schraubenlogo.png"/>
+
+                </Grid>
                 <!--#region  Button Exit-->
                 <Button x:Name="_exit"
                         Grid.Column="7"
@@ -130,7 +143,7 @@
                 <Button x:Name="Zurück"
                         Grid.Column="0"
                         Grid.Row="0"
-                        Content="Back"
+                        Content="Home"
                         Click="Zurück_Click"   >
 
                     <Button.Style>
@@ -170,16 +183,28 @@
             <!--#region  Einleitung-->
             <Grid   Grid.ColumnSpan="2"
                     Background="Transparent"
-                    Margin="10"
-                    Grid.Row="1"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    VerticalAlignment="Top"
+                    Width="500"
+                    Margin="15"
                     >
-                <Label Content="{Binding Begrüßung}"
-                       Foreground="Black"
+                <Label Tag="Schraubenkonfigurator"
+                       Foreground="#FF5F5349"
                        HorizontalContentAlignment="Center"
-                       FontSize="28"
-                       FontFamily ="Baskerville Old Face"
+                       FontSize="36"
+                       FontFamily ="Bookman Old Style"
                        FontWeight="Medium"
-                       />
+                       Width="500"
+                       >
+                    
+                    <TextBlock TextDecorations="Underline" 
+                               Text="{Binding Path=Tag,
+                                     RelativeSource={RelativeSource 
+                                     Mode=FindAncestor,
+                                     AncestorType={x:Type Label}}}" />
+
+                </Label>
 
             </Grid>
             <!--#endregion-->
@@ -210,10 +235,9 @@
             <!--#region  Mittelgrid-->
             <StackPanel  Grid.Row="1"
                   Grid.Column="1"
-                  VerticalAlignment="Center" 
-                  Margin="0,53,0,75" 
+                  VerticalAlignment="Center"  
                   Grid.RowSpan="3" 
-                  Height="322" >
+                   >
 
                 <Grid Grid.Row="2"
                   Grid.Column="2"
@@ -247,7 +271,7 @@
                                   SelectedIndex="0"
                                   Margin="36,0,31,0"
                                   HorizontalAlignment="Right" 
-                                  />
+                                  x:Name="cb_material"/>
 
                         </StackPanel>
 
@@ -258,7 +282,7 @@
                                HorizontalContentAlignment="Right"
                                HorizontalAlignment="Left" />
 
-                            <ComboBox x:Name="cb_schrau"  Height="25"
+                            <ComboBox x:Name="cb_schraubenart"  Height="25"
                                   ItemsSource="{Binding ArtenSammlung}"
                                   SelectedIndex="0"
                                   Margin="10,0" 
@@ -275,7 +299,7 @@
 
 
 
-                            <ComboBox x:Name="cb_durch" 
+                            <ComboBox x:Name="cb_durchmesser" 
                                   Height="25"
                                   ItemsSource="{Binding GewindeSammlung}"
                                   Margin="7,2,2,2"
@@ -298,7 +322,8 @@
                             <ComboBox Height="25"
                               ItemsSource="{Binding Schraubenfestigkeit}"
                               SelectedIndex="0"
-                              Margin="33,0"/>
+                              Margin="33,0"
+                                      x:Name="cb_festigkeit"/>
 
                         </StackPanel>
 
@@ -314,15 +339,17 @@
                            HorizontalContentAlignment="Right"
                            FontSize="14"/>
 
-                            <TextBox x:Name="txtbx_Schraubenlänge" 
-                             Width="50"
-                             Height="25"
-                             Grid.Column="0"
-                             Grid.Row="1"
-                             Margin="10,5,5,5"
-                             HorizontalContentAlignment="Center" 
-                             VerticalContentAlignment="Center"
-                             HorizontalAlignment="Left" />
+                            <TextBox x:Name="tbx_schraubenlänge" 
+                                     Width="50"
+                                     Height="25"
+                                     Grid.Column="0"
+                                     Grid.Row="1"
+                                     Margin="10,5,5,5"
+                                     HorizontalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Left" 
+                                     SelectionChanged="tbx_schraubenlänge_SelectionChanged"
+                                     />
 
 
                         </StackPanel>
@@ -333,15 +360,17 @@
                                HorizontalContentAlignment="Right"
                                FontSize ="14"/>
 
-                            <TextBox x:Name="txtbx_Gewindelänge"
-                                 Width="50"
-                                 Height="25"
-                                 Grid.Column="1"
-                                 Grid.Row="1"
-                                 Margin="26,0,23,0"
-                                 HorizontalContentAlignment="Center" 
-                                 VerticalContentAlignment="Center"
-                                 HorizontalAlignment="Left"/>
+                            <TextBox x:Name="tbx_gewindelänge"
+                                     Width="50"
+                                     Height="25"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     Margin="26,0,23,0"
+                                     HorizontalContentAlignment="Center" 
+                                     VerticalContentAlignment="Center"
+                                     HorizontalAlignment="Left"
+                                     SelectionChanged="tbx_gewindelänge_SelectionChanged"
+                                     />
 
 
                         </StackPanel>
@@ -353,13 +382,14 @@
                            HorizontalContentAlignment="Right"
                            FontSize ="14"/>
 
-                            <ComboBox x:Name="cb_Kopfform" 
+                            <ComboBox x:Name="cb_kopfform" 
                                       Height="25"
                                       Grid.Column="2"
                                       Grid.Row="2"
                                       ItemsSource="{Binding Kopfform}"
                                       Margin="51,0,43,0"
                                       SelectedIndex="0"
+                                      SelectionChanged="cb_kopfform_SelectionChanged"
                                       />
 
 
@@ -376,11 +406,11 @@
                             <StackPanel>
 
                                 <RadioButton GroupName="Drehsinn"
-                                 Content=" Links"
-                                 Margin="55,3,0,0"/>
+                                             Content=" Links"
+                                             Margin="55,3,0,0"/>
                                 <RadioButton GroupName="Drehsinn"
-                                 Content="Rechts"
-                                         Margin="55,0,40,0"/>
+                                             Content="Rechts"
+                                             Margin="55,0,40,0"/>
 
                             </StackPanel>
 
@@ -434,6 +464,50 @@
 
 
                 </Button>
+
+                <Button Content="Clear" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        x:Name="btn_clear"
+                        Margin="0,0,0,10"
+                        Click="btn_clear_Click">
+
+
+
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="DarkGray" />
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button" >
+                            <Border 
+                                Height="25"
+                                    Width="250"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+
+
+                </Button>
+
                 <Button Content="Drucken" 
                         FontSize="12"
                         FontWeight="Bold"
@@ -501,7 +575,6 @@
                             <Border 
                                 Height="25"
                                     Width="250"
-                                Margin="2.5"
                                 CornerRadius="12"
                                 Background="{TemplateBinding Background}">
 
@@ -515,6 +588,11 @@
 
 
                 </Button>
+
+
+
+
+
 
             </StackPanel>
 
@@ -542,13 +620,15 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14" 
                                  Margin="54,0"
                                  
                                  />
+
+                        
 
                     </StackPanel>
 
@@ -559,7 +639,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -574,7 +654,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -589,7 +669,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -603,7 +683,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
@@ -618,7 +698,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
@@ -638,7 +718,7 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                FontSize="14"/>
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -654,7 +734,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -669,7 +749,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -684,7 +764,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
@@ -698,7 +778,7 @@
                                HorizontalAlignment="Left"
                                FontSize="14"/>
 
-                        <TextBox Text="XY"
+                        <TextBlock Text="XY"
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
@@ -707,9 +787,18 @@
                     </StackPanel>
 
                 </StackPanel>
+
+
             </Grid>
             <!--#endregion-->
 
+            <Rectangle Width="3"
+                       Height="180"
+                       Grid.Row="3" 
+                       Fill="Black"
+                       Margin="50,0,0,0"
+                       RadiusY ="2"
+                       RadiusX="2"/>
         </Grid>
 
 
