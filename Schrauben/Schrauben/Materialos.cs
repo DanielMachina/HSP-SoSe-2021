@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Schrauben
 {
-    class Material
+    class Materialos
     {
         //Eigenschaften von Material 
 
@@ -14,7 +14,7 @@ namespace Schrauben
     //Preis pro Kilo
     //Streckgrenze
     //Festigkeitsklassen (Könnte methode sein) --> getFestigkeit()
-        public Material()
+        public Materialos()
         {
 
         }

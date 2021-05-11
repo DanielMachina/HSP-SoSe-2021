@@ -47,11 +47,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatasSpeicher.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="Schraubendefinition.cs" />
     <Compile Include="GUItools.cs" />
     <Compile Include="Tools.cs" />
-    <Compile Include="Material.cs" />
+    <Compile Include="Materialos.cs" />
     <Compile Include="Impressum.xaml.cs">
       <DependentUpon>Impressum.xaml</DependentUpon>
     </Compile>

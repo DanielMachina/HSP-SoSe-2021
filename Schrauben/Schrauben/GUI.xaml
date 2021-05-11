@@ -88,7 +88,7 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
-                    
+
                 </Button>
 
                 <Button x:Name="_minimize"
@@ -97,12 +97,12 @@
                         Content="minimize"
                         Click="_minimize_Click" 
                         HorizontalAlignment="Right" >
-                    
+
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Red"/>
                             <Setter Property="Cursor" Value="Hand"/>
-                            
+
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="Green"/>
@@ -124,7 +124,7 @@
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
-                    
+
                 </Button>
 
                 <Button x:Name="Zurück"
@@ -162,8 +162,8 @@
 
                 </Button>
             </Grid>
-            
-            
+
+
             <!--#endregion-->
             <!--#endregion-->
 
@@ -198,101 +198,109 @@
             <!--#endregion-->
 
             <!--#region  Mittelgrid-->
-            <Grid Grid.Row="2"
+            <StackPanel  Grid.Row="1"
+                  Grid.Column="1"
+                  VerticalAlignment="Center" Height="222" Margin="0,56,0,172" Grid.RowSpan="3" >
+
+                <Grid Grid.Row="2"
                   Grid.Column="2"
                   VerticalAlignment="Center" >
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <!--#endregion-->
-                <!--#region  Eingabe-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--#endregion-->
+                    <!--#region  Eingabe-->
 
-                <StackPanel >
 
-                    <StackPanel Orientation="Horizontal" >
 
-                        <Label Content="Material:"
+
+                    <StackPanel >
+
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Label Content="Material:"
                                FontSize="14"
                                Margin="5" 
                                HorizontalAlignment="Left" />
-                        
-                        <ComboBox Height="25"
+
+                            <ComboBox Height="25"
                                   ItemsSource="{Binding MaterialSammlung}"
                                   SelectedIndex="0"
                                   Margin="31,0"
                                   HorizontalAlignment="Right" 
                                   />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal">
-                        
-                        <Label Content="Schraubenart:"
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label Content="Schraubenart:"
                            FontSize=" 14"
                                HorizontalContentAlignment="Right"
                                HorizontalAlignment="Left" />
 
-                        <ComboBox x:Name="cb_schrau"  Height="25"
+                            <ComboBox x:Name="cb_schrau"  Height="25"
                                   ItemsSource="{Binding ArtenSammlung}"
                                   SelectedIndex="0"
                                   Margin="10,0" 
                                   />
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" 
+                        <StackPanel Orientation="Horizontal" 
                                 >
-                        
-                        <Label Content="Durchmesser:"
+
+                            <Label Content="Durchmesser:"
                            FontSize="14"
                            Margin="5"/>
 
 
-                            
-                        <ComboBox Height="25"
+
+                            <ComboBox x:Name="cb_durch" 
+                                  Height="25"
                                   ItemsSource="{Binding GewindeSammlung}"
-                                  SelectedIndex="0"
                                   Margin="2"
                                   MaxDropDownHeight="80"
-                                  SelectionChanged="cb_sel" 
+                                  SelectionChanged="cb_durch_SelectionChanged" 
+                                  
                                   />
 
 
 
-                    </StackPanel>
+                        </StackPanel>
 
 
-                    <StackPanel Orientation="Horizontal" >
-                        
-                        <Label Content="Festigkeit:"
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Label Content="Festigkeit:"
                            FontSize="14"/>
 
-                        <ComboBox Height="25"
+                            <ComboBox Height="25"
                               ItemsSource="{Binding Schraubenfestigkeit}"
                               SelectedIndex="0"
                               Margin="33,0"/>
 
+                        </StackPanel>
+
                     </StackPanel>
 
-                </StackPanel>
 
+                    <StackPanel Grid.Column="2">
 
-                <StackPanel Grid.Column="2">
+                        <StackPanel Orientation="Horizontal" >
 
-                    <StackPanel Orientation="Horizontal" >
-
-                        <Label Content="Schraubenänge:"
+                            <Label Content="Schraubenänge:"
                            Margin="5"
                            HorizontalContentAlignment="Right"
                            FontSize="14"/>
 
-                        <TextBox x:Name="txtbx_Schraubenlänge" 
+                            <TextBox x:Name="txtbx_Schraubenlänge" 
                              Width="50"
                              Height="25"
                              Grid.Column="0"
@@ -303,15 +311,15 @@
                              HorizontalAlignment="Left" />
 
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Horizontal" >
 
-                        <Label Content="Gewindelänge:"
+                            <Label Content="Gewindelänge:"
                                HorizontalContentAlignment="Right"
                                FontSize ="14"/>
 
-                        <TextBox x:Name="txtbx_Gewindelänge"
+                            <TextBox x:Name="txtbx_Gewindelänge"
                                  Width="50"
                                  Height="25"
                                  Grid.Column="1"
@@ -322,16 +330,16 @@
                                  HorizontalAlignment="Left"/>
 
 
-                    </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Horizontal" >
 
-                        <Label Content="Kopfform:"
+                            <Label Content="Kopfform:"
                            Margin="5"
                            HorizontalContentAlignment="Right"
                            FontSize ="14"/>
 
-                        <ComboBox x:Name="cb_Kopfform" 
+                            <ComboBox x:Name="cb_Kopfform" 
                           Height="25"
                           Grid.Column="2"
                           Grid.Row="2"
@@ -340,34 +348,158 @@
                                   SelectedIndex="0"/>
 
 
-                    </StackPanel>
+                        </StackPanel>
 
 
-                    <StackPanel Orientation="Horizontal">
-                        
-                        <Label Content="Drehsinn"
+                        <StackPanel Orientation="Horizontal">
+
+                            <Label Content="Drehsinn"
                            FontSize="14"
                            HorizontalContentAlignment="Right"
                            Margin="5"/>
 
-                        <StackPanel>
-                            
-                            <RadioButton GroupName="Drehsinn"
+                            <StackPanel>
+
+                                <RadioButton GroupName="Drehsinn"
                                  Content=" Links"
                                  Margin="40,5,0,0"/>
-                            <RadioButton GroupName="Drehsinn"
+                                <RadioButton GroupName="Drehsinn"
                                  Content="Rechts"
                                          Margin="40,0"/>
-                            
+
+                            </StackPanel>
+
                         </StackPanel>
+
 
                     </StackPanel>
 
-                </StackPanel>
-                <!--#endregion-->
+                    <!--#endregion-->
 
 
-            </Grid>
+                </Grid>
+
+                <Button Content="Berechnen" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        x:Name="btn_berechnen"
+                        Click="btn_berechnen_Click" >
+
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="DarkGray" />
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button" >
+                            <Border 
+                                Height="20"
+                                    Width="200"
+                                Margin="2.5"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+
+
+                </Button>
+                <Button Content="Drucken" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        x:Name="btn_drucken">
+
+
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="DarkGray" />
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button" >
+                            <Border 
+                                Height="20"
+                                    Width="200"
+                                Margin="2.5"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+
+
+                </Button>
+                <Button Content="An CAD übertragen" 
+                        FontSize="12"
+                        FontWeight="Bold"
+                        x:Name="btn_cad">
+
+
+
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="DarkGray" />
+                            <Setter Property="Cursor" Value="Hand"/>
+
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Gray" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button" >
+                            <Border 
+                                Height="20"
+                                    Width="200"
+                                Margin="2.5"
+                                CornerRadius="12"
+                                Background="{TemplateBinding Background}">
+
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+
+
+                </Button>
+
+            </StackPanel>
+
             <!--#endregion-->
 
             <!--#region Ausgabe-->
