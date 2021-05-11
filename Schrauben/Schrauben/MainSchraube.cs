@@ -49,6 +49,9 @@ namespace Schrauben
         {
             new MainSchraube();
             new ExcelControl();
+            //Environment.Exit(0);
+
+
             string antwort;
             Schraubendefinition eins = new Schraubendefinition();
             Tools tool = new Tools();

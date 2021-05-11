@@ -295,7 +295,7 @@
 
                         <StackPanel Orientation="Horizontal" >
 
-                            <Label Content="Schraubenänge:"
+                            <Label Content="Schraubenlänge:"
                            Margin="5"
                            HorizontalContentAlignment="Right"
                            FontSize="14"/>

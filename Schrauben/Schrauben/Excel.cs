@@ -11,18 +11,22 @@ namespace Schrauben
     public class ExcelControl
     {
 
-
         public ExcelControl()
         {
-            
+
             // Objekt erzeugen
-            
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Erzeuge Excel COM Objekt");
+            Console.ResetColor();
+            Console.WriteLine("");
             Excel.Application excelApp = new Excel.Application();
             excelApp.Visible = true;
 
             // Öffnen einer Excel Datei
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Öffne Datei");
+            Console.ResetColor();
+            Console.WriteLine("");
             String filename = "Tabelle-Werte.xlsx";
             String path = System.IO.Path.GetFullPath(filename);
             if (System.IO.File.Exists(path))
@@ -33,20 +37,46 @@ namespace Schrauben
 
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
-            Console.WriteLine("Gewinde:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Gewindegröße:");
+            Console.ResetColor();
             string Gewinde = Console.ReadLine();
-            Console.WriteLine("Länge");
-            string Laenge = Console.ReadLine();
-            Console.WriteLine("Kopf");
-            string Kopf = Console.ReadLine();
-            Console.WriteLine("Material");
-            string Material = Console.ReadLine();
-            Console.WriteLine("Menge");
-            string Menge = Console.ReadLine();
-            Console.WriteLine("Festigkeit");
-            string Festigkeit = Console.ReadLine();
+            Console.WriteLine("");
 
-            Console.WriteLine("Schreibe in die Datei");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Länge in mm:");
+            Console.ResetColor();
+            string Laenge = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Kopfform:");
+            Console.ResetColor();
+            string Kopf = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Material:");
+            Console.ResetColor();
+            string Material = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Menge:");
+            Console.ResetColor();
+            string Menge = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Festigkeitsklasse:");
+            Console.ResetColor();
+            string Festigkeit = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Schreibe in die Excel-Datei");
+            Console.ResetColor();
+            Console.WriteLine("");
             mySheet.Cells[8, "B"] = Material;
             mySheet.Cells[9, "B"] = Laenge;
             mySheet.Cells[11, "B"] = Kopf;
@@ -54,9 +84,11 @@ namespace Schrauben
             mySheet.Cells[14, "B"] = Menge;
             mySheet.Cells[16, "B"] = Festigkeit;
 
-            Console.WriteLine("Durch");
             // Lesen der Datei
-            Console.WriteLine("Lese aus der Datei");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Lese aus der Excel-Datei");
+            Console.ResetColor();
+            Console.WriteLine("");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
             Double Durchmesser = (Double)bereich.Value;
             Console.WriteLine("   Durchmesser: " + Durchmesser);
@@ -100,6 +132,7 @@ namespace Schrauben
             bereich = mySheet.Cells[60, "C"] as Excel.Range;
             Double FTM = (Double)bereich.Value;
             Console.WriteLine("   FTM: " + FTM);
+            Console.WriteLine("");
 
 
             // Speichern der Datei und beenden.
@@ -108,17 +141,22 @@ namespace Schrauben
             for (int f = 0; f < 1; f++)
             {
                 z = Zahl.Next(-1000000000, 1000000000);
-                Console.WriteLine(z);
+                
             }
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Speichern der Änderungen");
+            Console.WriteLine("");
+            
             int i = z;
             String newFileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), "newTabelle-Werte" + i + ".xlsx");
             mySheet.SaveAs(newFileName);
             excelApp.Quit();
 
-
+            Console.WriteLine("Bitte Taste zum Beenden drücken");
+            Console.ResetColor();
             Console.ReadKey();
+            Environment.Exit(0);
 
         }
 
