@@ -58,6 +58,7 @@ namespace Schrauben
         [STAThread]
         public static void Main()
         {
+            new ExcelControl();
             new MainSchraube();
             string antwort;
             Schraubendefinition eins = new Schraubendefinition();
