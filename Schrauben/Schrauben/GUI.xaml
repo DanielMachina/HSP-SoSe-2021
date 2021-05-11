@@ -189,8 +189,18 @@
             <Grid
                   Grid.Row="2">
 
-                <Image x:Name="Schraube" 
-                       Source="Images/SchraubenBild.png"
+                <Image x:Name="img_SechskantSchraube" 
+                       Source="Images/Sechskant.jpg"
+                       Height="140"
+                       Width="360" Margin="46,-12,44,62"/>
+
+                <Image x:Name="img_SenkkopfSchraube" 
+                       Source="Images/Senkkopf.jpg"
+                       Height="140"
+                       Width="360" Margin="46,-12,44,62"/>
+
+                <Image x:Name="img_ZylinderkopfSchraube" 
+                       Source="Images/Zylinderkopf.jpg"
                        Height="140"
                        Width="360" Margin="46,-12,44,62"/>
 
@@ -344,12 +354,13 @@
                            FontSize ="14"/>
 
                             <ComboBox x:Name="cb_Kopfform" 
-                          Height="25"
-                          Grid.Column="2"
-                          Grid.Row="2"
-                          ItemsSource="{Binding Kopfform}"
-                          Margin="51,0,43,0"
-                                  SelectedIndex="0"/>
+                                      Height="25"
+                                      Grid.Column="2"
+                                      Grid.Row="2"
+                                      ItemsSource="{Binding Kopfform}"
+                                      Margin="51,0,43,0"
+                                      SelectedIndex="0"
+                                      />
 
 
                         </StackPanel>

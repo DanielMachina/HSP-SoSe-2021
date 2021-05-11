@@ -84,6 +84,9 @@
     <Resource Include="Images\Logo.jpeg" />
     <Resource Include="Images\Schraubenlogo.png" />
     <Content Include="Images\Schraubenzeichnung.png" />
+    <Resource Include="Images\Sechskant.jpg" />
+    <Resource Include="Images\Senkkopf.jpg" />
+    <Resource Include="Images\Zylinderkopf.jpg" />
     <Content Include="Schraubenlogo.png" />
   </ItemGroup>
   <ItemGroup>
