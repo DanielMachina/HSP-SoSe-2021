@@ -162,7 +162,7 @@
 
         <Grid Grid.Row="1">
 
-            <Label Content="Schraubentechnik GmbH&amp;Co KG"
+            <Label Content="Schraubentechnik GmbH &amp; Co. KG"
                Foreground="Black"
                FontSize="30"
                HorizontalAlignment="Center" 
