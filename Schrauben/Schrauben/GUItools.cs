@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Schrauben
 {
-    class GUItools
+    public class GUItools
     {
         
         public List<string> MetrischSammlung { get; set; } //für sprint 3
         public List<string> FeinMetrischSammlung { get; set; } // für sprint 3
         public List<string> ZollSammlung { get; set; }
-        public List<string> GewindeSammlung { get; set; }
+        public static List<string> GewindeSammlung { get; set; }
 
         public List<string> MaterialSammlung { get; set; }
 

@@ -625,7 +625,7 @@
                                  VerticalAlignment="Center"
                                  FontSize="14" 
                                  Margin="54,0"
-                                 
+                                 x:Name="tb_durchmesser"
                                  />
 
                         
@@ -643,7 +643,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="79,0"/>
+                                 Margin="79,0"
+                                   x:Name="tb_steigung"/>
 
                     </StackPanel>
 
@@ -658,7 +659,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="8,0"/>
+                                 Margin="8,0"
+                                   x:Name="tb_flankendurchmesser"/>
 
                     </StackPanel>
 
@@ -673,7 +675,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="27,0"/>
+                                 Margin="27,0"
+                                   x:Name="tb_kerndurchmesser"/>
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
@@ -688,7 +691,8 @@
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
                                  FontSize="14"
-                                 Margin="0,0"/>
+                                 Margin="0,0"
+                                   x:Name="tb_kernlochdurchmesser"/>
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
@@ -703,7 +707,8 @@
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
                                  FontSize="14"
-                                 Margin="48,0"/>
+                                 Margin="48,0"
+                                   x:Name="tb_gesamtmasse"/>
 
                     </StackPanel>
 
@@ -723,6 +728,7 @@
                                  VerticalAlignment="Center"
                                  FontSize="14"
                                  Margin="66,0,0,0"
+                                   x:Name="tb_schlüsselweite"
                                  />
 
                     </StackPanel>
@@ -738,7 +744,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="75,0,0,0"/>
+                                 Margin="75,0,0,0"
+                                   x:Name="tb_streckgrenze"/>
 
                     </StackPanel>
 
@@ -753,7 +760,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="73,0,0,0"/>
+                                 Margin="73,0,0,0"
+                                   x:Name="tb_zugfestigkeit"/>
 
                     </StackPanel>
 
@@ -768,7 +776,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  FontSize="14"
-                                 Margin="77,0,0,0"/>
+                                 Margin="77,0,0,0"
+                                   x:Name="tb_preisInEuro"/>
 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
@@ -782,7 +791,8 @@
                                  Foreground="Black"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Right"
-                                 FontSize="14"/>
+                                 FontSize="14"
+                                   x:Name="tb_ftm"/>
 
                     </StackPanel>
 

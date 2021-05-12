@@ -10,10 +10,20 @@ namespace Schrauben
     
     public class ExcelControl
     {
-
+        public static double Durchmesser { get; set; }
+        public static double Steigung { get; set; }
+        public static double Flankendurchmesser { get; set; }
+        public static double Kerndurchmesser { get; set; }
+        public static double Kernlochdurchmesser { get; set; }
+        public static double Gesamtmasse { get; set; }
+        public static double SW { get; set; }
+        public static string Re { get; set; }
+        public static string Rm { get; set; }
+        public static double Preis { get; set; }
+        public static double FTM { get; set; }
         public ExcelControl()
         {
-
+            
             // Objekt erzeugen
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Erzeuge Excel COM Objekt");
@@ -40,25 +50,25 @@ namespace Schrauben
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Gewindegröße:");
             Console.ResetColor();
-            string Gewinde = Console.ReadLine();
+            string Gewinde = GUI.durchmesser;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Länge in mm:");
             Console.ResetColor();
-            string Laenge = Console.ReadLine();
+            string Laenge = GUI.schraubenlänge;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Kopfform:");
             Console.ResetColor();
-            string Kopf = Console.ReadLine();
+            string Kopf = GUI.kopfform;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Material:");
             Console.ResetColor();
-            string Material = Console.ReadLine();
+            string Material = GUI.material;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -70,7 +80,7 @@ namespace Schrauben
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Festigkeitsklasse:");
             Console.ResetColor();
-            string Festigkeit = Console.ReadLine();
+            string Festigkeit = GUI.festigkeit;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -90,47 +100,47 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
-            Double Durchmesser = (Double)bereich.Value;
+            Durchmesser = (Double)bereich.Value;
             Console.WriteLine("   Durchmesser: " + Durchmesser);
 
             bereich = mySheet.Cells[51, "C"] as Excel.Range;
-            Double Steigung = (Double)bereich.Value;
+            Steigung = (Double)bereich.Value;
             Console.WriteLine("   Steigung: " + Steigung);
 
             bereich = mySheet.Cells[52, "C"] as Excel.Range;
-            Double Flankendurchmesser = (Double)bereich.Value;
+            Flankendurchmesser = (Double)bereich.Value;
             Console.WriteLine("   Flankendurchmesser: " + Flankendurchmesser);
 
             bereich = mySheet.Cells[53, "C"] as Excel.Range;
-            Double Kerndurchmesser = (Double)bereich.Value;
+            Kerndurchmesser = (Double)bereich.Value;
             Console.WriteLine("   Kerndurchmesser: " + Kerndurchmesser);
 
             bereich = mySheet.Cells[54, "C"] as Excel.Range;
-            Double Kernlochdurchmesser = (Double)bereich.Value;
+            Kernlochdurchmesser = (Double)bereich.Value;
             Console.WriteLine("   Kernlochdurchmesser: " + Kernlochdurchmesser);
 
             bereich = mySheet.Cells[55, "C"] as Excel.Range;
-            Double Gesamtmasse = (Double)bereich.Value;
+            Gesamtmasse = (Double)bereich.Value;
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
             bereich = mySheet.Cells[56, "C"] as Excel.Range;
-            Double SW = (Double)bereich.Value;
+            SW = (Double)bereich.Value;
             Console.WriteLine("   SW: " + SW);
 
             bereich = mySheet.Cells[57, "C"] as Excel.Range;
-            String Re = (String)bereich.Value;
+            Re = (String)bereich.Value;
             Console.WriteLine("   Re: " + Re);
 
             bereich = mySheet.Cells[58, "C"] as Excel.Range;
-            String Rm = (String)bereich.Value;
+            Rm = (String)bereich.Value;
             Console.WriteLine("   Rm: " + Rm);
 
             bereich = mySheet.Cells[59, "C"] as Excel.Range;
-            Double Preis = (Double)bereich.Value;
+            Preis = (Double)bereich.Value;
             Console.WriteLine("   Preis: " + Preis);
 
             bereich = mySheet.Cells[60, "C"] as Excel.Range;
-            Double FTM = (Double)bereich.Value;
+            FTM = (Double)bereich.Value;
             Console.WriteLine("   FTM: " + FTM);
             Console.WriteLine("");
 
@@ -155,8 +165,6 @@ namespace Schrauben
 
             Console.WriteLine("Bitte Taste zum Beenden drücken");
             Console.ResetColor();
-            Console.ReadKey();
-            Environment.Exit(0);
 
         }
 

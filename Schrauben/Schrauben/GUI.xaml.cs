@@ -21,9 +21,9 @@ namespace Schrauben
     public partial class GUI : UserControl
     {
 
-        public int testInt1;
-        public int testInt2;
-        public GUI()
+        public static int testInt1;
+        public static int testInt2;
+        public  GUI()
         {
             DataContext = new GUItools();
             InitializeComponent();
@@ -54,14 +54,39 @@ namespace Schrauben
             this.Content = home;
 
         }
-        public string durchmesser;
+        public static string durchmesser;
+        public static string material;
+        public static string schraubenart;
+        public static string festigkeit;
+        public static string kopfform;
+        public static string schraubenlänge;
+        public static string gewindelänge;
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
+            //eingaben werden übergeben
             durchmesser = cb_durchmesser.Text;
-            //Console.WriteLine(durchmesser);
+            material = cb_material.Text;
+            schraubenart = cb_schraubenart.Text;
+            festigkeit = cb_festigkeit.Text;
+            kopfform = cb_kopfform.Text;
+            schraubenlänge = tbx_schraubenlänge.Text;
+            gewindelänge = tbx_schraubenlänge.Text;
+
             new ExcelControl();
+            //ausgaben werden geholt
+            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
+            tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser);
+            tb_gesamtmasse .Text = Convert.ToString(ExcelControl.Gesamtmasse);
+            tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser);
+            tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser);
+            tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis);
+            tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SW);
+            tb_streckgrenze.Text = ExcelControl.Re;
+            tb_zugfestigkeit.Text = ExcelControl.Rm;
+            tb_ftm.Text = Convert.ToString(ExcelControl.FTM);
+            tb_steigung.Text = Convert.ToString(ExcelControl.Steigung);
 
 
         }
