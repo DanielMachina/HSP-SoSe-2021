@@ -21,6 +21,7 @@ namespace Schrauben
         public static string Rm { get; set; }
         public static double Preis { get; set; }
         public static double FTM { get; set; }
+        public static string Menge { get; set; }
         public ExcelControl()
         {
             
@@ -74,7 +75,7 @@ namespace Schrauben
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Menge:");
             Console.ResetColor();
-            string Menge = Console.ReadLine();
+            string Menge = GUI.menge;
             Console.WriteLine("");
 
             Console.ForegroundColor = ConsoleColor.Green;

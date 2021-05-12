@@ -61,6 +61,7 @@ namespace Schrauben
         public static string kopfform;
         public static string schraubenlänge;
         public static string gewindelänge;
+        public static string menge;
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
@@ -73,6 +74,7 @@ namespace Schrauben
             kopfform = cb_kopfform.Text;
             schraubenlänge = tbx_schraubenlänge.Text;
             gewindelänge = tbx_schraubenlänge.Text;
+            menge = tbx_menge.Text;
 
             new ExcelControl();
             //ausgaben werden geholt
@@ -179,6 +181,16 @@ namespace Schrauben
             {
                 tbx_gewindelänge.Background = Brushes.Red;
             }
+        }
+
+        private void sl_menge_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            tbx_menge.Text = Convert.ToString(sl_menge.Value);
+        }
+
+        private void tbx_menge_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            sl_menge.Value = Convert.ToDouble(tbx_menge.Text);
         }
     }
 
