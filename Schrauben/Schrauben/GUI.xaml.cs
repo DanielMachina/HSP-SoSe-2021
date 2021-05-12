@@ -60,7 +60,7 @@ namespace Schrauben
 
         {
             durchmesser = cb_durchmesser.Text;
-            Console.WriteLine(durchmesser);
+            //Console.WriteLine(durchmesser);
             new ExcelControl();
 
 
