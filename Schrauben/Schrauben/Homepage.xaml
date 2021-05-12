@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Schrauben"
              mc:Ignorable="d" 
              d:DesignHeight="500" 
-             d:DesignWidth="900">
+             d:DesignWidth="900"
+             >
 
     <Border CornerRadius="20"
             Background="LightSlateGray">

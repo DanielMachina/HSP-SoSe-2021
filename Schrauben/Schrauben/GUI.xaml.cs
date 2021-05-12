@@ -23,11 +23,11 @@ namespace Schrauben
 
         public int testInt1;
         public int testInt2;
-
         public GUI()
         {
             DataContext = new GUItools();
             InitializeComponent();
+            
         }
 
 

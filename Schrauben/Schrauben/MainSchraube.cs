@@ -20,7 +20,7 @@ namespace Schrauben
             Window Konfig = new Window();
 
 
-            Homepage.Title = "SchraubenGmbH/Homepage";
+            Homepage.Title = "Schrauben";
             Homepage.ResizeMode = ResizeMode.CanMinimize;
             Homepage.Content = HomeGUI;
             Homepage.Width = 900;
@@ -29,6 +29,7 @@ namespace Schrauben
             Homepage.AllowsTransparency = true;
             Homepage.Background = Brushes.Transparent;
             Homepage.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
 
 
             Konfig.Title = "Schraubenkonfigurator";
