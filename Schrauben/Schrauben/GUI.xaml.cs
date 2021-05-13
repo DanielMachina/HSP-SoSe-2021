@@ -78,7 +78,7 @@ namespace Schrauben
 
             new ExcelControl();
             //ausgaben werden geholt
-            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
+            tb_durchmesser.Text = Convert.ToString (ExcelControl.Durchmesser);
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser);
             tb_gesamtmasse .Text = Convert.ToString(ExcelControl.Gesamtmasse);
             tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser);
@@ -93,10 +93,7 @@ namespace Schrauben
 
         }
 
-        private void cb_durch_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void cb_kopfform_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

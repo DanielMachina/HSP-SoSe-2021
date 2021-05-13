@@ -10,7 +10,7 @@ namespace Schrauben
     
     public class ExcelControl
     {
-        public static double Durchmesser { get; set; }
+        public static double  Durchmesser { get; set; }
         public static double Steigung { get; set; }
         public static double Flankendurchmesser { get; set; }
         public static double Kerndurchmesser { get; set; }
@@ -31,7 +31,7 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Application excelApp = new Excel.Application();
-            excelApp.Visible = true;
+            excelApp.Visible = false;
 
             // Öffnen einer Excel Datei
             Console.ForegroundColor = ConsoleColor.Green;
@@ -135,7 +135,7 @@ namespace Schrauben
             int i = z;
             String newFileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), "newTabelle-Werte" + i + ".xlsx");
             mySheet.SaveAs(newFileName);
-            excelApp.Quit();
+            //excelApp.Quit();
 
             Console.ResetColor();
 
