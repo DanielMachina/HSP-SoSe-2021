@@ -46,43 +46,16 @@ namespace Schrauben
             }
             Excel._Worksheet mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
 
+            
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Gewindegröße:");
-            Console.ResetColor();
             string Gewinde = GUI.durchmesser;
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Länge in mm:");
-            Console.ResetColor();
             string Laenge = GUI.schraubenlänge;
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Kopfform:");
-            Console.ResetColor();
             string Kopf = GUI.kopfform;
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Material:");
-            Console.ResetColor();
             string Material = GUI.material;
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Menge:");
-            Console.ResetColor();
             string Menge = GUI.menge;
-            Console.WriteLine("");
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Festigkeitsklasse:");
-            Console.ResetColor();
             string Festigkeit = GUI.festigkeit;
-            Console.WriteLine("");
+            
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Schreibe in die Excel-Datei");
@@ -164,7 +137,6 @@ namespace Schrauben
             mySheet.SaveAs(newFileName);
             excelApp.Quit();
 
-            Console.WriteLine("Bitte Taste zum Beenden drücken");
             Console.ResetColor();
 
         }

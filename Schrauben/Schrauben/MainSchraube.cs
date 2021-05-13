@@ -52,7 +52,7 @@ namespace Schrauben
         {
             new MainSchraube();
             new ExcelControl();
-            //Environment.Exit(0);
+            
             
 
          
