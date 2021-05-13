@@ -20,14 +20,16 @@ namespace Schrauben
     /// </summary>
     public partial class GUI : UserControl
     {
-
+        public static bool off = false;
         public static int testInt1;
         public static int testInt2;
-        public  GUI()
+        public static int testInt3;
+        public static bool aus = false;
+        public GUI()
         {
             DataContext = new GUItools();
             InitializeComponent();
-            
+
         }
 
 
@@ -45,7 +47,9 @@ namespace Schrauben
 
         private void _exit_Click(object sender, RoutedEventArgs e)
         {
+            
             Environment.Exit(0);
+            
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -66,21 +70,22 @@ namespace Schrauben
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
+            
             //eingaben werden übergeben
-            durchmesser = cb_durchmesser.Text;
-            material = cb_material.Text;
-            schraubenart = cb_schraubenart.Text;
-            festigkeit = cb_festigkeit.Text;
-            kopfform = cb_kopfform.Text;
+            durchmesser = (string)cb_durchmesser.SelectionBoxItem;
+            material = (string)cb_material.SelectionBoxItem;
+            schraubenart = (string)cb_schraubenart.SelectionBoxItem;
+            festigkeit = (string)cb_festigkeit.SelectionBoxItem;
+            kopfform = (string)cb_kopfform.SelectionBoxItem;
             schraubenlänge = tbx_schraubenlänge.Text;
             gewindelänge = tbx_schraubenlänge.Text;
             menge = tbx_menge.Text;
 
             new ExcelControl();
             //ausgaben werden geholt
-            tb_durchmesser.Text = Convert.ToString (ExcelControl.Durchmesser);
+            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser);
-            tb_gesamtmasse .Text = Convert.ToString(ExcelControl.Gesamtmasse);
+            tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse);
             tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser);
             tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser);
             tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis);
@@ -89,6 +94,7 @@ namespace Schrauben
             tb_zugfestigkeit.Text = ExcelControl.Rm;
             tb_ftm.Text = Convert.ToString(ExcelControl.FTM);
             tb_steigung.Text = Convert.ToString(ExcelControl.Steigung);
+
 
 
         }
@@ -135,6 +141,8 @@ namespace Schrauben
             cb_material.SelectedItem = "";
             tbx_gewindelänge.Text = "";
             tbx_schraubenlänge.Text = "";
+            tbx_menge.Text = "1";
+
             img_SechskantSchraube.Visibility = Visibility.Hidden;
             img_SenkkopfSchraube.Visibility = Visibility.Hidden;
             img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
@@ -149,7 +157,7 @@ namespace Schrauben
 
             }
 
-            else if (tbx_schraubenlänge.Text == "" ) 
+            else if (tbx_schraubenlänge.Text == "")
             {
                 tbx_schraubenlänge.Background = Brushes.White;
             }
@@ -159,11 +167,12 @@ namespace Schrauben
                 tbx_schraubenlänge.Background = Brushes.Red;
             }
 
+
         }
 
         private void tbx_gewindelänge_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >=5 && testInt2 <=1000 && testInt2 <= testInt1)
+            if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >= 5 && testInt2 <= 1000 && testInt2 <= testInt1)
             {
                 tbx_gewindelänge.Background = Brushes.White;
 
@@ -185,9 +194,24 @@ namespace Schrauben
             tbx_menge.Text = Convert.ToString(sl_menge.Value);
         }
 
-        private void tbx_menge_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbx_menge_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            sl_menge.Value = Convert.ToDouble(tbx_menge.Text);
+            if (tbx_menge.Text == "")
+            {
+                tbx_menge.Text = "1";
+            }
+
+            if (int.TryParse(tbx_menge.Text, out testInt3) && testInt3 >= 1 && testInt3 <= 1000)
+            {
+                tbx_menge.Background = Brushes.White;
+                sl_menge.Value = Convert.ToDouble(tbx_menge.Text);
+
+            }
+            else
+            {
+                tbx_menge.Background = Brushes.Red;
+            }
+
         }
     }
 

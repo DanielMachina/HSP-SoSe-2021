@@ -435,17 +435,22 @@
                                  x:Name="tbx_menge"
                                  Width="40"
                                  HorizontalAlignment="Left"
-                                 Margin="0,0,0,0"
                                  Background="Transparent"
-                                 TextChanged="tbx_menge_TextChanged" />
+                                 SelectionChanged="tbx_menge_SelectionChanged" 
+                                 BorderBrush="Transparent"
+                                 SelectionBrush="Transparent"
+                                 />
                     </Border>
 
                     <Slider x:Name="sl_menge"
                             Height="25"
                             Width="300"
-                            Value="1000"
-                            
-                            ValueChanged="sl_menge_ValueChanged" />
+                            Maximum="1000"
+                            Minimum="1"
+                            TickFrequency="1" 
+                            IsSnapToTickEnabled="True"
+                            ValueChanged="sl_menge_ValueChanged" 
+                            Margin="5,0,0,0"/>
 
 
                 </StackPanel>

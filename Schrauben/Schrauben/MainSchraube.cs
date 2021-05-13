@@ -53,7 +53,6 @@ namespace Schrauben
             
             new MainSchraube();
             new ExcelControl();
-            
         }
     }
 

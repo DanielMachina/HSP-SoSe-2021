@@ -7,10 +7,10 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Schrauben
 {
-    
+
     public class ExcelControl
     {
-        public static double  Durchmesser { get; set; }
+        public static double Durchmesser { get; set; }
         public static double Steigung { get; set; }
         public static double Flankendurchmesser { get; set; }
         public static double Kerndurchmesser { get; set; }
@@ -22,31 +22,39 @@ namespace Schrauben
         public static double Preis { get; set; }
         public static double FTM { get; set; }
         public static string Menge { get; set; }
+
+       
+
+
         public ExcelControl()
         {
-            
+
             // Objekt erzeugen
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Erzeuge Excel COM Objekt");
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Application excelApp = new Excel.Application();
-            excelApp.Visible = false;
+            excelApp.Visible = true;
 
             // Öffnen einer Excel Datei
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Öffne Datei");
             Console.ResetColor();
             Console.WriteLine("");
             String filename = "Tabelle-Werte.xlsx";
             String path = System.IO.Path.GetFullPath(filename);
+
             if (System.IO.File.Exists(path))
             {
                 excelApp.Workbooks.Open(path);
             }
-            Excel._Worksheet mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
 
             
+            Excel._Worksheet mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
+
+
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
             string Gewinde = GUI.durchmesser;
@@ -55,7 +63,7 @@ namespace Schrauben
             string Material = GUI.material;
             string Menge = GUI.menge;
             string Festigkeit = GUI.festigkeit;
-            
+
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Schreibe in die Excel-Datei");
@@ -125,23 +133,29 @@ namespace Schrauben
             for (int f = 0; f < 1; f++)
             {
                 z = Zahl.Next(-1000000000, 1000000000);
-                
+
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Speichern der Änderungen");
             Console.WriteLine("");
-            
+
             int i = z;
             String newFileName = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), "newTabelle-Werte" + i + ".xlsx");
+
+
             mySheet.SaveAs(newFileName);
-            //excelApp.Quit();
+            excelApp.Quit();
 
             Console.ResetColor();
 
         }
 
 
+           
+
+        
+        
         
     }
 }
