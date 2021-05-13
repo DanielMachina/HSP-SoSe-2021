@@ -12,8 +12,7 @@
              d:DesignHeight="500"
              d:DesignWidth="900"
              Background="Transparent"
-             Foreground="Transparent" 
-             >
+             Foreground="Transparent">
 
     <Border x:Name="bor_main"
             CornerRadius="20"

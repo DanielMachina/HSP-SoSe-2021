@@ -35,7 +35,6 @@ namespace Schrauben
 
 
 
-
         public WindowState WindowState { get; private set; }
 
         private void _minimize_Click(object sender, RoutedEventArgs e)
@@ -47,9 +46,9 @@ namespace Schrauben
 
         private void _exit_Click(object sender, RoutedEventArgs e)
         {
-            
+
             Environment.Exit(0);
-            
+
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -70,7 +69,7 @@ namespace Schrauben
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-            
+
             //eingaben werden übergeben
             durchmesser = (string)cb_durchmesser.SelectionBoxItem;
             material = (string)cb_material.SelectionBoxItem;
@@ -213,7 +212,7 @@ namespace Schrauben
             }
 
         }
-    }
 
+    }
 
 }
