@@ -35,7 +35,7 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Application excelApp = new Excel.Application();
-            excelApp.Visible = true;
+            excelApp.Visible = false;
 
             // Öffnen einer Excel Datei
 
