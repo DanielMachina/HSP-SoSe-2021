@@ -81,6 +81,8 @@ namespace Schrauben
             menge = tbx_menge.Text;
 
             new ExcelControl();
+            
+
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser);

@@ -12,6 +12,7 @@ namespace Schrauben
     {
         public MainSchraube ()
         {
+            //ÖffneXl()
 
             KonfigGUI HomeGUI = new KonfigGUI();
             GUI SchraubenGUI = new GUI();
@@ -43,6 +44,7 @@ namespace Schrauben
             Konfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             
             Homepage.ShowDialog();
+            //new ExcelControl();
             //Konfig.ShowDialog();
             //Console.ReadKey();
         }
@@ -52,8 +54,12 @@ namespace Schrauben
         {
             
             new MainSchraube();
-            new ExcelControl();
+            
+            new CatiaControl();
+
         }
+
+
     }
 
 

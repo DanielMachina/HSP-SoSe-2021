@@ -48,12 +48,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>SchraubenIco.ico</ApplicationIcon>
+    <ApplicationIcon>Images\SchraubenIco.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.INFITF">
+      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.INFITF.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.MECMOD">
+      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.MECMOD.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.PARTITF">
+      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.PARTITF.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -68,6 +80,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatiaConnection.cs" />
+    <Compile Include="CatiaControl.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="GUItools.cs" />
     <Compile Include="MainSchraube.cs" />
@@ -105,13 +119,21 @@
     <Resource Include="Images\Sechskant.jpg" />
     <Resource Include="Images\Senkkopf.jpg" />
     <Resource Include="Images\Zylinderkopf.jpg" />
-    <Content Include="SchraubenIco.ico" />
-    <Content Include="Schraubenlogo.png" />
+    <Content Include="Images\SchraubenIco.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\SchraubenBild.png" />
   </ItemGroup>
   <ItemGroup>
+    <COMReference Include="INFITF">
+      <Guid>{14F197B2-0771-11D1-A5B1-00A0C9575177}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
