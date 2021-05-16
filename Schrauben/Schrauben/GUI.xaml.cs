@@ -100,6 +100,22 @@ namespace Schrauben
 
         }
 
+        private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cb_schraubenart.Text == "Metrisch")
+            {
+                cb_schraubenart.ItemsSource = {Binding GUItools.MetrischSammlung};
+
+
+
+            }
+
+
+
+
+
+
+        }
 
 
         private void cb_kopfform_SelectionChanged(object sender, SelectionChangedEventArgs e)

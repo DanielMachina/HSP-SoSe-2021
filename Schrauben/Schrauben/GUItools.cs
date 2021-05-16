@@ -9,7 +9,7 @@ namespace Schrauben
     public class GUItools
     {
         
-        public List<string> MetrischSammlung { get; set; } 
+        public static List<string> MetrischSammlung { get; set; } 
         public List<string> FeinMetrischSammlung { get; set; } 
         public List<string> ZollSammlung { get; set; }
         public static List<string> GewindeSammlung { get; set; }
@@ -30,24 +30,72 @@ namespace Schrauben
         {
 
 
-            GewindeSammlung = new List<string>();
+            MetrischSammlung = new List<string>();
             {
-                GewindeSammlung.Add("M2");
-                GewindeSammlung.Add("M2,5");
-                GewindeSammlung.Add("M3");
-                GewindeSammlung.Add("M4");
-                GewindeSammlung.Add("M5");
-                GewindeSammlung.Add("M6");
-                GewindeSammlung.Add("M8");
-                GewindeSammlung.Add("M10");
-                GewindeSammlung.Add("M12");
-                GewindeSammlung.Add("M16");
-                GewindeSammlung.Add("M20");
-                GewindeSammlung.Add("M24");
-                GewindeSammlung.Add("M30");
-                GewindeSammlung.Add("M36");
-                GewindeSammlung.Add("M42");
-                GewindeSammlung.Add("");
+                MetrischSammlung.Add("M2");
+                MetrischSammlung.Add("M2,5");
+                MetrischSammlung.Add("M3");
+                MetrischSammlung.Add("M4");
+                MetrischSammlung.Add("M5");
+                MetrischSammlung.Add("M6");
+                MetrischSammlung.Add("M8");
+                MetrischSammlung.Add("M10");
+                MetrischSammlung.Add("M12");
+                MetrischSammlung.Add("M16");
+                MetrischSammlung.Add("M20");
+                MetrischSammlung.Add("M24");
+                MetrischSammlung.Add("M30");
+                MetrischSammlung.Add("M36");
+                MetrischSammlung.Add("M42");
+                MetrischSammlung.Add("");
+            }
+
+            ZollSammlung = new List<string>();
+            {
+                ZollSammlung.Add("1/4");
+                ZollSammlung.Add("3/8");
+                ZollSammlung.Add("1/2");
+                ZollSammlung.Add("3/4");
+                ZollSammlung.Add("1");
+                ZollSammlung.Add("1 1/4");
+                ZollSammlung.Add("1 1/2");
+                ZollSammlung.Add("");
+            }
+
+            FeinMetrischSammlung = new List<string>();
+            {
+                FeinMetrischSammlung.Add("M2x0,25");
+                FeinMetrischSammlung.Add("M3x0,25");
+                FeinMetrischSammlung.Add("M4x0,2");
+                FeinMetrischSammlung.Add("M4x0,35");
+                FeinMetrischSammlung.Add("M5x0,25");
+                FeinMetrischSammlung.Add("M5x0,5");
+                FeinMetrischSammlung.Add("M6x0,25");
+                FeinMetrischSammlung.Add("M6x0,5");
+                FeinMetrischSammlung.Add("M6x0,75");
+                FeinMetrischSammlung.Add("M8x0,25");
+                FeinMetrischSammlung.Add("M8x0,5");
+                FeinMetrischSammlung.Add("M8x1");
+                FeinMetrischSammlung.Add("M10x0,25");
+                FeinMetrischSammlung.Add("M10x0,5");
+                FeinMetrischSammlung.Add("M10x1");
+                FeinMetrischSammlung.Add("M12x0,35");
+                FeinMetrischSammlung.Add("M12x0,5");
+                FeinMetrischSammlung.Add("M12x1");
+                FeinMetrischSammlung.Add("M16x0,5");
+                FeinMetrischSammlung.Add("M16x1");
+                FeinMetrischSammlung.Add("M16x1,5");
+                FeinMetrischSammlung.Add("M20x1");
+                FeinMetrischSammlung.Add("M20x1,5");
+                FeinMetrischSammlung.Add("M24x1,5");
+                FeinMetrischSammlung.Add("M24x2");
+                FeinMetrischSammlung.Add("M30x1,5");
+                FeinMetrischSammlung.Add("M30x2");
+                FeinMetrischSammlung.Add("M36x1,5");
+                FeinMetrischSammlung.Add("M36x2");
+                FeinMetrischSammlung.Add("M42x1,5");
+                FeinMetrischSammlung.Add("M42x2");
+                FeinMetrischSammlung.Add("");
             }
 
             MaterialSammlung = new List<string>();
