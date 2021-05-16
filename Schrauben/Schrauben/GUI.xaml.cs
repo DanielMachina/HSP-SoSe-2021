@@ -71,11 +71,11 @@ namespace Schrauben
         {
 
             //eingaben werden übergeben
-            durchmesser = (string)cb_durchmesser.SelectionBoxItem;
-            material = (string)cb_material.SelectionBoxItem;
-            schraubenart = (string)cb_schraubenart.SelectionBoxItem;
-            festigkeit = (string)cb_festigkeit.SelectionBoxItem;
-            kopfform = (string)cb_kopfform.SelectionBoxItem;
+            durchmesser = (string)cb_durchmesser.SelectedItem;
+            material = (string)cb_material.SelectedItem;
+            schraubenart = (string)cb_schraubenart.SelectedItem;
+            festigkeit = (string)cb_festigkeit.SelectedItem;
+            kopfform = (string)cb_kopfform.SelectedItem;
             schraubenlänge = tbx_schraubenlänge.Text;
             gewindelänge = tbx_schraubenlänge.Text;
             menge = tbx_menge.Text;
@@ -215,6 +215,10 @@ namespace Schrauben
 
         }
 
+        private void btn_cad_Click(object sender, RoutedEventArgs e)
+        {
+            new CatiaControl();
+        }
     }
 
 }

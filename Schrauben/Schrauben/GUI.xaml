@@ -267,7 +267,7 @@
 
                             <ComboBox Height="25"
                                   ItemsSource="{Binding MaterialSammlung}"
-                                  SelectedIndex="0"
+                                  SelectedItem="Stahl"
                                   Margin="36,0,31,0"
                                   HorizontalAlignment="Right" 
                                   x:Name="cb_material"/>
@@ -283,7 +283,7 @@
 
                             <ComboBox x:Name="cb_schraubenart"  Height="25"
                                   ItemsSource="{Binding ArtenSammlung}"
-                                  SelectedIndex="0"
+                                  SelectedItem ="Metrisch"
                                   Margin="10,0" 
                                   />
 
@@ -303,8 +303,7 @@
                                   ItemsSource="{Binding GewindeSammlung}"
                                   Margin="7,2,2,2"
                                   MaxDropDownHeight="80"
-                                  SelectedIndex="0"
-                                  
+                                  SelectedItem="M24"
                                   />
 
 
@@ -319,7 +318,7 @@
 
                             <ComboBox Height="25"
                               ItemsSource="{Binding Schraubenfestigkeit}"
-                              SelectedIndex="0"
+                              SelectedItem ="3.6"
                               Margin="33,0"
                                       x:Name="cb_festigkeit"
                                       />
@@ -387,7 +386,7 @@
                                       Grid.Row="2"
                                       ItemsSource="{Binding Kopfform}"
                                       Margin="51,0,43,0"
-                                      SelectedIndex="0"
+                                      SelectedItem ="Sechskant"
                                       SelectionChanged="cb_kopfform_SelectionChanged"
                                       />
 
@@ -581,7 +580,8 @@
                         FontSize="12"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
-                        x:Name="btn_cad">
+                        x:Name="btn_cad"
+                        Click="btn_cad_Click" >
 
 
 

@@ -55,7 +55,7 @@ namespace Schrauben
             
             new MainSchraube();
             
-            new CatiaControl();
+            
 
         }
 

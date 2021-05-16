@@ -9,8 +9,8 @@ namespace Schrauben
     public class GUItools
     {
         
-        public List<string> MetrischSammlung { get; set; } //für sprint 3
-        public List<string> FeinMetrischSammlung { get; set; } // für sprint 3
+        public List<string> MetrischSammlung { get; set; } 
+        public List<string> FeinMetrischSammlung { get; set; } 
         public List<string> ZollSammlung { get; set; }
         public static List<string> GewindeSammlung { get; set; }
 
@@ -32,7 +32,6 @@ namespace Schrauben
 
             GewindeSammlung = new List<string>();
             {
-                GewindeSammlung.Add("M1,6");
                 GewindeSammlung.Add("M2");
                 GewindeSammlung.Add("M2,5");
                 GewindeSammlung.Add("M3");
