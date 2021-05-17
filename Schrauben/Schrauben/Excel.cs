@@ -81,27 +81,27 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
-            Durchmesser = (Double)bereich.Value;
+            Durchmesser = Math.Round((Double)bereich.Value,1);
             Console.WriteLine("   Durchmesser: " + Durchmesser);
 
             bereich = mySheet.Cells[51, "C"] as Excel.Range;
-            Steigung = (Double)bereich.Value;
+            Steigung = Math.Round((Double)bereich.Value,2);
             Console.WriteLine("   Steigung: " + Steigung);
 
             bereich = mySheet.Cells[52, "C"] as Excel.Range;
-            Flankendurchmesser = (Double)bereich.Value;
+            Flankendurchmesser = Math.Round((Double)bereich.Value,2);
             Console.WriteLine("   Flankendurchmesser: " + Flankendurchmesser);
 
             bereich = mySheet.Cells[53, "C"] as Excel.Range;
-            Kerndurchmesser = (Double)bereich.Value;
+            Kerndurchmesser = Math.Round((Double)bereich.Value,2);
             Console.WriteLine("   Kerndurchmesser: " + Kerndurchmesser);
 
             bereich = mySheet.Cells[54, "C"] as Excel.Range;
-            Kernlochdurchmesser = (Double)bereich.Value;
+            Kernlochdurchmesser = Math.Round((Double)bereich.Value,2);
             Console.WriteLine("   Kernlochdurchmesser: " + Kernlochdurchmesser);
 
             bereich = mySheet.Cells[55, "C"] as Excel.Range;
-            Gesamtmasse = (Double)bereich.Value;
+            Gesamtmasse = Math.Round((Double)bereich.Value, 2) ;
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
             bereich = mySheet.Cells[56, "C"] as Excel.Range;
@@ -117,11 +117,11 @@ namespace Schrauben
             Console.WriteLine("   Rm: " + Rm);
 
             bereich = mySheet.Cells[59, "C"] as Excel.Range;
-            Preis = (Double)bereich.Value;
+            Preis = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Preis: " + Preis);
 
             bereich = mySheet.Cells[60, "C"] as Excel.Range;
-            FTM = (Double)bereich.Value;
+            FTM = Math.Round((Double)bereich.Value);
             Console.WriteLine("   FTM: " + FTM);
             Console.WriteLine("");
 

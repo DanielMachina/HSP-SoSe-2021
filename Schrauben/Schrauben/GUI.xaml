@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Schrauben"
              xmlns:Generic="clr-namespace:System.Collections.Generic;assembly=mscorlib" 
              xmlns:System="clr-namespace:System;assembly=mscorlib" 
-             x:Name="DesignerMainWindow"
+    xmlns:s="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="DesignerMainWindow"
              x:Class="Schrauben.GUI"
              mc:Ignorable="d" 
              d:DesignHeight="500"
@@ -282,9 +283,11 @@
                                HorizontalAlignment="Left" />
 
                             <ComboBox x:Name="cb_schraubenart"  Height="25"
-                                  ItemsSource="{Binding ArtenSammlung}"
-                                  SelectedItem ="Metrisch"
-                                  Margin="10,0" 
+                                      ItemsSource="{Binding ArtenSammlung}"
+                                      SelectedItem ="Metrisch"
+                                      Margin="10,0" 
+                                      SelectionChanged="cb_schraubenart_SelectionChanged" 
+                                      
                                   />
 
                         </StackPanel>
@@ -298,14 +301,50 @@
 
 
 
-                            <ComboBox x:Name="cb_durchmesser" 
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="22*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ComboBox x:Name="cb_MetDurchmesser" 
                                   Height="25"
-                                  ItemsSource="{Binding GewindeSammlung}"
-                                  Margin="7,2,2,2"
+                                  
+                                  Margin="7,7,2,7"
                                   MaxDropDownHeight="80"
-                                  SelectedItem="M24"
+                                          Grid.ColumnSpan="2"
+                                          Visibility="Visible" 
+                                          SelectedItem="M2"
+                                          ItemsSource="{Binding MetrischSammlung}"
                                   />
 
+                                <ComboBox x:Name="cb_fMetDurchmesser" 
+                                  Height="25"
+                                  ItemsSource="{Binding FeinMetrischSammlung}"
+                                  Margin="7,7,2,7"
+                                  MaxDropDownHeight="80"
+                                  SelectedItem="M2x0,25" Grid.ColumnSpan="2"
+                                          Visibility="Hidden" 
+                                          
+                                  >
+
+                                    
+                                </ComboBox>
+
+                                <ComboBox x:Name="cb_ZollDurchmesser" 
+                                  Height="25"
+                                  ItemsSource="{Binding ZollSammlung}"
+                                  Margin="7,7,2,7"
+                                  MaxDropDownHeight="80"
+                                  SelectedItem="1/4"
+                                          Grid.ColumnSpan="2"
+                                        
+                                          Visibility="Hidden" 
+                                          
+                                  />
+
+
+                            </Grid>
 
 
                         </StackPanel>
@@ -425,20 +464,17 @@
                 <StackPanel Orientation="Horizontal">
 
                     <Label Content="Menge:"/>
-                    <Border CornerRadius="10"
-                            Background="White" 
-                            >
 
-                        <TextBox Height="25"
+
+
+                    <TextBox Height="25"
                                  x:Name="tbx_menge"
                                  Width="40"
                                  HorizontalAlignment="Left"
-                                 Background="Transparent"
-                                 SelectionChanged="tbx_menge_SelectionChanged" 
-                                 BorderBrush="Transparent"
-                                 SelectionBrush="Transparent"
-                                 />
-                    </Border>
+                                 SelectionChanged="tbx_menge_SelectionChanged"         
+                                 >
+                    </TextBox>
+
 
                     <Slider x:Name="sl_menge"
                             Height="25"

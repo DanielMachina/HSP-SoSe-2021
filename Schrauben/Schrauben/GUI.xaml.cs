@@ -25,6 +25,7 @@ namespace Schrauben
         public static int testInt2;
         public static int testInt3;
         public static bool aus = false;
+
         public GUI()
         {
             DataContext = new GUItools();
@@ -36,6 +37,7 @@ namespace Schrauben
 
 
         public WindowState WindowState { get; private set; }
+
 
         private void _minimize_Click(object sender, RoutedEventArgs e)
         {
@@ -66,12 +68,29 @@ namespace Schrauben
         public static string gewindelänge;
         public static string menge;
 
+
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
 
             //eingaben werden übergeben
-            durchmesser = (string)cb_durchmesser.SelectedItem;
+
+
+            if (cb_MetDurchmesser.IsVisible)
+            {
+                durchmesser = (string)cb_MetDurchmesser.SelectedItem;
+            }
+
+            if (cb_fMetDurchmesser.IsVisible)
+            {
+                durchmesser = (string)cb_fMetDurchmesser.SelectedItem;
+            }
+
+            if (cb_ZollDurchmesser.IsVisible)
+            {
+                durchmesser = (string)cb_ZollDurchmesser.SelectedItem;
+            }
+
             material = (string)cb_material.SelectedItem;
             schraubenart = (string)cb_schraubenart.SelectedItem;
             festigkeit = (string)cb_festigkeit.SelectedItem;
@@ -81,7 +100,7 @@ namespace Schrauben
             menge = tbx_menge.Text;
 
             new ExcelControl();
-            
+
 
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
@@ -100,18 +119,38 @@ namespace Schrauben
 
         }
 
+
+
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_schraubenart.Text == "Metrisch")
+            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null ||cb_schraubenart.SelectedItem == null)
+            { return; }
+
+
+
+
+            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch")
             {
-                cb_schraubenart.ItemsSource = {Binding GUItools.MetrischSammlung};
-
-
+                cb_fMetDurchmesser.Visibility = Visibility.Hidden;
+                cb_ZollDurchmesser.Visibility = Visibility.Hidden;
+                cb_MetDurchmesser.Visibility = Visibility.Visible;
 
             }
 
+            if (cb_schraubenart.SelectedItem.ToString() == "Zoll")
+            {
+                cb_fMetDurchmesser.Visibility = Visibility.Hidden;
+                cb_MetDurchmesser.Visibility = Visibility.Hidden;
+                cb_ZollDurchmesser.Visibility = Visibility.Visible;
+            }
 
-
+            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein")
+            {
+                cb_ZollDurchmesser.Visibility = Visibility.Hidden;
+                cb_MetDurchmesser.Visibility = Visibility.Hidden;
+                cb_fMetDurchmesser.Visibility = Visibility.Visible;
+            }
+              
 
 
 
@@ -151,13 +190,13 @@ namespace Schrauben
 
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
-            cb_durchmesser.SelectedItem = "";
-            cb_festigkeit.SelectedItem = "";
-            cb_schraubenart.SelectedItem = "";
-            cb_kopfform.SelectedItem = "";
-            cb_material.SelectedItem = "";
-            tbx_gewindelänge.Text = "";
-            tbx_schraubenlänge.Text = "";
+            cb_MetDurchmesser.Text = String.Empty;
+            cb_festigkeit.Text = String.Empty;
+            cb_schraubenart.Text = String.Empty;
+            cb_kopfform.Text = String.Empty;
+            cb_material.Text = String.Empty;
+            tbx_gewindelänge.Text = String.Empty;
+            tbx_schraubenlänge.Text = String.Empty;
             tbx_menge.Text = "1";
 
             img_SechskantSchraube.Visibility = Visibility.Hidden;
@@ -235,6 +274,36 @@ namespace Schrauben
         {
             new CatiaControl();
         }
+
+
+
+
+        /*
+       private void cb_schraubenart_DropDownClosed(object sender, EventArgs e)
+       {
+           if (cb_schraubenart.Text == "Metrisch")
+           {
+               cb_fMetDurchmesser.Visibility = Visibility.Hidden;
+               cb_ZollDurchmesser.Visibility = Visibility.Hidden;
+               cb_MetDurchmesser.Visibility = Visibility.Visible;
+
+           }
+
+           if (cb_schraubenart.Text == "Zoll")
+           {
+               cb_fMetDurchmesser.Visibility = Visibility.Hidden;
+               cb_MetDurchmesser.Visibility = Visibility.Hidden;
+               cb_ZollDurchmesser.Visibility = Visibility.Visible;
+           }
+
+           if (cb_schraubenart.Text == "Metrisch_Fein")
+           {
+               cb_ZollDurchmesser.Visibility = Visibility.Hidden;
+               cb_MetDurchmesser.Visibility = Visibility.Hidden;
+               cb_fMetDurchmesser.Visibility = Visibility.Visible;
+           }
+       }
+*/
     }
 
 }

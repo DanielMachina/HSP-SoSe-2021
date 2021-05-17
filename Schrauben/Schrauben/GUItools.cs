@@ -112,7 +112,7 @@ namespace Schrauben
             ArtenSammlung = new List<string>();
             {
                 ArtenSammlung.Add("Metrisch");
-                ArtenSammlung.Add("Metrisch Fein");
+                ArtenSammlung.Add("Metrisch_Fein");
                 ArtenSammlung.Add("Zoll");
                 ArtenSammlung.Add("");
             }
