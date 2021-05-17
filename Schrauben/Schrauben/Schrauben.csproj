@@ -55,15 +55,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.INFITF">
-      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.INFITF.dll</HintPath>
+      <HintPath>..\MinimalCatia-master\Verweise\Interop.INFITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.MECMOD">
-      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.MECMOD.dll</HintPath>
+      <HintPath>..\MinimalCatia-master\Verweise\Interop.MECMOD.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.PARTITF">
-      <HintPath>..\..\..\..\..\..\..\MinimalCatia-master\Verweise\Interop.PARTITF.dll</HintPath>
+      <HintPath>..\MinimalCatia-master\Verweise\Interop.PARTITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="PresentationCore" />
