@@ -275,6 +275,11 @@ namespace Schrauben
             new CatiaControl();
         }
 
+        private void btn_drucken_Click(object sender, RoutedEventArgs e)
+        {
+            new Ausdrucken();
+        }
+
 
 
 

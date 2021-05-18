@@ -10,6 +10,12 @@ namespace Schrauben
 
     public class ExcelControl
     {
+        public static string Kopf { get; set; }
+        public static string Menge { get; set; }
+        public static string Festigkeit { get; set; }
+        public static string Laenge { get; set; }
+        public static string Gewinde { get; set; }
+        public static string Material { get; set; }
         public static double Durchmesser { get; set; }
         public static double Steigung { get; set; }
         public static double Flankendurchmesser { get; set; }
@@ -53,12 +59,12 @@ namespace Schrauben
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
             //XlSchreiben(mySheet);
-            string Gewinde = GUI.durchmesser;
-            string Laenge = GUI.schraubenlänge;
-            string Kopf = GUI.kopfform;
-            string Material = GUI.material;
-            string Menge = GUI.menge;
-            string Festigkeit = GUI.festigkeit;
+            Gewinde = GUI.durchmesser;
+            Laenge = GUI.schraubenlänge;
+            Kopf = GUI.kopfform;
+            Material = GUI.material;
+            Menge = GUI.menge;
+            Festigkeit = GUI.festigkeit;
 
 
             Console.ForegroundColor = ConsoleColor.Green;
