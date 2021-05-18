@@ -47,7 +47,6 @@ namespace Schrauben
                 MetrischSammlung.Add("M30");
                 MetrischSammlung.Add("M36");
                 MetrischSammlung.Add("M42");
-                MetrischSammlung.Add("");
             }
 
             ZollSammlung = new List<string>();
@@ -59,7 +58,6 @@ namespace Schrauben
                 ZollSammlung.Add("1");
                 ZollSammlung.Add("1 1/4");
                 ZollSammlung.Add("1 1/2");
-                ZollSammlung.Add("");
             }
 
             FeinMetrischSammlung = new List<string>();
@@ -95,7 +93,6 @@ namespace Schrauben
                 FeinMetrischSammlung.Add("M36x2");
                 FeinMetrischSammlung.Add("M42x1,5");
                 FeinMetrischSammlung.Add("M42x2");
-                FeinMetrischSammlung.Add("");
             }
 
             MaterialSammlung = new List<string>();
@@ -106,7 +103,6 @@ namespace Schrauben
                 MaterialSammlung.Add("Messing");
                 MaterialSammlung.Add("Bronze");
                 MaterialSammlung.Add("Kupfer");
-                MaterialSammlung.Add("");
             }
 
             ArtenSammlung = new List<string>();
@@ -114,7 +110,6 @@ namespace Schrauben
                 ArtenSammlung.Add("Metrisch");
                 ArtenSammlung.Add("Metrisch_Fein");
                 ArtenSammlung.Add("Zoll");
-                ArtenSammlung.Add("");
             }
 
             Kopfform = new List<string>();
@@ -122,7 +117,6 @@ namespace Schrauben
                 Kopfform.Add("Sechskant");
                 Kopfform.Add("Zylinderkopf");
                 Kopfform.Add("Senkkopf");
-                Kopfform.Add("");
             }
 
             Schraubenfestigkeit = new List<string>();
@@ -136,7 +130,6 @@ namespace Schrauben
                 Schraubenfestigkeit.Add("9.8");
                 Schraubenfestigkeit.Add("10.9");
                 Schraubenfestigkeit.Add("12.9");
-                Schraubenfestigkeit.Add("");
             }
         }
 

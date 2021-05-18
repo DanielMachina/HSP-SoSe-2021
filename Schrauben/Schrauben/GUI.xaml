@@ -311,7 +311,7 @@
                                   Height="25"
                                   
                                   Margin="7,7,2,7"
-                                  MaxDropDownHeight="80"
+                                          MaxDropDownHeight="82"
                                           Grid.ColumnSpan="2"
                                           Visibility="Visible" 
                                           SelectedItem="M2"
