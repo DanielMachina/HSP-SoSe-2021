@@ -22,7 +22,7 @@ namespace Schrauben
         public static double Kerndurchmesser { get; set; }
         public static double Kernlochdurchmesser { get; set; }
         public static double Gesamtmasse { get; set; }
-        public static double SW { get; set; }
+        public static string SW { get; set; }
         public static string Re { get; set; }
         public static string Rm { get; set; }
         public static double Preis { get; set; }
@@ -111,7 +111,7 @@ namespace Schrauben
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
             bereich = mySheet.Cells[56, "C"] as Excel.Range;
-            SW = (Double)bereich.Value;
+            SW = (String)bereich.Value;
             Console.WriteLine("   SW: " + SW);
 
             bereich = mySheet.Cells[57, "C"] as Excel.Range;

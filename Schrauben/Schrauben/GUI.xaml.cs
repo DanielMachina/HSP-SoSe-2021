@@ -109,7 +109,7 @@ namespace Schrauben
             tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser);
             tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser);
             tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis);
-            tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SW);
+            tb_schlüsselweite.Text = ExcelControl.SW;
             tb_streckgrenze.Text = ExcelControl.Re;
             tb_zugfestigkeit.Text = ExcelControl.Rm;
             tb_ftm.Text = Convert.ToString(ExcelControl.FTM);
