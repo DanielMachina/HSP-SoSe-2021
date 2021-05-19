@@ -99,9 +99,11 @@ namespace Schrauben
             gewindelänge = tbx_schraubenlänge.Text;
             menge = tbx_menge.Text;
 
-            new ExcelControl();
+            ExcelControl XL = new ExcelControl();
 
+            XL.XlSchreiben();
 
+            XL.XlLesen();
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");

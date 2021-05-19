@@ -32,6 +32,7 @@ namespace Schrauben
 
 
             Excel.Application excelApp = new Excel.Application();
+        Excel._Worksheet mySheet;
         public ExcelControl()
         {
 
@@ -55,7 +56,7 @@ namespace Schrauben
                 excelApp.Workbooks.Open(path);
             }
 
-            Excel._Worksheet mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
+             mySheet = (Excel.Worksheet)excelApp.ActiveSheet;
 
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
@@ -82,7 +83,7 @@ namespace Schrauben
 
 
             // Lesen der Datei
-            //XlLesen(mySheet);
+            //XlLesen();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Lese aus der Excel-Datei");
             Console.ResetColor();
@@ -155,14 +156,14 @@ namespace Schrauben
 
 
             mySheet.SaveAs(newFileName);
-            excelApp.Quit();
+            //excelApp.Quit();
 
             Console.ResetColor();
 
         }
 
-/*
-        public void XlSchreiben(Excel._Worksheet mySheet)
+
+        public void XlSchreiben()
         {
 
             string Gewinde = GUI.durchmesser;
@@ -188,7 +189,7 @@ namespace Schrauben
         }
 
 
-        public void XlLesen(Excel._Worksheet mySheet)
+        public void XlLesen()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Lese aus der Excel-Datei");
@@ -219,8 +220,8 @@ namespace Schrauben
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
             bereich = mySheet.Cells[56, "C"] as Excel.Range;
-            SW = (Double)bereich.Value;
-            Console.WriteLine("   SW: " + SW);
+            SWM = (Double)bereich.Value;
+            Console.WriteLine("   SW: " + SWM);
 
             bereich = mySheet.Cells[57, "C"] as Excel.Range;
             Re = (String)bereich.Value;
@@ -240,7 +241,7 @@ namespace Schrauben
             Console.WriteLine("");
              
         }
-*/
+
 
 
 
