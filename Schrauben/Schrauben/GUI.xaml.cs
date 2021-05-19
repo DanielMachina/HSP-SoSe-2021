@@ -103,17 +103,25 @@ namespace Schrauben
 
 
             //ausgaben werden geholt
-            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser);
-            tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser);
-            tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse);
-            tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser);
-            tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser);
-            tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis);
-            tb_schlüsselweite.Text = ExcelControl.SW;
-            tb_streckgrenze.Text = ExcelControl.Re;
-            tb_zugfestigkeit.Text = ExcelControl.Rm;
-            tb_ftm.Text = Convert.ToString(ExcelControl.FTM);
-            tb_steigung.Text = Convert.ToString(ExcelControl.Steigung);
+            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
+            tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");
+            tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse + "kg");
+            tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser + "mm");
+            tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser + "mm");
+            tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + "EUR");
+            //tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SW);
+                if (ExcelControl.SWZ == "0")
+                {
+                    tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SWM);
+                }
+                else if (ExcelControl.SWZ != "0")
+                {
+                    tb_schlüsselweite.Text = ExcelControl.SWZ + "''";
+                }
+            tb_streckgrenze.Text = ExcelControl.Re + "N/mm^2";
+            tb_zugfestigkeit.Text = ExcelControl.Rm + "N/mm^2";
+            tb_ftm.Text = Convert.ToString(ExcelControl.FTM + "mm^4");
+            tb_steigung.Text = Convert.ToString(ExcelControl.Steigung + "mm");
 
 
 

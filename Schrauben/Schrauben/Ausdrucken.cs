@@ -164,7 +164,7 @@ namespace Schrauben
             mySheet.Cells[23, "C"] = ExcelControl.Menge;
 
 
-            mySheet.Cells[28, "C"] = ExcelControl.SW;
+            //mySheet.Cells[28, "C"] = GUI.SW aus Textbox;
             mySheet.Cells[29, "C"] = ExcelControl.Durchmesser;
             mySheet.Cells[30, "C"] = ExcelControl.Steigung;
             mySheet.Cells[31, "C"] = ExcelControl.Flankendurchmesser;
