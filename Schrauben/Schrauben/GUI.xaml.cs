@@ -67,6 +67,8 @@ namespace Schrauben
         public static string schraubenlänge;
         public static string gewindelänge;
         public static string menge;
+        public static string Drehsinn;
+        public static string SW;
 
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
@@ -99,6 +101,7 @@ namespace Schrauben
             gewindelänge = tbx_schraubenlänge.Text;
             menge = tbx_menge.Text;
 
+
             ExcelControl XL = new ExcelControl();
 
             XL.XlSchreiben();
@@ -111,14 +114,13 @@ namespace Schrauben
             tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser + "mm");
             tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser + "mm");
             tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + "EUR");
-            //tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SW);
                 if (ExcelControl.SWZ == "0")
                 {
-                    tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SWM);
+                    SW = tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SWM);
                 }
                 else if (ExcelControl.SWZ != "0")
                 {
-                    tb_schlüsselweite.Text = ExcelControl.SWZ + "''";
+                    SW = tb_schlüsselweite.Text = ExcelControl.SWZ + "''";
                 }
             tb_streckgrenze.Text = ExcelControl.Re + "N/mm^2";
             tb_zugfestigkeit.Text = ExcelControl.Rm + "N/mm^2";
@@ -288,6 +290,16 @@ namespace Schrauben
         private void btn_drucken_Click(object sender, RoutedEventArgs e)
         {
             new Ausdrucken();
+        }
+
+        private void rb_links(object sender, RoutedEventArgs e)
+        {
+            Drehsinn = "links";
+        }
+
+        private void rb_rechts(object sender, RoutedEventArgs e)
+        {
+            Drehsinn = "rechts";
         }
 
 

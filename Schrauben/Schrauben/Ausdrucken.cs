@@ -10,7 +10,7 @@ namespace Schrauben
     class Ausdrucken // : ExcelControl
     {
         _Excel.Application excelApp = new _Excel.Application();
-        _Excel._Worksheet mySheet;
+        _Excel._Worksheet mySheet2;
         _Excel.Range Xrange;
         _Excel.Borders myBorders;
 
@@ -21,160 +21,224 @@ namespace Schrauben
             excelApp.DisplayAlerts = false;
             excelApp.Workbooks.Add();
 
-            mySheet = (_Excel.Worksheet)excelApp.ActiveSheet;
+            mySheet2 = (_Excel.Worksheet)excelApp.ActiveSheet;
 
             //Name Ein- Ausgabewerte
-            mySheet.Cells[2, "a"] = "Produktdatenblatt";
+            mySheet2.Cells[2, "a"] = "Produktdatenblatt";
 
-            mySheet.Cells[5, "a"] = "Firma";
-            mySheet.Cells[7, "a"] = "Adresse";
-            mySheet.Cells[9, "a"] = "Plz / Ort";
-            mySheet.Cells[11, "a"] = "Tel.";
+            mySheet2.Cells[5, "a"] = "Firma";
+            mySheet2.Cells[4, "a"] = "Schraubentechnik GmbH & Co. KG";
+
+            mySheet2.Cells[7, "a"] = "Adresse";
+            mySheet2.Cells[6, "a"] = "Musterweg 1";
+
+            mySheet2.Cells[9, "a"] = "Plz / Ort";
+            mySheet2.Cells[8, "a"] = "26386 Wilhelmshaven";
+
+            mySheet2.Cells[11, "a"] = "Tel.";
+            mySheet2.Cells[10, "a"] = "01234/0123456789";
 
             //Eingabe
-            mySheet.Cells[14, "a"] = "Schraubenkonfiguration";
-            mySheet.Cells[15, "a"] = "Material: ";
-            mySheet.Cells[16, "a"] = "Schraubenart: ";
-            mySheet.Cells[17, "a"] = "Nennmaß: ";
-            mySheet.Cells[18, "a"] = "Festigkeitsklasse: ";
-            mySheet.Cells[19, "a"] = "Schraubenlänge: ";
-            mySheet.Cells[20, "a"] = "Gewindelänge: ";
-            mySheet.Cells[21, "a"] = "Kopfform: ";
-            mySheet.Cells[22, "a"] = "Drehsinn: ";
-            mySheet.Cells[23, "a"] = "Menge: ";
+            mySheet2.Cells[14, "a"] = "Schraubenkonfiguration";
+
+            mySheet2.Cells[16, "a"] = "Ihre Eingaben:";
+            mySheet2.Cells[17, "a"] = "Material: ";
+            mySheet2.Cells[18, "a"] = "Schraubenart: ";
+            mySheet2.Cells[19, "a"] = "Nennmaß: ";
+            mySheet2.Cells[20, "a"] = "Festigkeitsklasse: ";
+            mySheet2.Cells[21, "a"] = "Schraubenlänge: ";
+            mySheet2.Cells[22, "a"] = "Gewindelänge: ";
+            mySheet2.Cells[23, "a"] = "Kopfform: ";
+            mySheet2.Cells[24, "a"] = "Drehsinn: ";
+            mySheet2.Cells[25, "a"] = "Menge: ";
 
             //Ausgabe
-            mySheet.Cells[28, "a"] = "Schlüsselweite: ";
-            mySheet.Cells[29, "a"] = "Durchmesser: ";
-            mySheet.Cells[30, "a"] = "Steigung: ";
-            mySheet.Cells[31, "a"] = "Flankendurchmesser: ";
-            mySheet.Cells[32, "a"] = "Kerndurchmesser: ";
-            mySheet.Cells[33, "a"] = "Kernlochdurchmesser: ";
-            mySheet.Cells[34, "a"] = "Streckgrenze: ";
-            mySheet.Cells[35, "a"] = "Zugfestigkeit: ";
-            mySheet.Cells[36, "a"] = "Flächenträgheitsmoment: ";
-            mySheet.Cells[37, "a"] = "Gesamtmasse";
+            mySheet2.Cells[27, "a"] = "Schraubenwerte:";
+            mySheet2.Cells[28, "a"] = "Schlüsselweite: ";
+            mySheet2.Cells[29, "a"] = "Durchmesser: ";
+            mySheet2.Cells[30, "a"] = "Steigung: ";
+            mySheet2.Cells[31, "a"] = "Flankendurchmesser: ";
+            mySheet2.Cells[32, "a"] = "Kerndurchmesser: ";
+            mySheet2.Cells[33, "a"] = "Kernlochdurchmesser: ";
+            mySheet2.Cells[34, "a"] = "Streckgrenze: ";
+            mySheet2.Cells[35, "a"] = "Zugfestigkeit: ";
+            mySheet2.Cells[36, "a"] = "Flächenträgheitsmoment: ";
+            mySheet2.Cells[37, "a"] = "Gesamtmasse";
 
-            mySheet.Cells[39, "a"] = "Preis";
+            mySheet2.Cells[39, "a"] = "Preis";
 
 
             //Eingaben zentrieren
-            mySheet.Range["A5", "A11"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
-            mySheet.Range["A15", "A23"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
-            mySheet.Range["A28", "A39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["A4", "B11"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["A16", "A25"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["A27", "A39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
 
-            mySheet.Range["b15", "b23"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
-            mySheet.Range["b28", "b39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["b16", "b25"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["b27", "b39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
 
-            mySheet.Range["c15", "c23"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
-            mySheet.Range["c28", "c39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["c16", "c25"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
+            mySheet2.Range["c27", "c39"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
 
             //Schriftgröße
-            mySheet.Range["A5", "A11"].Font.Size = 9;
+            mySheet2.Range["A5"].Font.Size = 8;
+            mySheet2.Range["A7"].Font.Size = 8;
+            mySheet2.Range["A9"].Font.Size = 8;
+            mySheet2.Range["A11"].Font.Size = 8;
 
-            mySheet.Range["A15", "A23"].Font.Size = 11;
-            mySheet.Range["b15", "b23"].Font.Size = 11;
-            mySheet.Range["c15", "c23"].Font.Size = 11;
+            mySheet2.Range["A4"].Font.Size = 10;
+            mySheet2.Range["A6"].Font.Size = 10;
+            mySheet2.Range["A8"].Font.Size = 10;
+            mySheet2.Range["A10"].Font.Size = 10;
 
-            mySheet.Range["A28", "A39"].Font.Size = 11;
-            mySheet.Range["b28", "b39"].Font.Size = 11;
-            mySheet.Range["c28", "c39"].Font.Size = 11;
+            mySheet2.Range["A16", "A25"].Font.Size = 11;
+            mySheet2.Range["b16", "b25"].Font.Size = 11;
+            mySheet2.Range["c16", "c25"].Font.Size = 11;
+
+            mySheet2.Range["A27", "A39"].Font.Size = 11;
+            mySheet2.Range["b27", "b39"].Font.Size = 11;
+            mySheet2.Range["c27", "c39"].Font.Size = 11;
 
             //fett
-            mySheet.Range["A2"].Font.Bold = true;
-            mySheet.Range["A14"].Font.Bold = true;
+            mySheet2.Range["A2"].Font.Bold = true;
+            mySheet2.Range["A14"].Font.Bold = true;
 
 
             //Schriftgröße nochmal anpassen
-            mySheet.Range["A2"].Font.Size = 24;
-            mySheet.Range["A14"].Font.Size = 16;
-            mySheet.Range["a39"].Font.Size = 16;
-            mySheet.Range["b39"].Font.Size = 16;
-            mySheet.Range["c39"].Font.Size = 16;
+            mySheet2.Range["A2"].Font.Size = 24;
+            mySheet2.Range["A14"].Font.Size = 16;
+            mySheet2.Range["a39"].Font.Size = 16;
+            mySheet2.Range["b39"].Font.Size = 16;
+            mySheet2.Range["c39"].Font.Size = 16;
 
-            //Zellen zsm Überschrft und zentrieren
-            mySheet.Range["a2:D2"].Merge();
-            mySheet.Range["a14:c14"].Merge();
-            mySheet.Range["a42:b42"].Merge();
+            //Zellen zsm Überschrift und zentrieren
+            mySheet2.Range["a2:D2"].Merge();
+            mySheet2.Range["a4:c4"].Merge();
+            mySheet2.Range["a6:c6"].Merge();
+            mySheet2.Range["a8:c8"].Merge();
+            mySheet2.Range["a10:c10"].Merge();
+            mySheet2.Range["e4:f4"].Merge();
+            mySheet2.Range["e5:f6"].Merge();
+            mySheet2.Range["a14:c14"].Merge();
+            mySheet2.Range["a42:b42"].Merge();
+            mySheet2.Range["e2:f3"].Merge();
+            mySheet2.Range["a16:c16"].Merge();
+            mySheet2.Range["a27:c27"].Merge();
 
-            mySheet.Range["A2", "D2"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
-            mySheet.Range["A14", "c14"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
-            mySheet.Range["A42", "b42"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
-            mySheet.Range["f4", "f7"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["A2", "D2"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["A14", "c14"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["A42", "b42"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["f4", "f7"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["a16", "c16"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
+            mySheet2.Range["a27", "c27"].HorizontalAlignment = _Excel.XlHAlign.xlHAlignCenter;
 
-            mySheet.Range["a2:D2"].Font.Underline = _Excel.XlUnderlineStyle.xlUnderlineStyleSingle;
+            mySheet2.Range["a2:D2"].Font.Underline = _Excel.XlUnderlineStyle.xlUnderlineStyleSingle;
 
             //Datum
-            mySheet.Cells[7, "f"] = DateTime.Today;
+            mySheet2.Cells[7, "e"] = "Datum";
+            mySheet2.Cells[7, "f"] = DateTime.Today;
+
+            //Kontakt
+            mySheet2.Cells[4, "e"] = "Kontakt:";
+            mySheet2.Cells[5, "e"] = "Kai Mecke";
+            mySheet2.Range["e4", "f5"].EntireColumn.HorizontalAlignment = _Excel.XlHAlign.xlHAlignLeft;
 
 
             //Rahmen Eingabe
-            Xrange = mySheet.get_Range("A15:c23");
+            Xrange = mySheet2.get_Range("A16:c25");
             myBorders = Xrange.Borders;
             myBorders.Weight = _Excel.XlBorderWeight.xlThick;
             myBorders.Weight = 2d;
 
             //Rahmen Ausgabe
-            Xrange = mySheet.get_Range("A26:c37");
+            Xrange = mySheet2.get_Range("A27:c37");
             myBorders = Xrange.Borders;
             myBorders.Weight = _Excel.XlBorderWeight.xlThick;
             myBorders.Weight = 2d;
 
             //Rahmen Preis
-            Xrange = mySheet.get_Range("A39:c39");
+            Xrange = mySheet2.get_Range("A39:c39");
             myBorders = Xrange.Borders;
             myBorders.Weight = _Excel.XlBorderWeight.xlThick;
             myBorders.Weight = 2d;
 
-            //Rahmen üKontakt
-            Xrange = mySheet.get_Range("e3:f3");
+            //Rahmen üKontakt Datum Bild
+            Xrange = mySheet2.get_Range("E2:F7");
             myBorders = Xrange.Borders;
-            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
-
-            //Rahmen üDatum
-            Xrange = mySheet.get_Range("e6:f6");
-            myBorders = Xrange.Borders;
-            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
-
-            //Rahmen uDatum
-            Xrange = mySheet.get_Range("e7:f7");
-            myBorders = Xrange.Borders;
-            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
+            myBorders.Weight = _Excel.XlBorderWeight.xlThick;
+            myBorders.Weight = 2d;
+            
 
             //Rahmen üFirma
-            Xrange = mySheet.get_Range("a4:c4");
+            Xrange = mySheet2.get_Range("a4:c4");
+            myBorders = Xrange.Borders;
+            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
+
+            //Rahmen Add
+            Xrange = mySheet2.get_Range("a6:c6");
+            myBorders = Xrange.Borders;
+            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
+
+            //Rahmen PLZ
+            Xrange = mySheet2.get_Range("a8:c8");
+            myBorders = Xrange.Borders;
+            myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
+
+            //Rahmen Tel
+            Xrange = mySheet2.get_Range("a10:c10");
             myBorders = Xrange.Borders;
             myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
 
 
             //autofit
-            mySheet.Range["A1", "g48"].EntireColumn.AutoFit();
-
+            mySheet2.Range["a1", "g45"].EntireColumn.AutoFit();
+            /*
+            mySheet2.Range["a1", "d16"].EntireColumn.AutoFit();
+            mySheet2.Range["a17", "a38"].EntireColumn.AutoFit();
+            mySheet2.Range["a39", "c39"].EntireColumn.AutoFit();
+            mySheet2.Range["c17", "c37"].EntireColumn.AutoFit();
+            mySheet2.Range["e1", "f6"].EntireColumn.AutoFit();
+            mySheet2.Range["b17", "b37"].EntireColumn.ColumnWidth(50);
+            */
 
 
             //Daten in Felder ausgeben
-            mySheet.Cells[15, "C"] = ExcelControl.Material;
-            //mySheet.Cells[16, "C"] = GUI.Schraubenart;
-            mySheet.Cells[17, "C"] = ExcelControl.Gewinde;
-            mySheet.Cells[18, "C"] = ExcelControl.Festigkeit;
-            mySheet.Cells[19, "C"] = ExcelControl.Laenge;
-            //mySheet.Cells[20, "C"] = GUI.Gewindlaenge;
-            mySheet.Cells[21, "C"] = ExcelControl.Kopf;
-            //mySheet.Cells[22, "C"] = GUI.Drehsinn;
-            mySheet.Cells[23, "C"] = ExcelControl.Menge;
+            mySheet2.Cells[17, "B"] = ExcelControl.Material;
+            mySheet2.Cells[18, "B"] = GUI.schraubenart;
+            mySheet2.Cells[19, "B"] = ExcelControl.Gewinde;
+            mySheet2.Cells[20, "B"] = ExcelControl.Festigkeit;
+            mySheet2.Cells[21, "B"] = ExcelControl.Laenge;
+            mySheet2.Cells[21,"C"] = "mm";
+            mySheet2.Cells[22, "B"] = GUI.gewindelänge;
+            mySheet2.Cells[21, "C"] = "mm";
+            mySheet2.Cells[23, "B"] = ExcelControl.Kopf;
+            mySheet2.Cells[24, "B"] = GUI.Drehsinn;
+            mySheet2.Cells[25, "B"] = ExcelControl.Menge;
+            mySheet2.Cells[25, "C"] = "Stk.";
 
 
-            //mySheet.Cells[28, "C"] = GUI.SW aus Textbox;
-            mySheet.Cells[29, "C"] = ExcelControl.Durchmesser;
-            mySheet.Cells[30, "C"] = ExcelControl.Steigung;
-            mySheet.Cells[31, "C"] = ExcelControl.Flankendurchmesser;
-            mySheet.Cells[32, "C"] = ExcelControl.Kerndurchmesser;
-            mySheet.Cells[33, "C"] = ExcelControl.Kernlochdurchmesser;
-            mySheet.Cells[34, "C"] = ExcelControl.Re;
-            mySheet.Cells[35, "C"] = ExcelControl.Rm;
-            mySheet.Cells[36, "C"] = ExcelControl.FTM;
-            mySheet.Cells[37, "C"] = ExcelControl.Gesamtmasse;
+            mySheet2.Cells[28, "B"] = GUI.SW;
+            mySheet2.Cells[29, "B"] = ExcelControl.Durchmesser;
+            mySheet2.Cells[29, "C"] = "mm";
+            mySheet2.Cells[30, "B"] = ExcelControl.Steigung;
+            mySheet2.Cells[30,"C"] = "mm";
+            mySheet2.Cells[31, "B"] = ExcelControl.Flankendurchmesser;
+            mySheet2.Cells[31,"C"] = "mm";
+            mySheet2.Cells[32, "B"] = ExcelControl.Kerndurchmesser;
+            mySheet2.Cells[32,"C"] = "mm";
+            mySheet2.Cells[33, "B"] = ExcelControl.Kernlochdurchmesser;
+            mySheet2.Cells[33,"C"] = "mm";
+            mySheet2.Cells[34, "B"] = ExcelControl.Re;
+            mySheet2.Cells[34,"C"] = "N/mm^2";
+            mySheet2.Cells[35, "B"] = ExcelControl.Rm;
+            mySheet2.Cells[35,"C"] = "N/mm^2";
+            mySheet2.Cells[36, "B"] = ExcelControl.FTM;
+            mySheet2.Cells[36,"C"] = "mm^4";
+            mySheet2.Cells[37, "B"] = ExcelControl.Gesamtmasse;
+            mySheet2.Cells[37, "C"] = "kg";
 
+
+            mySheet2.Cells[39, "B"] = ExcelControl.Preis;
+            mySheet2.Cells[39, "C"] = "Euro";
 
 
 
@@ -183,7 +247,7 @@ namespace Schrauben
 
 
             // als PDF speichern 
-            mySheet.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
+            mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
                                         "D:\\Produktblatt",
                                        ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
                                        ExcelControl.Menge, _Excel.XlFixedFormatQuality.xlQualityStandard,

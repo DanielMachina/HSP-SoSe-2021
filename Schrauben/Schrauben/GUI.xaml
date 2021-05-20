@@ -444,10 +444,12 @@
 
                                 <RadioButton GroupName="Drehsinn"
                                              Content=" Links"
-                                             Margin="55,3,0,0"/>
+                                             Margin="55,3,0,0" 
+                                             Checked="rb_links"/>
                                 <RadioButton GroupName="Drehsinn"
                                              Content="Rechts"
-                                             Margin="55,0,40,0"/>
+                                             Margin="55,0,40,0" 
+                                             Checked="rb_rechts"/>
 
                             </StackPanel>
 
