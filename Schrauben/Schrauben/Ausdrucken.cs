@@ -17,7 +17,7 @@ namespace Schrauben
         internal Ausdrucken()
         {
             // Tool Eingaben
-            excelApp.Visible = true;
+            excelApp.Visible = false;
             excelApp.DisplayAlerts = false;
             excelApp.Workbooks.Add();
 
@@ -120,7 +120,6 @@ namespace Schrauben
             mySheet2.Range["e5:f6"].Merge();
             mySheet2.Range["a14:c14"].Merge();
             mySheet2.Range["a42:b42"].Merge();
-            mySheet2.Range["e2:f3"].Merge();
             mySheet2.Range["a16:c16"].Merge();
             mySheet2.Range["a27:c27"].Merge();
 
@@ -162,7 +161,7 @@ namespace Schrauben
             myBorders.Weight = 2d;
 
             //Rahmen üKontakt Datum Bild
-            Xrange = mySheet2.get_Range("E2:F7");
+            Xrange = mySheet2.get_Range("E4:F7");
             myBorders = Xrange.Borders;
             myBorders.Weight = _Excel.XlBorderWeight.xlThick;
             myBorders.Weight = 2d;
@@ -209,7 +208,7 @@ namespace Schrauben
             mySheet2.Cells[21, "B"] = ExcelControl.Laenge;
             mySheet2.Cells[21,"C"] = "mm";
             mySheet2.Cells[22, "B"] = GUI.gewindelänge;
-            mySheet2.Cells[21, "C"] = "mm";
+            mySheet2.Cells[22, "C"] = "mm";
             mySheet2.Cells[23, "B"] = ExcelControl.Kopf;
             mySheet2.Cells[24, "B"] = GUI.Drehsinn;
             mySheet2.Cells[25, "B"] = ExcelControl.Menge;
@@ -242,26 +241,34 @@ namespace Schrauben
 
 
 
-            string file = "e";
-            string path = System.IO.Path.GetFullPath(file);
+            //string file = "e";
+            //string path = System.IO.Path.GetFullPath(file);
 
 
             // als PDF speichern 
             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
-                                        "D:\\Produktblatt",
+                        @"C:\Users\marvi\Desktop\Test pdf\Produktdatenblatt " +" "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
+                        + ExcelControl.Menge,
+                        _Excel.XlFixedFormatQuality.xlQualityStandard,
+                        true,true,1,1,false);
+
+
+                /*_Excel.XlFixedFormatType.xlTypePDF,
+                                        @"C: \Users\marvi\Desktop\Test pdf",
                                        ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
                                        ExcelControl.Menge, _Excel.XlFixedFormatQuality.xlQualityStandard,
                                        true, true, 1, 1, true);
+                */
 
-           // mySheet.SaveAs(System.IO.Path.GetDirectoryName(path));
+            // mySheet.SaveAs(System.IO.Path.GetDirectoryName(path));
 
             //String filename = "Produktdatenblatt.pdf";
             //String filename = System.IO.Path.Combine("Produktdatenblatt" + ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
-           //                            ExcelControl.Menge + ".pdf");
-           // String path = System.IO.Path.GetFullPath(filename);
+            //                            ExcelControl.Menge + ".pdf");
+            // String path = System.IO.Path.GetFullPath(filename);
 
 
-            
+
             //excelApp.Quit();
 
 

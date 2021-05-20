@@ -98,15 +98,15 @@ namespace Schrauben
             festigkeit = (string)cb_festigkeit.SelectedItem;
             kopfform = (string)cb_kopfform.SelectedItem;
             schraubenlänge = tbx_schraubenlänge.Text;
-            gewindelänge = tbx_schraubenlänge.Text;
+            gewindelänge = tbx_gewindelänge.Text;
             menge = tbx_menge.Text;
 
 
             ExcelControl XL = new ExcelControl();
 
-            XL.XlSchreiben();
+            //XL.XlSchreiben();
 
-            XL.XlLesen();
+            //XL.XlLesen();
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");

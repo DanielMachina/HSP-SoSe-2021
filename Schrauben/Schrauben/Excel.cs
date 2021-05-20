@@ -42,6 +42,7 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             excelApp.Visible = false;
+            excelApp.DisplayAlerts = false;
 
             // Öffnen einer Excel Datei
             Console.ForegroundColor = ConsoleColor.Green;
@@ -61,24 +62,17 @@ namespace Schrauben
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
             //XlSchreiben(mySheet);
-            Gewinde = GUI.durchmesser;
-            Laenge = GUI.schraubenlänge;
-            Kopf = GUI.kopfform;
-            Material = GUI.material;
-            Menge = GUI.menge;
-            Festigkeit = GUI.festigkeit;
-
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Schreibe in die Excel-Datei");
             Console.ResetColor();
             Console.WriteLine("");
-            mySheet.Cells[8, "B"] = Material;
-            mySheet.Cells[9, "B"] = Laenge;
-            mySheet.Cells[11, "B"] = Kopf;
-            mySheet.Cells[13, "B"] = Gewinde;
-            mySheet.Cells[14, "B"] = Menge;
-            mySheet.Cells[16, "B"] = Festigkeit;
+            mySheet.Cells[8, "B"] = Material = GUI.material;
+            mySheet.Cells[9, "B"] = Laenge = GUI.schraubenlänge;
+            mySheet.Cells[11, "B"] = Kopf = GUI.kopfform;
+            mySheet.Cells[13, "B"] = Gewinde = GUI.durchmesser;
+            mySheet.Cells[14, "B"] = Menge = GUI.menge;
+            mySheet.Cells[16, "B"] = Festigkeit = GUI.festigkeit;
 
 
 
@@ -166,24 +160,16 @@ namespace Schrauben
         public void XlSchreiben()
         {
 
-            string Gewinde = GUI.durchmesser;
-            string Laenge = GUI.schraubenlänge;
-            string Kopf = GUI.kopfform;
-            string Material = GUI.material;
-            string Menge = GUI.menge;
-            string Festigkeit = GUI.festigkeit;
-
-
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Schreibe in die Excel-Datei");
             Console.ResetColor();
             Console.WriteLine("");
-            mySheet.Cells[8, "B"] = Material;
-            mySheet.Cells[9, "B"] = Laenge;
-            mySheet.Cells[11, "B"] = Kopf;
-            mySheet.Cells[13, "B"] = Gewinde;
-            mySheet.Cells[14, "B"] = Menge;
-            mySheet.Cells[16, "B"] = Festigkeit;
+            mySheet.Cells[8, "B"] = Material = GUI.material;
+            mySheet.Cells[9, "B"] = Laenge = GUI.schraubenlänge;
+            mySheet.Cells[11, "B"] = Kopf = GUI.kopfform;
+            mySheet.Cells[13, "B"] = Gewinde = GUI.durchmesser;
+            mySheet.Cells[14, "B"] = Menge = GUI.menge;
+            mySheet.Cells[16, "B"] = Festigkeit = GUI.festigkeit;
 
 
         }
@@ -196,32 +182,36 @@ namespace Schrauben
             Console.ResetColor();
             Console.WriteLine("");
             Excel.Range bereich = mySheet.Cells[50, "C"] as Excel.Range;
-            Durchmesser = (Double)bereich.Value;
+            Durchmesser = Math.Round((Double)bereich.Value, 1);
             Console.WriteLine("   Durchmesser: " + Durchmesser);
 
             bereich = mySheet.Cells[51, "C"] as Excel.Range;
-            Steigung = (Double)bereich.Value;
+            Steigung = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Steigung: " + Steigung);
 
             bereich = mySheet.Cells[52, "C"] as Excel.Range;
-            Flankendurchmesser = (Double)bereich.Value;
+            Flankendurchmesser = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Flankendurchmesser: " + Flankendurchmesser);
 
             bereich = mySheet.Cells[53, "C"] as Excel.Range;
-            Kerndurchmesser = (Double)bereich.Value;
+            Kerndurchmesser = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Kerndurchmesser: " + Kerndurchmesser);
 
             bereich = mySheet.Cells[54, "C"] as Excel.Range;
-            Kernlochdurchmesser = (Double)bereich.Value;
+            Kernlochdurchmesser = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Kernlochdurchmesser: " + Kernlochdurchmesser);
 
             bereich = mySheet.Cells[55, "C"] as Excel.Range;
-            Gesamtmasse = (Double)bereich.Value;
+            Gesamtmasse = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
-            bereich = mySheet.Cells[56, "C"] as Excel.Range;
+            bereich = mySheet.Cells[56, "B"] as Excel.Range;
             SWM = (Double)bereich.Value;
-            Console.WriteLine("   SW: " + SWM);
+            Console.WriteLine("   SWM: " + SWM);
+
+            bereich = mySheet.Cells[56, "E"] as Excel.Range;
+            SWZ = (String)bereich.Value;
+            Console.WriteLine("   SWZ: " + SWZ);
 
             bereich = mySheet.Cells[57, "C"] as Excel.Range;
             Re = (String)bereich.Value;
@@ -232,14 +222,14 @@ namespace Schrauben
             Console.WriteLine("   Rm: " + Rm);
 
             bereich = mySheet.Cells[59, "C"] as Excel.Range;
-            Preis = (Double)bereich.Value;
+            Preis = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Preis: " + Preis);
 
             bereich = mySheet.Cells[60, "C"] as Excel.Range;
-            FTM = (Double)bereich.Value;
+            FTM = Math.Round((Double)bereich.Value);
             Console.WriteLine("   FTM: " + FTM);
             Console.WriteLine("");
-             
+
         }
 
 
