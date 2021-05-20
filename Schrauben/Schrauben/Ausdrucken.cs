@@ -17,7 +17,7 @@ namespace Schrauben
         internal Ausdrucken()
         {
             // Tool Eingaben
-            excelApp.Visible = false;
+            excelApp.Visible = true;
             excelApp.DisplayAlerts = false;
             excelApp.Workbooks.Add();
 
@@ -177,20 +177,27 @@ namespace Schrauben
 
 
 
-            // als PDF speichern
-            /*mySheet.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
-                                       //"e\\Schraube Ausgabe Produktdatenblatt" 
+
+            string file = "e";
+            string path = System.IO.Path.GetFullPath(file);
+
+
+            // als PDF speichern 
+            mySheet.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
+                                        "D:\\Produktblatt",
                                        ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
                                        ExcelControl.Menge, _Excel.XlFixedFormatQuality.xlQualityStandard,
                                        true, true, 1, 1, true);
-            */
+
+           // mySheet.SaveAs(System.IO.Path.GetDirectoryName(path));
+
             //String filename = "Produktdatenblatt.pdf";
-            String filename = System.IO.Path.Combine("Produktdatenblatt" + ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
-                                       ExcelControl.Menge + ".pdf");
-            String path = System.IO.Path.GetFullPath(filename);
+            //String filename = System.IO.Path.Combine("Produktdatenblatt" + ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
+           //                            ExcelControl.Menge + ".pdf");
+           // String path = System.IO.Path.GetFullPath(filename);
 
 
-            mySheet.SaveAs(filename);
+            
             //excelApp.Quit();
 
 

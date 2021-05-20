@@ -576,7 +576,9 @@
                         FontSize="12"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
-                        x:Name="btn_drucken" Margin="0,0,0,10">
+                        x:Name="btn_drucken" 
+                        Margin="0,0,0,10"
+                        Click="btn_drucken_Click" >
 
 
 
