@@ -150,7 +150,7 @@ namespace Schrauben
 
 
             mySheet.SaveAs(newFileName);
-            //excelApp.Quit();
+            excelApp.Quit();
 
             Console.ResetColor();
 
