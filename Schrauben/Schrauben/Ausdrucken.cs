@@ -201,6 +201,8 @@ namespace Schrauben
 
 
             //Daten in Felder ausgeben
+            mySheet2.Cells.NumberFormat = "@";
+
             mySheet2.Cells[17, "B"] = ExcelControl.Material;
             mySheet2.Cells[18, "B"] = GUI.schraubenart;
             mySheet2.Cells[19, "B"] = ExcelControl.Gewinde;
@@ -237,7 +239,7 @@ namespace Schrauben
 
 
             mySheet2.Cells[39, "B"] = ExcelControl.Preis;
-            mySheet2.Cells[39, "C"] = "Euro";
+            mySheet2.Cells[39, "C"] = "€";
 
 
 
