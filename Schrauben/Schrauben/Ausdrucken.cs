@@ -187,18 +187,8 @@ namespace Schrauben
             myBorders = Xrange.Borders;
             myBorders[_Excel.XlBordersIndex.xlEdgeBottom].Color = ConsoleColor.Black;
 
-
             //autofit
             mySheet2.Range["a1", "g45"].EntireColumn.AutoFit();
-            /*
-            mySheet2.Range["a1", "d16"].EntireColumn.AutoFit();
-            mySheet2.Range["a17", "a38"].EntireColumn.AutoFit();
-            mySheet2.Range["a39", "c39"].EntireColumn.AutoFit();
-            mySheet2.Range["c17", "c37"].EntireColumn.AutoFit();
-            mySheet2.Range["e1", "f6"].EntireColumn.AutoFit();
-            mySheet2.Range["b17", "b37"].EntireColumn.ColumnWidth(50);
-            */
-
 
             //Daten in Felder ausgeben
             mySheet2.Cells[19, "B"].NumberFormat = "@";
@@ -241,37 +231,14 @@ namespace Schrauben
             mySheet2.Cells[39, "B"] = ExcelControl.Preis;
             mySheet2.Cells[39, "C"] = "€";
 
-
-
-            //string file = "e";
-            //string path = System.IO.Path.GetFullPath(file);
-
-
             // als PDF speichern 
             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
-                        @"C:\Users\marvi\Desktop\Test pdf\Produktdatenblatt " +" "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
+                        @"" + "Produktdatenblatt "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
                         + ExcelControl.Menge,
                         _Excel.XlFixedFormatQuality.xlQualityStandard,
                         true,true,1,1,false);
-
-
-                /*_Excel.XlFixedFormatType.xlTypePDF,
-                                        @"C: \Users\marvi\Desktop\Test pdf",
-                                       ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
-                                       ExcelControl.Menge, _Excel.XlFixedFormatQuality.xlQualityStandard,
-                                       true, true, 1, 1, true);
-                */
-
-            // mySheet.SaveAs(System.IO.Path.GetDirectoryName(path));
-
-            //String filename = "Produktdatenblatt.pdf";
-            //String filename = System.IO.Path.Combine("Produktdatenblatt" + ExcelControl.Material + ExcelControl.Gewinde + ExcelControl.Laenge +
-            //                            ExcelControl.Menge + ".pdf");
-            // String path = System.IO.Path.GetFullPath(filename);
-
-
-
-            //excelApp.Quit();
+                          
+            excelApp.Quit();
 
 
 
