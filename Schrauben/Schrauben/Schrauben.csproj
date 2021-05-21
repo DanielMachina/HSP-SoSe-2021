@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EB7313E0-3E02-4D50-9D30-7BB8CF8A22FC}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Schrauben</RootNamespace>
     <AssemblyName>Schrauben</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -54,6 +54,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.HybridShapeTypeLib">
+      <HintPath>..\..\..\..\..\..\..\..\Downloads\MinimalCatia-Schrauben\MinimalCatia-Schrauben\Verweise\Interop.HybridShapeTypeLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Interop.INFITF">
       <HintPath>..\MinimalCatia-master\Verweise\Interop.INFITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -93,6 +97,7 @@
     <Compile Include="Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Schraube.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
