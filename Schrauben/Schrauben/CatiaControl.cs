@@ -37,7 +37,7 @@ namespace Schrauben
                     // cc.ErzeugeBalken(300);
                     // Console.WriteLine("4");
 
-                    Schraube dieSchraube = new Schraube(Convert.ToDouble(GUI.schraubenlänge), Convert.ToDouble(GUI.gewindelänge), GUI.schraubenart, "M8", 5.3d, ExcelControl.Durchmesser, 1.25d);
+                    Schraube dieSchraube = new Schraube(Convert.ToDouble(GUI.schraubenlänge), Convert.ToDouble(GUI.gewindelänge), GUI.schraubenart, GUI.durchmesser, 5.3d, ExcelControl.Durchmesser / 2, ExcelControl.Steigung);
 
                     cc.ErzeugeZylinder(dieSchraube);
                     Console.WriteLine("Schaft");
@@ -56,7 +56,7 @@ namespace Schrauben
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
             Console.WriteLine("Fertig - Taste drücken.");
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
 
