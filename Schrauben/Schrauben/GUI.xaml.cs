@@ -104,9 +104,9 @@ namespace Schrauben
 
             ExcelControl XL = new ExcelControl();
 
-            XL.XlSchreiben();
+            //XL.XlSchreiben();
 
-            XL.XlLesen();
+            //XL.XlLesen();
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");

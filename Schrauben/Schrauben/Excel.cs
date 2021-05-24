@@ -62,7 +62,7 @@ namespace Schrauben
             // Schreiben in die Datei
             //Hier kommen die eingaben der WPF an. Egal was wird weitergegeben und in Excel sortiert und berechnet.
             //XlSchreiben(mySheet);
-/*
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Schreibe in die Excel-Datei");
             Console.ResetColor();
@@ -153,11 +153,11 @@ namespace Schrauben
             excelApp.Quit();
 
             Console.ResetColor();
-*/            
+            
         }
 
 
-        public void XlSchreiben()
+        /*public void XlSchreiben()
         {
 
             Console.ForegroundColor = ConsoleColor.Green;
@@ -232,7 +232,7 @@ namespace Schrauben
 
         }
 
-
+        */
 
 
     }
