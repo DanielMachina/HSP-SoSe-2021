@@ -104,9 +104,9 @@ namespace Schrauben
 
             ExcelControl XL = new ExcelControl();
 
-            //XL.XlSchreiben();
+            XL.XlSchreiben();
 
-            //XL.XlLesen();
+            XL.XlLesen();
             //ausgaben werden geholt
             tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
             tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");
@@ -307,32 +307,7 @@ namespace Schrauben
 
 
 
-        /*
-       private void cb_schraubenart_DropDownClosed(object sender, EventArgs e)
-       {
-           if (cb_schraubenart.Text == "Metrisch")
-           {
-               cb_fMetDurchmesser.Visibility = Visibility.Hidden;
-               cb_ZollDurchmesser.Visibility = Visibility.Hidden;
-               cb_MetDurchmesser.Visibility = Visibility.Visible;
-
-           }
-
-           if (cb_schraubenart.Text == "Zoll")
-           {
-               cb_fMetDurchmesser.Visibility = Visibility.Hidden;
-               cb_MetDurchmesser.Visibility = Visibility.Hidden;
-               cb_ZollDurchmesser.Visibility = Visibility.Visible;
-           }
-
-           if (cb_schraubenart.Text == "Metrisch_Fein")
-           {
-               cb_ZollDurchmesser.Visibility = Visibility.Hidden;
-               cb_MetDurchmesser.Visibility = Visibility.Hidden;
-               cb_fMetDurchmesser.Visibility = Visibility.Visible;
-           }
-       }
-*/
+       
     }
 
 }
