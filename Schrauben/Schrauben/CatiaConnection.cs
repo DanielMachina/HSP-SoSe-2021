@@ -15,8 +15,10 @@ namespace Schrauben
         MECMOD.Sketch hsp_catiaSkizze;
 
         ShapeFactory SF;
+        HybridBody HBody;
         HybridShapeFactory HSF;
         Pad mySchaft;
+        Pad myOffset;
         Body myBody;
         Part myPart;
         Sketches mySketches;
@@ -344,6 +346,111 @@ namespace Schrauben
         }
 
         #endregion
+        #region Kopf
 
+        public void ErzeugeOffset(Double Höhe)
+        {
+            // Hauptkoerper in Bearbeitung definieren
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+
+            //Referenz machen
+            Reference RefOffset = myPart.CreateReferenceFromBRepName("RSur:(Face:(Brp:(AxisSystem.1;2);None:();Cf11:());WithPermanentBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", myOffset);
+            RefOffset.set_Name("Offsetebene");
+
+            //Offset machen
+            HSF.AddNewPlaneOffset(RefOffset, Höhe, false);
+
+            //An Hauptkörper anbinden
+            //HBody.Item("Hauptkörper");
+            
+            HybridBodies chbies = hsp_catiaPartDoc.Part.HybridBodies;
+            HybridBody chb;
+            chb = chbies.Item("Hauptkörper");
+            chb.AppendHybridShape(Offsetebene);
+
+
+            //Body RefBody = RefBody.Item("Hauptkörper");
+            //body1.InsertHybridShape hybridShapePlaneOffset1
+
+            // Block(Kopf) erzeugen
+            //ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+            //Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaSkizze, Höhe);
+
+
+            // Offset umbenennen
+            //catPad1.set_Name("Offset Kopf");
+
+            // Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+        }
+
+            public void ErzeugeSechsKopfSkizze(Double h, Double SW)
+        {
+            // Skizze umbenennen
+            hsp_catiaSkizze.set_Name("Sechskant");
+
+            // Sechskant in Skizze einzeichnen
+            // Skizze oeffnen
+            Factory2D catFactory2D1 = hsp_catiaSkizze.OpenEdition();
+
+            // Kopf erzeugen
+            // erst die Punkte
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(4.847425, 8.395986);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-4.847425, 8.395986);
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint(-9.694849, 0.000000);
+            Point2D catPoint2D6 = catFactory2D1.CreatePoint(-4.847425, -8.395986);
+            Point2D catPoint2D7 = catFactory2D1.CreatePoint(4.847425, -8.395986);
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint(9.694849, -0.000000);
+
+
+            // dann die Linien
+            Line2D catLine2D1 = catFactory2D1.CreateLine(4.847425, 8.395986, -4.847425, 8.395986);
+            catLine2D1.StartPoint = catPoint2D3;
+            catLine2D1.EndPoint = catPoint2D4;
+
+            Line2D catLine2D2 = catFactory2D1.CreateLine(-4.847425, 8.395986, -9.694849, 0.000000);
+            catLine2D2.StartPoint = catPoint2D4;
+            catLine2D2.EndPoint = catPoint2D5;
+
+            Line2D catLine2D3 = catFactory2D1.CreateLine(-9.694849, 0.000000, -4.847425, -8.395986);
+            catLine2D3.StartPoint = catPoint2D5;
+            catLine2D3.EndPoint = catPoint2D6;
+
+            Line2D catLine2D4 = catFactory2D1.CreateLine(-4.847425, -8.395986, 4.847425, -8.395986);
+            catLine2D4.StartPoint = catPoint2D6;
+            catLine2D4.EndPoint = catPoint2D7;
+
+            Line2D catLine2D5 = catFactory2D1.CreateLine(4.847425, -8.395986, 9.694849, -0.000000);
+            catLine2D4.StartPoint = catPoint2D7;
+            catLine2D4.EndPoint = catPoint2D8;
+
+            Line2D catLine2D6 = catFactory2D1.CreateLine(9.694849, -0.000000, 4.847425, 8.395986);
+            catLine2D4.StartPoint = catPoint2D8;
+            catLine2D4.EndPoint = catPoint2D3;
+
+            // Skizzierer verlassen
+            hsp_catiaSkizze.CloseEdition();
+            // Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+        }
+
+        public void ErzeugeSechskopf(Double l)
+        {
+            // Hauptkoerper in Bearbeitung definieren
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+            
+            // Block(Kopf) erzeugen
+            ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaSkizze, l);
+
+            // Block umbenennen
+            catPad1.set_Name("Kopf");
+
+            // Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+
+            #endregion
+
+        }
     }
 }
