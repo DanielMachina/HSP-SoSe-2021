@@ -141,12 +141,10 @@ namespace Schrauben
 
             bereich = mySheet.Cells[62, "C"] as Excel.Range;
             Zyldurch = Math.Round((Double)bereich.Value);
-            Convert.ToDouble(Zyldurch);
             Console.WriteLine("   Zyldurch: " + Zyldurch);
 
             bereich = mySheet.Cells[63, "C"] as Excel.Range;
             Senkdurch = Math.Round((Double)bereich.Value);
-            Convert.ToDouble(Senkdurch);
             Console.WriteLine("   Senkdurch: " + Senkdurch);
 
 
