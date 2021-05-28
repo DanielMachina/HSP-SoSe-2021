@@ -53,24 +53,24 @@ namespace Schrauben
                     Console.WriteLine("3");
 
                     // Generiere einen Kopf
-                    cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
+                    //cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
                     Console.WriteLine("4");
 
                     // Extrudiere Volumen SechsKopf
-                    cc.ErzeugeSechskopf(ExcelControl.Kopfhöhe);
+                    //cc.ErzeugeSechskopf(ExcelControl.Kopfhöhe);
                     Console.WriteLine("5");
 
                     // create cylinder head sketch
-                    //cc.ZylinderkopfSkizze(ExcelControl.Zyldurch);
+                    cc.ZylinderkopfSkizze(ExcelControl.Zyldurch);
                     Console.WriteLine("6");
 
                     // create cylinder head pad
-                    //cc.ZylinderInnensechkantSkizze(10);
+                    cc.ZylinderInnensechkantSkizze(ExcelControl.SWM);
                     Console.WriteLine("7");
 
                     //create hex socket
                     Console.WriteLine("8");
-                    //cc.Zylinderkopf(ExcelControl.Kopfhöhe);
+                    cc.Zylinderkopf(ExcelControl.Kopfhöhe);
 
                 }
                 else
