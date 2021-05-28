@@ -49,28 +49,28 @@ namespace Schrauben
                     Console.WriteLine("Gewinde");
 
                     // Generiere einen Offset
-                   // cc.ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge));
+                    cc.ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge));
                     Console.WriteLine("3");
 
                     // Generiere einen Kopf
-                   // cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
+                    cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
                     Console.WriteLine("4");
 
                     // Extrudiere Volumen SechsKopf
-                    //cc.ErzeugeSechskopf(15 /*ExcelControl.KopfHöhe*/);
+                    cc.ErzeugeSechskopf(ExcelControl.Kopfhöhe);
                     Console.WriteLine("5");
 
                     // create cylinder head sketch
-                   // cc.ZylinderkopfSkizze(ExcelControl.Durchmesser);
+                    //cc.ZylinderkopfSkizze(ExcelControl.Zyldurch);
                     Console.WriteLine("6");
 
                     // create cylinder head pad
-                    cc.ZylinderInnensechkantSkizze(10);
+                    //cc.ZylinderInnensechkantSkizze(10);
                     Console.WriteLine("7");
 
                     //create hex socket
                     Console.WriteLine("8");
-                    cc.Zylinderkopf(ExcelControl.Durchmesser + 5);
+                    //cc.Zylinderkopf(ExcelControl.Kopfhöhe);
 
                 }
                 else

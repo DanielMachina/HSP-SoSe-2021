@@ -347,7 +347,7 @@ namespace Schrauben
         }
 
         #endregion
-        #region Kopf
+        #region Sechskant-Kopf
 
         public Reference ErzeugeOffset(Double Höhe)
         {
@@ -372,51 +372,52 @@ namespace Schrauben
 
         public void ErzeugeSechsKopfSkizze(Double SW)
         {
-            // Skizze umbenennen
-
+            
             // Sechskant in Skizze einzeichnen
             Sketches catSketches1 = catHybridBody1.HybridSketches;
             OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
             
+            //Offset für Kopf
             hsp_catiaSkizze = catSketches1.Add(ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge)));
-
 
             // Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaSkizze.OpenEdition();
             hsp_catiaSkizze.set_Name("Sechskant");
 
-            // Kopf erzeugen
-            // erst die Punkte
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(4.847425, 8.395986);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-4.847425, 8.395986);
-            Point2D catPoint2D5 = catFactory2D1.CreatePoint(-9.694849, 0.000000);
-            Point2D catPoint2D6 = catFactory2D1.CreatePoint(-4.847425, -8.395986);
-            Point2D catPoint2D7 = catFactory2D1.CreatePoint(4.847425, -8.395986);
-            Point2D catPoint2D8 = catFactory2D1.CreatePoint(9.694849, -0.000000);
+            // Punkte Kopf
+            double tan30 = Math.Sqrt(3) / 3;
+            double cos30 = Math.Sqrt(3) / 2;
+            SW = ExcelControl.SWM / 2;
 
+            Point2D catPoint2D3 = catFactory2D1.CreatePoint(SW, tan30 * SW);
+            Point2D catPoint2D4 = catFactory2D1.CreatePoint(SW, -(tan30 * SW));
+            Point2D catPoint2D5 = catFactory2D1.CreatePoint(0, -(SW / cos30));
+            Point2D catPoint2D6 = catFactory2D1.CreatePoint(-SW, -(tan30 * SW));
+            Point2D catPoint2D7 = catFactory2D1.CreatePoint(-SW, tan30 * SW);
+            Point2D catPoint2D8 = catFactory2D1.CreatePoint(0, SW / cos30);
 
-            // dann die Linien
-            Line2D catLine2D1 = catFactory2D1.CreateLine(4.847425, 8.395986, -4.847425, 8.395986);
+            // dann die Linien für Kopf
+            Line2D catLine2D1 = catFactory2D1.CreateLine(SW, tan30 * SW, SW, -(tan30 * SW));
             catLine2D1.StartPoint = catPoint2D3;
             catLine2D1.EndPoint = catPoint2D4;
 
-            Line2D catLine2D2 = catFactory2D1.CreateLine(-4.847425, 8.395986, -9.694849, 0.000000);
+            Line2D catLine2D2 = catFactory2D1.CreateLine(SW, -(tan30 * SW), 0, -(SW / cos30));
             catLine2D2.StartPoint = catPoint2D4;
             catLine2D2.EndPoint = catPoint2D5;
 
-            Line2D catLine2D3 = catFactory2D1.CreateLine(-9.694849, 0.000000, -4.847425, -8.395986);
+            Line2D catLine2D3 = catFactory2D1.CreateLine(0, -(SW / cos30), -SW, -(tan30 * SW));
             catLine2D3.StartPoint = catPoint2D5;
             catLine2D3.EndPoint = catPoint2D6;
 
-            Line2D catLine2D4 = catFactory2D1.CreateLine(-4.847425, -8.395986, 4.847425, -8.395986);
+            Line2D catLine2D4 = catFactory2D1.CreateLine(-SW, -(tan30 * SW), -SW, tan30 * SW);
             catLine2D4.StartPoint = catPoint2D6;
             catLine2D4.EndPoint = catPoint2D7;
 
-            Line2D catLine2D5 = catFactory2D1.CreateLine(4.847425, -8.395986, 9.694849, -0.000000);
+            Line2D catLine2D5 = catFactory2D1.CreateLine(-SW, tan30 * SW, 0, SW / cos30);
             catLine2D5.StartPoint = catPoint2D7;
             catLine2D5.EndPoint = catPoint2D8;
 
-            Line2D catLine2D6 = catFactory2D1.CreateLine(9.694849, -0.000000, 4.847425, 8.395986);
+            Line2D catLine2D6 = catFactory2D1.CreateLine(0, SW / cos30, SW, tan30 * SW);
             catLine2D6.StartPoint = catPoint2D8;
             catLine2D6.EndPoint = catPoint2D3;
 
@@ -431,12 +432,12 @@ namespace Schrauben
             // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
 
-            // Block(Kopf) erzeugen
+            // Kopf als Körper 
             ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
             Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaSkizze, l);
 
             // Block umbenennen
-            catPad1.set_Name("Kopf");
+            catPad1.set_Name("Sechskantkopf");
 
             // Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
@@ -476,7 +477,7 @@ namespace Schrauben
             hsp_catiaPartDoc.Part.Update();
         }
 
-        internal void Zylinderkopf(double h)
+        internal void Zylinderkopf(Double h)
         {
             // Hauptkoerper in Bearbeitung definieren
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
@@ -526,7 +527,7 @@ namespace Schrauben
 
             // Block(Schaft) erzeugen
             ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
-            KopfPad = catShapeFactory1.AddNewPad(hsp_catiaSkizze, ExcelControl.Durchmesser + 5);
+            KopfPad = catShapeFactory1.AddNewPad(hsp_catiaSkizze, ExcelControl.Kopfhöhe);
 
             // Block umbenennen
             KopfPad.set_Name("Kopf");
@@ -536,7 +537,7 @@ namespace Schrauben
             #endregion
 
 
-            #region Innensechskannt
+            #region Innensechskant
             Factory2D catFactory2D2 = hsp_catiaSkizze.OpenEdition();
 
             // Sechskant erzeugen

@@ -28,10 +28,14 @@ namespace Schrauben
         public static string Rm { get; set; }
         public static double Preis { get; set; }
         public static double FTM { get; set; }
+        public static double Kopfhöhe { get; set; }
+        public static double Zyldurch { get; set; }
+        public static double Senkdurch { get; set; }
 
 
 
-            Excel.Application excelApp = new Excel.Application();
+
+        Excel.Application excelApp = new Excel.Application();
         Excel._Worksheet mySheet;
         public ExcelControl()
         {
@@ -130,7 +134,21 @@ namespace Schrauben
             FTM = Math.Round((Double)bereich.Value);
             Console.WriteLine("   FTM: " + FTM);
             Console.WriteLine("");
-            
+
+            bereich = mySheet.Cells[61, "C"] as Excel.Range;
+            Kopfhöhe = Math.Round((Double)bereich.Value);
+            Console.WriteLine("   Kopfhöhe: " + Kopfhöhe);
+
+            bereich = mySheet.Cells[62, "C"] as Excel.Range;
+            Zyldurch = Math.Round((Double)bereich.Value);
+            Convert.ToDouble(Zyldurch);
+            Console.WriteLine("   Zyldurch: " + Zyldurch);
+
+            bereich = mySheet.Cells[63, "C"] as Excel.Range;
+            Senkdurch = Math.Round((Double)bereich.Value);
+            Convert.ToDouble(Senkdurch);
+            Console.WriteLine("   Senkdurch: " + Senkdurch);
+
 
             // Speichern der Datei und beenden.
             int z = 0;
