@@ -31,6 +31,7 @@ namespace Schrauben
         public static double Kopfhöhe { get; set; }
         public static double Zyldurch { get; set; }
         public static double Senkdurch { get; set; }
+        public static double SenkWinkel { get; set; }
 
 
 
@@ -146,6 +147,8 @@ namespace Schrauben
             bereich = mySheet.Cells[63, "C"] as Excel.Range;
             Senkdurch = Math.Round((Double)bereich.Value);
             Console.WriteLine("   Senkdurch: " + Senkdurch);
+            SenkWinkel = Math.Sin(45);
+
 
 
             // Speichern der Datei und beenden.
