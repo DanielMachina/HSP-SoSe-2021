@@ -66,8 +66,8 @@ namespace Schrauben
                     else if (GUI.kopfform =="Senkkopf")
                     {
                         //Senkkopfschraube
-                        Console.WriteLine("5. Senkkopf");
                         cc.Senkkopf();
+                        Console.WriteLine("5. Senkkopf");
 
                     }
 
