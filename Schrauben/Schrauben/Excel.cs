@@ -137,15 +137,15 @@ namespace Schrauben
             Console.WriteLine("");
 
             bereich = mySheet.Cells[61, "C"] as Excel.Range;
-            Kopfhöhe = Math.Round((Double)bereich.Value);
+            Kopfhöhe = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Kopfhöhe: " + Kopfhöhe);
 
             bereich = mySheet.Cells[62, "C"] as Excel.Range;
-            Zyldurch = Math.Round((Double)bereich.Value);
+            Zyldurch = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Zyldurch: " + Zyldurch);
 
             bereich = mySheet.Cells[63, "C"] as Excel.Range;
-            Senkdurch = Math.Round((Double)bereich.Value);
+            Senkdurch = Math.Round((Double)bereich.Value, 2);
             Console.WriteLine("   Senkdurch: " + Senkdurch);
             SenkWinkel = Math.Sin(45);
 

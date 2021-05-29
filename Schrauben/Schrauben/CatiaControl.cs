@@ -29,7 +29,7 @@ namespace Schrauben
                     cc.ErstelleLeereSkizze();
                     Console.WriteLine("2");
 
-                    Schraube dieSchraube = new Schraube(Convert.ToDouble(GUI.schraubenlänge), Convert.ToDouble(GUI.gewindelänge), GUI.schraubenart, GUI.durchmesser, 5.3d, ExcelControl.Durchmesser / 2, ExcelControl.Steigung);
+                    Schraube dieSchraube = new Schraube(Convert.ToDouble(GUI.schraubenlänge), Convert.ToDouble(GUI.gewindelänge)-1, GUI.schraubenart, GUI.durchmesser, 5.3d, ExcelControl.Durchmesser / 2, ExcelControl.Steigung);
 
                     cc.ErzeugeZylinder(dieSchraube);
                     Console.WriteLine("Schaft");
@@ -49,8 +49,8 @@ namespace Schrauben
                     Console.WriteLine("Gewinde");
 
                     // Generiere einen Offset
-                    cc.ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge));
-                    Console.WriteLine("3");
+                    //cc.ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge));
+                    //Console.WriteLine("3");
 
                     // Generiere einen Kopf
                     //cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
@@ -61,17 +61,25 @@ namespace Schrauben
                     Console.WriteLine("5");
 
                     // create cylinder head sketch
-                    cc.ZylinderkopfSkizze(ExcelControl.Zyldurch);
+                    //cc.ZylinderkopfSkizze(ExcelControl.Zyldurch/2);
                     Console.WriteLine("6");
-
-                    // create cylinder head pad
-                    cc.ZylinderInnensechkantSkizze(ExcelControl.SWM);
-                    Console.WriteLine("7");
 
                     //create hex socket
                     Console.WriteLine("8");
-                    cc.Zylinderkopf(ExcelControl.Kopfhöhe);
+                    cc.Zylinderkopf();
 
+                    //create hex socket
+                    Console.WriteLine("8");
+                    //cc.ZylinderKopfSechskant(ExcelControl.SWM);
+
+                    //create hex socket
+                    Console.WriteLine("8");
+                    //cc.ZylinderSechskantVolumen(ExcelControl.Kopfhöhe * (2/3));
+
+
+                    // create cylinder head pad
+                    //cc.ZylinderInnensechkantSkizze(ExcelControl.SWM);
+                    Console.WriteLine("7");
                 }
                 else
                 {
