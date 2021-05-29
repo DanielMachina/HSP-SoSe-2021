@@ -490,6 +490,24 @@
 
 
                 </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+
+
+                    <Label Content="Gewindedarstellung (CAD):"/>
+                    
+                    <RadioButton GroupName="Darstellung"
+                                             Content=" Optisch"
+                                             Margin="20,7,0,0" 
+                                             Checked="rb_optisch"/>
+                    
+                    <RadioButton GroupName="Darstellung"
+                                             Content="Technisch"
+                                             Margin="20,7,0,0" 
+                                             Checked="rb_technisch"/>
+
+                </StackPanel>
+                
                 <Button Content="Berechnen" 
                         FontSize="12"
                         FontWeight="Bold"

@@ -89,61 +89,7 @@ namespace Schrauben
             hsp_catiaSkizze.SetAbsoluteAxisData(arr);
         }
 
-        public void ErzeugeProfil(Double b, Double h)
-        {
-            // Skizze umbenennen
-            hsp_catiaSkizze.set_Name("Rechteck");
-
-            // Rechteck in Skizze einzeichnen
-            // Skizze oeffnen
-            Factory2D catFactory2D1 = hsp_catiaSkizze.OpenEdition();
-
-            // Rechteck erzeugen
-
-            // erst die Punkte
-            Point2D catPoint2D1 = catFactory2D1.CreatePoint(-50, 50);
-            Point2D catPoint2D2 = catFactory2D1.CreatePoint(50, 50);
-            Point2D catPoint2D3 = catFactory2D1.CreatePoint(50, -50);
-            Point2D catPoint2D4 = catFactory2D1.CreatePoint(-50, -50);
-
-            // dann die Linien
-            Line2D catLine2D1 = catFactory2D1.CreateLine(-50, 50, 50, 50);
-            catLine2D1.StartPoint = catPoint2D1;
-            catLine2D1.EndPoint = catPoint2D2;
-
-            Line2D catLine2D2 = catFactory2D1.CreateLine(50, 50, 50, -50);
-            catLine2D2.StartPoint = catPoint2D2;
-            catLine2D2.EndPoint = catPoint2D3;
-
-            Line2D catLine2D3 = catFactory2D1.CreateLine(50, -50, -50, -50);
-            catLine2D3.StartPoint = catPoint2D3;
-            catLine2D3.EndPoint = catPoint2D4;
-
-            Line2D catLine2D4 = catFactory2D1.CreateLine(-50, -50, -50, 50);
-            catLine2D4.StartPoint = catPoint2D4;
-            catLine2D4.EndPoint = catPoint2D1;
-
-            // Skizzierer verlassen
-            hsp_catiaSkizze.CloseEdition();
-            // Part aktualisieren
-            hsp_catiaPartDoc.Part.Update();
-        }
-
-        public void ErzeugeBalken(Double l)
-        {
-            // Hauptkoerper in Bearbeitung definieren
-            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
-
-            // Block(Balken) erzeugen
-            ShapeFactory catShapeFactory1 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
-            Pad catPad1 = catShapeFactory1.AddNewPad(hsp_catiaSkizze, l);
-
-            // Block umbenennen
-            catPad1.set_Name("Balken");
-
-            // Part aktualisieren
-            hsp_catiaPartDoc.Part.Update();
-        }
+        
         #endregion
 
         #region Schraube
@@ -193,20 +139,28 @@ namespace Schrauben
 
             // ... Gewinde erzeugen, Parameter setzen
             PARTITF.Thread thread1 = SF.AddNewThreadWithOutRef();
-            thread1.Side = CatThreadSide.catRightSide;
-            thread1.Diameter = 8.000000;
-            thread1.Depth = 50.000000;
+            if (GUI.Drehsinn =="rechts")
+            {
+                thread1.Side = CatThreadSide.catRightSide;
+            }
+            else if (GUI.Drehsinn =="links")
+            {
+                thread1.Side = CatThreadSide.catLeftSide;
+            }
+            thread1.Diameter = ExcelControl.Durchmesser;
+            thread1.Depth = Convert.ToDouble(GUI.gewindelänge);
             thread1.LateralFaceElement = RefMantelflaeche; // Referenz lateral
             thread1.LimitFaceElement = RefFrontflaeche; // Referenz limit
 
             // ... Standardgewinde gesteuert über eine Konstruktionstabelle
             thread1.CreateUserStandardDesignTable("Metric_Thick_Pitch", @"C:\Program Files\Dassault Systemes\B28\win_b64\resources\standard\thread\Metric_Thick_Pitch.xml");
-            thread1.Diameter = 8.000000;
-            thread1.Pitch = 1.250000;
+            thread1.Diameter = ExcelControl.Durchmesser;
+            thread1.Pitch = ExcelControl.Steigung;
 
             // Part update und fertig
             myPart.Update();
         }
+
 
         // Erzeugt eine Helix 
         internal void ErzeugeGewindeHelix(Schraube mySchraube)
@@ -223,7 +177,18 @@ namespace Schrauben
             HybridShapePointCoord HelixStartpunkt = HSF.AddNewPointCoord(0, 0, Ri);
             Reference RefHelixStartpunkt = myPart.CreateReferenceFromObject(HelixStartpunkt);
 
-            HybridShapeHelix Helix = HSF.AddNewHelix(RefHelixDir, false, RefHelixStartpunkt, P, mySchraube.gewindeLaenge, false, 0, 0, false);
+            Boolean Drehrichtung;
+            if (GUI.Drehsinn == "rechts")
+            {
+                Drehrichtung = false;
+            }
+            else
+            {
+                Drehrichtung = true;
+            }
+
+
+            HybridShapeHelix Helix = HSF.AddNewHelix(RefHelixDir, false, RefHelixStartpunkt, P, mySchraube.gewindeLaenge, Drehrichtung, 0, 0, false);
 
             Reference RefHelix = myPart.CreateReferenceFromObject(Helix);
             Reference RefmyGewinde = myPart.CreateReferenceFromObject(myGewinde);

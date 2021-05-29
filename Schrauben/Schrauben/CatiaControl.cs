@@ -34,19 +34,21 @@ namespace Schrauben
                     cc.ErzeugeSchaft(dieSchraube);
                     Console.WriteLine("3. Schaft");
 
-                    //Erstelle Gewinde optisch oder als technisch (muss über Radio-Button noch eingefügt werden).
-                    /*if (Darstellung == "optisch")
+                    //Erstelle Gewinde optisch oder als technisch
+                    if (GUI.Darstellung == "optisch")
                     {
                         cc.ErzeugeGewindeHelix(dieSchraube);
+                        Console.WriteLine("4. Gewinde");
                     }
                     else
                     {
                         cc.ErzeugeGewindeFeature();
+                        Console.WriteLine("4. Gewinde");
                     }
-                    */
+                    
 
-                    cc.ErzeugeGewindeHelix(dieSchraube);
-                    Console.WriteLine("4. Gewinde");
+                    //cc.ErzeugeGewindeHelix(dieSchraube);
+                    //Console.WriteLine("4. Gewinde");
 
                     if (GUI.kopfform == "Sechskant")
                     {

@@ -69,6 +69,7 @@ namespace Schrauben
         public static string menge;
         public static string Drehsinn;
         public static string SW;
+        public static string Darstellung;
 
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
@@ -302,12 +303,26 @@ namespace Schrauben
             Drehsinn = "rechts";
         }
 
+        private void rb_optisch(object sender, RoutedEventArgs e)
+        {
+            Darstellung = "optisch";
+        }
+
+        private void rb_technisch(object sender, RoutedEventArgs e)
+        {
+            Darstellung = "technisch";
+        }
 
 
 
 
 
-       
+
+
+
+
     }
+
+
 
 }
