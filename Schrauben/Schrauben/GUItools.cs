@@ -28,7 +28,7 @@ namespace Schrauben
 
         public GUItools()
         {
-
+            #region Combobox-Sammlung
 
             MetrischSammlung = new List<string>();
             {
@@ -131,6 +131,8 @@ namespace Schrauben
                 Schraubenfestigkeit.Add("10.9");
                 Schraubenfestigkeit.Add("12.9");
             }
+
+            #endregion
         }
 
     }

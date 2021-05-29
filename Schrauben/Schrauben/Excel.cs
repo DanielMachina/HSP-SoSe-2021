@@ -10,6 +10,7 @@ namespace Schrauben
 
     public class ExcelControl
     {
+        #region Variablen
         public static string Kopf { get; set; }
         public static string Menge { get; set; }
         public static string Festigkeit { get; set; }
@@ -34,13 +35,13 @@ namespace Schrauben
         public static double SenkWinkel { get; set; }
 
 
-
-
+        #endregion
+        
         Excel.Application excelApp = new Excel.Application();
         Excel._Worksheet mySheet;
         public ExcelControl()
         {
-
+            #region Excel-Schreiben
             // Objekt erzeugen
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Erzeuge Excel COM Objekt");
@@ -79,8 +80,8 @@ namespace Schrauben
             mySheet.Cells[14, "B"] = Menge = GUI.menge;
             mySheet.Cells[16, "B"] = Festigkeit = GUI.festigkeit;
 
-
-
+            #endregion
+            #region Excel-Lesen
             // Lesen der Datei
             //XlLesen();
             Console.ForegroundColor = ConsoleColor.Green;
@@ -149,8 +150,8 @@ namespace Schrauben
             Console.WriteLine("   Senkdurch: " + Senkdurch);
             SenkWinkel = Math.Sin(45);
 
-
-
+            #endregion
+            #region Excel-Speichern
             // Speichern der Datei und beenden.
             int z = 0;
             Random Zahl = new Random();
@@ -172,7 +173,7 @@ namespace Schrauben
             excelApp.Quit();
 
             Console.ResetColor();
-            
+            #endregion
         }
 
 

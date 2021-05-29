@@ -45,10 +45,6 @@ namespace Schrauben
                         cc.ErzeugeGewindeFeature();
                         Console.WriteLine("4. Gewinde");
                     }
-                    
-
-                    //cc.ErzeugeGewindeHelix(dieSchraube);
-                    //Console.WriteLine("4. Gewinde");
 
                     if (GUI.kopfform == "Sechskant")
                     {

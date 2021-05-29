@@ -89,10 +89,11 @@ namespace Schrauben
             hsp_catiaSkizze.SetAbsoluteAxisData(arr);
         }
 
-        
+
         #endregion
 
         #region Schraube
+        #region Schaft
         internal void ErzeugeSchaft(Schraube mySchraube)
         {
             myPart = hsp_catiaPartDoc.Part;
@@ -126,7 +127,8 @@ namespace Schrauben
             myPart.Update();
 
         }
-
+        #endregion
+        #region tech. Gewinde
         // Erzeugt ein Gewindefeature auf dem vorher erzeugten Schaft.
         internal void ErzeugeGewindeFeature()
         {
@@ -160,7 +162,8 @@ namespace Schrauben
             // Part update und fertig
             myPart.Update();
         }
-
+        #endregion
+        #region opt. Gewinde
 
         // Erzeugt eine Helix 
         internal void ErzeugeGewindeHelix(Schraube mySchraube)
@@ -312,7 +315,8 @@ namespace Schrauben
 
             return myGewinde;
         }
-
+        #endregion
+        #region Offset
         public Reference ErzeugeOffset(Double Höhe)
         {
             myPart.InWorkObject = myBody;
@@ -333,13 +337,13 @@ namespace Schrauben
             hsp_catiaPartDoc.Part.Update();
             return RefOffsetEbene;
         }
-
+        #endregion
 
         #endregion
         #region Sechskant-Kopf
         public void ErzeugeSechsKopfSkizze(Double SW)
         {
-            
+            #region Skizze
             // Sechskant in Skizze einzeichnen
             Sketches catSketches1 = catHybridBody1.HybridSketches;
             OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
@@ -393,7 +397,8 @@ namespace Schrauben
             // Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
         }
-
+        #endregion
+        #region Sechskant Block
         public void ErzeugeSechskopf(Double l)
         {
             // Hauptkoerper in Bearbeitung definieren
@@ -411,12 +416,12 @@ namespace Schrauben
 
 
         }
-
+        #endregion
         #endregion
         #region Zylinderkopf
         internal void Zylinderkopf()
         {
-
+            #region Skizze
             //Skizze
 
             //Zyl in Skizze einzeichnen
@@ -442,10 +447,11 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-        
 
+            #endregion
+            #region Kopf-Block
             //Block
-        
+
             //Hauptkoerper in Bearbeitung definieren
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
 
@@ -459,7 +465,8 @@ namespace Schrauben
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
 
-
+            #endregion
+            #region Skizze Innensechs
             //Skizze Innensechs
 
             //Sechskant in Skizze einzeichnen
@@ -515,8 +522,8 @@ namespace Schrauben
 
             // Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-
-        
+            #endregion
+            #region Innensechs Tasche
             //Innensechs als Tasche
 
             //Hauptkoerper in Bearbeitung definieren
@@ -533,9 +540,9 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-            
-            
-            
+
+            #endregion
+
         }
         #endregion
         #region Senkkopf

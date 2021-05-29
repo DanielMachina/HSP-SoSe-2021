@@ -16,6 +16,7 @@ namespace Schrauben
 
         internal Ausdrucken()
         {
+            #region Excel Erstellen
             // Tool Eingaben
             excelApp.Visible = false;
             excelApp.DisplayAlerts = false;
@@ -190,6 +191,9 @@ namespace Schrauben
             //autofit
             mySheet2.Range["a1", "g45"].EntireColumn.AutoFit();
 
+            #endregion
+            #region Werte in Tabelle
+
             //Daten in Felder ausgeben
             mySheet2.Cells[19, "B"].NumberFormat = "@";
 
@@ -231,6 +235,9 @@ namespace Schrauben
             mySheet2.Cells[39, "B"] = ExcelControl.Preis;
             mySheet2.Cells[39, "C"] = "€";
 
+            #endregion
+            #region Speichern als PDF
+
             // als PDF speichern 
             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
                         @"" + "Produktdatenblatt "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
@@ -240,7 +247,7 @@ namespace Schrauben
                           
             excelApp.Quit();
 
-
+            #endregion
 
 
         }
