@@ -23,7 +23,7 @@ namespace Schrauben
         Body myBody;
         Part myPart;
         Sketches mySketches;
-        //Pocket ISechs;
+        Pocket ISechs;
         //EdgeFillet RadiusKopf;
 
         #region MinimalCatia
@@ -146,7 +146,7 @@ namespace Schrauben
         #endregion
 
         #region Schraube
-        internal void ErzeugeZylinder(Schraube mySchraube)
+        internal void ErzeugeSchaft(Schraube mySchraube)
         {
             myPart = hsp_catiaPartDoc.Part;
             Bodies bodies = myPart.Bodies;
@@ -551,7 +551,7 @@ namespace Schrauben
             hsp_catiaPartDoc.Part.Update();
 
         
-            /*//Innensechs als Tasche
+            //Innensechs als Tasche
 
             //Hauptkoerper in Bearbeitung definieren
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
@@ -559,8 +559,8 @@ namespace Schrauben
             //Tasche erzeugen erzeugen
             ShapeFactory catShapeFactory2 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
 
-            //Double Tiefe = ExcelControl.Kopfhöhe * (2 / 3);
-            ISechs = catShapeFactory2.AddNewPocket(hsp_catiaSkizze2, 5);
+            Double t = ExcelControl.Kopfhöhe * 0.6666666666666666;
+            ISechs = catShapeFactory2.AddNewPocket(hsp_catiaSkizze2, t);
 
             //Block umbenennen
             ISechs.set_Name("Innensechskant");
@@ -568,16 +568,16 @@ namespace Schrauben
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
             
-            */
+            
             
         }
         #endregion
-
+        #region Senkkopf
         internal void Senkkopf()
         {
 
         }
-
+        #endregion
 
     }
 }

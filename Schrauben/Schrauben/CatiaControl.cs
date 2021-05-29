@@ -23,16 +23,16 @@ namespace Schrauben
 
                     // Öffne ein neues Part
                     cc.ErzeugePart();
-                    Console.WriteLine("1");
+                    Console.WriteLine("1. Neues Part");
 
                     // Erstelle eine leere Skizze
                     cc.ErstelleLeereSkizze();
-                    Console.WriteLine("2");
+                    Console.WriteLine("2. Leere Skizze");
 
                     Schraube dieSchraube = new Schraube(Convert.ToDouble(GUI.schraubenlänge), Convert.ToDouble(GUI.gewindelänge)-1, GUI.schraubenart, GUI.durchmesser, 5.3d, ExcelControl.Durchmesser / 2, ExcelControl.Steigung);
 
-                    cc.ErzeugeZylinder(dieSchraube);
-                    Console.WriteLine("Schaft");
+                    cc.ErzeugeSchaft(dieSchraube);
+                    Console.WriteLine("3. Schaft");
 
                     //Erstelle Gewinde optisch oder als technisch (muss über Radio-Button noch eingefügt werden).
                     /*if (Darstellung == "optisch")
@@ -46,40 +46,35 @@ namespace Schrauben
                     */
 
                     cc.ErzeugeGewindeHelix(dieSchraube);
-                    Console.WriteLine("Gewinde");
+                    Console.WriteLine("4. Gewinde");
 
-                    // Generiere einen Offset
-                    //cc.ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge));
-                    //Console.WriteLine("3");
+                    if (GUI.kopfform == "Sechskant")
+                    {
+                        // Generiere einen Sechskantkopf
+                        cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
 
-                    // Generiere einen Kopf
-                    //cc.ErzeugeSechsKopfSkizze(ExcelControl.SWM);
-                    Console.WriteLine("4");
+                        // Extrudiere Volumen SechsKopf
+                        cc.ErzeugeSechskopf(ExcelControl.Kopfhöhe);
+                        Console.WriteLine("5. Sechskant");
+                    }
+                    else if (GUI.kopfform =="Zylinderkopf")
+                    {
+                        //Zylinderkopf
+                        cc.Zylinderkopf();
+                        Console.WriteLine("5. Zylinderkopf");
+                    }
+                    else if (GUI.kopfform =="Senkkopf")
+                    {
+                        //Senkkopfschraube
+                        Console.WriteLine("5. Senkkopf");
+                        cc.Senkkopf();
 
-                    // Extrudiere Volumen SechsKopf
-                    //cc.ErzeugeSechskopf(ExcelControl.Kopfhöhe);
-                    Console.WriteLine("5");
+                    }
 
-                    // create cylinder head sketch
-                    //cc.ZylinderkopfSkizze(ExcelControl.Zyldurch/2);
-                    Console.WriteLine("6");
-
-                    //create hex socket
-                    Console.WriteLine("8");
-                    cc.Zylinderkopf();
-
-                    //create hex socket
-                    Console.WriteLine("8");
-                    //cc.ZylinderKopfSechskant(ExcelControl.SWM);
-
-                    //create hex socket
-                    Console.WriteLine("8");
-                    //cc.ZylinderSechskantVolumen(ExcelControl.Kopfhöhe * (2/3));
+                   
 
 
-                    // create cylinder head pad
-                    //cc.ZylinderInnensechkantSkizze(ExcelControl.SWM);
-                    Console.WriteLine("7");
+
                 }
                 else
                 {
