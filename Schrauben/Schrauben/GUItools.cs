@@ -18,7 +18,12 @@ namespace Schrauben
 
         public List<string> ArtenSammlung { get; set; }
 
-        public List<string> Schraubenfestigkeit { get; set; }
+        public List<string> SchraubenfestigkeitStahl { get; set; }
+        public List<string> SchraubenfestigkeitAlu { get; set; }
+        public List<string> SchraubenfestigkeitTit { get; set; }
+        public List<string> SchraubenfestigkeitKup{ get; set; }
+        public List<string> SchraubenfestigkeitMesBro{ get; set; }
+
 
 
 
@@ -119,17 +124,48 @@ namespace Schrauben
                 Kopfform.Add("Senkkopf");
             }
 
-            Schraubenfestigkeit = new List<string>();
+            SchraubenfestigkeitStahl = new List<string>();
             {
-                Schraubenfestigkeit.Add("3.6");
-                Schraubenfestigkeit.Add("4.6");
-                Schraubenfestigkeit.Add("4.8");
-                Schraubenfestigkeit.Add("5.8");
-                Schraubenfestigkeit.Add("6.8");
-                Schraubenfestigkeit.Add("8.8");
-                Schraubenfestigkeit.Add("9.8");
-                Schraubenfestigkeit.Add("10.9");
-                Schraubenfestigkeit.Add("12.9");
+                SchraubenfestigkeitStahl.Add("3.6");
+                SchraubenfestigkeitStahl.Add("4.6");
+                SchraubenfestigkeitStahl.Add("4.8");
+                SchraubenfestigkeitStahl.Add("5.8");
+                SchraubenfestigkeitStahl.Add("6.8");
+                SchraubenfestigkeitStahl.Add("8.8");
+                SchraubenfestigkeitStahl.Add("9.8");
+                SchraubenfestigkeitStahl.Add("10.9");
+                SchraubenfestigkeitStahl.Add("12.9");
+            }
+
+            SchraubenfestigkeitAlu = new List<string>();
+            {
+                SchraubenfestigkeitAlu.Add("3.6");
+                SchraubenfestigkeitAlu.Add("4.6");
+                SchraubenfestigkeitAlu.Add("4.8");
+                SchraubenfestigkeitAlu.Add("5.8");
+            }
+
+            SchraubenfestigkeitTit = new List<string>();
+            {
+                SchraubenfestigkeitTit.Add("3.6");
+                SchraubenfestigkeitTit.Add("4.6");
+                SchraubenfestigkeitTit.Add("4.8");
+                SchraubenfestigkeitTit.Add("5.8");
+                SchraubenfestigkeitTit.Add("6.8");
+                SchraubenfestigkeitTit.Add("8.8");
+            }
+
+            SchraubenfestigkeitMesBro = new List<string>();
+            {
+                SchraubenfestigkeitMesBro.Add("3.6");
+                SchraubenfestigkeitMesBro.Add("4.6");
+            }
+
+            SchraubenfestigkeitKup = new List<string>();
+            {
+                SchraubenfestigkeitKup.Add("3.6");
+                SchraubenfestigkeitKup.Add("4.6");
+                SchraubenfestigkeitKup.Add("4.8");
             }
 
             #endregion

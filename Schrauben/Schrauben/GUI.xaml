@@ -271,7 +271,8 @@
                                   SelectedItem="Stahl"
                                   Margin="36,0,31,0"
                                   HorizontalAlignment="Right" 
-                                  x:Name="cb_material"/>
+                                  x:Name="cb_material"
+                                      SelectionChanged="cb_material_SelectionChanged" />
 
                         </StackPanel>
 
@@ -310,12 +311,12 @@
                                 <ComboBox x:Name="cb_MetDurchmesser" 
                                   Height="25"
                                   
-                                  Margin="7,7,2,7"
+                                  Margin="7,7,2,0"
                                           MaxDropDownHeight="82"
                                           Grid.ColumnSpan="2"
                                           Visibility="Visible" 
                                           SelectedItem="M2"
-                                          ItemsSource="{Binding MetrischSammlung}"
+                                          ItemsSource="{Binding MetrischSammlung}" VerticalAlignment="Top"
                                   />
 
                                 <ComboBox x:Name="cb_fMetDurchmesser" 
@@ -355,13 +356,54 @@
                             <Label Content="Festigkeit:"
                            FontSize="14"/>
 
-                            <ComboBox Height="25"
-                              ItemsSource="{Binding Schraubenfestigkeit}"
-                              SelectedItem ="3.6"
-                              Margin="33,0"
-                                      x:Name="cb_festigkeit"
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="24*"/>
+                                    <ColumnDefinition Width="23*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <ComboBox Height="25"
+                                          ItemsSource="{Binding SchraubenfestigkeitStahl}"
+                                          SelectedItem ="3.6"
+                                          Margin="33,2"
+                                          x:Name="cb_festigkeit"
+                                          Visibility="Visible" Grid.ColumnSpan="2" 
                                       />
 
+                                <ComboBox Height="25"
+                                          SelectedItem ="3.6"
+                                          Margin="33,2"
+                                          ItemsSource="{Binding SchraubenfestigkeitAlu}"
+                                      x:Name="cb_festigkeitAlu"
+                                          Visibility="Hidden" Grid.ColumnSpan="2" 
+                                      />
+
+                                <ComboBox Height="25"
+                                          ItemsSource="{Binding SchraubenfestigkeitTit}"
+                                          SelectedItem ="3.6"
+                                          Margin="33,2"
+                                          x:Name="cb_festigkeitTit"
+                                          Visibility="Hidden" Grid.ColumnSpan="2" 
+                                      />
+                                <ComboBox Height="25"
+                                          ItemsSource="{Binding SchraubenfestigkeitKup}"
+                                          SelectedItem ="3.6"
+                                          Margin="33,2"
+                                          x:Name="cb_festigkeitKup"
+                                          Visibility="Hidden" Grid.ColumnSpan="2"  
+                                      />
+
+                                <ComboBox Height="25"
+                                          ItemsSource="{Binding SchraubenfestigkeitMesBro}"
+                                          SelectedItem ="3.6"
+                                          Margin="33,2"
+                                          x:Name="cb_festigkeitMesBron"
+                                          Visibility="Hidden" Grid.ColumnSpan="2" 
+                                      />
+
+
+                            </Grid>
                         </StackPanel>
 
                     </StackPanel>
@@ -490,24 +532,24 @@
 
 
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal">
 
 
                     <Label Content="Gewindedarstellung (CAD):"/>
-                    
+
                     <RadioButton GroupName="Darstellung"
                                              Content=" Optisch"
                                              Margin="20,7,0,0" 
                                              Checked="rb_optisch"/>
-                    
+
                     <RadioButton GroupName="Darstellung"
                                              Content="Technisch"
                                              Margin="20,7,0,0" 
                                              Checked="rb_technisch"/>
 
                 </StackPanel>
-                
+
                 <Button Content="Berechnen" 
                         FontSize="12"
                         FontWeight="Bold"

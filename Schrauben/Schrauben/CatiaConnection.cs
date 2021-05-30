@@ -137,7 +137,7 @@ namespace Schrauben
             Reference RefMantelflaeche = myPart.CreateReferenceFromBRepName(
                 "RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", mySchaft);
             Reference RefFrontflaeche = myPart.CreateReferenceFromBRepName(
-                "RSur:(Face:(Brp:(Pad.1;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", mySchaft);
+               "RSur:(Face:(Brp:(Pad.1;1);None:();Cf12:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR29)", mySchaft);
 
             // ... Gewinde erzeugen, Parameter setzen
             PARTITF.Thread thread1 = SF.AddNewThreadWithOutRef();
@@ -322,7 +322,7 @@ namespace Schrauben
             myPart.InWorkObject = myBody;
             HSF = (HybridShapeFactory)myPart.HybridShapeFactory;
             OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
-            Reference RefMyOffset = (Reference)catOriginElements.PlaneZX;
+            
 
             Reference RefmyPlaneYZ = (Reference)catOriginElements.PlaneYZ;
             hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part;
@@ -561,15 +561,15 @@ namespace Schrauben
 
             //Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaSkizze.OpenEdition();
-            hsp_catiaSkizze.set_Name("ZylinderkopfSkizze");
+            hsp_catiaSkizze.set_Name("SenkkopfSkizze");
 
-            //erst Punkte
+            //Punkte
             Point2D catPoint2D1 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge), 0);
             Point2D catPoint2D2 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Durchmesser /2);
             Point2D catPoint2D3 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, ExcelControl.Senkdurch / 2);
             Point2D catPoint2D4 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, 0);
 
-            //dann Linien
+            //Linien
             Line2D catLine2D3 = catFactory2D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge), 0, Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Durchmesser / 2);
             catLine2D3.StartPoint = catPoint2D1;
             catLine2D3.EndPoint = catPoint2D2;
@@ -600,7 +600,7 @@ namespace Schrauben
             Reference Axisreference1 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisPoint1);
             GeometricElements geometricElements1 = hsp_catiaSkizze.GeometricElements;
             Axis2D catAxis2D1 = (Axis2D)geometricElements1.Item("Absolute Achse");
-            Line2D AxisLine2 = (Line2D)catAxis2D1.GetItem("V-Richtung");
+            Line2D AxisLine2 = (Line2D)catAxis2D1.GetItem("H-Richtung");
 
             Reference Axisreference2 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisLine2);
             Constraints constraints1 = hsp_catiaSkizze.Constraints;
@@ -640,7 +640,7 @@ namespace Schrauben
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
 
-            /*
+            
             //Skizze Innensechs
 
             //Sechskant in Skizze einzeichnen
@@ -668,24 +668,24 @@ namespace Schrauben
 
             //dann Linien
             Line2D catLine3D1 = catFactory3D2.CreateLine(SW, tan30 * SW, SW, -(tan30 * SW));
-            catLine2D1.StartPoint = catPoint3D2;
-            catLine2D1.EndPoint = catPoint3D3;
+            catLine3D1.StartPoint = catPoint3D2;
+            catLine3D1.EndPoint = catPoint3D3;
 
             Line2D catLine3D2 = catFactory3D2.CreateLine(SW, -(tan30 * SW), 0, -(SW / cos30));
-            catLine2D2.StartPoint = catPoint3D3;
-            catLine2D2.EndPoint = catPoint3D4;
+            catLine3D2.StartPoint = catPoint3D3;
+            catLine3D2.EndPoint = catPoint3D4;
 
             Line2D catLine3D3 = catFactory3D2.CreateLine(0, -(SW / cos30), -SW, -(tan30 * SW));
-            catLine2D3.StartPoint = catPoint3D4;
-            catLine2D3.EndPoint = catPoint3D5;
+            catLine3D3.StartPoint = catPoint3D4;
+            catLine3D3.EndPoint = catPoint3D5;
 
             Line2D catLine3D4 = catFactory3D2.CreateLine(-SW, -(tan30 * SW), -SW, (tan30 * SW));
-            catLine2D4.StartPoint = catPoint3D5;
-            catLine2D4.EndPoint = catPoint3D6;
+            catLine3D4.StartPoint = catPoint3D5;
+            catLine3D4.EndPoint = catPoint3D6;
 
             Line2D catLine3D5 = catFactory3D2.CreateLine(-SW, (tan30 * SW), 0, SW / cos30);
-            catLine2D5.StartPoint = catPoint3D6;
-            catLine2D5.EndPoint = catPoint3D7;
+            catLine3D5.StartPoint = catPoint3D6;
+            catLine3D5.EndPoint = catPoint3D7;
 
             Line2D catLine3D6 = catFactory3D2.CreateLine(0, SW / cos30, SW, tan30 * SW);
             catLine3D6.StartPoint = catPoint3D7;
@@ -714,7 +714,7 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-            */
+            
         }
         #endregion
 

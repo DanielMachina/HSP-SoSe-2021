@@ -314,13 +314,56 @@ namespace Schrauben
         }
 
 
+        #region FestigkeitsBedingungen
 
+        
+        private void cb_material_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //wenn die Festigkeiten noch nicht compiled sind, verlässt das Programm die Methode 
+            if (cb_festigkeitTit == null|| cb_festigkeitMesBron == null || cb_festigkeitKup == null || cb_festigkeit == null|| cb_festigkeitAlu == null)
+            { return; }
 
+            //Abfragen welches Material ausgewählt ist
 
+            if(cb_material.SelectedItem is "Stahl")
+            {
+                FestVis(cb_festigkeit);
+            }
 
+            if (cb_material.SelectedItem is "Aluminium")
+            {
+                FestVis(cb_festigkeitAlu);
+            }
 
+            if (cb_material.SelectedItem is "Kupfer")
+            {
+                FestVis(cb_festigkeitKup);
+            }
 
+            if (cb_material.SelectedItem is "Messing" || cb_material.SelectedItem is "Bronze")
+            {
+                FestVis(cb_festigkeitMesBron);
+            }
 
+            if (cb_material.SelectedItem is "Titan")
+            {
+                FestVis(cb_festigkeitTit);
+            }
+
+        }
+
+        //nicht benötigte ComboBoxen werden versteckt
+        private void FestVis(ComboBox cb_name)
+        {
+            cb_festigkeitTit.Visibility = Visibility.Hidden;
+            cb_festigkeitMesBron.Visibility = Visibility.Hidden;
+            cb_festigkeitKup.Visibility = Visibility.Hidden;
+            cb_festigkeitAlu.Visibility = Visibility.Hidden;
+            cb_festigkeit.Visibility = Visibility.Hidden;
+
+            cb_name.Visibility = Visibility.Visible;
+        }
+        #endregion
     }
 
 
