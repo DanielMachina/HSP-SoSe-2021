@@ -75,46 +75,47 @@ namespace Schrauben
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-
-            //eingaben werden übergeben
-
-
-            if (cb_MetDurchmesser.IsVisible)
+            if (tbx_schraubenlänge.Text != "" && tbx_gewindelänge.Text != "")
             {
-                durchmesser = (string)cb_MetDurchmesser.SelectedItem;
-            }
-
-            if (cb_fMetDurchmesser.IsVisible)
-            {
-                durchmesser = (string)cb_fMetDurchmesser.SelectedItem;
-            }
-
-            if (cb_ZollDurchmesser.IsVisible)
-            {
-                durchmesser = (string)cb_ZollDurchmesser.SelectedItem;
-            }
-
-            material = (string)cb_material.SelectedItem;
-            schraubenart = (string)cb_schraubenart.SelectedItem;
-            festigkeit = (string)cb_festigkeit.SelectedItem;
-            kopfform = (string)cb_kopfform.SelectedItem;
-            schraubenlänge = tbx_schraubenlänge.Text;
-            gewindelänge = tbx_gewindelänge.Text;
-            menge = tbx_menge.Text;
+                //eingaben werden übergeben
 
 
-            ExcelControl XL = new ExcelControl();
+                if (cb_MetDurchmesser.IsVisible)
+                {
+                    durchmesser = (string)cb_MetDurchmesser.SelectedItem;
+                }
 
-            //XL.XlSchreiben();
+                if (cb_fMetDurchmesser.IsVisible)
+                {
+                    durchmesser = (string)cb_fMetDurchmesser.SelectedItem;
+                }
 
-            //XL.XlLesen();
-            //ausgaben werden geholt
-            tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
-            tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");
-            tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse + "kg");
-            tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser + "mm");
-            tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser + "mm");
-            tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + "EUR");
+                if (cb_ZollDurchmesser.IsVisible)
+                {
+                    durchmesser = (string)cb_ZollDurchmesser.SelectedItem;
+                }
+
+                material = (string)cb_material.SelectedItem;
+                schraubenart = (string)cb_schraubenart.SelectedItem;
+                festigkeit = (string)cb_festigkeit.SelectedItem;
+                kopfform = (string)cb_kopfform.SelectedItem;
+                schraubenlänge = tbx_schraubenlänge.Text;
+                gewindelänge = tbx_gewindelänge.Text;
+                menge = tbx_menge.Text;
+
+
+                ExcelControl XL = new ExcelControl();
+
+                //XL.XlSchreiben();
+
+                //XL.XlLesen();
+                //ausgaben werden geholt
+                tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
+                tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");
+                tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse + "kg");
+                tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser + "mm");
+                tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser + "mm");
+                tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + "EUR");
                 if (ExcelControl.SWZ == "0")
                 {
                     SW = tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SWM);
@@ -123,10 +124,16 @@ namespace Schrauben
                 {
                     SW = tb_schlüsselweite.Text = ExcelControl.SWZ + "''";
                 }
-            tb_streckgrenze.Text = ExcelControl.Re + "N/mm^2";
-            tb_zugfestigkeit.Text = ExcelControl.Rm + "N/mm^2";
-            tb_ftm.Text = Convert.ToString(ExcelControl.FTM + "mm^4");
-            tb_steigung.Text = Convert.ToString(ExcelControl.Steigung + "mm");
+                tb_streckgrenze.Text = ExcelControl.Re + "N/mm^2";
+                tb_zugfestigkeit.Text = ExcelControl.Rm + "N/mm^2";
+                tb_ftm.Text = Convert.ToString(ExcelControl.FTM + "mm^4");
+                tb_steigung.Text = Convert.ToString(ExcelControl.Steigung + "mm");
+            }
+
+            else
+            {
+                MessageBox.Show("Angegebene Schraubenparameter NICHT gültig!");
+            }
 
 
 

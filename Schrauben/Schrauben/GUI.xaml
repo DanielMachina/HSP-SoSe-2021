@@ -491,7 +491,8 @@
                                 <RadioButton GroupName="Drehsinn"
                                              Content="Rechts"
                                              Margin="55,0,40,0" 
-                                             Checked="rb_rechts"/>
+                                             Checked="rb_rechts"
+                                             IsChecked="True"/>
 
                             </StackPanel>
 
@@ -541,7 +542,8 @@
                     <RadioButton GroupName="Darstellung"
                                              Content=" Optisch"
                                              Margin="20,7,0,0" 
-                                             Checked="rb_optisch"/>
+                                             Checked="rb_optisch"
+                                             IsChecked="True"/>
 
                     <RadioButton GroupName="Darstellung"
                                              Content="Technisch"
