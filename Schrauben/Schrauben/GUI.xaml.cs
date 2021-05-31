@@ -169,7 +169,7 @@ namespace Schrauben
         //Fehler in bedingung
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null)
+            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null || cb_fMetDurchmesserSenk == null || cb_MetDurchmesserSenk == null || cb_ZollDurchmesserSenk == null)
             { return; }
 
 
