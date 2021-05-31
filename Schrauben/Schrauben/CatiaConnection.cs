@@ -25,6 +25,8 @@ namespace Schrauben
         Sketches mySketches;
         Pocket ISechs;
         Shaft Körper;
+        Chamfer FaseSchaft;
+        EdgeFillet Kopfradius;
 
         #region MinimalCatia
         public bool CATIALaeuft()
@@ -140,11 +142,11 @@ namespace Schrauben
 
             // ... Gewinde erzeugen, Parameter setzen
             PARTITF.Thread thread1 = SF.AddNewThreadWithOutRef();
-            if (GUI.Drehsinn =="rechts")
+            if (GUI.Drehsinn == "rechts")
             {
                 thread1.Side = CatThreadSide.catRightSide;
             }
-            else if (GUI.Drehsinn =="links")
+            else if (GUI.Drehsinn == "links")
             {
                 thread1.Side = CatThreadSide.catLeftSide;
             }
@@ -160,6 +162,25 @@ namespace Schrauben
 
             // Part update und fertig
             myPart.Update();
+        }
+
+        internal void Fase()
+        {
+            //Fase an Spitze
+
+            // Hauptkoerper in Bearbeitung definieren
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+
+            ShapeFactory catshapeFactoryFase = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+
+            Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromBRepName("REdge:(Edge:(Face:(Brp:(Pad.1;1);None:();Cf11:());Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));" +
+                "None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", mySchaft);
+            FaseSchaft = catshapeFactoryFase.AddNewChamfer(reference1, CatChamferPropagation.catTangencyChamfer, CatChamferMode.catLengthAngleChamfer, CatChamferOrientation.catNoReverseChamfer, ExcelControl.Steigung, 45);
+
+            FaseSchaft.set_Name("Fase");
+            hsp_catiaPartDoc.Part.Update();
+
+
         }
         #endregion
         #region opt. Gewinde
@@ -541,12 +562,25 @@ namespace Schrauben
             hsp_catiaPartDoc.Part.Update();
 
             #endregion
+            #region Rundung
+            //Hauptkoerper in Bearbeitung definieren
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+
+            ShapeFactory catshapeFactoryRadius = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+
+            Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromBRepName("RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
+            Kopfradius = catshapeFactoryRadius.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, ExcelControl.Steigung);
+
+            Kopfradius.set_Name("Radius");
+            hsp_catiaPartDoc.Part.Update();
+            #endregion
 
         }
         #endregion
         #region Senkkopf
         internal void Senkkopf()
         {
+            #region Skizze
             //Skizze
 
             //Senk in Skizze einzeichnen
@@ -554,9 +588,6 @@ namespace Schrauben
             OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference catReference1 = (Reference)catOriginElements.PlaneXY;
             hsp_catiaSkizze = mySketches.Add(catReference1);
-
-            //Offset für Kopf
-            //hsp_catiaSkizze = catSketches1.Add(ErzeugeOffset(Convert.ToDouble(ExcelControl.Laenge)));
 
             //Skizze oeffnen
             Factory2D catFactory2D1 = hsp_catiaSkizze.OpenEdition();
@@ -586,7 +617,7 @@ namespace Schrauben
             catLine2D6.EndPoint = catPoint2D1;
 
             
-
+            
             //Achse
             Point2D AxisPoint1 = catFactory2D1.CreatePoint(0, 0);
             Point2D AxisPoint2 = catFactory2D1.CreatePoint(ExcelControl.Kopfhöhe, 0);
@@ -594,23 +625,13 @@ namespace Schrauben
             Line2D AxisLine1 = catFactory2D1.CreateLine(0, 0, ExcelControl.Kopfhöhe, 0);
             AxisLine1.StartPoint = AxisPoint1;
             AxisLine1.EndPoint = AxisPoint2;
-
+            
             //Referenzen der Achse
             Reference Axisreference1 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisPoint1);
             GeometricElements geometricElements1 = hsp_catiaSkizze.GeometricElements;
             Axis2D catAxis2D1 = (Axis2D)geometricElements1.Item("Absolute Achse");
             Line2D AxisLine2 = (Line2D)catAxis2D1.GetItem("H-Richtung");
-
-            Reference Axisreference2 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisLine2);
-            Constraints constraints1 = hsp_catiaSkizze.Constraints;
-            Constraint constraint1 = constraints1.AddBiEltCst(CatConstraintType.catCstTypeOn, Axisreference1, Axisreference2);
-            constraint1.Mode = CatConstraintMode.catCstModeDrivingDimension;
-
-            Reference Axisreference3 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisLine1);
-            Reference Axisreference4 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisLine2);
-            Constraint constraint2 = constraints1.AddBiEltCst(CatConstraintType.catCstTypeVerticality, Axisreference3, Axisreference4);
-            constraint2.Mode = CatConstraintMode.catCstModeDrivingDimension;
-           
+            
             hsp_catiaSkizze.CenterLine = AxisLine1;
             
             //Skizze verlassen
@@ -618,8 +639,8 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-
-
+            #endregion
+            #region Kopf-Block
 
             //Block
 
@@ -638,8 +659,9 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
+            #endregion
+            #region Skizze Innensechskant
 
-            
             //Skizze Innensechs
 
             //Sechskant in Skizze einzeichnen
@@ -695,7 +717,8 @@ namespace Schrauben
 
             // Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-
+            #endregion
+            #region Tasche Innensechskant
 
             //Innensechs als Tasche
 
@@ -713,7 +736,25 @@ namespace Schrauben
 
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
-            
+            #endregion
+            #region Rundung
+            //Rundung
+
+            //Hauptkoerper in Bearbeitung definieren
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+
+            //Rundung erzeugen
+            ShapeFactory catshapeFactoryRadius = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+            /*
+            Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromBRepName( //BEide Varianten gehen nicht...
+                //"REdge:(Edge:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;3)));None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
+                //"RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
+            Kopfradius = catshapeFactoryRadius.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, 1);
+
+            Kopfradius.set_Name("Radius");
+            hsp_catiaPartDoc.Part.Update();
+            */
+            #endregion
         }
         #endregion
 

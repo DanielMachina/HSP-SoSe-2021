@@ -44,6 +44,7 @@ namespace Schrauben
                     {
                         cc.ErzeugeGewindeFeature();
                         Console.WriteLine("4. Gewinde");
+                        cc.Fase();
                     }
 
                     if (GUI.kopfform == "Sechskant")
