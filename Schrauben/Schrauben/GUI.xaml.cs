@@ -70,12 +70,14 @@ namespace Schrauben
         public static string Drehsinn;
         public static string SW;
         public static string Darstellung;
+        public static string Farbe1;
+        public static string Farbe2;
 
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-            if (tbx_schraubenlänge.Text != "" && tbx_gewindelänge.Text != "")
+            if (Farbe1 == "Grün" && Farbe2 == "Grün")
             {
                 //eingaben werden übergeben
 
@@ -230,17 +232,19 @@ namespace Schrauben
             if (int.TryParse(tbx_schraubenlänge.Text, out testInt1) && testInt1 >= 5 && testInt1 <= 1000 && testInt1 >= testInt2)
             {
                 tbx_schraubenlänge.Background = Brushes.White;
-
+                Farbe1 = "Grün";
             }
 
             else if (tbx_schraubenlänge.Text == "")
             {
                 tbx_schraubenlänge.Background = Brushes.White;
+                Farbe1 = "Rot";
             }
 
             else
             {
                 tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
             }
 
 
@@ -251,17 +255,19 @@ namespace Schrauben
             if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >= 5 && testInt2 <= 1000 && testInt2 <= testInt1)
             {
                 tbx_gewindelänge.Background = Brushes.White;
-
+                Farbe2 = "Grün";
             }
 
             else if (tbx_gewindelänge.Text == "")
             {
                 tbx_gewindelänge.Background = Brushes.White;
+                Farbe2 = "Rot";
             }
 
             else
             {
                 tbx_gewindelänge.Background = Brushes.Red;
+                Farbe2 = "Rot";
             }
         }
 
