@@ -316,7 +316,22 @@
                                           Grid.ColumnSpan="2"
                                           Visibility="Visible" 
                                           SelectedItem="M2"
-                                          ItemsSource="{Binding MetrischSammlung}" VerticalAlignment="Top"
+                                          ItemsSource="{Binding MetrischSammlung}" 
+                                          VerticalAlignment="Top"
+                                          SelectionChanged="cb_MetDurchmesser_SelectionChanged" 
+                                  />
+
+                                <ComboBox x:Name="cb_MetDurchmesserSenk" 
+                                  Height="25"
+                                  
+                                  Margin="7,7,2,0"
+                                          MaxDropDownHeight="82"
+                                          Grid.ColumnSpan="2"
+                                          Visibility="Hidden" 
+                                          SelectedItem="M3"
+                                          ItemsSource="{Binding MetrischSammlungSenk}" 
+                                          VerticalAlignment="Top"
+                                           SelectionChanged="cb_MetDurchmesserSenk_SelectionChanged"  
                                   />
 
                                 <ComboBox x:Name="cb_fMetDurchmesser" 
@@ -324,9 +339,23 @@
                                   ItemsSource="{Binding FeinMetrischSammlung}"
                                   Margin="7,7,2,7"
                                   MaxDropDownHeight="80"
-                                  SelectedItem="M2x0,25" Grid.ColumnSpan="2"
+                                  SelectedItem="M2x0,25" 
+                                          Grid.ColumnSpan="2"
                                           Visibility="Hidden" 
-                                          
+                                          SelectionChanged="cb_fMetDurchmesser_SelectionChanged" 
+                                  >
+
+
+                                </ComboBox>
+
+                                <ComboBox x:Name="cb_fMetDurchmesserSenk" 
+                                  Height="25"
+                                  ItemsSource="{Binding FeinMetrischSammlungSenk}"
+                                  Margin="7,7,2,7"
+                                  MaxDropDownHeight="83"
+                                  SelectedItem="M3x0,25" Grid.ColumnSpan="2"
+                                          Visibility="Hidden" 
+                                          SelectionChanged="cb_fMetDurchmesserSenk_SelectionChanged" 
                                   >
 
 
@@ -339,12 +368,24 @@
                                   MaxDropDownHeight="80"
                                   SelectedItem="1/4"
                                           Grid.ColumnSpan="2"
-                                        
+                                        SelectionChanged="cb_ZollDurchmesser_SelectionChanged" 
                                           Visibility="Hidden" 
                                           
                                   />
 
 
+                                <ComboBox x:Name="cb_ZollDurchmesserSenk" 
+                                  Height="25"
+                                  ItemsSource="{Binding ZollSammlungSenk}"
+                                  Margin="7,7,2,7"
+                                  MaxDropDownHeight="80"
+                                  SelectedItem="1/4"
+                                          Grid.ColumnSpan="2"
+                                        
+                                          Visibility="Hidden" 
+                                          SelectionChanged="cb_ZollDurchmesserSenk_SelectionChanged" 
+                                  />
+                                
                             </Grid>
 
 
@@ -369,6 +410,7 @@
                                           Margin="33,2"
                                           x:Name="cb_festigkeit"
                                           Visibility="Visible" Grid.ColumnSpan="2" 
+                                          SelectionChanged="cb_festigkeit_SelectionChanged" 
                                       />
 
                                 <ComboBox Height="25"
@@ -377,6 +419,7 @@
                                           ItemsSource="{Binding SchraubenfestigkeitAlu}"
                                       x:Name="cb_festigkeitAlu"
                                           Visibility="Hidden" Grid.ColumnSpan="2" 
+                                          SelectionChanged="cb_festigkeitAlu_SelectionChanged" 
                                       />
 
                                 <ComboBox Height="25"
@@ -385,6 +428,7 @@
                                           Margin="33,2"
                                           x:Name="cb_festigkeitTit"
                                           Visibility="Hidden" Grid.ColumnSpan="2" 
+                                          SelectionChanged="cb_festigkeitTit_SelectionChanged" 
                                       />
                                 <ComboBox Height="25"
                                           ItemsSource="{Binding SchraubenfestigkeitKup}"
@@ -392,6 +436,7 @@
                                           Margin="33,2"
                                           x:Name="cb_festigkeitKup"
                                           Visibility="Hidden" Grid.ColumnSpan="2"  
+                                          SelectionChanged="cb_festigkeitKup_SelectionChanged" 
                                       />
 
                                 <ComboBox Height="25"
@@ -400,6 +445,7 @@
                                           Margin="33,2"
                                           x:Name="cb_festigkeitMesBron"
                                           Visibility="Hidden" Grid.ColumnSpan="2" 
+                                          SelectionChanged="cb_festigkeitMesBron_SelectionChanged" 
                                       />
 
 
@@ -492,7 +538,8 @@
                                              Content="Rechts"
                                              Margin="55,0,40,0" 
                                              Checked="rb_rechts"
-                                             IsChecked="True"/>
+                                             IsChecked="True"
+                                             />
 
                             </StackPanel>
 
@@ -552,12 +599,25 @@
 
                 </StackPanel>
 
-                <Button Content="Berechnen" 
+
+                <StackPanel>
+
+
+                    <Label Content="Info: Drücke Berechnen bevor du etwas druckst, oder an CAD überträgst!"
+                       HorizontalAlignment="Center" 
+                       FontSize="10"
+                           Visibility="Hidden"
+                           x:Name="lb_Info"/>
+
+
+
+                    <Button Content="Berechnen" 
                         FontSize="12"
                         FontWeight="Bold"
                         HorizontalAlignment="Center"
                         x:Name="btn_berechnen"
-                        Click="btn_berechnen_Click" Margin="0,60,0,10" >
+                        Click="btn_berechnen_Click" 
+                        Margin="0,0,0,10" >
 
 
                     <Button.Style>
@@ -593,6 +653,8 @@
 
                 </Button>
 
+                </StackPanel>
+                
                 <Button Content="Clear" 
                         FontSize="12"
                         FontWeight="Bold"
