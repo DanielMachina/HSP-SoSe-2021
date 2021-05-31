@@ -239,12 +239,26 @@ namespace Schrauben
             #region Speichern als PDF
 
             // als PDF speichern 
-            mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
+             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
                         @"" + "Produktdatenblatt "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
                         + ExcelControl.Menge,
                         _Excel.XlFixedFormatQuality.xlQualityStandard,
                         true,true,1,1,false);
-                          
+
+
+
+        
+
+         
+
+           
+
+
+
+            System.Diagnostics.Process.Start(newfile);
+
+            
+
             excelApp.Quit();
 
             #endregion

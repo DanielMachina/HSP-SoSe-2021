@@ -72,21 +72,48 @@ namespace Schrauben
         public static string Darstellung;
         public static string Farbe1;
         public static string Farbe2;
+        public static string Variante1;
+        public static string Variante2;
 
 
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
 
-            // Fehler in Bedingung in Verbindung mit Clear
-            if (Farbe1 == "Grün" && Farbe2 == "Grün" && cb_MetDurchmesser.Text != String.Empty && cb_festigkeit.Text != String.Empty && cb_schraubenart.Text != String.Empty &&
-                    cb_kopfform.Text != String.Empty && cb_material.Text != String.Empty && tbx_gewindelänge.Text != String.Empty && tbx_schraubenlänge.Text != String.Empty)
+            if (cb_schraubenart.Text == "Metrisch" && cb_MetDurchmesser.Text != String.Empty)
+            {
+                Variante1 = "gut";
+            }
+            else if (cb_schraubenart.Text == "Metrisch" && cb_MetDurchmesser.Text == String.Empty)
+            {
+                Variante1 = "schlecht";
+            }
 
+            if (cb_schraubenart.Text == "Metrisch_Fein" && cb_fMetDurchmesser.Text != String.Empty)
+            {
+                Variante1 = "gut";
+            }
+            else if (cb_schraubenart.Text == "Metrisch_Fein" && cb_fMetDurchmesser.Text == String.Empty)
+            {
+                Variante1 = "schlecht";
+            }
+
+            if (cb_schraubenart.Text == "Zoll" && cb_ZollDurchmesser.Text != String.Empty)
+            {
+                Variante1 = "gut";
+            }
+            else if (cb_schraubenart.Text == "Zoll" && cb_ZollDurchmesser.Text == String.Empty)
+            {
+                Variante1 = "schlecht";
+            }
+
+            if (Farbe1 == "Grün" && Farbe2 == "Grün" && cb_festigkeit.Text != String.Empty && cb_schraubenart.Text != String.Empty &&
+                    cb_kopfform.Text != String.Empty && cb_material.Text != String.Empty && Variante1 == "gut")
 
             {
                 //eingaben werden übergeben
 
-
+                
                 if (cb_MetDurchmesser.IsVisible)
                 {
                     durchmesser = (string)cb_MetDurchmesser.SelectedItem;
@@ -132,6 +159,18 @@ namespace Schrauben
 
                 //XL.XlLesen();
                 //ausgaben werden geholt
+                tb_durchmesser.Visibility = Visibility.Visible;
+                tb_steigung.Visibility = Visibility.Visible;
+                tb_flankendurchmesser.Visibility = Visibility.Visible;
+                tb_kerndurchmesser.Visibility = Visibility.Visible;
+                tb_kernlochdurchmesser.Visibility = Visibility.Visible;
+                tb_gesamtmasse.Visibility = Visibility.Visible;
+                tb_schlüsselweite.Visibility = Visibility.Visible;
+                tb_streckgrenze.Visibility = Visibility.Visible;
+                tb_zugfestigkeit.Visibility = Visibility.Visible;
+                tb_preisInEuro.Visibility = Visibility.Visible;
+                tb_ftm.Visibility = Visibility.Visible;
+
                 tb_durchmesser.Text = Convert.ToString(ExcelControl.Durchmesser + "mm");
                 tb_flankendurchmesser.Text = Convert.ToString(ExcelControl.Flankendurchmesser + "mm");
                 tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse + "kg");
@@ -169,7 +208,7 @@ namespace Schrauben
         //Fehler in bedingung
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null || cb_fMetDurchmesserSenk == null || cb_MetDurchmesserSenk == null || cb_ZollDurchmesserSenk == null)
+            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null || cb_fMetDurchmesserSenk == null || cb_MetDurchmesserSenk == null || cb_ZollDurchmesserSenk == null || cb_kopfform.SelectedItem == null)
             { return; }
 
 
