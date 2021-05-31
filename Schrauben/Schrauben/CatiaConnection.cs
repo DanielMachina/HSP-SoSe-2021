@@ -25,7 +25,6 @@ namespace Schrauben
         Sketches mySketches;
         Pocket ISechs;
         Shaft Körper;
-        //EdgeFillet RadiusKopf;
 
         #region MinimalCatia
         public bool CATIALaeuft()
@@ -137,7 +136,7 @@ namespace Schrauben
             Reference RefMantelflaeche = myPart.CreateReferenceFromBRepName(
                 "RSur:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", mySchaft);
             Reference RefFrontflaeche = myPart.CreateReferenceFromBRepName(
-               "RSur:(Face:(Brp:(Pad.1;1);None:();Cf12:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR29)", mySchaft);
+               "RSur:(Face:(Brp:(Pad.1;1);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", mySchaft);
 
             // ... Gewinde erzeugen, Parameter setzen
             PARTITF.Thread thread1 = SF.AddNewThreadWithOutRef();

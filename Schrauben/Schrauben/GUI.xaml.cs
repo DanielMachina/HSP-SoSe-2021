@@ -25,7 +25,7 @@ namespace Schrauben
         public static int testInt2;
         public static int testInt3;
         public static bool aus = false;
-
+        bool permission = false;
         public GUI()
         {
             DataContext = new GUItools();
@@ -77,7 +77,12 @@ namespace Schrauben
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-            if (Farbe1 == "Grün" && Farbe2 == "Grün")
+
+            // Fehler in Bedingung in Verbindung mit Clear
+            if (Farbe1 == "Grün" && Farbe2 == "Grün" && cb_MetDurchmesser.Text != String.Empty && cb_festigkeit.Text != String.Empty && cb_schraubenart.Text != String.Empty &&
+                    cb_kopfform.Text != String.Empty && cb_material.Text != String.Empty && tbx_gewindelänge.Text != String.Empty && tbx_schraubenlänge.Text != String.Empty)
+
+
             {
                 //eingaben werden übergeben
 
@@ -95,6 +100,21 @@ namespace Schrauben
                 if (cb_ZollDurchmesser.IsVisible)
                 {
                     durchmesser = (string)cb_ZollDurchmesser.SelectedItem;
+                }
+
+                if (cb_ZollDurchmesserSenk.IsVisible)
+                {
+                    durchmesser = (string)cb_ZollDurchmesserSenk.SelectedItem;
+                }
+
+                if (cb_MetDurchmesserSenk.IsVisible)
+                {
+                    durchmesser = (string)cb_MetDurchmesserSenk.SelectedItem;
+                }
+
+                if (cb_fMetDurchmesserSenk.IsVisible)
+                {
+                    durchmesser = (string)cb_fMetDurchmesserSenk.SelectedItem;
                 }
 
                 material = (string)cb_material.SelectedItem;
@@ -130,6 +150,10 @@ namespace Schrauben
                 tb_zugfestigkeit.Text = ExcelControl.Rm + "N/mm^2";
                 tb_ftm.Text = Convert.ToString(ExcelControl.FTM + "mm^4");
                 tb_steigung.Text = Convert.ToString(ExcelControl.Steigung + "mm");
+
+                permission = true;
+                btn_drucken.Foreground = Brushes.Black;
+                btn_cad.Foreground = Brushes.Black;
             }
 
             else
@@ -142,37 +166,45 @@ namespace Schrauben
         }
 
 
-
+        //Fehler in bedingung
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null ||cb_schraubenart.SelectedItem == null)
+            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null || cb_fMetDurchmesserSenk == null || cb_MetDurchmesserSenk == null || cb_ZollDurchmesserSenk == null)
             { return; }
 
 
-
-
-            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch")
+            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch" && cb_kopfform.SelectedItem is "Senkkopf")
             {
-                cb_fMetDurchmesser.Visibility = Visibility.Hidden;
-                cb_ZollDurchmesser.Visibility = Visibility.Hidden;
-                cb_MetDurchmesser.Visibility = Visibility.Visible;
+                HideCbDurch(cb_MetDurchmesserSenk);
+            }
+
+            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein" && cb_kopfform.SelectedItem is "Senkkopf")
+            {
+                HideCbDurch(cb_fMetDurchmesserSenk);
+            }
+
+            else if (cb_schraubenart.SelectedItem.ToString() == "Zoll" && cb_kopfform.SelectedItem is "Senkkopf")
+            {
+                HideCbDurch(cb_ZollDurchmesserSenk);
+            }
+
+            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
+            {
+                HideCbDurch(cb_MetDurchmesser);
 
             }
 
-            if (cb_schraubenart.SelectedItem.ToString() == "Zoll")
+            else if (cb_schraubenart.SelectedItem.ToString() == "Zoll" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
             {
-                cb_fMetDurchmesser.Visibility = Visibility.Hidden;
-                cb_MetDurchmesser.Visibility = Visibility.Hidden;
-                cb_ZollDurchmesser.Visibility = Visibility.Visible;
+                HideCbDurch(cb_ZollDurchmesser);
             }
 
-            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein")
+
+            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
             {
-                cb_ZollDurchmesser.Visibility = Visibility.Hidden;
-                cb_MetDurchmesser.Visibility = Visibility.Hidden;
-                cb_fMetDurchmesser.Visibility = Visibility.Visible;
+                HideCbDurch(cb_fMetDurchmesser);
             }
-              
+            permission = false;
 
 
 
@@ -181,17 +213,26 @@ namespace Schrauben
 
         private void cb_kopfform_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+            if (cb_kopfform == null)
+            { return; }
+
             if (cb_kopfform.SelectedIndex == 0)
             {
                 img_SechskantSchraube.Visibility = Visibility.Visible;
                 img_SenkkopfSchraube.Visibility = Visibility.Hidden;
                 img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
+
+
+
             }
             else if (cb_kopfform.SelectedIndex == 2)
             {
                 img_SenkkopfSchraube.Visibility = Visibility.Visible;
                 img_SechskantSchraube.Visibility = Visibility.Hidden;
                 img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
+
+                HideCbDurch(cb_MetDurchmesser);
             }
 
             else if (cb_kopfform.SelectedIndex == 1)
@@ -208,26 +249,69 @@ namespace Schrauben
                 img_SenkkopfSchraube.Visibility = Visibility.Hidden;
             }
 
+
+            permission = false;
+
+        }
+
+        private void HideCbDurch(ComboBox CbShow)
+        {
+            cb_fMetDurchmesser.Visibility = Visibility.Hidden;
+            cb_fMetDurchmesserSenk.Visibility = Visibility.Hidden;
+            cb_MetDurchmesser.Visibility = Visibility.Hidden;
+            cb_MetDurchmesserSenk.Visibility = Visibility.Hidden;
+            cb_ZollDurchmesser.Visibility = Visibility.Hidden;
+            cb_ZollDurchmesserSenk.Visibility = Visibility.Hidden;
+
+            CbShow.Visibility = Visibility.Visible;
         }
 
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
             cb_MetDurchmesser.Text = String.Empty;
+            cb_ZollDurchmesser.Text = String.Empty;
+            cb_fMetDurchmesser.Text = String.Empty;
             cb_festigkeit.Text = String.Empty;
+            cb_festigkeitTit.Text = String.Empty;
+            cb_festigkeitAlu.Text = String.Empty;
+            cb_festigkeitKup.Text = String.Empty;
+            cb_festigkeitMesBron.Text = String.Empty;
             cb_schraubenart.Text = String.Empty;
             cb_kopfform.Text = String.Empty;
             cb_material.Text = String.Empty;
             tbx_gewindelänge.Text = String.Empty;
             tbx_schraubenlänge.Text = String.Empty;
+
             tbx_menge.Text = "1";
+
+            btn_cad.Foreground = Brushes.Black;
+            btn_drucken.Foreground = Brushes.Black;
+
+            lb_Info.Visibility = Visibility.Hidden;
 
             img_SechskantSchraube.Visibility = Visibility.Hidden;
             img_SenkkopfSchraube.Visibility = Visibility.Hidden;
             img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
+
+
+            tb_durchmesser.Visibility = Visibility.Hidden;
+            tb_steigung.Visibility = Visibility.Hidden;
+            tb_flankendurchmesser.Visibility = Visibility.Hidden;
+            tb_kerndurchmesser.Visibility = Visibility.Hidden;
+            tb_kernlochdurchmesser.Visibility = Visibility.Hidden;
+            tb_gesamtmasse.Visibility = Visibility.Hidden;
+            tb_schlüsselweite.Visibility = Visibility.Hidden;
+            tb_streckgrenze.Visibility = Visibility.Hidden;
+            tb_zugfestigkeit.Visibility = Visibility.Hidden;
+            tb_preisInEuro.Visibility = Visibility.Hidden;
+            tb_ftm.Visibility = Visibility.Hidden;
         }
 
         private void tbx_schraubenlänge_SelectionChanged(object sender, RoutedEventArgs e)
         {
+
+            if (tbx_schraubenlänge == null)
+            { return; }
 
             if (int.TryParse(tbx_schraubenlänge.Text, out testInt1) && testInt1 >= 5 && testInt1 <= 1000 && testInt1 >= testInt2)
             {
@@ -247,11 +331,14 @@ namespace Schrauben
                 Farbe1 = "Rot";
             }
 
-
+            permission = false;
         }
 
         private void tbx_gewindelänge_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            if (tbx_gewindelänge == null)
+            { return; }
+
             if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >= 5 && testInt2 <= 1000 && testInt2 <= testInt1)
             {
                 tbx_gewindelänge.Background = Brushes.White;
@@ -269,15 +356,24 @@ namespace Schrauben
                 tbx_gewindelänge.Background = Brushes.Red;
                 Farbe2 = "Rot";
             }
+
+            permission = false;
         }
 
         private void sl_menge_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (sl_menge == null)
+            { return; }
+
             tbx_menge.Text = Convert.ToString(sl_menge.Value);
+            permission = false;
         }
 
         private void tbx_menge_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            if (tbx_menge == null)
+            { return; }
+
             if (tbx_menge.Text == "")
             {
                 tbx_menge.Text = "1";
@@ -294,16 +390,33 @@ namespace Schrauben
                 tbx_menge.Background = Brushes.Red;
             }
 
+            permission = false;
         }
 
         private void btn_cad_Click(object sender, RoutedEventArgs e)
         {
-            new CatiaControl();
+            if (permission == true)
+            {
+                new CatiaControl();
+            }
+            else
+            {
+                btn_cad.Foreground = Brushes.Red;
+                lb_Info.Visibility = Visibility.Visible;
+            }
         }
 
         private void btn_drucken_Click(object sender, RoutedEventArgs e)
         {
-            new Ausdrucken();
+            if (permission == true)
+            {
+                new Ausdrucken();
+            }
+            else
+            {
+                btn_drucken.Foreground = Brushes.Red;
+                lb_Info.Visibility = Visibility.Visible;
+            }
         }
 
         private void rb_links(object sender, RoutedEventArgs e)
@@ -329,16 +442,16 @@ namespace Schrauben
 
         #region FestigkeitsBedingungen
 
-        
+
         private void cb_material_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //wenn die Festigkeiten noch nicht compiled sind, verlässt das Programm die Methode 
-            if (cb_festigkeitTit == null|| cb_festigkeitMesBron == null || cb_festigkeitKup == null || cb_festigkeit == null|| cb_festigkeitAlu == null)
+            if (cb_festigkeitTit == null || cb_festigkeitMesBron == null || cb_festigkeitKup == null || cb_festigkeit == null || cb_festigkeitAlu == null)
             { return; }
 
             //Abfragen welches Material ausgewählt ist
 
-            if(cb_material.SelectedItem is "Stahl")
+            if (cb_material.SelectedItem is "Stahl")
             {
                 FestVis(cb_festigkeit);
             }
@@ -363,6 +476,8 @@ namespace Schrauben
                 FestVis(cb_festigkeitTit);
             }
 
+            permission = false;
+
         }
 
         //nicht benötigte ComboBoxen werden versteckt
@@ -377,6 +492,66 @@ namespace Schrauben
             cb_name.Visibility = Visibility.Visible;
         }
         #endregion
+
+        private void cb_MetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //wenn cb nicht existiert, soll returned werden um keinen Fehler zu bekommen
+            if (cb_MetDurchmesser == null)
+            { return; }
+
+            //Keine Druckerlaubnis/Cad-Erlaubnis geben
+            permission = false;
+        }
+
+        private void cb_festigkeit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitAlu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitTit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitKup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitMesBron_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_fMetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_MetDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_fMetDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_ZollDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_ZollDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
     }
 
 

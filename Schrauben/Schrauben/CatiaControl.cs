@@ -86,8 +86,7 @@ namespace Schrauben
 
 
             Console.WriteLine("Fertig - Taste drücken.");
-            //Console.ReadKey();
-
+            
         }
 
     }
