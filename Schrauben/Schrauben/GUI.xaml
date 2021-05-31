@@ -321,18 +321,8 @@
                                           SelectionChanged="cb_MetDurchmesser_SelectionChanged" 
                                   />
 
-                                <ComboBox x:Name="cb_MetDurchmesserSenk" 
-                                  Height="25"
+                               
                                   
-                                  Margin="7,7,2,0"
-                                          MaxDropDownHeight="82"
-                                          Grid.ColumnSpan="2"
-                                          Visibility="Hidden" 
-                                          SelectedItem="M3"
-                                          ItemsSource="{Binding MetrischSammlungSenk}" 
-                                          VerticalAlignment="Top"
-                                           SelectionChanged="cb_MetDurchmesserSenk_SelectionChanged"  
-                                  />
 
                                 <ComboBox x:Name="cb_fMetDurchmesser" 
                                   Height="25"
@@ -348,18 +338,7 @@
 
                                 </ComboBox>
 
-                                <ComboBox x:Name="cb_fMetDurchmesserSenk" 
-                                  Height="25"
-                                  ItemsSource="{Binding FeinMetrischSammlungSenk}"
-                                  Margin="7,7,2,7"
-                                  MaxDropDownHeight="83"
-                                  SelectedItem="M3x0,25" Grid.ColumnSpan="2"
-                                          Visibility="Hidden" 
-                                          SelectionChanged="cb_fMetDurchmesserSenk_SelectionChanged" 
-                                  >
-
-
-                                </ComboBox>
+                               
 
                                 <ComboBox x:Name="cb_ZollDurchmesser" 
                                   Height="25"
@@ -374,17 +353,7 @@
                                   />
 
 
-                                <ComboBox x:Name="cb_ZollDurchmesserSenk" 
-                                  Height="25"
-                                  ItemsSource="{Binding ZollSammlungSenk}"
-                                  Margin="7,7,2,7"
-                                  MaxDropDownHeight="80"
-                                  SelectedItem="1/4"
-                                          Grid.ColumnSpan="2"
-                                        
-                                          Visibility="Hidden" 
-                                          SelectionChanged="cb_ZollDurchmesserSenk_SelectionChanged" 
-                                  />
+                            
                                 
                             </Grid>
 

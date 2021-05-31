@@ -24,6 +24,7 @@ namespace Schrauben
         public static int testInt1;
         public static int testInt2;
         public static int testInt3;
+        int länge;
         public static bool aus = false;
         bool permission = false;
         public GUI()
@@ -113,7 +114,7 @@ namespace Schrauben
             {
                 //eingaben werden übergeben
 
-                
+
                 if (cb_MetDurchmesser.IsVisible)
                 {
                     durchmesser = (string)cb_MetDurchmesser.SelectedItem;
@@ -129,20 +130,7 @@ namespace Schrauben
                     durchmesser = (string)cb_ZollDurchmesser.SelectedItem;
                 }
 
-                if (cb_ZollDurchmesserSenk.IsVisible)
-                {
-                    durchmesser = (string)cb_ZollDurchmesserSenk.SelectedItem;
-                }
 
-                if (cb_MetDurchmesserSenk.IsVisible)
-                {
-                    durchmesser = (string)cb_MetDurchmesserSenk.SelectedItem;
-                }
-
-                if (cb_fMetDurchmesserSenk.IsVisible)
-                {
-                    durchmesser = (string)cb_fMetDurchmesserSenk.SelectedItem;
-                }
 
                 material = (string)cb_material.SelectedItem;
                 schraubenart = (string)cb_schraubenart.SelectedItem;
@@ -208,42 +196,32 @@ namespace Schrauben
         //Fehler in bedingung
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null || cb_fMetDurchmesserSenk == null || cb_MetDurchmesserSenk == null || cb_ZollDurchmesserSenk == null || cb_kopfform.SelectedItem == null)
+            if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null )
             { return; }
 
 
-            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch" && cb_kopfform.SelectedItem is "Senkkopf")
-            {
-                HideCbDurch(cb_MetDurchmesserSenk);
-            }
 
-            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein" && cb_kopfform.SelectedItem is "Senkkopf")
-            {
-                HideCbDurch(cb_fMetDurchmesserSenk);
-            }
 
-            else if (cb_schraubenart.SelectedItem.ToString() == "Zoll" && cb_kopfform.SelectedItem is "Senkkopf")
-            {
-                HideCbDurch(cb_ZollDurchmesserSenk);
-            }
-
-            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
+            if (cb_schraubenart.SelectedItem.ToString() == "Metrisch")
             {
                 HideCbDurch(cb_MetDurchmesser);
-
+                cb_MetDurchmesser.SelectedIndex = 0;
             }
 
-            else if (cb_schraubenart.SelectedItem.ToString() == "Zoll" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
+            else if (cb_schraubenart.SelectedItem.ToString() == "Zoll")
             {
                 HideCbDurch(cb_ZollDurchmesser);
+                cb_ZollDurchmesser.SelectedIndex = 0;
             }
 
 
-            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein" && cb_kopfform.SelectedItem.ToString() != "Senkkopf")
+            else if (cb_schraubenart.SelectedItem.ToString() == "Metrisch_Fein")
             {
                 HideCbDurch(cb_fMetDurchmesser);
+                cb_fMetDurchmesser.SelectedIndex = 0;
             }
             permission = false;
+
 
 
 
@@ -271,7 +249,6 @@ namespace Schrauben
                 img_SechskantSchraube.Visibility = Visibility.Hidden;
                 img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
 
-                HideCbDurch(cb_MetDurchmesser);
             }
 
             else if (cb_kopfform.SelectedIndex == 1)
@@ -296,11 +273,8 @@ namespace Schrauben
         private void HideCbDurch(ComboBox CbShow)
         {
             cb_fMetDurchmesser.Visibility = Visibility.Hidden;
-            cb_fMetDurchmesserSenk.Visibility = Visibility.Hidden;
             cb_MetDurchmesser.Visibility = Visibility.Hidden;
-            cb_MetDurchmesserSenk.Visibility = Visibility.Hidden;
             cb_ZollDurchmesser.Visibility = Visibility.Hidden;
-            cb_ZollDurchmesserSenk.Visibility = Visibility.Hidden;
 
             CbShow.Visibility = Visibility.Visible;
         }
@@ -370,6 +344,29 @@ namespace Schrauben
                 Farbe1 = "Rot";
             }
 
+            if (cb_MetDurchmesser.SelectedIndex < 4 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge > 100)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+            else if (cb_MetDurchmesser.SelectedIndex > 11 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 40)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+            if (cb_fMetDurchmesser.SelectedIndex < 4 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge > 100)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+            else if (cb_fMetDurchmesser.SelectedIndex > 24 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 40)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
             permission = false;
         }
 
@@ -535,8 +532,29 @@ namespace Schrauben
         private void cb_MetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //wenn cb nicht existiert, soll returned werden um keinen Fehler zu bekommen
-            if (cb_MetDurchmesser == null)
+            if (cb_MetDurchmesser == null || tbx_schraubenlänge == null)
             { return; }
+
+            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_MetDurchmesser.SelectedIndex > 4)
+            {
+                tbx_schraubenlänge.Background = Brushes.White;
+                Farbe1 = "Grün";
+            }
+
+            if (!(int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_MetDurchmesser.SelectedIndex > 4))
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+
+            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 50 && cb_MetDurchmesser.SelectedIndex > 11)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+
 
             //Keine Druckerlaubnis/Cad-Erlaubnis geben
             permission = false;
@@ -569,6 +587,29 @@ namespace Schrauben
 
         private void cb_fMetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+            if (cb_fMetDurchmesser == null || tbx_schraubenlänge == null)
+            { return; }
+
+            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_fMetDurchmesser.SelectedIndex > 4)
+            {
+                tbx_schraubenlänge.Background = Brushes.White;
+                Farbe1 = "Grün";
+            }
+
+            if (!(int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_fMetDurchmesser.SelectedIndex > 4))
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
+
+            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 50 && cb_fMetDurchmesser.SelectedIndex > 24)
+            {
+                tbx_schraubenlänge.Background = Brushes.Red;
+                Farbe1 = "Rot";
+            }
+
             permission = false;
         }
 

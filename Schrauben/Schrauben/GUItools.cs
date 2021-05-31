@@ -38,19 +38,7 @@ namespace Schrauben
         {
             #region Combobox-Sammlung
 
-            MetrischSammlungSenk = new List<string>();
-            {
-                MetrischSammlungSenk.Add("M3");
-                MetrischSammlungSenk.Add("M4");
-                MetrischSammlungSenk.Add("M5");
-                MetrischSammlungSenk.Add("M6");
-                MetrischSammlungSenk.Add("M8");
-                MetrischSammlungSenk.Add("M10");
-                MetrischSammlungSenk.Add("M12");
-                MetrischSammlungSenk.Add("M16");
-                MetrischSammlungSenk.Add("M20");
-                MetrischSammlungSenk.Add("M24");
-            }
+           
 
             MetrischSammlung = new List<string>();
             {
@@ -82,12 +70,7 @@ namespace Schrauben
                 ZollSammlung.Add("1 1/2");
             }
 
-            ZollSammlungSenk = new List<string>();
-            {
-                ZollSammlungSenk.Add("1/4");
-                ZollSammlungSenk.Add("3/8");
-                ZollSammlungSenk.Add("1/2");
-            }
+         
 
 
             FeinMetrischSammlung = new List<string>();
@@ -125,33 +108,7 @@ namespace Schrauben
                 FeinMetrischSammlung.Add("M42x2");
             }
 
-            FeinMetrischSammlungSenk = new List<string>();
-            {
-                FeinMetrischSammlungSenk.Add("M3x0,25");
-                FeinMetrischSammlungSenk.Add("M4x0,2");
-                FeinMetrischSammlungSenk.Add("M4x0,35");
-                FeinMetrischSammlungSenk.Add("M5x0,25");
-                FeinMetrischSammlungSenk.Add("M5x0,5");
-                FeinMetrischSammlungSenk.Add("M6x0,25");
-                FeinMetrischSammlungSenk.Add("M6x0,5");
-                FeinMetrischSammlungSenk.Add("M6x0,75");
-                FeinMetrischSammlungSenk.Add("M8x0,25");
-                FeinMetrischSammlungSenk.Add("M8x0,5");
-                FeinMetrischSammlungSenk.Add("M8x1");
-                FeinMetrischSammlungSenk.Add("M10x0,25");
-                FeinMetrischSammlungSenk.Add("M10x0,5");
-                FeinMetrischSammlungSenk.Add("M10x1");
-                FeinMetrischSammlungSenk.Add("M12x0,35");
-                FeinMetrischSammlungSenk.Add("M12x0,5");
-                FeinMetrischSammlungSenk.Add("M12x1");
-                FeinMetrischSammlungSenk.Add("M16x0,5");
-                FeinMetrischSammlungSenk.Add("M16x1");
-                FeinMetrischSammlungSenk.Add("M16x1,5");
-                FeinMetrischSammlungSenk.Add("M20x1");
-                FeinMetrischSammlungSenk.Add("M20x1,5");
-                FeinMetrischSammlungSenk.Add("M24x1,5");
-                FeinMetrischSammlungSenk.Add("M24x2");
-            }
+          
 
             MaterialSammlung = new List<string>();
             {
