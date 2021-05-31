@@ -77,7 +77,8 @@ namespace Schrauben
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-            if (Farbe1 == "Grün" && Farbe2 == "Grün")
+            if (Farbe1 == "Grün" && Farbe2 == "Grün" && cb_MetDurchmesser.Text != String.Empty && cb_festigkeit.Text != String.Empty && cb_schraubenart.Text != String.Empty &&
+                    cb_kopfform.Text != String.Empty && cb_material.Text != String.Empty && tbx_gewindelänge.Text != String.Empty && tbx_schraubenlänge.Text != String.Empty)
             {
                 //eingaben werden übergeben
 
