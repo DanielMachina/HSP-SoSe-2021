@@ -745,15 +745,15 @@ namespace Schrauben
 
             //Rundung erzeugen
             ShapeFactory catshapeFactoryRadius = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
-            /*
+            
             Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromBRepName( //BEide Varianten gehen nicht...
-                //"REdge:(Edge:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;3)));None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
+                "REdge:(Edge:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;3)));None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
                 //"RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
             Kopfradius = catshapeFactoryRadius.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, 1);
 
             Kopfradius.set_Name("Radius");
             hsp_catiaPartDoc.Part.Update();
-            */
+            
             #endregion
         }
         #endregion

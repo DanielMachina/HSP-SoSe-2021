@@ -237,32 +237,20 @@ namespace Schrauben
 
             #endregion
             #region Speichern als PDF
+            string Name2 = "Produktdatenblatt " + ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " "
+                            + ExcelControl.Menge;
+            string Pfad = @"C:\Users\Public\Documents\";
+            string Gesamt = Pfad + Name2;
 
             // als PDF speichern 
              mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
-                        @"" + "Produktdatenblatt "+ ExcelControl.Material + " " + ExcelControl.Durchmesser + " " + ExcelControl.Laenge + " " 
-                        + ExcelControl.Menge,
-                        _Excel.XlFixedFormatQuality.xlQualityStandard,
-                        true,true,1,1,false);
+                        Gesamt , _Excel.XlFixedFormatQuality.xlQualityStandard,true,true,1,1,false);
 
-
-
-        
-
-         
-
-           
-
-
-
-            //System.Diagnostics.Process.Start(newfile);
-
-            
+            System.Diagnostics.Process.Start(Gesamt + ".pdf");
 
             excelApp.Quit();
 
             #endregion
-
 
         }
     }
