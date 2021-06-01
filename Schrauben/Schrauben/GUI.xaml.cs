@@ -24,7 +24,7 @@ namespace Schrauben
         public static int testInt1;
         public static int testInt2;
         public static int testInt3;
-        int länge;
+        
         public static bool aus = false;
         bool permission = false;
         public static string durchmesser;
@@ -353,29 +353,7 @@ namespace Schrauben
                 Farbe1 = "Rot";
             }
 
-            if (cb_MetDurchmesser.SelectedIndex < 4 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge > 100)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
 
-            else if (cb_MetDurchmesser.SelectedIndex > 11 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 40)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
-
-            if (cb_fMetDurchmesser.SelectedIndex < 4 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge > 100)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
-
-            else if (cb_fMetDurchmesser.SelectedIndex > 24 && int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 40)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
             permission = false;
         }
         #endregion
@@ -586,26 +564,6 @@ namespace Schrauben
             if (cb_MetDurchmesser == null || tbx_schraubenlänge == null)
             { return; }
 
-            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_MetDurchmesser.SelectedIndex > 4)
-            {
-                tbx_schraubenlänge.Background = Brushes.White;
-                Farbe1 = "Grün";
-            }
-
-            if (!(int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_MetDurchmesser.SelectedIndex > 4))
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
-
-
-            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 50 && cb_MetDurchmesser.SelectedIndex > 11)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
-
-
 
             //Keine Druckerlaubnis/Cad-Erlaubnis geben
             permission = false;
@@ -615,28 +573,6 @@ namespace Schrauben
         #region MetrischFeinDurchmesser
         private void cb_fMetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            if (cb_fMetDurchmesser == null || tbx_schraubenlänge == null)
-            { return; }
-
-            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_fMetDurchmesser.SelectedIndex > 4)
-            {
-                tbx_schraubenlänge.Background = Brushes.White;
-                Farbe1 = "Grün";
-            }
-
-            if (!(int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 100 || cb_fMetDurchmesser.SelectedIndex > 4))
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
-
-
-            if (int.TryParse(tbx_schraubenlänge.Text, out länge) && länge < 50 && cb_fMetDurchmesser.SelectedIndex > 24)
-            {
-                tbx_schraubenlänge.Background = Brushes.Red;
-                Farbe1 = "Rot";
-            }
 
             permission = false;
         }
