@@ -423,11 +423,21 @@ namespace Schrauben
         #endregion
 
         #region CAD
+        
+
         private void btn_cad_Click(object sender, RoutedEventArgs e)
         {
             if (permission == true)
             {
+                CatiaControl.Übertragen = false;
+                lb_Catia.Visibility = Visibility.Visible;
                 new CatiaControl();
+
+                if (CatiaControl.Übertragen == true)
+                {
+                    lb_Catia.Visibility = Visibility.Hidden;
+                }
+
             }
             else
             {
@@ -435,6 +445,7 @@ namespace Schrauben
                 lb_Info.Visibility = Visibility.Visible;
             }
         }
+        
         #endregion
 
         #region Drucken
@@ -587,6 +598,7 @@ namespace Schrauben
         }
 
         #endregion
+
     }
 
 

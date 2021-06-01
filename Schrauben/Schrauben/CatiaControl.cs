@@ -9,11 +9,11 @@ namespace Schrauben
 {
     public class CatiaControl
     {
+        public static bool Übertragen;
         public CatiaControl()
         {
             try
             {
-
                 CatiaConnection cc = new CatiaConnection();
 
                 // Finde Catia Prozess
@@ -70,8 +70,7 @@ namespace Schrauben
 
                     }
 
-                   
-
+                    Übertragen = true;
 
 
                 }

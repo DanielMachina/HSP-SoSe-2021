@@ -571,7 +571,14 @@
 
                 <StackPanel>
 
-
+                    <Label Content="Bitte warten, die Übertragung an CatiaV5 läuft noch"
+                       HorizontalAlignment="Center" 
+                       FontSize="10"
+                           Visibility="Hidden"
+                           x:Name="lb_Catia" 
+                           />
+                    
+                    
                     <Label Content="Info: Drücke Berechnen bevor du etwas druckst, oder an CAD überträgst!"
                        HorizontalAlignment="Center" 
                        FontSize="10"
@@ -751,7 +758,7 @@
 
                 </Button>
 
-
+                
 
 
 
