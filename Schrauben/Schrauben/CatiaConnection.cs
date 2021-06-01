@@ -660,6 +660,69 @@ namespace Schrauben
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
             #endregion
+
+            #region Fase Senkkopf
+
+            //Fase in Skizze einzeichnen
+            //Sketches catSketches1 = catHybridBody1.HybridSketches;
+            
+            hsp_catiaSkizze = mySketches.Add(catReference1);
+
+            //Skizze oeffnen
+            Factory2D catFactory4D1 = hsp_catiaSkizze.OpenEdition();
+            hsp_catiaSkizze.set_Name("SenkkopfSkizze");
+
+            //Punkte
+            Point2D catPoint4D1 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe) , ExcelControl.Senkdurch - ExcelControl.Steigung);
+            Point2D catPoint4D2 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe), ExcelControl.Senkdurch);
+            Point2D catPoint4D3 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) , ExcelControl.Senkdurch - ExcelControl.Steigung);
+            Point2D catPoint4D4 = catFactory2D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Senkdurch);
+
+            //Linien
+            Line2D catLine4D3 = catFactory2D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe), ExcelControl.Senkdurch - ExcelControl.Steigung, Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe), ExcelControl.Senkdurch);
+            catLine2D3.StartPoint = catPoint2D1;
+            catLine2D3.EndPoint = catPoint2D2;
+
+            Line2D catLine4D4 = catFactory2D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe), ExcelControl.Senkdurch, Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Senkdurch - ExcelControl.Steigung);
+            catLine2D4.StartPoint = catPoint2D2;
+            catLine2D4.EndPoint = catPoint2D3;
+
+            Line2D catLine4D5 = catFactory2D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Senkdurch - ExcelControl.Steigung, Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Senkdurch);
+            catLine2D5.StartPoint = catPoint2D3;
+            catLine2D5.EndPoint = catPoint2D4;
+
+            Line2D catLine4D6 = catFactory2D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge), ExcelControl.Senkdurch, Convert.ToDouble(ExcelControl.Laenge) + Convert.ToDouble(ExcelControl.Kopfhöhe), ExcelControl.Senkdurch - ExcelControl.Steigung);
+            catLine2D6.StartPoint = catPoint2D4;
+            catLine2D6.EndPoint = catPoint2D1;
+
+            /*
+
+            //Achse
+            Point2D AxisPoint3 = catFactory2D1.CreatePoint(0, 0);
+            Point2D AxisPoint4 = catFactory2D1.CreatePoint(ExcelControl.Kopfhöhe, 0);
+
+            Line2D AxisLine3 = catFactory2D1.CreateLine(0, 0, ExcelControl.Kopfhöhe, 0);
+            AxisLine3.StartPoint = AxisPoint3;
+            AxisLine3.EndPoint = AxisPoint4;
+
+            //Referenzen der Achse
+            Reference Axisreference3 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisPoint1);
+            GeometricElements geometricElements2 = hsp_catiaSkizze.GeometricElements;
+            Axis2D catAxis4D1 = (Axis2D)geometricElements1.Item("Absolute Achse");
+            Line2D AxisLine4 = (Line2D)catAxis2D1.GetItem("H-Richtung");
+
+            hsp_catiaSkizze.CenterLine = AxisLine3;
+            */
+            //Skizze verlassen
+            hsp_catiaSkizze.CloseEdition();
+
+            //Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+
+
+            #endregion
+
+
             #region Skizze Innensechskant
 
             //Skizze Innensechs
@@ -737,24 +800,7 @@ namespace Schrauben
             //Part aktualisieren
             hsp_catiaPartDoc.Part.Update();
             #endregion
-            #region Rundung
-            //Rundung
-
-            //Hauptkoerper in Bearbeitung definieren
-            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
-
-            //Rundung erzeugen
-            ShapeFactory catshapeFactoryRadius = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
             
-            Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromBRepName( //BEide Varianten gehen nicht...
-                "REdge:(Edge:(Face:(Brp:(Pad.1;0:(Brp:(Sketch.1;1)));None:();Cf11:());Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;3)));None:();Cf11:());None:(Limits1:();Limits2:());Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
-                //"RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());WithTemporaryBody;WithoutBuildError;WithSelectingFeatureSupport;MFBRepVersion_CXR15)", KopfPad);
-            Kopfradius = catshapeFactoryRadius.AddNewEdgeFilletWithConstantRadius(reference1, CatFilletEdgePropagation.catTangencyFilletEdgePropagation, 1);
-
-            Kopfradius.set_Name("Radius");
-            hsp_catiaPartDoc.Part.Update();
-            
-            #endregion
         }
         #endregion
 
