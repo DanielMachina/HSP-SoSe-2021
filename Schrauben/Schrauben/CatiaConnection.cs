@@ -27,6 +27,7 @@ namespace Schrauben
         Shaft Körper;
         Chamfer FaseSchaft;
         EdgeFillet Kopfradius;
+        Groove Sechskant;
 
         #region MinimalCatia
         public bool CATIALaeuft()
@@ -435,8 +436,90 @@ namespace Schrauben
             hsp_catiaPartDoc.Part.Update();
 
 
+
+            #region Rundung Skizze
+
+            //Radius in Skizze einzeichnen
+            OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
+            Reference catReference1 = (Reference)catOriginElements.PlaneXY;
+            hsp_catiaSkizze = mySketches.Add(catReference1);
+
+            //Skizze oeffnen
+            Factory2D catFactory4D1 = hsp_catiaSkizze.OpenEdition();
+            hsp_catiaSkizze.set_Name("SenkkopfSkizze");
+
+            //double tan30 = Math.Sqrt(3) / 3;
+            double cos30 = Math.Sqrt(3) / 2;
+            double SW = ExcelControl.SWM / 2;
+
+            //Punkte
+            Point2D catPoint4D1 = catFactory4D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, (SW / cos30)-ExcelControl.Steigung);
+            Point2D catPoint4D2 = catFactory4D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe - ExcelControl.Steigung, (SW / cos30));
+            Point2D catPoint4D3 = catFactory4D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe , (SW / cos30));
+
+
+            //Linien
+            Point2D Mitte = catFactory4D1.CreatePoint(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe - ExcelControl.Steigung, (SW / cos30) - ExcelControl.Steigung);
+            Circle2D VerrundungSechs = catFactory4D1.CreateCircle(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe - ExcelControl.Steigung, (SW / cos30) - ExcelControl.Steigung, ExcelControl.Steigung, 0, 0);
+            VerrundungSechs.CenterPoint = Mitte;
+            VerrundungSechs.StartPoint = catPoint4D1;
+            VerrundungSechs.EndPoint = catPoint4D2;
+
+            Line2D catLine4D4 = catFactory4D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe - ExcelControl.Steigung, (SW / cos30), Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, (SW / cos30));
+            catLine4D4.StartPoint = catPoint4D2;
+            catLine4D4.EndPoint = catPoint4D3;
+
+            Line2D catLine4D5 = catFactory4D1.CreateLine(Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, (SW / cos30), Convert.ToDouble(ExcelControl.Laenge) + ExcelControl.Kopfhöhe, (SW / cos30) - ExcelControl.Steigung);
+            catLine4D5.StartPoint = catPoint4D3;
+            catLine4D5.EndPoint = catPoint4D1;
+
+            
+            //Achse
+            Point2D AxisPoint1 = catFactory4D1.CreatePoint(0, 0);
+            Point2D AxisPoint2 = catFactory4D1.CreatePoint(ExcelControl.Kopfhöhe, 0);
+
+            Line2D AxisLine1 = catFactory4D1.CreateLine(0, 0, ExcelControl.Kopfhöhe, 0);
+            AxisLine1.StartPoint = AxisPoint1;
+            AxisLine1.EndPoint = AxisPoint2;
+
+            //Referenzen der Achse
+            Reference Axisreference1 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(AxisPoint1);
+            GeometricElements geometricElements1 = hsp_catiaSkizze.GeometricElements;
+            Axis2D catAxis2D1 = (Axis2D)geometricElements1.Item("Absolute Achse");
+            Line2D AxisLine2 = (Line2D)catAxis2D1.GetItem("H-Richtung");
+
+            hsp_catiaSkizze.CenterLine = AxisLine1;
+
+            //Skizze verlassen
+            hsp_catiaSkizze.CloseEdition();
+
+            //Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+
+            #endregion
+            #region Nut
+
+            hsp_catiaPartDoc.Part.InWorkObject = hsp_catiaPartDoc.Part.MainBody;
+
+
+            ShapeFactory catShapeFactory2 = (ShapeFactory)hsp_catiaPartDoc.Part.ShapeFactory;
+            Reference reference1 = hsp_catiaPartDoc.Part.CreateReferenceFromObject(hsp_catiaSkizze);
+            Sechskant = catShapeFactory1.AddNewGrooveFromRef(reference1);
+            Sechskant.SetProfileElement(reference1);
+
+            Sechskant.set_Name("Nut");
+
+            // Part aktualisieren
+            hsp_catiaPartDoc.Part.Update();
+
+
+
+
+            #endregion
+
         }
         #endregion
+
         #endregion
         #region Zylinderkopf
         internal void Zylinderkopf()
@@ -584,7 +667,6 @@ namespace Schrauben
             //Skizze
 
             //Senk in Skizze einzeichnen
-            //Sketches catSketches1 = catHybridBody1.HybridSketches;
             OriginElements catOriginElements = hsp_catiaPartDoc.Part.OriginElements;
             Reference catReference1 = (Reference)catOriginElements.PlaneXY;
             hsp_catiaSkizze = mySketches.Add(catReference1);
