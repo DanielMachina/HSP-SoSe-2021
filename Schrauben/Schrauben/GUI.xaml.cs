@@ -27,6 +27,22 @@ namespace Schrauben
         int länge;
         public static bool aus = false;
         bool permission = false;
+        public static string durchmesser;
+        public static string material;
+        public static string schraubenart;
+        public static string festigkeit;
+        public static string kopfform;
+        public static string schraubenlänge;
+        public static string gewindelänge;
+        public static string menge;
+        public static string Drehsinn;
+        public static string SW;
+        public static string Darstellung;
+        public static string Farbe1;
+        public static string Farbe2;
+        public static string Variante1;
+        public static string Variante2;
+
         public GUI()
         {
             DataContext = new GUItools();
@@ -36,7 +52,7 @@ namespace Schrauben
 
 
 
-
+        #region TopBar
         public WindowState WindowState { get; private set; }
 
 
@@ -60,27 +76,15 @@ namespace Schrauben
             this.Content = home;
 
         }
-        public static string durchmesser;
-        public static string material;
-        public static string schraubenart;
-        public static string festigkeit;
-        public static string kopfform;
-        public static string schraubenlänge;
-        public static string gewindelänge;
-        public static string menge;
-        public static string Drehsinn;
-        public static string SW;
-        public static string Darstellung;
-        public static string Farbe1;
-        public static string Farbe2;
-        public static string Variante1;
-        public static string Variante2;
+
+        #endregion 
 
 
+        #region Berechnen
         private void btn_berechnen_Click(object sender, RoutedEventArgs e)
 
         {
-
+            // Bedingung für Berechnung
             if (cb_schraubenart.Text == "Metrisch" && cb_MetDurchmesser.Text != String.Empty)
             {
                 Variante1 = "gut";
@@ -191,9 +195,9 @@ namespace Schrauben
 
 
         }
+        #endregion
 
-
-        //Fehler in bedingung
+        #region Schraubenart
         private void cb_schraubenart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cb_fMetDurchmesser == null || cb_ZollDurchmesser == null || cb_MetDurchmesser == null || cb_schraubenart.SelectedItem == null )
@@ -223,11 +227,10 @@ namespace Schrauben
             permission = false;
 
 
-
-
         }
+        #endregion
 
-
+        #region Kopfform
         private void cb_kopfform_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -265,11 +268,12 @@ namespace Schrauben
                 img_SenkkopfSchraube.Visibility = Visibility.Hidden;
             }
 
-
             permission = false;
 
         }
+        #endregion
 
+        #region ComboBoxAuswahl
         private void HideCbDurch(ComboBox CbShow)
         {
             cb_fMetDurchmesser.Visibility = Visibility.Hidden;
@@ -279,6 +283,9 @@ namespace Schrauben
             CbShow.Visibility = Visibility.Visible;
         }
 
+        #endregion
+
+        #region Clear
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
             cb_MetDurchmesser.Text = String.Empty;
@@ -306,7 +313,6 @@ namespace Schrauben
             img_SenkkopfSchraube.Visibility = Visibility.Hidden;
             img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
 
-
             tb_durchmesser.Visibility = Visibility.Hidden;
             tb_steigung.Visibility = Visibility.Hidden;
             tb_flankendurchmesser.Visibility = Visibility.Hidden;
@@ -320,6 +326,9 @@ namespace Schrauben
             tb_ftm.Visibility = Visibility.Hidden;
         }
 
+        #endregion
+
+        #region Schraubenlänge
         private void tbx_schraubenlänge_SelectionChanged(object sender, RoutedEventArgs e)
         {
 
@@ -369,7 +378,9 @@ namespace Schrauben
             }
             permission = false;
         }
+        #endregion
 
+        #region Gewindelänge
         private void tbx_gewindelänge_SelectionChanged(object sender, RoutedEventArgs e)
         {
             if (tbx_gewindelänge == null)
@@ -395,7 +406,9 @@ namespace Schrauben
 
             permission = false;
         }
+        #endregion
 
+        #region Slider-Menge
         private void sl_menge_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (sl_menge == null)
@@ -429,6 +442,9 @@ namespace Schrauben
             permission = false;
         }
 
+        #endregion
+
+        #region CAD
         private void btn_cad_Click(object sender, RoutedEventArgs e)
         {
             if (permission == true)
@@ -441,7 +457,9 @@ namespace Schrauben
                 lb_Info.Visibility = Visibility.Visible;
             }
         }
+        #endregion
 
+        #region Drucken
         private void btn_drucken_Click(object sender, RoutedEventArgs e)
         {
             if (permission == true)
@@ -454,6 +472,9 @@ namespace Schrauben
                 lb_Info.Visibility = Visibility.Visible;
             }
         }
+        #endregion
+
+        #region RadioButton
 
         private void rb_links(object sender, RoutedEventArgs e)
         {
@@ -465,6 +486,7 @@ namespace Schrauben
             Drehsinn = "rechts";
         }
 
+
         private void rb_optisch(object sender, RoutedEventArgs e)
         {
             Darstellung = "optisch";
@@ -474,7 +496,7 @@ namespace Schrauben
         {
             Darstellung = "technisch";
         }
-
+        #endregion
 
         #region FestigkeitsBedingungen
 
@@ -529,6 +551,35 @@ namespace Schrauben
         }
         #endregion
 
+        #region Festigkeiten
+        private void cb_festigkeit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitAlu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitTit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitKup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        private void cb_festigkeitMesBron_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            permission = false;
+        }
+
+        #endregion
+
+        #region MetrischerDurchmesser
         private void cb_MetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //wenn cb nicht existiert, soll returned werden um keinen Fehler zu bekommen
@@ -559,32 +610,9 @@ namespace Schrauben
             //Keine Druckerlaubnis/Cad-Erlaubnis geben
             permission = false;
         }
+        #endregion
 
-        private void cb_festigkeit_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
-
-        private void cb_festigkeitAlu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
-
-        private void cb_festigkeitTit_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
-
-        private void cb_festigkeitKup_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
-
-        private void cb_festigkeitMesBron_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
-
+        #region MetrischFeinDurchmesser
         private void cb_fMetDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -613,25 +641,16 @@ namespace Schrauben
             permission = false;
         }
 
-        private void cb_MetDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
+        #endregion
 
-        private void cb_fMetDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
+        #region ZollDurchmesser
 
         private void cb_ZollDurchmesser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             permission = false;
         }
 
-        private void cb_ZollDurchmesserSenk_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            permission = false;
-        }
+        #endregion
     }
 
 
