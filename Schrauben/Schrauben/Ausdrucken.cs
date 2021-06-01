@@ -243,8 +243,7 @@ namespace Schrauben
             string Gesamt = Pfad + Name2;
 
             // als PDF speichern 
-             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,
-                        Gesamt , _Excel.XlFixedFormatQuality.xlQualityStandard,true,true,1,1,false);
+             mySheet2.ExportAsFixedFormat(_Excel.XlFixedFormatType.xlTypePDF,Gesamt , _Excel.XlFixedFormatQuality.xlQualityStandard,true,true,1,1,false);
 
             System.Diagnostics.Process.Start(Gesamt + ".pdf");
 
