@@ -391,6 +391,7 @@ namespace Schrauben
             else
             {
                 btn_cad.Foreground = Brushes.Red;
+                lb_Info.Visibility = Visibility.Visible;
             }
 
         }
