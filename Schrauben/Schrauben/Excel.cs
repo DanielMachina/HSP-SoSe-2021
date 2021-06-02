@@ -109,7 +109,7 @@ namespace Schrauben
             Console.WriteLine("   Kernlochdurchmesser: " + Kernlochdurchmesser);
 
             bereich = mySheet.Cells[55, "C"] as Excel.Range;
-            Gesamtmasse = Math.Round((Double)bereich.Value, 2) ;
+            Gesamtmasse = Math.Round((Double)bereich.Value, 4) ;
             Console.WriteLine("   Gesamtmasse: " + Gesamtmasse);
 
             bereich = mySheet.Cells[56, "B"] as Excel.Range;
@@ -176,7 +176,7 @@ namespace Schrauben
             #endregion
         }
 
-
+        #region Excel Speed
         /*public void XlSchreiben()
         {
 
@@ -254,7 +254,7 @@ namespace Schrauben
 
         */
 
-
+        #endregion
     }
 }
 

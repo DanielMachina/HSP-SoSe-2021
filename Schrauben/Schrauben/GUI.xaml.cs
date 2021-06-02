@@ -168,7 +168,7 @@ namespace Schrauben
                 tb_gesamtmasse.Text = Convert.ToString(ExcelControl.Gesamtmasse + "kg");
                 tb_kerndurchmesser.Text = Convert.ToString(ExcelControl.Kerndurchmesser + "mm");
                 tb_kernlochdurchmesser.Text = Convert.ToString(ExcelControl.Kernlochdurchmesser + "mm");
-                tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + "EUR");
+                tb_preisInEuro.Text = Convert.ToString(ExcelControl.Preis + " €");
                 if (ExcelControl.SWZ == "0")
                 {
                     SW = tb_schlüsselweite.Text = Convert.ToString(ExcelControl.SWM);
@@ -281,49 +281,6 @@ namespace Schrauben
             cb_ZollDurchmesser.Visibility = Visibility.Hidden;
 
             CbShow.Visibility = Visibility.Visible;
-        }
-
-        #endregion
-
-        #region Clear
-        private void btn_clear_Click(object sender, RoutedEventArgs e)
-        {
-            cb_MetDurchmesser.Text = String.Empty;
-            cb_ZollDurchmesser.Text = String.Empty;
-            cb_fMetDurchmesser.Text = String.Empty;
-            cb_festigkeit.Text = String.Empty;
-            cb_festigkeitTit.Text = String.Empty;
-            cb_festigkeitAlu.Text = String.Empty;
-            cb_festigkeitKup.Text = String.Empty;
-            cb_festigkeitMesBron.Text = String.Empty;
-            cb_schraubenart.Text = String.Empty;
-            cb_kopfform.Text = String.Empty;
-            cb_material.Text = String.Empty;
-            tbx_gewindelänge.Text = String.Empty;
-            tbx_schraubenlänge.Text = String.Empty;
-
-            tbx_menge.Text = "1";
-
-            btn_cad.Foreground = Brushes.Black;
-            btn_drucken.Foreground = Brushes.Black;
-
-            lb_Info.Visibility = Visibility.Hidden;
-
-            img_SechskantSchraube.Visibility = Visibility.Hidden;
-            img_SenkkopfSchraube.Visibility = Visibility.Hidden;
-            img_ZylinderkopfSchraube.Visibility = Visibility.Hidden;
-
-            tb_durchmesser.Visibility = Visibility.Hidden;
-            tb_steigung.Visibility = Visibility.Hidden;
-            tb_flankendurchmesser.Visibility = Visibility.Hidden;
-            tb_kerndurchmesser.Visibility = Visibility.Hidden;
-            tb_kernlochdurchmesser.Visibility = Visibility.Hidden;
-            tb_gesamtmasse.Visibility = Visibility.Hidden;
-            tb_schlüsselweite.Visibility = Visibility.Hidden;
-            tb_streckgrenze.Visibility = Visibility.Hidden;
-            tb_zugfestigkeit.Visibility = Visibility.Hidden;
-            tb_preisInEuro.Visibility = Visibility.Hidden;
-            tb_ftm.Visibility = Visibility.Hidden;
         }
 
         #endregion
