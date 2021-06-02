@@ -9,7 +9,6 @@ namespace Schrauben
 {
     public class CatiaControl
     {
-        public static bool Übertragen;
         public CatiaControl()
         {
             try
@@ -70,7 +69,7 @@ namespace Schrauben
 
                     }
 
-                    Übertragen = true;
+                    
 
 
                 }
@@ -86,7 +85,7 @@ namespace Schrauben
 
 
             Console.WriteLine("Fertig - Taste drücken.");
-            
+           
         }
 
     }

@@ -429,22 +429,17 @@ namespace Schrauben
         {
             if (permission == true)
             {
-                CatiaControl.Übertragen = false;
-                lb_Catia.Visibility = Visibility.Visible;
                 new CatiaControl();
-
-                if (CatiaControl.Übertragen == true)
-                {
-                    lb_Catia.Visibility = Visibility.Hidden;
-                }
-
             }
             else
             {
                 btn_cad.Foreground = Brushes.Red;
-                lb_Info.Visibility = Visibility.Visible;
             }
+
         }
+
+
+
         
         #endregion
 
