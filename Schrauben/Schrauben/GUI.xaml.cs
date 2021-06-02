@@ -292,7 +292,7 @@ namespace Schrauben
             if (tbx_schraubenlänge == null)
             { return; }
 
-            if (int.TryParse(tbx_schraubenlänge.Text, out testInt1) && testInt1 >= 5 && testInt1 <= 1000 && testInt1 >= testInt2)
+            if (int.TryParse(tbx_schraubenlänge.Text, out testInt1) && testInt1 >= 10 && testInt1 <= 1000 && testInt1 >= testInt2)
             {
                 tbx_schraubenlänge.Background = Brushes.White;
                 Farbe1 = "Grün";
@@ -321,7 +321,7 @@ namespace Schrauben
             if (tbx_gewindelänge == null)
             { return; }
 
-            if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >= 5 && testInt2 <= 1000 && testInt2 <= testInt1)
+            if (int.TryParse(tbx_gewindelänge.Text, out testInt2) && testInt2 >= 10 && testInt2 <= 1000 && testInt2 <= testInt1)
             {
                 tbx_gewindelänge.Background = Brushes.White;
                 Farbe2 = "Grün";
