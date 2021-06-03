@@ -16,6 +16,8 @@
 
         <Grid>
 
+            <!--#region  Background Grid-->
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition/>
@@ -33,8 +35,11 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                    <!--#region Knopf-->
+               
+                
+                <!--#endregion -->
 
+                <!--#region Image-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -47,6 +52,9 @@
 
                     </Grid>
 
+                <!--#endregion--> 
+                
+                <!--#region Exit Button-->
             <Button x:Name="_exit"
                         Grid.Column="7"
                         Grid.Row="0"
@@ -82,6 +90,9 @@
 
             </Button>
 
+                <!--#endregion-->
+                
+                <!--#region  Minimize Button-->
             <Button x:Name="_minimize"
                         Grid.Column="6"
                         Grid.Row="0"
@@ -118,6 +129,9 @@
 
             </Button>
 
+                <!--#endregion--> 
+                
+                <!--#region  Zurück Button-->
             <Button x:Name="Zurück"
                         Grid.Column="0"
                         Grid.Row="0"
@@ -152,6 +166,8 @@
                 </Button.Template>
 
             </Button>
+                
+                <!--#endregion--> 
             </Grid>
 
         </Grid>
@@ -159,6 +175,7 @@
 
 
 
+        <!--#region  TabGrid-->
 
         <Grid Grid.Row="1">
 
@@ -172,9 +189,11 @@
 
             <TabControl Margin="20,60,20,20">
 
+                <!--#region  TabHome-->
                 <TabItem Header="Home"
                      Height="20">
 
+                    
                     <Grid Background="BlanchedAlmond">
 
                         <Grid.ColumnDefinitions>
@@ -261,8 +280,10 @@
                     </Grid>
 
                 </TabItem>
+                    <!--#endregion--> 
 
 
+                <!--#region Impressum-->
                 <TabItem Header="Impressum"
                  Height="20">
 
@@ -331,6 +352,9 @@
 
                 </TabItem>
 
+                <!--#endregion-->
+                
+                <!--#region Kontakt-->
                 <TabItem Header="Kontakt"
                  Height="20">
 
@@ -396,9 +420,13 @@
 
                     </Grid>
                 </TabItem>
+                
+                <!--#endregion-->
+                
             </TabControl>
         </Grid>
 
+        <!--#endregion--> 
     </Grid>
     </Border>
 </UserControl>

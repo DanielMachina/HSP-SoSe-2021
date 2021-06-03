@@ -957,7 +957,7 @@
 
 
             </Grid>
-            <!--#endregion-->
+            
 
             <Rectangle Width="3"
                        Height="180"
@@ -966,6 +966,10 @@
                        Margin="55,0,0,0"
                        RadiusY ="2"
                        RadiusX="2"/>
+
+            <!--#endregion-->
+            
+            <!--#region  Label Background-->
             <Label Content="Schraubentechnik GmbH &amp; Co. KG" 
                    Grid.Column="1" 
                    HorizontalAlignment="Left" 
@@ -974,7 +978,8 @@
                    VerticalAlignment="Top" 
                    Width="205"/>
         
-        
+       
+            <!--#endregion-->
         </Grid>
 
 

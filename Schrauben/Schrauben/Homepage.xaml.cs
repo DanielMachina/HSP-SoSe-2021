@@ -25,6 +25,7 @@ namespace Schrauben
             InitializeComponent();
         }
 
+        #region TopBar
         private void Button_Konfig(object sender, RoutedEventArgs e)
         {
             GUI home = new GUI();
@@ -50,6 +51,6 @@ namespace Schrauben
             this.Content = home;
 
         }
-
+        #endregion
     }
 }

@@ -95,7 +95,7 @@
     <Compile Include="Ausdrucken.cs" />
     <Compile Include="CatiaConnection.cs" />
     <Compile Include="CatiaControl.cs" />
-    <Compile Include="Excel.cs" />
+    <Compile Include="ExcelControl.cs" />
     <Compile Include="GUItools.cs" />
     <Compile Include="MainSchraube.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,7 +12,6 @@ namespace Schrauben
     {
         public MainSchraube ()
         {
-            //ÖffneXl()
 
             KonfigGUI HomeGUI = new KonfigGUI();
             GUI SchraubenGUI = new GUI();
@@ -20,7 +19,7 @@ namespace Schrauben
             Window Homepage = new Window();
             Window Konfig = new Window();
 
-
+            #region Homepage
             Homepage.Title = "Schrauben";
             Homepage.ResizeMode = ResizeMode.CanMinimize;
             Homepage.Content = HomeGUI;
@@ -30,9 +29,9 @@ namespace Schrauben
             Homepage.AllowsTransparency = true;
             Homepage.Background = Brushes.Transparent;
             Homepage.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
+            #endregion
 
-
+            #region Konfig
             Konfig.Title = "Schraubenkonfigurator";
             Konfig.ResizeMode = ResizeMode.CanMinimize;
             Konfig.Content = SchraubenGUI;
@@ -42,21 +41,16 @@ namespace Schrauben
             Konfig.Width = 900;
             Konfig.Height = 500;
             Konfig.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
+            #endregion
+
+
             Homepage.ShowDialog();
-            //new ExcelControl();
-            //Konfig.ShowDialog();
-            //Console.ReadKey();
         }
 
         [STAThread]
         public static void Main()
         {
-            
             new MainSchraube();
-            
-            
-
         }
 
 

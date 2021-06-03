@@ -361,6 +361,7 @@ namespace Schrauben
         #endregion
 
         #endregion
+
         #region Sechskant-Kopf
         public void ErzeugeSechsKopfSkizze(Double SW)
         {
@@ -521,6 +522,7 @@ namespace Schrauben
         #endregion
 
         #endregion
+
         #region Zylinderkopf
         internal void Zylinderkopf()
         {
@@ -660,6 +662,7 @@ namespace Schrauben
 
         }
         #endregion
+
         #region Senkkopf
         internal void Senkkopf()
         {
