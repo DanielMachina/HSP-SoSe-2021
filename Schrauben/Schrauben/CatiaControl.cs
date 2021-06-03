@@ -76,6 +76,7 @@ namespace Schrauben
                 else
                 {
                     Console.WriteLine("Laufende Catia Application nicht gefunden");
+                    MessageBox.Show("Leider keine laufende Catia Anwendung gefunden!!");
                 }
             }
             catch (Exception ex)
